@@ -10,7 +10,7 @@ A premium e-commerce website template designed for Chennai-based retail business
 
 | Page | Description |
 |------|-------------|
-| `Index.html` | Home page with hero, categories, featured products, newsletter |
+| `index.html` | Home page with hero, categories, featured products, newsletter |
 | `category.html` | Category listing with filters, sort, and pagination |
 | `Itempage.html` | Product detail page with images, reviews, and add-to-cart |
 | `cart.html` | Shopping cart with order summary and recommendations |
@@ -50,7 +50,7 @@ A premium e-commerce website template designed for Chennai-based retail business
    ```bash
    git clone https://github.com/Mariakevin/Ecommerce.git
    ```
-2. Open `Index.html` in your browser
+2. Open `index.html` in your browser
 
 No build tools required - all assets are loaded via CDN.
 

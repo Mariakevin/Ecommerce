@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chennai Retail - Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#3c0800",
+                        "on-background": "#171b2b",
+                        "surface": "#faf8ff",
+                        "primary-fixed": "#ffdbd2",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#dee1f8",
+                        "inverse-surface": "#2c3041",
+                        "tertiary-fixed-dim": "#e6c185",
+                        "surface-container-high": "#e4e7fe",
+                        "tertiary-fixed": "#ffdeab",
+                        "background": "#faf8ff",
+                        "outline-variant": "#dbc1ba",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#b3d1fd",
+                        "tertiary-container": "#b3915a",
+                        "on-primary-fixed-variant": "#7c2e19",
+                        "inverse-primary": "#ffb4a1",
+                        "secondary": "#436086",
+                        "on-surface-variant": "#55423e",
+                        "surface-container": "#ebedff",
+                        "tertiary": "#765a28",
+                        "surface-container-low": "#f3f2ff",
+                        "outline": "#88726d",
+                        "surface-tint": "#9a442d",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#abc8f4",
+                        "on-primary-container": "#5b1604",
+                        "on-secondary-container": "#3c597f",
+                        "on-secondary-fixed-variant": "#2a486d",
+                        "on-primary": "#ffffff",
+                        "primary": "#9a442d",
+                        "on-secondary-fixed": "#001c39",
+                        "on-tertiary-fixed": "#271900",
+                        "on-tertiary-container": "#402b00",
+                        "primary-container": "#e07a5f",
+                        "surface-container-highest": "#dee1f8",
+                        "secondary-fixed": "#d3e3ff",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff0ff",
+                        "surface-dim": "#d6d9ef",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#171b2b",
+                        "surface-bright": "#faf8ff",
+                        "primary-fixed-dim": "#ffb4a1",
+                        "on-tertiary-fixed-variant": "#5c4212"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "tamil-override": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "tamil-override": ["105%", {"lineHeight": "1.7"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["13px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/70 dark:bg-inverse-surface/70 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 border-b border-white/30 dark:border-white/10 flex flex-col w-full">
+<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop h-20 flex items-center justify-between">
+<!-- Brand -->
+<div class="flex items-center gap-4">
+<a class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary dark:text-inverse-primary tracking-tight" href="#">Chennai Retail</a>
+</div>
+<!-- Desktop Navigation Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">Shop</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">Categories</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">Offers</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#">Stores</a>
+</div>
+<!-- Actions (Search Bar on Right & Icons) -->
+<div class="flex items-center gap-4">
+<!-- Search Icon Mobile -->
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-primary dark:text-inverse-primary hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="hidden md:flex items-center gap-4">
+<button class="flex items-center gap-2 font-label-sm text-label-sm text-primary dark:text-inverse-primary hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</button>
+<button class="flex items-center gap-2 font-label-sm text-label-sm text-primary dark:text-inverse-primary hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+</button>
+<button class="flex items-center gap-2 font-label-sm text-label-sm text-primary dark:text-inverse-primary hover:text-primary-container transition-colors duration-200 scale-95 active:scale-90 transition-transform">
+                        Wishlist
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-xl font-label-sm text-label-sm hover:bg-primary-container transition-colors scale-95 active:scale-90 transition-transform shadow-[0_4px_12px_rgba(45,49,66,0.05)]">
+                        Cart
+                    </button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow pt-[120px] pb-32 md:pb-section-gap">
+<!-- Search Input & Active Dropdown Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-40">
+<div class="relative w-full max-w-3xl mx-auto">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-secondary text-[24px]">search</span>
+<input autofocus="" class="w-full h-14 pl-14 pr-12 bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-secondary font-body-lg text-body-lg text-on-surface shadow-[0_4px_12px_rgba(45,49,66,0.05)] outline-none" placeholder="Search for products, brands and categories..." type="text" value="Silk"/>
+<button class="absolute right-4 text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Instant Suggestions Dropdown (Glassmorphism) -->
+<div class="absolute top-full left-0 w-full mt-2 bg-surface/85 backdrop-blur-xl border border-white/40 rounded-xl shadow-[0_8px_32px_rgba(45,49,66,0.08)] overflow-hidden">
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Suggestions List -->
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface-variant mb-4 uppercase tracking-wider">Instant Suggestions</h4>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 -mx-3 rounded-lg hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-secondary/70 text-[18px] group-hover:text-primary transition-colors">search</span>
+<span class="font-body-md text-body-md text-on-surface">Kanchipuram <strong class="font-semibold text-primary">Silk</strong> Sarees</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 -mx-3 rounded-lg hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-secondary/70 text-[18px] group-hover:text-primary transition-colors">search</span>
+<span class="font-body-md text-body-md text-on-surface">Soft <strong class="font-semibold text-primary">Silk</strong> Sarees</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 -mx-3 rounded-lg hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-secondary/70 text-[18px] group-hover:text-primary transition-colors">search</span>
+<span class="font-body-md text-body-md text-on-surface">Art <strong class="font-semibold text-primary">Silk</strong> Kurtas</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 -mx-3 rounded-lg hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-secondary/70 text-[18px] group-hover:text-primary transition-colors">category</span>
+<span class="font-body-md text-body-md text-on-surface">View all in <strong class="font-semibold text-primary">Silk Collection</strong></span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Tags and Trends -->
+<div class="space-y-6">
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">trending_up</span> Trending Searches
+                                </h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-4 py-1.5 bg-surface-container border border-outline-variant/30 rounded-full font-label-sm text-label-sm text-on-surface hover:border-secondary hover:bg-secondary/5 transition-all" href="#">Gold Jewellery</a>
+<a class="px-4 py-1.5 bg-surface-container border border-outline-variant/30 rounded-full font-label-sm text-label-sm text-on-surface hover:border-secondary hover:bg-secondary/5 transition-all" href="#">Filter Coffee</a>
+<a class="px-4 py-1.5 bg-surface-container border border-outline-variant/30 rounded-full font-label-sm text-label-sm text-on-surface hover:border-secondary hover:bg-secondary/5 transition-all" href="#">Brass Lamps</a>
+</div>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface-variant mb-3 uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span> Popular in Chennai
+                                </h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-4 py-1.5 bg-secondary-container/40 text-on-secondary-container rounded-full font-label-sm text-label-sm hover:bg-secondary-container/60 transition-all" href="#">T. Nagar Exclusives</a>
+<a class="px-4 py-1.5 bg-secondary-container/40 text-on-secondary-container rounded-full font-label-sm text-label-sm hover:bg-secondary-container/60 transition-all" href="#">Mylapore Crafts</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Suggested Product Mini-Bento -->
+<div class="bg-surface-container-low p-4 border-t border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A close-up studio shot of a beautifully folded Kanchipuram silk saree with a rich golden zari border. The lighting is soft and high-key, emphasizing the lustrous texture and deep maroon color of the silk. The background is a clean, minimal white void, adhering to a modern, premium light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5EzScgP70G5OAh3Q8hR4DbchMGXaYSLq-XCkaS6wWhD9dsaJr6WAXjvOV-Fli5IqhoUyQXWQciYTfSY2_skdFnBkpbRo4aDindIAeY_SPTNo98pTeDaAx7GKk2yV0g6Qgdooqzrl2F0rcXPzC_BpDYu_ZgUauS7pgiGcLM2ERNjNHYsVkF3PJxdWhdojYxwTgiQ076iMGGREYybBUqszThk1y_rKc51xh4nr5QQFCWDa22HOO1IX9RYfuBAKt1KTSr0smlZOdNX4"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Featured Match</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold line-clamp-1">Bridal Maroon Kanchipuram Silk</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters & Meta Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-12 mb-8 relative z-30">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<h1 class="font-headline-md text-headline-md text-on-background">
+                    Showing results for "<span class="text-primary">Silk</span>" <span class="text-on-surface-variant text-[18px] font-normal ml-2">(42 items)</span>
+</h1>
+<!-- Horizontal Scrollable Filters -->
+<div class="flex items-center gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-hide w-full md:w-auto">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary rounded-xl font-label-sm text-label-sm flex-shrink-0 shadow-[0_4px_12px_rgba(45,49,66,0.05)] hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                        Filters
+                        <span class="ml-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[11px]">2</span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant/40 mx-1 flex-shrink-0"></div>
+<button class="px-5 py-2.5 bg-surface border border-outline-variant/30 text-on-surface rounded-xl font-label-sm text-label-sm flex-shrink-0 hover:border-secondary transition-colors whitespace-nowrap flex items-center gap-2">
+                        Price: Low to High <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="px-5 py-2.5 bg-secondary-container/20 border border-secondary/30 text-on-secondary-container rounded-xl font-label-sm text-label-sm flex-shrink-0 hover:bg-secondary-container/40 transition-colors whitespace-nowrap flex items-center gap-2">
+                        Color: Red <span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+<button class="px-5 py-2.5 bg-secondary-container/20 border border-secondary/30 text-on-secondary-container rounded-xl font-label-sm text-label-sm flex-shrink-0 hover:bg-secondary-container/40 transition-colors whitespace-nowrap flex items-center gap-2">
+                        Material: Pure Silk <span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+<button class="px-5 py-2.5 bg-surface border border-outline-variant/30 text-on-surface rounded-xl font-label-sm text-label-sm flex-shrink-0 hover:border-secondary transition-colors whitespace-nowrap">
+                        New Arrivals
+                    </button>
+</div>
+</div>
+</section>
+<!-- Results Grid (Bento/Premium layout) -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-20">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10">
+<!-- Card 1 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container-low rounded-2xl overflow-hidden mb-4 border border-black/5">
+<img class="w-full h-full object-cover mix-blend-multiply group-hover:scale-[1.03] transition-transform duration-700 ease-out" data-alt="A full-length mannequin display of a vibrant magenta soft silk saree draped elegantly. The studio environment is bright and minimalist, featuring a soft gray background that perfectly contrasts with the rich color of the garment. The lighting is diffused, highlighting the subtle sheen of the silk material." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhyfaD7yW6M68BqGPYP7cJ37KWi55-f8X_pUBGbaYCcccR-kerx8PVMVp7zzC4n2qzA-UsYdfPU867Fggl10Ns45HYCKaKSzbdbjaJn-KVV_z8oKYLrncPNM2Etq8aktxRPrTJooXe7gmAFAeuVpmiUJlEBM3hIjKEsgx-wj7133nVgmM-0kjMryPFPIPBzTp0X991RP7PGEQeS2q4P5WHvkeiaYKUQrXE97xWqxJWxhV3vVCkOBrixdPNCeRWKfNK37MzD3LTWM"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-surface/80 backdrop-blur-sm rounded-md font-label-sm text-[11px] text-primary font-bold tracking-wider">NEW</div>
+<button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:scale-110 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold leading-snug group-hover:text-primary transition-colors">Magenta Soft Silk Saree with Gold Zari</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">storefront</span> Nalli Silks
+                    </p>
+<div class="mt-2 flex items-center gap-3">
+<span class="font-headline-md text-body-lg text-on-background font-bold">₹8,999</span>
+<span class="font-body-md text-[14px] text-on-surface-variant line-through">₹11,500</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container-low rounded-2xl overflow-hidden mb-4 border border-black/5">
+<img class="w-full h-full object-cover mix-blend-multiply group-hover:scale-[1.03] transition-transform duration-700 ease-out" data-alt="A close-up macro shot of the pallu (end piece) of a Kanchipuram silk saree, showcasing intricate peacock and floral motifs woven in pure gold zari against a deep forest green background. The lighting is focused, capturing the dimensional texture and premium quality of the weave in a clean, sophisticated setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKY1zxVrfigjlGUdG3hWxnPjMn7wpKO5cR1YPmDdvpmOErnzmQSXABUt_YYqGIfV9ECsL-gWhMyGxnf4f6_Bgv_A2f6TUx2urRV4vLwwXPqhz9j-pZFiU-h-NQxl68ZSGKb5_963vpE1eUDISXbKKsnga7G4HgX-m1sXHXnam5vNWo7mkXS-_8VuKBsItD3vaVpyipNqLMxDMV4s7J0EOq-4i0611I7U4TBC8x62V0f-kMDBHmD6qsbZeCBuvzWc9EnkkeA_MHzY"/>
+<button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:scale-110 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold leading-snug group-hover:text-primary transition-colors">Forest Green Pure Kanchipuram</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">storefront</span> Kumaran Silks
+                    </p>
+<div class="mt-2 flex items-center gap-3">
+<span class="font-headline-md text-body-lg text-on-background font-bold">₹24,500</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container-low rounded-2xl overflow-hidden mb-4 border border-black/5">
+<img class="w-full h-full object-cover mix-blend-multiply group-hover:scale-[1.03] transition-transform duration-700 ease-out" data-alt="A stylish flat lay composition featuring a bright yellow art silk kurta paired with contrasting pink dupata. The items are neatly arranged on a clean, light-toned surface. Soft, natural-looking shadows give the image depth, maintaining a high-end retail aesthetic suitable for a modern e-commerce platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-NeKy7odUzGQd3T31TsINI-5cxEm78Lvl-CfBJITtYhIC4wuT8hXdpLYSnPng4e6bnW84yGSOAkNmvKtpoT_M2IJJ8b5TUBqqubPPHjzqRaTcwDN8aBtsXalfUI4yBQ2xRXMs8D-j5lWZygi8rHojEPem2r9eCozl2ZKEZ9h2aWCeJUAfmytRGuAFhfrSpH-ZCdeTxGjaAk1gz0mmw4sTnOUEmpu327Ksd6t2RDEqojGN6GMWM2oOeHJB5ZftJtbQpEPIAVLrBoU"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-error-container text-on-error-container rounded-md font-label-sm text-[11px] font-bold tracking-wider">-20%</div>
+<button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:scale-110 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold leading-snug group-hover:text-primary transition-colors">Yellow Art Silk Kurta Set</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">storefront</span> Pothys
+                    </p>
+<div class="mt-2 flex items-center gap-3">
+<span class="font-headline-md text-body-lg text-on-background font-bold">₹3,199</span>
+<span class="font-body-md text-[14px] text-on-surface-variant line-through">₹3,999</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group cursor-pointer flex flex-col">
+<div class="relative aspect-[4/5] bg-surface-container-low rounded-2xl overflow-hidden mb-4 border border-black/5">
+<img class="w-full h-full object-cover mix-blend-multiply group-hover:scale-[1.03] transition-transform duration-700 ease-out" data-alt="An elegant lifestyle shot of a woman wearing a subtle pastel peach silk cotton saree, seated in a modern, well-lit cafe with minimalist decor. The focus is on the drape and flow of the fabric. The overall mood is sophisticated, warm, and distinctly urban, reflecting a contemporary Indian aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQk8dNj1oQUsS4JYOWr_9Dx6n1qsIU7JcxYp-AVBSKxhrJthPYFlERTRLkV8kuLjCTIdoWRQmMu4Yc9DBoZbTbwoBhxkWV7SH8LZ4qfUhlvs5QWrm4sSDdKu0--VnVosptDs5WQrYufPu3HAlvqdQxeAECraGJzbWWG6ndgyDTPEAJEpP58-2Siqga24kYpPKNPQTkGeNUV1C354xIJYHXbnkE9kDroAFw9RlijIH0Sq_u4XX18n4uGECrPLsHi6njiKyeeFEiNLE"/>
+<button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-on-surface-variant hover:text-primary hover:scale-110 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold leading-snug group-hover:text-primary transition-colors">Pastel Peach Silk Cotton Blend</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">storefront</span> RmKV
+                    </p>
+<div class="mt-2 flex items-center gap-3">
+<span class="font-headline-md text-body-lg text-on-background font-bold">₹4,250</span>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-16 flex justify-center">
+<button class="px-8 py-3 bg-surface border border-secondary text-secondary rounded-xl font-label-sm text-label-sm hover:bg-secondary/5 transition-colors shadow-sm">
+                    Load More Results
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface w-full pt-section-gap pb-8 bg-surface-container-low dark:bg-surface-container-high max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1 mb-8 md:mb-0">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Chennai Retail</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Chennai Retail. Serving Chennai with Pride.</p>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">About Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Store Locations</a>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Customer Support</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Newsletter</a>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-lg fixed bottom-0 w-full rounded-t-xl z-50 border-t border-white/20 shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high p-2 rounded-lg w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high p-2 rounded-lg w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">grid_view</span>
+<span class="font-label-sm text-[10px]">Categories</span>
+</a>
+<!-- Active Search Tab -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold hover:bg-surface-container-low dark:hover:bg-surface-container-high p-2 rounded-lg w-16 scale-95 transition-all" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-[10px]">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high p-2 rounded-lg w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">shopping_bag</span>
+<span class="font-label-sm text-[10px]">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high p-2 rounded-lg w-16" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1">person</span>
+<span class="font-label-sm text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>

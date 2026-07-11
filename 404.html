@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 – Page Not Found | Chennai Retail</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#3c0800", "on-background": "#171b2b", "surface": "#faf8ff",
+                        "primary-fixed": "#ffdbd2", "on-error": "#ffffff", "surface-variant": "#dee1f8",
+                        "inverse-surface": "#2c3041", "tertiary-fixed-dim": "#e6c185",
+                        "surface-container-high": "#e4e7fe", "tertiary-fixed": "#ffdeab",
+                        "background": "#faf8ff", "outline-variant": "#dbc1ba",
+                        "on-secondary": "#ffffff", "secondary-container": "#b3d1fd",
+                        "tertiary-container": "#b3915a", "on-primary-fixed-variant": "#7c2e19",
+                        "inverse-primary": "#ffb4a1", "secondary": "#436086",
+                        "on-surface-variant": "#55423e", "surface-container": "#ebedff",
+                        "tertiary": "#765a28", "surface-container-low": "#f3f2ff",
+                        "outline": "#88726d", "surface-tint": "#9a442d", "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff", "secondary-fixed-dim": "#abc8f4",
+                        "on-primary-container": "#5b1604", "on-secondary-container": "#3c597f",
+                        "on-secondary-fixed-variant": "#2a486d", "on-primary": "#ffffff",
+                        "primary": "#9a442d", "on-secondary-fixed": "#001c39",
+                        "on-tertiary-fixed": "#271900", "on-tertiary-container": "#402b00",
+                        "primary-container": "#e07a5f", "surface-container-highest": "#dee1f8",
+                        "secondary-fixed": "#d3e3ff", "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff0ff", "surface-dim": "#d6d9ef",
+                        "error-container": "#ffdad6", "surface-container-lowest": "#ffffff",
+                        "on-surface": "#171b2b", "surface-bright": "#faf8ff",
+                        "primary-fixed-dim": "#ffb4a1", "on-tertiary-fixed-variant": "#5c4212"
+                    },
+                    "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    "spacing": { "margin-mobile": "16px", "container-max": "1280px", "base": "8px", "gutter": "24px", "margin-desktop": "64px", "section-gap": "80px" },
+                    "fontFamily": { "display": ["Montserrat"], "body": ["Inter"] },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["13px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col">
+
+    <!-- Brand Header -->
+    <header class="py-6 text-center">
+        <a href="index.html" class="font-display text-[26px] text-primary font-bold tracking-tight">Chennai <span class="text-primary">Retail</span></a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center px-4 py-8">
+        <div class="max-w-lg w-full text-center animate-fade-in-up">
+
+            <!-- Illustration -->
+            <div class="w-32 h-32 rounded-full bg-surface-container flex items-center justify-center mb-8 mx-auto">
+                <span class="material-symbols-outlined text-on-surface-variant" style="font-size: 56px; opacity: 0.5;">search_off</span>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="font-display text-[80px] text-primary font-bold leading-none mb-2">404</h1>
+            <h2 class="font-display text-[24px] text-on-background mb-4">Page Not Found</h2>
+            <p class="text-on-surface-variant mb-8">The page you're looking for doesn't exist or has been moved.</p>
+
+            <!-- Search Bar -->
+            <div class="max-w-sm mx-auto mb-8">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+                    <input type="text" placeholder="Search for products" class="w-full pl-12 pr-4 py-3 bg-surface-container-low rounded-full text-sm text-on-surface placeholder:text-on-surface-variant/60 outline-none focus:ring-2 focus:ring-primary/40 transition-shadow">
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center justify-center flex-wrap gap-4">
+                <a href="index.html" class="bg-primary-container text-white px-8 py-3 rounded-xl font-display font-semibold text-sm hover:bg-primary-container/90 transition-colors">Go Home</a>
+                <a href="category.html" class="text-secondary font-medium text-sm hover:underline">Browse Categories</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="mt-auto py-6 text-center">
+        <p class="font-display font-bold text-sm text-on-surface-variant/70">Chennai Retail</p>
+        <p class="text-xs text-on-surface-variant/50 mt-1">Serving Chennai with Pride</p>
+    </footer>
+
+    <!-- App JS -->
+    <script src="app.js"></script>
+</body>
+</html>

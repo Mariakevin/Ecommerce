@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search – Chennai Retail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: '#fffbf7',
+            'on-background': '#1a1512',
+            surface: '#ffffff',
+            'surface-dim': '#f5f0eb',
+            'surface-container': '#faf6f1',
+            'surface-container-high': '#f0ece7',
+            primary: '#b85c1e',
+            'on-primary': '#ffffff',
+            'primary-container': '#ffe0c8',
+            'on-primary-container': '#412a0a',
+            secondary: '#7a6652',
+            'on-secondary': '#ffffff',
+            'secondary-container': '#f4dfc3',
+            'tertiary': '#5f6135',
+            'tertiary-container': '#e3e5b0',
+            outline: '#a69482',
+            'outline-variant': '#dbc7b5',
+            error: '#ba1a1a',
+            'error-container': '#ffdad6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container min-h-screen flex flex-col pb-24 md:pb-0">
+
+  <!-- Desktop Header -->
+  <header class="hidden md:flex items-center justify-between px-8 py-4 bg-surface/80 backdrop-blur-xl sticky top-0 z-50 border-b border-black/5">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary text-3xl">storefront</span>
+        <span class="font-display font-800 text-xl tracking-tight">Chennai Retail</span>
+      </a>
+    </div>
+    <nav class="flex items-center gap-8">
+      <a href="shop.html" class="text-sm font-medium text-on-background/60 hover:text-primary transition-colors">Shop</a>
+      <a href="collections.html" class="text-sm font-medium text-on-background/60 hover:text-primary transition-colors">Collections</a>
+      <a href="search.html" class="text-sm font-medium text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full">Search</a>
+      <a href="store.html" class="text-sm font-medium text-on-background/60 hover:text-primary transition-colors">Store</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <button class="relative p-2 rounded-full hover:bg-surface-dim transition-colors">
+        <span class="material-symbols-outlined text-on-background/70">shopping_cart</span>
+        <span class="absolute -top-0.5 -right-0.5 bg-primary text-on-primary text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+      </button>
+      <button class="p-2 rounded-full hover:bg-surface-dim transition-colors">
+        <span class="material-symbols-outlined text-on-background/70">person</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Header -->
+  <header class="md:hidden fixed top-0 left-0 right-0 bg-surface/80 backdrop-blur-xl z-50 px-4 py-3 border-b border-black/5">
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary text-2xl">storefront</span>
+        <span class="font-display font-800 text-lg tracking-tight">Chennai Retail</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <button class="relative p-2 rounded-full hover:bg-surface-dim transition-colors">
+          <span class="material-symbols-outlined text-on-background/70 text-xl">shopping_cart</span>
+          <span class="absolute -top-0.5 -right-0.5 bg-primary text-on-primary text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">3</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1">
+
+    <!-- Search Input Section -->
+    <section class="max-w-3xl mx-auto px-4 relative z-40 pt-[80px] md:pt-[120px]">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-background/40 text-2xl pointer-events-none">search</span>
+        <input
+          type="text"
+          value="Silk"
+          class="w-full h-14 pl-14 pr-14 rounded-2xl bg-surface border border-outline-variant text-on-background text-base placeholder:text-on-background/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary shadow-sm transition-all"
+          placeholder="Search sarees, stores, collections…"
+        />
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-surface-dim transition-colors">
+          <span class="material-symbols-outlined text-on-background/50 text-xl">close</span>
+        </button>
+      </div>
+
+      <!-- Instant Suggestions Dropdown -->
+      <div class="absolute left-0 right-0 top-full mt-2 bg-surface/85 backdrop-blur-xl rounded-3xl border border-outline-variant/50 shadow-2xl overflow-hidden">
+        <div class="grid md:grid-cols-2 gap-0 md:gap-6 p-6">
+          <!-- Left Column: Instant Suggestions -->
+          <div>
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-on-background/40 mb-4 font-display">Instant Suggestions</h3>
+            <ul class="space-y-1">
+              <li>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary-container/50 transition-colors group">
+                  <span class="material-symbols-outlined text-on-background/30 text-lg group-hover:text-primary transition-colors">arrow_outward</span>
+                  <span class="text-sm font-medium text-on-background">Kanchipuram Silk Sarees</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary-container/50 transition-colors group">
+                  <span class="material-symbols-outlined text-on-background/30 text-lg group-hover:text-primary transition-colors">arrow_outward</span>
+                  <span class="text-sm font-medium text-on-background">Soft Silk Sarees</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary-container/50 transition-colors group">
+                  <span class="material-symbols-outlined text-on-background/30 text-lg group-hover:text-primary transition-colors">arrow_outward</span>
+                  <span class="text-sm font-medium text-on-background">Art Silk Kurtas</span>
+                </a>
+              </li>
+              <li class="pt-1">
+                <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-xl text-primary text-sm font-semibold hover:bg-primary-container/30 transition-colors">
+                  <span class="material-symbols-outlined text-sm">collection</span>
+                  View all in Silk Collection
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right Column: Trending & Popular -->
+          <div class="space-y-6 mt-6 md:mt-0">
+            <!-- Trending Searches -->
+            <div>
+              <h3 class="text-xs font-semibold uppercase tracking-wider text-on-background/40 mb-3 font-display">Trending Searches</h3>
+              <div class="flex flex-wrap gap-2">
+                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-primary-container/60 transition-colors">
+                  <span class="material-symbols-outlined text-xs text-primary">trending_up</span>
+                  Gold Jewellery
+                </a>
+                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-primary-container/60 transition-colors">
+                  <span class="material-symbols-outlined text-xs text-primary">trending_up</span>
+                  Filter Coffee
+                </a>
+                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-primary-container/60 transition-colors">
+                  <span class="material-symbols-outlined text-xs text-primary">trending_up</span>
+                  Brass Lamps
+                </a>
+              </div>
+            </div>
+
+            <!-- Popular in Chennai -->
+            <div>
+              <h3 class="text-xs font-semibold uppercase tracking-wider text-on-background/40 mb-3 font-display">Popular in Chennai</h3>
+              <div class="flex flex-wrap gap-2">
+                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/40 text-sm font-medium text-on-primary-container hover:bg-primary-container/70 transition-colors">
+                  <span class="material-symbols-outlined text-xs">location_on</span>
+                  T. Nagar Exclusives
+                </a>
+                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/40 text-sm font-medium text-on-primary-container hover:bg-primary-container/70 transition-colors">
+                  <span class="material-symbols-outlined text-xs">location_on</span>
+                  Mylapore Crafts
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Match -->
+        <div class="border-t border-outline-variant/40 p-4">
+          <a href="#" class="flex items-center gap-4 p-3 rounded-2xl hover:bg-primary-container/30 transition-colors group">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-dim border border-outline-variant/40">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhyfaD7yW6M68BqGPYP7cJ37KWi55-f8X_pUBGbaYCcccR-kerx8PVMVp7zzC4n2qzA-UsYdfPU867Fggl10Ns45HYCKaKSzbdbjaJn-KVV_z8oKYLrncPNM2Etq8aktxRPrTJooXe7gmAFAeuVpmiUJlEBM3hIjKEsgx-wj7133nVgmM-0kjMryPFPIPBzTp0X991RP7PGEQeS2q4P5WHvkeiaYKUQrXE97xWqxJWxhV3vVCkOBrixdPNCeRWKfNK37MzD3LTWM"
+                alt="Bridal Maroon Kanchipuram Silk"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-[10px] font-semibold uppercase tracking-wider text-primary mb-0.5 font-display">Featured Match</p>
+              <p class="text-sm font-semibold text-on-background truncate">Bridal Maroon Kanchipuram Silk</p>
+              <p class="text-xs text-on-background/50 mt-0.5">Nalli Silks · ₹32,000</p>
+            </div>
+            <span class="material-symbols-outlined text-on-background/20 group-hover:text-primary transition-colors">chevron_right</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Meta -->
+    <section class="mt-12 mb-8 px-4">
+      <div class="max-w-7xl mx-auto">
+        <h1 class="font-display font-700 text-2xl md:text-3xl text-on-background mb-1">
+          Showing results for <span class="text-primary">"Silk"</span>
+        </h1>
+        <p class="text-sm text-on-background/50 mb-6">42 items</p>
+
+        <!-- Filter Chips -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant bg-surface text-sm font-medium text-on-background hover:bg-surface-dim transition-colors">
+            <span class="material-symbols-outlined text-lg">tune</span>
+            Filters
+            <span class="bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">3</span>
+          </button>
+
+          <div class="relative">
+            <button class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-surface-container-high transition-colors">
+              Price: Low to High
+              <span class="material-symbols-outlined text-lg">expand_more</span>
+            </button>
+          </div>
+
+          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-error-container text-error text-sm font-medium">
+            Red
+            <span class="material-symbols-outlined text-sm cursor-pointer hover:opacity-70">close</span>
+          </button>
+
+          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container text-on-primary-container text-sm font-medium">
+            Pure Silk
+            <span class="material-symbols-outlined text-sm cursor-pointer hover:opacity-70">close</span>
+          </button>
+
+          <button class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface text-sm font-medium text-on-background border border-outline-variant hover:bg-surface-dim transition-colors">
+            <span class="material-symbols-outlined text-primary text-lg">fiber_new</span>
+            New Arrivals
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Grid -->
+    <section class="px-4">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+
+        <!-- Product Card 1: Magenta Soft Silk -->
+        <article class="group cursor-pointer">
+          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhyfaD7yW6M68BqGPYP7cJ37KWi55-f8X_pUBGbaYCcccR-kerx8PVMVp7zzC4n2qzA-UsYdfPU867Fggl10Ns45HYCKaKSzbdbjaJn-KVV_z8oKYLrncPNM2Etq8aktxRPrTJooXe7gmAFAeuVpmiUJlEBM3hIjKEsgx-wj7133nVgmM-0kjMryPFPIPBzTp0X991RP7PGEQeS2q4P5WHvkeiaYKUQrXE97xWqxJWxhV3vVCkOBrixdPNCeRWKfNK37MzD3LTWM"
+              alt="Magenta Soft Silk Saree with Gold Zari"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <!-- Badge -->
+            <span class="absolute top-3 left-3 bg-primary text-on-primary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">New</span>
+            <!-- Wishlist -->
+            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
+              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
+            </button>
+            <!-- Store Icon -->
+            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
+              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
+              <span class="text-xs font-medium text-on-background">Nalli Silks</span>
+            </div>
+          </div>
+          <div class="mt-3 px-1">
+            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Magenta Soft Silk Saree with Gold Zari</h3>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span class="text-base font-bold text-on-background">₹8,999</span>
+              <span class="text-xs text-on-background/40 line-through">₹11,500</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product Card 2: Forest Green Kanchipuram -->
+        <article class="group cursor-pointer">
+          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKY1zxVrfigjlGUdG3hWxnPjMn7wpKO5cR1YPmDdvpmOErnzmQSXABUt_YYqGIfV9ECsL-gWhMyGxnf4f6_Bgv_A2f6TUx2urRV4vLwwXPqhz9j-pZFiU-h-NQxl68ZSGKb5_963vpE1eUDISXbKKsnga7G4HgX-m1sXHXnam5vNWo7mkXS-_8VuKBsItD3vaVpyipNqLMxDMV4s7J0EOq-4i0611I7U4TBC8x62V0f-kMDBHmD6qsbZeCBuvzWc9EnkkeA_MHzY"
+              alt="Forest Green Pure Kanchipuram"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <!-- Wishlist -->
+            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
+              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
+            </button>
+            <!-- Store Icon -->
+            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
+              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
+              <span class="text-xs font-medium text-on-background">Kumaran Silks</span>
+            </div>
+          </div>
+          <div class="mt-3 px-1">
+            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Forest Green Pure Kanchipuram</h3>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span class="text-base font-bold text-on-background">₹24,500</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product Card 3: Yellow Art Silk Kurta Set -->
+        <article class="group cursor-pointer">
+          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-NeKy7odUzGQd3T31TsINI-5cxEm78Lvl-CfBJITtYhIC4wuT8hXdpLYSnPng4e6bnW84yGSOAkNmvKtpoT_M2IJJ8b5TUBqqubPPHjzqRaTcwDN8aBtsXalfUI4yBQ2xRXMs8D-j5lWZygi8rHojEPem2r9eCozl2ZKEZ9h2aWCeJUAfmytRGuAFhfrSpH-ZCdeTxGjaAk1gz0mmw4sTnOUEmpu327Ksd6t2RDEqojGN6GMWM2oOeHJB5ZftJtbQpEPIAVLrBoU"
+              alt="Yellow Art Silk Kurta Set"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <!-- Badge -->
+            <span class="absolute top-3 left-3 bg-tertiary-container text-tertiary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">-20%</span>
+            <!-- Wishlist -->
+            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
+              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
+            </button>
+            <!-- Store Icon -->
+            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
+              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
+              <span class="text-xs font-medium text-on-background">Pothys</span>
+            </div>
+          </div>
+          <div class="mt-3 px-1">
+            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Yellow Art Silk Kurta Set</h3>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span class="text-base font-bold text-on-background">₹3,199</span>
+              <span class="text-xs text-on-background/40 line-through">₹3,999</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product Card 4: Pastel Peach Silk Cotton -->
+        <article class="group cursor-pointer">
+          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQk8dNj1oQUsS4JYOWr_9Dx6n1qsIU7JcxYp-AVBSKxhrJthPYFlERTRLkV8kuLjCTIdoWRQmMu4Yc9DBoZbTbwoBhxkWV7SH8LZ4qfUhlvs5QWrm4sSDdKu0--VnVosptDs5WQrYufPu3HAlvqdQxeAECraGJzbWWG6ndgyDTPEAJEpP58-2Siqga24kYpPKNPQTkGeNUV1C354xIJYHXbnkE9kDroAFw9RlijIH0Sq_u4XX18n4uGECrPLsHi6njiKyeeFEiNLE"
+              alt="Pastel Peach Silk Cotton Blend"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <!-- Wishlist -->
+            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
+              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
+            </button>
+            <!-- Store Icon -->
+            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
+              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
+              <span class="text-xs font-medium text-on-background">RmKV</span>
+            </div>
+          </div>
+          <div class="mt-3 px-1">
+            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Pastel Peach Silk Cotton Blend</h3>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span class="text-base font-bold text-on-background">₹4,250</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Load More -->
+    <section class="mt-16 text-center px-4">
+      <button class="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 border-outline-variant text-on-background font-semibold text-sm hover:bg-surface-dim hover:border-primary transition-all">
+        Load More Results
+        <span class="material-symbols-outlined text-lg">expand_more</span>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="hidden md:block bg-surface-dim mt-20 border-t border-outline-variant/40">
+    <div class="max-w-7xl mx-auto px-8 py-12">
+      <div class="grid grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-primary text-2xl">storefront</span>
+            <span class="font-display font-800 text-lg">Chennai Retail</span>
+          </div>
+          <p class="text-sm text-on-background/50 leading-relaxed">Celebrating Tamil Nadu's finest traditions, craftsmanship, and culture — curated for you.</p>
+        </div>
+        <div>
+          <h4 class="font-display font-600 text-sm uppercase tracking-wider text-on-background/40 mb-4">Shop</h4>
+          <ul class="space-y-2">
+            <li><a href="shop.html" class="text-sm text-on-background/60 hover:text-primary transition-colors">All Products</a></li>
+            <li><a href="collections.html" class="text-sm text-on-background/60 hover:text-primary transition-colors">Collections</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">New Arrivals</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">Gifts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-600 text-sm uppercase tracking-wider text-on-background/40 mb-4">About</h4>
+          <ul class="space-y-2">
+            <li><a href="store.html" class="text-sm text-on-background/60 hover:text-primary transition-colors">Our Story</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">Artisans</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">Sustainability</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">Press</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-600 text-sm uppercase tracking-wider text-on-background/40 mb-4">Connect</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">Contact Us</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">Instagram</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">WhatsApp</a></li>
+            <li><a href="#" class="text-sm text-on-background/60 hover:text-primary transition-colors">Store Locator</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-10 pt-6 border-t border-outline-variant/40 text-center">
+        <p class="text-xs text-on-background/30">© 2026 Chennai Retail. All rights reserved. Made with <span class="text-primary">♥</span> in Tamil Nadu.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/90 backdrop-blur-xl border-t border-outline-variant/50 z-50 px-2 pb-safe">
+    <div class="flex items-center justify-around py-2">
+      <a href="index.html" class="flex flex-col items-center gap-0.5 py-1 px-3 rounded-xl text-on-background/40 transition-colors">
+        <span class="material-symbols-outlined text-xl">home</span>
+        <span class="text-[10px] font-medium">Home</span>
+      </a>
+      <a href="shop.html" class="flex flex-col items-center gap-0.5 py-1 px-3 rounded-xl text-on-background/40 transition-colors">
+        <span class="material-symbols-outlined text-xl">category</span>
+        <span class="text-[10px] font-medium">Shop</span>
+      </a>
+      <a href="collections.html" class="flex flex-col items-center gap-0.5 py-1 px-3 rounded-xl text-on-background/40 transition-colors">
+        <span class="material-symbols-outlined text-xl">auto_awesome</span>
+        <span class="text-[10px] font-medium">Collections</span>
+      </a>
+      <a href="search.html" class="flex flex-col items-center gap-0.5 py-1 px-3 rounded-xl text-primary">
+        <span class="material-symbols-outlined text-xl">search</span>
+        <span class="text-[10px] font-medium">Search</span>
+      </a>
+      <a href="store.html" class="flex flex-col items-center gap-0.5 py-1 px-3 rounded-xl text-on-background/40 transition-colors">
+        <span class="material-symbols-outlined text-xl">person</span>
+        <span class="text-[10px] font-medium">Store</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

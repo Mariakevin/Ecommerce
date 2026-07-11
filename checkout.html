@@ -1,1 +1,348 @@
-<!DOCTYPE html><html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Chennai Retail - Checkout</title><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script id="tailwind-config">tailwind.config = {    darkMode: "class",    theme: {        extend: {            colors: {                "on-primary-fixed": "#3c0800",                "on-background": "#171b2b",                "surface": "#faf8ff",                "primary-fixed": "#ffdbd2",                "on-error": "#ffffff",                "surface-variant": "#dee1f8",                "inverse-surface": "#2c3041",                "tertiary-fixed-dim": "#e6c185",                "surface-container-high": "#e4e7fe",                "tertiary-fixed": "#ffdeab",                "background": "#faf8ff",                "outline-variant": "#dbc1ba",                "on-secondary": "#ffffff",                "secondary-container": "#b3d1fd",                "tertiary-container": "#b3915a",                "on-primary-fixed-variant": "#7c2e19",                "inverse-primary": "#ffb4a1",                "secondary": "#436086",                "on-surface-variant": "#55423e",                "surface-container": "#ebedff",                "tertiary": "#765a28",                "surface-container-low": "#f3f2ff",                "outline": "#88726d",                "surface-tint": "#9a442d",                "error": "#ba1a1a",                "on-tertiary": "#ffffff",                "secondary-fixed-dim": "#abc8f4",                "on-primary-container": "#5b1604",                "on-secondary-container": "#3c597f",                "on-secondary-fixed-variant": "#2a486d",                "on-primary": "#ffffff",                "primary": "#9a442d",                "on-secondary-fixed": "#001c39",                "on-tertiary-fixed": "#271900",                "on-tertiary-container": "#402b00",                "primary-container": "#e07a5f",                "surface-container-highest": "#dee1f8",                "secondary-fixed": "#d3e3ff",                "on-error-container": "#93000a",                "inverse-on-surface": "#eff0ff",                "surface-dim": "#d6d9ef",                "error-container": "#ffdad6",                "surface-container-lowest": "#ffffff",                "on-surface": "#171b2b",                "surface-bright": "#faf8ff",                "primary-fixed-dim": "#ffb4a1",                "on-tertiary-fixed-variant": "#5c4212"            },            borderRadius: {                "DEFAULT": "0.25rem",                "lg": "0.5rem",                "xl": "0.75rem",                "full": "9999px"            },            spacing: {                "margin-mobile": "16px",                "container-max": "1280px",                "base": "8px",                "gutter": "24px",                "margin-desktop": "64px",                "section-gap": "80px"            },            fontFamily: {                "display-lg": ["Montserrat"],                "body-lg": ["Inter"],                "headline-md": ["Montserrat"],                "body-md": ["Inter"],                "label-sm": ["Inter"]            },            fontSize: {                "display-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],                "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],                "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],                "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],                "label-sm": ["13px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" }]            }        }    }}</script></head><body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col"><!-- Simplified Checkout Header --><header class="w-full py-6 px-margin-mobile md:px-margin-desktop flex justify-center items-center border-b border-surface-variant bg-surface/90 glass-panel sticky top-0 z-50"><a href="index.html" class="font-display-lg text-[24px] md:text-[32px] text-primary tracking-tight font-bold">    Chennai Retail</a></header><main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16"><!-- Progress Bar --><div class="w-full max-w-3xl mx-auto mb-16 px-4">    <div class="flex items-center justify-between relative">        <div class="flex flex-col items-center relative z-10 step-completed group cursor-pointer w-1/3">            <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300">                <span class="material-symbols-outlined text-[20px] fill">check</span>            </div>            <span class="step-label font-label-sm text-label-sm text-on-surface-variant transition-colors duration-300">Address</span>        </div>        <div class="absolute top-5 left-1/6 right-1/2 h-1 step-line transition-colors duration-300" style="transform: translateY(-50%); z-index: 0;"></div>        <div class="flex flex-col items-center relative z-10 step-active w-1/3">            <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300 shadow-md shadow-primary/20">                <span class="font-label-sm text-label-sm">2</span>            </div>            <span class="step-label font-label-sm text-label-sm transition-colors duration-300">Delivery</span>        </div>        <div class="absolute top-5 left-1/2 right-1/6 h-1 bg-surface-variant transition-colors duration-300" style="transform: translateY(-50%); z-index: 0;"></div>        <div class="flex flex-col items-center relative z-10 step-pending w-1/3 opacity-70">            <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300">                <span class="font-label-sm text-label-sm">3</span>            </div>            <span class="step-label font-label-sm text-label-sm text-on-surface-variant transition-colors duration-300">Payment</span>        </div>    </div></div><div class="flex flex-col lg:flex-row gap-gutter">    <!-- Left Column: Forms & Selections -->    <div class="w-full lg:w-2/3 flex flex-col gap-12">        <!-- Delivery Options Section -->        <section>            <h2 class="font-headline-md text-headline-md text-on-background mb-6 flex items-center">                <span class="material-symbols-outlined mr-3 text-primary">local_shipping</span>                Delivery Method            </h2>            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">                <label class="cursor-pointer relative">                    <input class="peer sr-only" name="delivery_method" type="radio" value="standard"/>                    <div class="h-full p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all duration-200 hover:border-outline-variant flex flex-col justify-between">                        <div class="flex justify-between items-start mb-4">                            <span class="material-symbols-outlined text-secondary">local_shipping</span>                            <div class="w-5 h-5 rounded-full border border-outline-variant peer-checked:border-primary flex items-center justify-center">                                <div class="w-2.5 h-2.5 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>                            </div>                        </div>                        <div>                            <h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Standard</h3>                            <p class="font-body-md text-[13px] text-on-surface-variant">3-5 Business Days</p>                        </div>                    </div>                </label>                <label class="cursor-pointer relative">                    <input checked="" class="peer sr-only" name="delivery_method" type="radio" value="express"/>                    <div class="h-full p-5 rounded-xl border border-primary bg-primary-fixed/10 shadow-level-2 transition-all duration-200 flex flex-col justify-between relative overflow-hidden">                        <div class="absolute top-0 right-0 bg-primary text-on-primary font-label-sm text-[10px] px-2 py-1 rounded-bl-lg font-bold tracking-wider">RECOMMENDED</div>                        <div class="flex justify-between items-start mb-4">                            <span class="material-symbols-outlined text-primary fill">bolt</span>                            <div class="w-5 h-5 rounded-full border border-primary flex items-center justify-center">                                <div class="w-2.5 h-2.5 rounded-full bg-primary transition-opacity"></div>                            </div>                        </div>                        <div>                            <h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Express</h3>                            <p class="font-body-md text-[13px] text-primary font-medium">Same-day Chennai</p>                        </div>                    </div>                </label>                <label class="cursor-pointer relative">                    <input class="peer sr-only" name="delivery_method" type="radio" value="pickup"/>                    <div class="h-full p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all duration-200 hover:border-outline-variant flex flex-col justify-between">                        <div class="flex justify-between items-start mb-4">                            <span class="material-symbols-outlined text-secondary">storefront</span>                            <div class="w-5 h-5 rounded-full border border-outline-variant peer-checked:border-primary flex items-center justify-center">                                <div class="w-2.5 h-2.5 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>                            </div>                        </div>                        <div>                            <h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Store Pickup</h3>                            <p class="font-body-md text-[13px] text-on-surface-variant">Ready in 2 hours</p>                        </div>                    </div>                </label>            </div>        </section>        <hr class="border-surface-variant"/>        <!-- Address Selection Section -->        <section>            <div class="flex justify-between items-center mb-6">                <h2 class="font-headline-md text-headline-md text-on-background flex items-center">                    <span class="material-symbols-outlined mr-3 text-primary">location_on</span>                    Shipping Address                </h2>                <button class="font-label-sm text-label-sm text-primary hover:text-primary-container transition-colors flex items-center gap-1">                    <span class="material-symbols-outlined text-[16px]">add</span>                    New Address                </button>            </div>            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">                <div class="p-5 rounded-xl border border-primary bg-primary-fixed/5 shadow-level-2 relative cursor-pointer hover:shadow-md transition-shadow">                    <div class="absolute top-4 right-4 text-primary">                        <span class="material-symbols-outlined fill">radio_button_checked</span>                    </div>                    <div class="flex items-center gap-2 mb-3">                        <span class="bg-surface-container-high text-on-surface-variant font-label-sm text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Home</span>                        <span class="font-label-sm text-label-sm font-bold">Karthik R.</span>                    </div>                    <p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">                        14, Wallace Garden 2nd St<br/>                        Nungambakkam<br/>                        Chennai, Tamil Nadu 600006<br/>                        Ph: +91 98765 43210                    </p>                    <div class="mt-4 pt-3 border-t border-surface-variant flex gap-4">                        <button class="font-label-sm text-[12px] text-secondary hover:text-primary transition-colors">Edit</button>                    </div>                </div>                <div class="p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 relative cursor-pointer hover:border-outline-variant hover:shadow-md transition-all">                    <div class="absolute top-4 right-4 text-outline-variant">                        <span class="material-symbols-outlined">radio_button_unchecked</span>                    </div>                    <div class="flex items-center gap-2 mb-3">                        <span class="bg-surface-container text-on-surface-variant font-label-sm text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Office</span>                        <span class="font-label-sm text-label-sm font-bold">Karthik R.</span>                    </div>                    <p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">                        Tech Park IV, OMR IT Expressway<br/>                        Taramani<br/>                        Chennai, Tamil Nadu 600113<br/>                        Ph: +91 98765 43210                    </p>                    <div class="mt-4 pt-3 border-t border-surface-variant flex gap-4">                        <button class="font-label-sm text-[12px] text-secondary hover:text-primary transition-colors">Edit</button>                    </div>                </div>            </div>        </section>        <!-- Action Buttons -->        <div class="flex justify-between items-center pt-6">            <a href="cart.html" class="font-label-sm text-label-sm text-secondary hover:text-primary flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-surface-container transition-colors">                <span class="material-symbols-outlined text-[18px]">arrow_back</span>                Back to Cart            </a>            <a href="orderconfirm.html" class="bg-primary hover:bg-surface-tint text-on-primary font-label-sm text-label-sm px-8 py-3.5 rounded-[12px] shadow-level-2 transition-all flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0">                Continue to Payment                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>            </a>        </div>    </div>    <!-- Right Column: Order Summary (Sticky) -->    <div class="w-full lg:w-1/3">        <div class="bg-surface rounded-xl p-6 shadow-level-2 border border-surface-variant sticky top-28 glass-panel">            <h3 class="font-headline-md text-[20px] font-semibold text-on-background mb-6 border-b border-surface-variant pb-4">Order Summary</h3>            <div class="space-y-4 mb-6 max-h-[409px] overflow-y-auto pr-2">                <div class="flex gap-4">                    <div class="w-16 h-16 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden relative">                        <img class="w-full h-full object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA" alt="Artisan Ceramic Mug"/>                    </div>                    <div class="flex-grow flex flex-col justify-between">                        <div class="flex justify-between">                            <span class="font-label-sm text-[14px] text-on-surface font-medium truncate pr-2">Artisan Ceramic Mug</span>                            <span class="font-label-sm text-[14px] font-bold">&#8377;850</span>                        </div>                        <div class="font-body-md text-[13px] text-on-surface-variant">Qty: 2</div>                    </div>                </div>                <div class="flex gap-4">                    <div class="w-16 h-16 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden relative">                        <img class="w-full h-full object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Hand-woven Cotton Throw"/>                    </div>                    <div class="flex-grow flex flex-col justify-between">                        <div class="flex justify-between">                            <span class="font-label-sm text-[14px] text-on-surface font-medium truncate pr-2">Hand-woven Cotton Throw</span>                            <span class="font-label-sm text-[14px] font-bold">&#8377;3,450</span>                        </div>                        <div class="font-body-md text-[13px] text-on-surface-variant">Qty: 1</div>                    </div>                </div>            </div>            <!-- Promo Code -->            <div class="mb-6">                <div class="flex gap-2">                    <input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-2 font-body-md text-[14px] text-on-surface focus:ring-1 focus:ring-secondary outline-none transition-shadow placeholder-outline-variant" placeholder="Promo code" type="text"/>                    <button class="bg-surface-variant hover:bg-surface-dim text-on-surface font-label-sm text-[12px] px-4 py-2 rounded-lg transition-colors">Apply</button>                </div>            </div>            <!-- Totals -->            <div class="space-y-3 font-body-md text-[14px] text-on-surface-variant border-t border-surface-variant pt-4 mb-6">                <div class="flex justify-between">                    <span>Subtotal</span>                    <span class="font-medium text-on-surface">&#8377;4,300</span>                </div>                <div class="flex justify-between">                    <span>Delivery (Express)</span>                    <span class="font-medium text-on-surface">&#8377;150</span>                </div>                <div class="flex justify-between">                    <span>Taxes (GST 18%)</span>                    <span class="font-medium text-on-surface">&#8377;774</span>                </div>            </div>            <div class="flex justify-between items-center font-label-sm text-[18px] text-on-background font-bold border-t border-surface-variant pt-4">                <span>Total</span>                <span class="text-primary">&#8377;5,224</span>            </div>        </div>    </div></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Chennai Retail</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#9a442d",
+                        "primary-container": "#e07a5f",
+                        secondary: "#436086",
+                        background: "#fdf8f6",
+                        surface: "#ffffff",
+                        "surface-tint": "#f3ebe7",
+                        "surface-variant": "#f5f0ec",
+                        "on-background": "#201a19",
+                        "on-surface": "#201a19",
+                        "on-surface-variant": "#534340",
+                        outline: "#857370",
+                        "outline-variant": "#d8c2be",
+                    },
+                    fontFamily: {
+                        heading: ["Montserrat", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    spacing: {
+                        gutter: "1.5rem",
+                        "gutter-lg": "2rem",
+                    },
+                    boxShadow: {
+                        "level-1": "0 1px 2px rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15)",
+                        "level-2": "0 1px 2px rgba(0,0,0,0.3), 0 2px 6px 2px rgba(0,0,0,0.15)",
+                        "level-3": "0 4px 8px 3px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.3)",
+                    },
+                    borderRadius: {
+                        "4xl": "2rem",
+                    },
+                    keyframes: {
+                        slideUp: {
+                            "0%": { transform: "translateY(10px)", opacity: "0" },
+                            "100%": { transform: "translateY(0)", opacity: "1" },
+                        },
+                    },
+                    animation: {
+                        slideUp: "slideUp 0.3s ease-out",
+                    },
+                },
+            },
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col">
+
+    <!-- Simplified Checkout Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-outline-variant/30 bg-surface/80 backdrop-blur-xl">
+        <!-- Desktop Header -->
+        <div class="hidden md:flex items-center justify-center h-16 px-gutter">
+            <a href="index.html" class="font-heading font-bold text-xl text-primary hover:text-primary-container transition-colors">
+                Chennai Retail
+            </a>
+        </div>
+        
+        <!-- Mobile Header -->
+        <div class="md:hidden flex items-center justify-center h-14 px-4">
+            <a href="index.html" class="font-heading font-bold text-lg text-primary">
+                Chennai Retail
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8 md:py-12">
+        <!-- Progress Bar -->
+        <div class="max-w-3xl mx-auto mb-16 px-4">
+            <div class="flex items-center justify-between relative">
+                <!-- Step 1: Address (Completed) -->
+                <div class="flex flex-col items-center z-10">
+                    <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-level-2">
+                        <span class="material-symbols-outlined text-xl">check</span>
+                    </div>
+                    <span class="mt-2 text-sm font-medium text-primary hidden sm:block">Address</span>
+                </div>
+
+                <!-- Line 1 -->
+                <div class="flex-1 h-1 bg-primary mx-2 sm:mx-4 rounded-full"></div>
+
+                <!-- Step 2: Delivery (Active) -->
+                <div class="flex flex-col items-center z-10">
+                    <div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shadow-level-2 ring-4 ring-primary-container/20">
+                        <span class="font-heading font-bold text-sm">2</span>
+                    </div>
+                    <span class="mt-2 text-sm font-semibold text-primary-container hidden sm:block">Delivery</span>
+                </div>
+
+                <!-- Line 2 -->
+                <div class="flex-1 h-1 bg-outline-variant mx-2 sm:mx-4 rounded-full"></div>
+
+                <!-- Step 3: Payment (Pending) -->
+                <div class="flex flex-col items-center z-10">
+                    <div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant border-2 border-outline-variant flex items-center justify-center">
+                        <span class="font-heading font-bold text-sm">3</span>
+                    </div>
+                    <span class="mt-2 text-sm text-on-surface-variant hidden sm:block">Payment</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-gutter">
+            <div class="flex flex-col lg:flex-row gap-gutter">
+
+                <!-- Left Column -->
+                <div class="lg:w-2/3 space-y-8">
+
+                    <!-- Delivery Method Section -->
+                    <section class="bg-surface rounded-2xl p-6 shadow-level-2 animate-slideUp">
+                        <h2 class="font-heading font-bold text-xl mb-6 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">local_shipping</span>
+                            Delivery Method
+                        </h2>
+
+                        <div class="space-y-4">
+                            <!-- Standard Delivery -->
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="delivery" value="standard" class="peer sr-only">
+                                <div class="rounded-xl border-2 border-outline-variant bg-surface p-4 transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-outline shadow-level-2">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-xl bg-surface-variant flex items-center justify-center peer-checked:bg-primary-container/20">
+                                            <span class="material-symbols-outlined text-on-surface-variant">local_shipping</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="font-heading font-semibold">Standard Delivery</div>
+                                            <div class="text-sm text-on-surface-variant">3-5 Business Days</div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full border-2 border-outline-variant peer-checked:border-primary flex items-center justify-center">
+                                            <div class="w-3 h-3 rounded-full bg-primary scale-0 transition-transform peer-checked:scale-100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Express Delivery (Recommended) -->
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="delivery" value="express" checked class="peer sr-only">
+                                <div class="rounded-xl border-2 border-outline-variant bg-surface p-4 transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-outline shadow-level-2">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-primary">bolt</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center gap-2">
+                                                <span class="font-heading font-semibold">Express Delivery</span>
+                                                <span class="px-2 py-0.5 bg-primary text-white text-xs font-semibold rounded-full">RECOMMENDED</span>
+                                            </div>
+                                            <div class="text-sm text-on-surface-variant">Same-day Chennai</div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
+                                            <div class="w-3 h-3 rounded-full bg-primary scale-100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Store Pickup -->
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="delivery" value="pickup" class="peer sr-only">
+                                <div class="rounded-xl border-2 border-outline-variant bg-surface p-4 transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-outline shadow-level-2">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-xl bg-surface-variant flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-on-surface-variant">storefront</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="font-heading font-semibold">Store Pickup</div>
+                                            <div class="text-sm text-on-surface-variant">Ready in 2 hours</div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+                                            <div class="w-3 h-3 rounded-full bg-primary scale-0 transition-transform"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Divider -->
+                    <hr class="border-outline-variant/50">
+
+                    <!-- Shipping Address Section -->
+                    <section class="bg-surface rounded-2xl p-6 shadow-level-2 animate-slideUp" style="animation-delay: 0.1s;">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="font-heading font-bold text-xl flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">location_on</span>
+                                Shipping Address
+                            </h2>
+                            <button class="px-4 py-2 text-sm font-medium text-primary bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors">
+                                + New Address
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Home Address (Selected) -->
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="address" value="home" checked class="peer sr-only">
+                                <div class="rounded-xl border-2 border-outline-variant bg-surface p-4 transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-outline shadow-level-2">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mt-1">
+                                            <span class="material-symbols-outlined text-primary">home</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <span class="font-heading font-semibold">Home</span>
+                                                <span class="px-2 py-0.5 bg-primary text-white text-xs font-medium rounded-full">DEFAULT</span>
+                                            </div>
+                                            <div class="text-sm text-on-surface-variant">
+                                                <span class="font-medium text-on-surface">Karthik R.</span><br>
+                                                14 Wallace Garden 2nd St,<br>
+                                                Nungambakkam, Chennai 600006
+                                            </div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
+                                            <div class="w-3 h-3 rounded-full bg-primary scale-100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Office Address -->
+                            <label class="relative block cursor-pointer">
+                                <input type="radio" name="address" value="office" class="peer sr-only">
+                                <div class="rounded-xl border-2 border-outline-variant bg-surface p-4 transition-all duration-200 peer-checked:border-primary peer-checked:bg-primary/5 hover:border-outline shadow-level-2">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center mt-1">
+                                            <span class="material-symbols-outlined text-on-surface-variant">business</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span class="font-heading font-semibold">Office</span>
+                                            <div class="text-sm text-on-surface-variant mt-1">
+                                                <span class="font-medium text-on-surface">Karthik R.</span><br>
+                                                Tech Park IV, OMR IT Expressway,<br>
+                                                Taramani, Chennai 600113
+                                            </div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center">
+                                            <div class="w-3 h-3 rounded-full bg-primary scale-0 transition-transform"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="cart.html" class="flex-1 px-6 py-3 text-center font-medium text-on-surface bg-surface-variant hover:bg-surface-variant/80 rounded-xl transition-colors border border-outline-variant">
+                            Back to Cart
+                        </a>
+                        <a href="order-success.html" class="flex-1 px-6 py-3 text-center font-medium text-white bg-primary hover:bg-surface-tint rounded-xl transition-colors shadow-level-2">
+                            Continue to Payment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Order Summary -->
+                <div class="lg:w-1/3">
+                    <div class="bg-surface rounded-2xl p-6 shadow-level-2 lg:sticky lg:top-28 animate-slideUp" style="animation-delay: 0.2s;">
+                        <h2 class="font-heading font-bold text-xl mb-6">Order Summary</h2>
+
+                        <!-- Items -->
+                        <div class="space-y-4 mb-6">
+                            <!-- Item 1 -->
+                            <div class="flex gap-3">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA" 
+                                     alt="Artisan Ceramic Mug" 
+                                     class="w-16 h-16 rounded-lg object-cover shadow-level-1">
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-sm">Artisan Ceramic Mug</h3>
+                                    <p class="text-xs text-on-surface-variant">Qty: 2</p>
+                                </div>
+                                <span class="font-medium text-sm">₹1,700</span>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="flex gap-3">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" 
+                                     alt="Hand-woven Cotton Throw" 
+                                     class="w-16 h-16 rounded-lg object-cover shadow-level-1">
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-sm">Hand-woven Cotton Throw</h3>
+                                    <p class="text-xs text-on-surface-variant">Qty: 1</p>
+                                </div>
+                                <span class="font-medium text-sm">₹3,450</span>
+                            </div>
+                        </div>
+
+                        <!-- Promo Code -->
+                        <div class="flex gap-2 mb-6">
+                            <input type="text" 
+                                   placeholder="Promo code" 
+                                   class="flex-1 px-4 py-2 text-sm bg-surface-variant border border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+                            <button class="px-4 py-2 text-sm font-medium text-primary bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors">
+                                Apply
+                            </button>
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="space-y-3 pt-4 border-t border-outline-variant/50">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-on-surface-variant">Subtotal</span>
+                                <span>₹4,300</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-on-surface-variant">Delivery (Express)</span>
+                                <span>₹150</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-on-surface-variant">Taxes (GST 18%)</span>
+                                <span>₹774</span>
+                            </div>
+                            <div class="flex justify-between font-heading font-bold text-lg pt-3 border-t border-outline-variant/50">
+                                <span>Total</span>
+                                <span class="text-primary">₹5,224</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- No mobile bottom nav for checkout page -->
+
+    <script src="app.js"></script>
+</body>
+</html>

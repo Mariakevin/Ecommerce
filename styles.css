@@ -1,36 +1,94 @@
 /* ============================================================
-   Chennai Retail - Shared Styles
-   A premium e-commerce design system for Chennai Retail
+   Chennai Retail - Design System
+   Premium eCommerce for Chennai's modern homes
    ============================================================ */
 
 /* --------------------------------------------------
    1. CSS Custom Properties
    -------------------------------------------------- */
 :root {
+    /* Primary - Terracotta */
     --primary: #9a442d;
     --primary-container: #e07a5f;
+    --primary-fixed: #ffdbd2;
+    --primary-fixed-dim: #ffb4a1;
+    --on-primary: #ffffff;
+    --on-primary-container: #5b1604;
+    --on-primary-fixed: #3c0800;
+    --on-primary-fixed-variant: #7c2e19;
+    --inverse-primary: #ffb4a1;
+
+    /* Secondary - Blue */
+    --secondary: #436086;
+    --secondary-container: #b3d1fd;
+    --on-secondary: #ffffff;
+    --on-secondary-container: #3c597f;
+    --secondary-fixed: #d3e3ff;
+    --secondary-fixed-dim: #abc8f4;
+    --on-secondary-fixed: #001c39;
+    --on-secondary-fixed-variant: #2a486d;
+
+    /* Tertiary - Gold */
+    --tertiary: #765a28;
+    --tertiary-container: #b3915a;
+    --tertiary-fixed: #ffdeab;
+    --tertiary-fixed-dim: #e6c185;
+    --on-tertiary: #ffffff;
+    --on-tertiary-container: #402b00;
+    --on-tertiary-fixed: #271900;
+    --on-tertiary-fixed-variant: #5c4212;
+
+    /* Surfaces */
     --surface: #faf8ff;
+    --surface-bright: #faf8ff;
+    --surface-dim: #d6d9ef;
+    --surface-tint: #9a442d;
     --surface-container: #ebedff;
     --surface-container-low: #f3f2ff;
     --surface-container-lowest: #ffffff;
+    --surface-container-high: #e4e7fe;
+    --surface-container-highest: #dee1f8;
+    --surface-variant: #dee1f8;
     --on-surface: #171b2b;
     --on-surface-variant: #55423e;
-    --secondary: #436086;
-    --outline-variant: #dbc1ba;
+    --on-background: #171b2b;
+    --background: #faf8ff;
+    --inverse-surface: #2c3041;
+    --inverse-on-surface: #eff0ff;
+
+    /* Error */
     --error: #ba1a1a;
+    --error-container: #ffdad6;
+    --on-error: #ffffff;
+    --on-error-container: #93000a;
+
+    /* Outline */
+    --outline: #88726d;
+    --outline-variant: #dbc1ba;
+
+    /* Shadows */
     --shadow-color: 45, 49, 66;
+
+    /* Transitions */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-smooth: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Radii */
+    --radius-xs: 0.25rem;
     --radius-sm: 0.5rem;
     --radius-md: 0.75rem;
     --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
 }
 
 /* --------------------------------------------------
    2. Base & Resets
    -------------------------------------------------- */
-* {
+*, *::before, *::after {
+    box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -38,10 +96,18 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: 5rem;
 }
 
 body {
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 ::selection {
@@ -50,19 +116,33 @@ body {
 }
 
 /* --------------------------------------------------
-   3. Material Symbols
+   3. Typography Overrides
+   -------------------------------------------------- */
+.font-display {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.font-body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* --------------------------------------------------
+   4. Material Symbols
    -------------------------------------------------- */
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     user-select: none;
+    vertical-align: middle;
 }
+
 .material-symbols-outlined.fill,
 .icon-fill {
     font-variation-settings: 'FILL' 1;
 }
 
 /* --------------------------------------------------
-   4. Glass Panel (Glassmorphism)
+   5. Glass Panel (Glassmorphism)
    -------------------------------------------------- */
 .glass-panel {
     background: rgba(255, 255, 255, 0.72);
@@ -71,32 +151,48 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
+.glass-panel-strong {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
 /* --------------------------------------------------
-   5. Shadow System
+   6. Shadow System
    -------------------------------------------------- */
 .shadow-ambient {
     box-shadow:
         0 1px 2px rgba(var(--shadow-color), 0.04),
         0 4px 12px rgba(var(--shadow-color), 0.06);
 }
+
 .soft-shadow {
     box-shadow:
         0 2px 4px rgba(var(--shadow-color), 0.03),
         0 8px 24px rgba(var(--shadow-color), 0.06);
 }
+
 .shadow-level-2 {
     box-shadow:
         0 2px 4px rgba(var(--shadow-color), 0.04),
         0 8px 24px rgba(var(--shadow-color), 0.07);
 }
+
 .shadow-elevated {
     box-shadow:
         0 4px 8px rgba(var(--shadow-color), 0.05),
         0 16px 48px rgba(var(--shadow-color), 0.10);
 }
 
+.shadow-glow {
+    box-shadow:
+        0 0 0 1px rgba(154, 68, 45, 0.1),
+        0 4px 16px rgba(154, 68, 45, 0.15);
+}
+
 /* --------------------------------------------------
-   6. Text Utilities
+   7. Text Utilities
    -------------------------------------------------- */
 .text-gradient {
     background: linear-gradient(135deg, #9a442d 0%, #e07a5f 50%, #ffb4a1 100%);
@@ -105,22 +201,28 @@ body {
     background-clip: text;
 }
 
-/* --------------------------------------------------
-   7. Navigation Active States
-   -------------------------------------------------- */
-.nav-link-active {
-    color: var(--primary);
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 4px;
+.text-gradient-warm {
+    background: linear-gradient(135deg, #e07a5f 0%, #ffb4a1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* --------------------------------------------------
-   8. Scrollbar Utilities
+   8. Navigation States
+   -------------------------------------------------- */
+.nav-link-active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------
+   9. Scrollbar Utilities
    -------------------------------------------------- */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-.scrollbar-thin::-webkit-scrollbar { width: 4px; }
+.scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
 .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
 .scrollbar-thin::-webkit-scrollbar-thumb {
     background: var(--outline-variant);
@@ -128,7 +230,7 @@ body {
 }
 
 /* --------------------------------------------------
-   9. Card & Interactive Effects
+   10. Card & Interactive Effects
    -------------------------------------------------- */
 .card-hover {
     transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
@@ -140,11 +242,28 @@ body {
         0 16px 48px rgba(var(--shadow-color), 0.10);
 }
 
+.card-lift {
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+.card-lift:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 2px 4px rgba(var(--shadow-color), 0.04),
+        0 12px 32px rgba(var(--shadow-color), 0.08);
+}
+
 .btn-press {
     transition: transform var(--transition-fast), background-color var(--transition-fast);
 }
 .btn-press:active {
     transform: scale(0.97);
+}
+
+.btn-press-lg {
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+.btn-press-lg:active {
+    transform: scale(0.98);
 }
 
 .img-zoom {
@@ -158,7 +277,7 @@ body {
 }
 
 /* --------------------------------------------------
-   10. Focus Visible (Accessibility)
+   11. Focus Visible (Accessibility)
    -------------------------------------------------- */
 :focus-visible {
     outline: 2px solid var(--primary);
@@ -167,43 +286,59 @@ body {
 }
 
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+input:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
 
 /* --------------------------------------------------
-   11. Animations
+   12. Animations
    -------------------------------------------------- */
 
 /* Fade In Up */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(16px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in-up {
-    animation: fadeInUp 0.5s ease-out both;
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down {
+    animation: fadeInDown 0.5s ease-out both;
 }
 
 /* Scale In */
 @keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 .animate-scale-in {
     animation: scaleIn 0.3s ease-out both;
+}
+
+/* Slide In Right */
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-right {
+    animation: slideInRight 0.4s ease-out both;
+}
+
+/* Slide In Left */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.animate-slide-in-left {
+    animation: slideInLeft 0.4s ease-out both;
 }
 
 /* Pulse Glow */
@@ -215,28 +350,38 @@ a:focus-visible {
     animation: pulseGlow 2s ease-in-out infinite;
 }
 
+/* Toast Slide In */
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(100%) scale(0.9); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes toastOut {
+    from { opacity: 1; transform: translateX(0) scale(1); }
+    to { opacity: 0; transform: translateX(100%) scale(0.9); }
+}
+.toast-enter {
+    animation: toastIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.toast-exit {
+    animation: toastOut 0.3s ease-in both;
+}
+
 /* Confetti */
 .confetti-piece {
     position: absolute;
     width: 10px;
     height: 20px;
-    background: #e07a5f;
     top: -20px;
     opacity: 0;
     border-radius: 2px;
 }
-@keyframes fall {
+@keyframes confettiFall {
     0% { opacity: 1; top: -10%; transform: translateX(0) rotate(0deg); }
     100% { opacity: 0; top: 100%; transform: translateX(100px) rotate(360deg); }
 }
-.animate-fall {
-    animation: fall 3s ease-in-out infinite;
+.animate-confetti {
+    animation: confettiFall 3s ease-in-out infinite;
 }
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
-.delay-4 { animation-delay: 0.8s; }
-.delay-5 { animation-delay: 1.0s; }
 
 /* Shimmer Loading */
 @keyframes shimmer {
@@ -244,14 +389,67 @@ a:focus-visible {
     100% { background-position: 200% 0; }
 }
 .skeleton {
-    background: linear-gradient(90deg, var(--surface-container-low) 25%, var(--surface-container) 50%, var(--surface-container-low) 75%);
+    background: linear-gradient(90deg,
+        var(--surface-container-low) 25%,
+        var(--surface-container) 50%,
+        var(--surface-container-low) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
     border-radius: var(--radius-sm);
 }
 
+/* Skeleton text */
+.skeleton-text {
+    height: 14px;
+    border-radius: 4px;
+}
+.skeleton-text-sm {
+    height: 10px;
+    border-radius: 3px;
+}
+.skeleton-heading {
+    height: 24px;
+    border-radius: 6px;
+    width: 60%;
+}
+.skeleton-circle {
+    border-radius: 50%;
+}
+
+/* Spinner */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--surface-container-high);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Float */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Delay utilities */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
 /* --------------------------------------------------
-   12. Checkout Step Progress
+   13. Checkout Step Progress
    -------------------------------------------------- */
 .step-active .step-icon {
     background-color: var(--primary);
@@ -277,7 +475,7 @@ a:focus-visible {
 }
 
 /* --------------------------------------------------
-   13. Form Elements
+   14. Form Elements
    -------------------------------------------------- */
 input[type="text"]:focus,
 input[type="number"]:focus,
@@ -288,8 +486,205 @@ select:focus {
     outline: none;
 }
 
+.form-input {
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.form-input:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(67, 96, 134, 0.1);
+}
+
 /* --------------------------------------------------
-   14. Utility Classes
+   15. Mega Menu
+   -------------------------------------------------- */
+.mega-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+}
+.mega-menu-trigger:hover .mega-menu,
+.mega-menu-trigger:focus-within .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------
+   16. Mobile Bottom Nav
+   -------------------------------------------------- */
+.bottom-nav-item.active {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* --------------------------------------------------
+   17. Toast Container
+   -------------------------------------------------- */
+#toast-container {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+#toast-container > * {
+    pointer-events: auto;
+}
+@media (max-width: 768px) {
+    #toast-container {
+        bottom: 90px;
+        left: 16px;
+        right: 16px;
+    }
+}
+
+/* --------------------------------------------------
+   18. Modal Overlay
+   -------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(23, 27, 43, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    transform: scale(0.95) translateY(10px);
+    transition: transform var(--transition-smooth);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.modal-overlay.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+/* --------------------------------------------------
+   19. Quantity Stepper
+   -------------------------------------------------- */
+.qty-stepper {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1.5px solid var(--outline-variant);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface-container-lowest);
+}
+.qty-stepper button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-surface-variant);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+.qty-stepper button:hover {
+    background: var(--surface-container);
+    color: var(--primary);
+}
+.qty-stepper button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+.qty-stepper input {
+    width: 48px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--on-surface);
+    -moz-appearance: textfield;
+}
+.qty-stepper input::-webkit-outer-spin-button,
+.qty-stepper input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* --------------------------------------------------
+   20. Star Rating
+   -------------------------------------------------- */
+.star-rating {
+    display: inline-flex;
+    gap: 1px;
+    color: var(--tertiary-fixed-dim);
+}
+.star-rating .material-symbols-outlined {
+    font-size: 16px;
+}
+.star-rating .material-symbols-outlined.empty {
+    color: var(--outline-variant);
+}
+
+/* --------------------------------------------------
+   21. Badge
+   -------------------------------------------------- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.badge-primary {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+.badge-error {
+    background: var(--error);
+    color: var(--on-error);
+}
+.badge-success {
+    background: #0d7c3d;
+    color: #ffffff;
+}
+.badge-secondary {
+    background: var(--secondary-container);
+    color: var(--on-secondary-container);
+}
+
+/* --------------------------------------------------
+   22. Hero Gradient
+   -------------------------------------------------- */
+.hero-gradient {
+    background: linear-gradient(135deg,
+        rgba(154, 68, 45, 0.88) 0%,
+        rgba(224, 122, 95, 0.72) 50%,
+        rgba(255, 180, 161, 0.55) 100%);
+}
+
+.hero-gradient-warm {
+    background: linear-gradient(135deg,
+        rgba(118, 90, 40, 0.85) 0%,
+        rgba(179, 145, 90, 0.7) 100%);
+}
+
+/* --------------------------------------------------
+   23. Line Clamp
    -------------------------------------------------- */
 .line-clamp-1 {
     overflow: hidden;
@@ -310,13 +705,366 @@ select:focus {
     -webkit-line-clamp: 3;
 }
 
-/* Container transition for mobile nav */
-.nav-slide-enter {
-    transform: translateY(-100%);
-    opacity: 0;
+/* --------------------------------------------------
+   24. Tab System
+   -------------------------------------------------- */
+.tab-btn {
+    position: relative;
+    padding: 12px 24px;
+    color: var(--on-surface-variant);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    background: none;
+    border: none;
+    cursor: pointer;
 }
-.nav-slide-enter-active {
-    transform: translateY(0);
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width var(--transition-base), left var(--transition-base);
+    border-radius: 1px;
+}
+.tab-btn.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+.tab-btn.active::after {
+    width: 100%;
+    left: 0;
+}
+.tab-panel {
+    display: none;
+    animation: fadeInUp 0.3s ease-out both;
+}
+.tab-panel.active {
+    display: block;
+}
+
+/* --------------------------------------------------
+   25. Countdown Timer
+   -------------------------------------------------- */
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.countdown-value {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--on-primary);
+    border-radius: var(--radius-md);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+.countdown-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--on-surface-variant);
+}
+
+/* --------------------------------------------------
+   26. Horizontal Scroll Container
+   -------------------------------------------------- */
+.scroll-row {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+}
+.scroll-row > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+/* --------------------------------------------------
+   27. Divider
+   -------------------------------------------------- */
+.divider {
+    height: 1px;
+    background: var(--surface-variant);
+    border: none;
+    margin: 0;
+}
+
+/* --------------------------------------------------
+   28. Toast Messages
+   -------------------------------------------------- */
+.toast {
+    background: var(--inverse-surface);
+    color: var(--inverse-on-surface);
+    padding: 14px 20px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 8px 32px rgba(var(--shadow-color), 0.2);
+    max-width: 380px;
+    width: 100%;
+}
+.toast-success {
+    border-left: 4px solid #0d7c3d;
+}
+.toast-error {
+    border-left: 4px solid var(--error);
+}
+.toast-info {
+    border-left: 4px solid var(--secondary);
+}
+
+/* --------------------------------------------------
+   29. Filter Chips
+   -------------------------------------------------- */
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 600;
+    border: 1.5px solid var(--outline-variant);
+    background: var(--surface-container-lowest);
+    color: var(--on-surface);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+.filter-chip:hover {
+    border-color: var(--secondary);
+    background: rgba(67, 96, 134, 0.05);
+}
+.filter-chip.active {
+    background: var(--secondary-container);
+    border-color: var(--secondary);
+    color: var(--on-secondary-container);
+}
+
+/* --------------------------------------------------
+   30. Overlay / Backdrop
+   -------------------------------------------------- */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(23, 27, 43, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 8000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+.backdrop.active {
     opacity: 1;
-    transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+    visibility: visible;
+}
+
+/* --------------------------------------------------
+   31. Mobile Filter Drawer
+   -------------------------------------------------- */
+.filter-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(400px, 90vw);
+    height: 100vh;
+    background: var(--surface-container-lowest);
+    z-index: 8500;
+    transform: translateX(100%);
+    transition: transform var(--transition-smooth);
+    overflow-y: auto;
+}
+.filter-drawer.active {
+    transform: translateX(0);
+}
+
+/* --------------------------------------------------
+   32. Empty State
+   -------------------------------------------------- */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    text-align: center;
+}
+.empty-state-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--surface-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+.empty-state-icon .material-symbols-outlined {
+    font-size: 48px;
+    color: var(--on-surface-variant);
+    opacity: 0.5;
+}
+
+/* --------------------------------------------------
+   33. Tooltip
+   -------------------------------------------------- */
+[data-tooltip] {
+    position: relative;
+}
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    background: var(--inverse-surface);
+    color: var(--inverse-on-surface);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
+    pointer-events: none;
+    z-index: 100;
+}
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --------------------------------------------------
+   34. Responsive Utilities
+   -------------------------------------------------- */
+@media (max-width: 768px) {
+    .hide-mobile { display: none !important; }
+    .section-gap-mobile { margin-bottom: 40px; }
+}
+
+@media (min-width: 769px) {
+    .hide-desktop { display: none !important; }
+    .section-gap-desktop { margin-bottom: 80px; }
+}
+
+/* --------------------------------------------------
+   35. Sticky Checkout Bar (Mobile)
+   -------------------------------------------------- */
+.sticky-checkout-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface-container-lowest);
+    border-top: 1px solid var(--surface-variant);
+    padding: 12px 16px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -4px 20px rgba(var(--shadow-color), 0.08);
+}
+
+/* --------------------------------------------------
+   36. Image Gallery Thumbnail
+   -------------------------------------------------- */
+.gallery-thumb {
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+    opacity: 0.6;
+}
+.gallery-thumb.active,
+.gallery-thumb:hover {
+    border-color: var(--primary);
+    opacity: 1;
+}
+
+/* --------------------------------------------------
+   37. Product Card - List View
+   -------------------------------------------------- */
+.product-card-list {
+    display: flex;
+    gap: 20px;
+    padding: 16px;
+    background: var(--surface-container-lowest);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--surface-variant);
+    transition: box-shadow var(--transition-base);
+}
+.product-card-list:hover {
+    box-shadow: 0 4px 20px rgba(var(--shadow-color), 0.06);
+}
+.product-card-list .product-image {
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.product-card-list .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 640px) {
+    .product-card-list .product-image {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* --------------------------------------------------
+   38. Progress Bar
+   -------------------------------------------------- */
+.progress-bar {
+    height: 6px;
+    background: var(--surface-container-high);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-container));
+    border-radius: var(--radius-full);
+    transition: width var(--transition-smooth);
+}
+
+/* --------------------------------------------------
+   39. Swipe Hint (Mobile)
+   -------------------------------------------------- */
+@keyframes swipeHint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-10px); }
+}
+.swipe-hint {
+    animation: swipeHint 2s ease-in-out 1;
+}
+
+/* --------------------------------------------------
+   40. Print Styles
+   -------------------------------------------------- */
+@media print {
+    header, nav, footer, .no-print { display: none !important; }
+    body { background: white; }
 }

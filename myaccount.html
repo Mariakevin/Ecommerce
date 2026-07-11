@@ -1,318 +1,334 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>User Dashboard - Chennai Retail</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-primary-fixed": "#3c0800",
-                        "on-background": "#171b2b",
-                        "surface": "#faf8ff",
-                        "primary-fixed": "#ffdbd2",
-                        "on-error": "#ffffff",
-                        "surface-variant": "#dee1f8",
-                        "inverse-surface": "#2c3041",
-                        "tertiary-fixed-dim": "#e6c185",
-                        "surface-container-high": "#e4e7fe",
-                        "tertiary-fixed": "#ffdeab",
-                        "background": "#faf8ff",
-                        "outline-variant": "#dbc1ba",
-                        "on-secondary": "#ffffff",
-                        "secondary-container": "#b3d1fd",
-                        "tertiary-container": "#b3915a",
-                        "on-primary-fixed-variant": "#7c2e19",
-                        "inverse-primary": "#ffb4a1",
-                        "secondary": "#436086",
-                        "on-surface-variant": "#55423e",
-                        "surface-container": "#ebedff",
-                        "tertiary": "#765a28",
-                        "surface-container-low": "#f3f2ff",
-                        "outline": "#88726d",
-                        "surface-tint": "#9a442d",
-                        "error": "#ba1a1a",
-                        "on-tertiary": "#ffffff",
-                        "secondary-fixed-dim": "#abc8f4",
-                        "on-primary-container": "#5b1604",
-                        "on-secondary-container": "#3c597f",
-                        "on-secondary-fixed-variant": "#2a486d",
-                        "on-primary": "#ffffff",
-                        "primary": "#9a442d",
-                        "on-secondary-fixed": "#001c39",
-                        "on-tertiary-fixed": "#271900",
-                        "on-tertiary-container": "#402b00",
-                        "primary-container": "#e07a5f",
-                        "surface-container-highest": "#dee1f8",
-                        "secondary-fixed": "#d3e3ff",
-                        "on-error-container": "#93000a",
-                        "inverse-on-surface": "#eff0ff",
-                        "surface-dim": "#d6d9ef",
-                        "error-container": "#ffdad6",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface": "#171b2b",
-                        "surface-bright": "#faf8ff",
-                        "primary-fixed-dim": "#ffb4a1",
-                        "on-tertiary-fixed-variant": "#5c4212"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin-mobile": "16px",
-                        "container-max": "1280px",
-                        "base": "8px",
-                        "gutter": "24px",
-                        "margin-desktop": "64px",
-                        "section-gap": "80px"
-                    },
-                    "fontFamily": {
-                        "tamil-override": ["Inter"],
-                        "display-lg-mobile": ["Montserrat"],
-                        "display-lg": ["Montserrat"],
-                        "body-lg": ["Inter"],
-                        "headline-md": ["Montserrat"],
-                        "body-md": ["Inter"],
-                        "label-sm": ["Inter"]
-                    },
-                    "fontSize": {
-                        "tamil-override": ["105%", { "lineHeight": "1.7" }],
-                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "label-sm": ["13px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
-                    }
-                }
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            "colors": {
+                "on-primary-fixed": "#3c0800",
+                "on-background": "#171b2b",
+                "surface": "#faf8ff",
+                "primary-fixed": "#ffdbd2",
+                "on-error": "#ffffff",
+                "surface-variant": "#dee1f8",
+                "inverse-surface": "#2c3041",
+                "tertiary-fixed-dim": "#e6c185",
+                "surface-container-high": "#e4e7fe",
+                "tertiary-fixed": "#ffdeab",
+                "background": "#faf8ff",
+                "outline-variant": "#dbc1ba",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#b3d1fd",
+                "tertiary-container": "#b3915a",
+                "on-primary-fixed-variant": "#7c2e19",
+                "inverse-primary": "#ffb4a1",
+                "secondary": "#436086",
+                "on-surface-variant": "#55423e",
+                "surface-container": "#ebedff",
+                "tertiary": "#765a28",
+                "surface-container-low": "#f3f2ff",
+                "outline": "#88726d",
+                "surface-tint": "#9a442d",
+                "error": "#ba1a1a",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#abc8f4",
+                "on-primary-container": "#5b1604",
+                "on-secondary-container": "#3c597f",
+                "on-secondary-fixed-variant": "#2a486d",
+                "on-primary": "#ffffff",
+                "primary": "#9a442d",
+                "on-secondary-fixed": "#001c39",
+                "on-tertiary-fixed": "#271900",
+                "on-tertiary-container": "#402b00",
+                "primary-container": "#e07a5f",
+                "surface-container-highest": "#dee1f8",
+                "secondary-fixed": "#d3e3ff",
+                "on-error-container": "#93000a",
+                "inverse-on-surface": "#eff0ff",
+                "surface-dim": "#d6d9ef",
+                "error-container": "#ffdad6",
+                "surface-container-lowest": "#ffffff",
+                "on-surface": "#171b2b",
+                "surface-bright": "#faf8ff",
+                "primary-fixed-dim": "#ffb4a1",
+                "on-tertiary-fixed-variant": "#5c4212"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-mobile": "16px",
+                "container-max": "1280px",
+                "base": "8px",
+                "gutter": "24px",
+                "margin-desktop": "64px",
+                "section-gap": "80px"
+            },
+            "fontFamily": {
+                "tamil-override": ["Inter"],
+                "display-lg-mobile": ["Montserrat"],
+                "display-lg": ["Montserrat"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Montserrat"],
+                "body-md": ["Inter"],
+                "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                "tamil-override": ["105%", { "lineHeight": "1.7" }],
+                "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "label-sm": ["13px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
             }
         }
-    </script>
-<style>
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 12px rgba(45, 49, 66, 0.05), 0 1px 3px rgba(45, 49, 66, 0.02);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #9a442d 0%, #e07a5f 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+    }
+}
+</script>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
-<!-- TopNavBar -->
-<header class="bg-surface/70 dark:bg-inverse-surface/70 backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/30 dark:border-white/10 shadow-sm flex flex-col w-full">
-<div class="max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-4 flex items-center justify-between">
-<a class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary dark:text-inverse-primary tracking-tight" href="#">Chennai Retail</a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Shop</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Categories</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Offers</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Stores</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="text-primary dark:text-inverse-primary scale-95 active:scale-90 transition-transform">
-<span class="material-symbols-outlined">location_on</span>
-</button>
-<button class="text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 scale-95 active:scale-90 transition-transform">
-<span class="material-symbols-outlined">account_circle</span>
-</button>
-<button class="hidden md:flex font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200">Wishlist</button>
-<button class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200 flex items-center gap-1">
-                    Cart
-                </button>
-</div>
+
+<!-- TopNavBar (Desktop) -->
+<header class="hidden md:flex bg-surface/70 dark:bg-inverse-surface/70 backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/30 dark:border-white/10 shadow-sm">
+<div class="max-w-container-max mx-auto w-full px-margin-desktop py-4 flex items-center justify-between">
+    <a class="font-display-lg text-display-lg text-primary dark:text-inverse-primary tracking-tight" href="Index.html">Chennai Retail</a>
+    <nav class="flex items-center gap-8">
+        <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="Index.html">Shop</a>
+        <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="category.html">Categories</a>
+        <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Offers</a>
+        <a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200" href="#">Stores</a>
+    </nav>
+    <div class="flex items-center gap-4">
+        <button class="text-primary dark:text-inverse-primary scale-95 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined">location_on</span>
+        </button>
+        <a href="myaccount.html" class="text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 scale-95 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined">account_circle</span>
+        </a>
+        <a href="#" class="hidden md:flex font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200">Wishlist</a>
+        <a href="cart.html" class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary-container transition-colors duration-200 flex items-center gap-1">
+            Cart
+        </a>
+    </div>
 </div>
 </header>
+
+<!-- Mobile Header -->
+<header class="md:hidden bg-surface/70 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 border-b border-white/30">
+<div class="px-margin-mobile h-16 flex items-center justify-between">
+    <a class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight" href="Index.html">Chennai Retail</a>
+    <div class="flex space-x-4">
+        <a href="searchresult.html" class="text-on-surface-variant">
+            <span class="material-symbols-outlined">search</span>
+        </a>
+        <a href="cart.html" class="text-on-surface-variant">
+            <span class="material-symbols-outlined">shopping_bag</span>
+        </a>
+    </div>
+</div>
+</header>
+
 <!-- Main Content -->
 <main class="flex-grow pt-[100px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <!-- Welcome Section -->
 <section class="mb-section-gap">
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-2">Hello, <span class="text-gradient">Karthik</span></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Welcome back to your Chennai Retail dashboard.</p>
+    <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-2">Hello, <span class="text-gradient">Karthik</span></h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">Welcome back to your Chennai Retail dashboard.</p>
 </section>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Bento Grid - Quick Actions (Left Column) -->
-<div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter mb-section-gap lg:mb-0">
-<a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">local_shipping</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface">My Orders</span>
-</a>
-<a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">favorite</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface">Wishlist</span>
-</a>
-<a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">home_pin</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface">Addresses</span>
-</a>
-<a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
-<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
-<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">settings</span>
-</div>
-<span class="font-label-sm text-label-sm text-on-surface">Settings</span>
-</a>
-<!-- Recent Orders List -->
-<div class="col-span-2 md:col-span-4 mt-8">
-<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">history</span>
-                        Recent Orders
-                    </h2>
-<div class="flex flex-col gap-4">
-<!-- Order Item 1 -->
-<div class="glass-panel p-4 md:p-6 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 rounded-lg bg-[#F4F4F9] flex-shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A close-up studio shot of a premium, minimalist ceramic mug resting on a subtle wooden coaster. The lighting is soft and diffused, creating gentle shadows that highlight the matte texture of the ceramic. The color palette is composed of warm earth tones and crisp whites, set against a clean, light-grey backdrop to convey a modern, sophisticated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd-on3-toYr1PMXz12hL5eUCv88K82k-HYU9YF8xMJpN2QauIOk22-pQtWUfwLzR0YhN3aNbqP9BeBcJbk_FmaJwitbW9ElSTCT1P4WsI0PKGlacMarh3hLpS_5l11j1OqP2K_dlstx8ONxjtRtvOzCXG1tswjdGHGMA0NU-efEw4XC7nSQMacBWxU1slyPt15CtCUewZrTnruMF_tCuYw8PX5s4ufwaZw8FUgpIITT-WEiUEmXKEOpf3CuKN5jMeV1EgWg9U3tDU"/>
-</div>
-<div>
-<h3 class="font-label-sm text-label-sm text-on-surface mb-1">Artisan Ceramic Mug</h3>
-<p class="text-sm text-on-surface-variant">Order #CR-84729</p>
-</div>
-</div>
-<div class="flex flex-col md:items-end gap-2">
-<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] uppercase tracking-wider inline-flex items-center gap-1">
-<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                                    Out for Delivery
-                                </span>
-<span class="font-label-sm text-label-sm text-on-surface">₹450.00</span>
-</div>
-</div>
-<!-- Order Item 2 -->
-<div class="glass-panel p-4 md:p-6 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 rounded-lg bg-[#F4F4F9] flex-shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A highly detailed product photograph of a modern, sleek smart water bottle in a matte charcoal finish. The bottle stands on a clean, reflective white surface under bright, natural daylight. Subtle condensation droplets are visible on the surface. The scene is minimal, emphasizing the product's elegant design and premium build quality within a light-mode layout context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZjmEvJcOLV3PnzUOIzw2C9_23DAFo8lGUIRr4OhGip4wLOBOtfETLweK_XgyRDVaQx049iDP9PNWVsV7Hcz1ZVqn6pFm_EYdq0f-6Wtm0xH8XPuxXumhxXfxX2xK4Vs2VNpcbKEofZYhkW5zI5y85Akor6fwbvtdBkB9dhRUjNMHVucdF74AnlBYGXHndycHBeMvD_XK6qGWygGRUiAvNfsYEkgMvxo2SOSv6PUNKg1PK_MX2W8IDi_O6TucW7eVGfU_jSIrnWUg"/>
-</div>
-<div>
-<h3 class="font-label-sm text-label-sm text-on-surface mb-1">Smart Hydration Flask</h3>
-<p class="text-sm text-on-surface-variant">Order #CR-84710</p>
-</div>
-</div>
-<div class="flex flex-col md:items-end gap-2">
-<span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[11px] uppercase tracking-wider">
-                                    Delivered
-                                </span>
-<span class="font-label-sm text-label-sm text-on-surface">₹1,200.00</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Saved for Later (Right Column) -->
-<div class="lg:col-span-4">
-<div class="glass-panel rounded-xl p-6 sticky top-[120px]">
-<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">bookmark</span>
-                        Saved for Later
-                    </h2>
-<div class="flex flex-col gap-6">
-<!-- Saved Item 1 -->
-<div class="flex gap-4 group cursor-pointer">
-<div class="w-20 h-24 rounded-lg bg-[#F4F4F9] overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end, minimalist photograph of a woven linen throw blanket casually draped over a modern lounge chair. The sunlight filters through a nearby window, casting soft, architectural shadows across the fabric. The overall tone is warm, inviting, and sophisticated, utilizing a color palette of off-whites, subtle greys, and muted beiges to fit a premium retail UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDw1lcX_1tXA2v60G_B5MdsnodQEKZhT9kFutcMEi8o6LZE8bHW7Fzvle9cV6nkgp4K_QpL1jJ0x5jRrRwRyqvavsnOS3CCU_F8mp8KZOdApBeeT4WE9LL2h3HJJDEyLBM71gyt1rgZl2DXdiSWO-fYoR0vR6NwoCeFtL4D4qY4qTeFu3dtNwlHdjkg5aGDoUpVocg9w-WLf9Fus1OFbAvbkc2rlpbNldi7fhaZNxYZoNfw4v18bkMbxJKWKvKUTQpo7uLHGAk2YI"/>
-</div>
-<div class="flex flex-col justify-between py-1">
-<div>
-<h3 class="font-label-sm text-label-sm text-on-surface mb-1 group-hover:text-primary transition-colors">Woven Linen Throw</h3>
-<p class="text-sm text-on-surface-variant">Home Goods</p>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="font-label-sm text-label-sm text-on-surface">₹2,800</span>
-<button class="text-primary hover:text-primary-container transition-colors">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Saved Item 2 -->
-<div class="flex gap-4 group cursor-pointer">
-<div class="w-20 h-24 rounded-lg bg-[#F4F4F9] overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, sophisticated studio shot of premium noise-canceling headphones resting on a minimalist wooden stand. The lighting is crisp and bright, highlighting the sleek metallic and matte black textures of the device. The background is a soft, warm grey to maintain a light-mode aesthetic while ensuring the product stands out clearly as a high-end electronic item." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDf9_S6_NGzHGevuPgdMjlT7mRYoYC0yMsm0HjwHD0DiDNaa0LBFyFI-FFMQNQ2fp8RMJdSWsaxo7-7fvRVeyHWhWa7DXZiImMzVTA14Mw4wtkuwU5KRfzn7rwFvh6H_A3ARFW-IB1IRaDZeZUHQepXaKtNLgJdE2LWpBuzuQqAirCaMSYFkJdYDYvqhd9Lku9JWnVWIcR-NZo_Y3GnRBZqFaGD18gXZgq6UUlvCZLVk2g59owplQrjbUo4B9IBPMXAiqctVS-zTU"/>
-</div>
-<div class="flex flex-col justify-between py-1">
-<div>
-<h3 class="font-label-sm text-label-sm text-on-surface mb-1 group-hover:text-primary transition-colors">Aura Headphones</h3>
-<p class="text-sm text-on-surface-variant">Electronics</p>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="font-label-sm text-label-sm text-on-surface">₹14,500</span>
-<button class="text-primary hover:text-primary-container transition-colors">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_shopping_cart</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<button class="w-full mt-6 py-3 rounded-xl border border-secondary text-secondary font-label-sm text-label-sm hover:bg-surface-container-low transition-colors duration-200">
-                        View All Saved Items
-                    </button>
-</div>
-</div>
+    <!-- Bento Grid - Quick Actions (Left Column) -->
+    <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter mb-section-gap lg:mb-0">
+        <a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
+            <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">local_shipping</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface">My Orders</span>
+        </a>
+        <a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
+            <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">favorite</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface">Wishlist</span>
+        </a>
+        <a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
+            <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">home_pin</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface">Addresses</span>
+        </a>
+        <a class="glass-panel p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform duration-300 group" href="#">
+            <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-container transition-colors duration-300">
+                <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">settings</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-on-surface">Settings</span>
+        </a>
+        <!-- Recent Orders List -->
+        <div class="col-span-2 md:col-span-4 mt-8">
+            <h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">history</span>
+                Recent Orders
+            </h2>
+            <div class="flex flex-col gap-4">
+                <div class="glass-panel p-4 md:p-6 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-lg bg-[#F4F4F9] flex-shrink-0 overflow-hidden">
+                            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA" alt="Artisan Ceramic Mug"/>
+                        </div>
+                        <div>
+                            <h3 class="font-label-sm text-label-sm text-on-surface mb-1">Artisan Ceramic Mug</h3>
+                            <p class="text-sm text-on-surface-variant">Order #CR-84729</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:items-end gap-2">
+                        <span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] uppercase tracking-wider inline-flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                            Out for Delivery
+                        </span>
+                        <span class="font-label-sm text-label-sm text-on-surface">&#8377;450.00</span>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 md:p-6 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-lg bg-[#F4F4F9] flex-shrink-0 overflow-hidden">
+                            <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Hand-woven Cotton Throw"/>
+                        </div>
+                        <div>
+                            <h3 class="font-label-sm text-label-sm text-on-surface mb-1">Hand-woven Cotton Throw</h3>
+                            <p class="text-sm text-on-surface-variant">Order #CR-84710</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:items-end gap-2">
+                        <span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[11px] uppercase tracking-wider">
+                            Delivered
+                        </span>
+                        <span class="font-label-sm text-label-sm text-on-surface">&#8377;3,450.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Saved for Later (Right Column) -->
+    <div class="lg:col-span-4">
+        <div class="glass-panel rounded-xl p-6 sticky top-[120px]">
+            <h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">bookmark</span>
+                Saved for Later
+            </h2>
+            <div class="flex flex-col gap-6">
+                <a href="Itempage.html" class="flex gap-4 group cursor-pointer">
+                    <div class="w-20 h-24 rounded-lg bg-[#F4F4F9] overflow-hidden flex-shrink-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAasbBGFOgu-h00wV3Q2IJI0g2sj1dPDRV05xws16W_r5BrABtz96jRkGHdiocblqgil47WGxoOfDUl3L4eCIIKCgzRqG8SSSlmgOm8AvRcTStS6ZKK2pAgq_7PLyA6n6hcNgKNBc4y6jtWrPciOpb66O6lD6qdWeXnQpuoJqsXmqJoefxSC_ymq8KMFBoD8hmJwEa-8kE4IkJ48OOz8KnQQ40w9XPmFIy7ew262KVY9S-X4fhMT9yYGaJ4nbK--BCodGz1EQ4EbA" alt="Brass Desk Lamp"/>
+                    </div>
+                    <div class="flex flex-col justify-between py-1">
+                        <div>
+                            <h3 class="font-label-sm text-label-sm text-on-surface mb-1 group-hover:text-primary transition-colors">Brass Desk Lamp</h3>
+                            <p class="text-sm text-on-surface-variant">Lighting</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="font-label-sm text-label-sm text-on-surface">&#8377;4,200</span>
+                            <button class="text-primary hover:text-primary-container transition-colors">
+                                <span class="material-symbols-outlined fill">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <a href="Itempage.html" class="flex gap-4 group cursor-pointer">
+                    <div class="w-20 h-24 rounded-lg bg-[#F4F4F9] overflow-hidden flex-shrink-0">
+                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3NOZo3YWW9xmMtQEZRRavTT55OqX59HYWyhQtQeWEHXnnfyT90xgohgYCgHwBgKPn2luwAZQ9HBRffZ5W4FOQ8OZ4gT2K1UDzEqv48TnPOS5Z2nEKblyBz1BafINS9Vf5z98ETWqDCSBI4oE0CVkuXhbztSjOTZ90HRCP8rEI07Tlsc2MyucKouPRN_wDnLdgYxEHUZ-1u-cg9Z8x2b8j8yqcdVt2a1_vgL9Xf_StvD4Mq6902ozMPSgqqXW-DvAejV18HTl10Eg" alt="SonicPro Headphones"/>
+                    </div>
+                    <div class="flex flex-col justify-between py-1">
+                        <div>
+                            <h3 class="font-label-sm text-label-sm text-on-surface mb-1 group-hover:text-primary transition-colors">SonicPro Headphones</h3>
+                            <p class="text-sm text-on-surface-variant">Electronics</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="font-label-sm text-label-sm text-on-surface">&#8377;24,999</span>
+                            <button class="text-primary hover:text-primary-container transition-colors">
+                                <span class="material-symbols-outlined fill">add_shopping_cart</span>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <button class="w-full mt-6 py-3 rounded-xl border border-secondary text-secondary font-label-sm text-label-sm hover:bg-surface-container-low transition-colors duration-200">
+                View All Saved Items
+            </button>
+        </div>
+    </div>
 </div>
 </main>
+
 <!-- BottomNavBar (Mobile Only) -->
-<nav class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-lg fixed bottom-0 w-full rounded-t-xl z-50 border-t border-white/20 shadow-lg md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4">
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="#">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-sm text-[10px] mt-1">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="#">
-<span class="material-symbols-outlined">grid_view</span>
-<span class="font-label-sm text-[10px] mt-1">Categories</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="#">
-<span class="material-symbols-outlined">search</span>
-<span class="font-label-sm text-[10px] mt-1">Search</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="#">
-<span class="material-symbols-outlined">shopping_bag</span>
-<span class="font-label-sm text-[10px] mt-1">Cart</span>
-</a>
-<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold scale-95 transition-all bg-primary/10 rounded-lg p-2" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
-<span class="font-label-sm text-[10px] mt-1">Profile</span>
-</a>
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-4 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-lg rounded-t-xl z-50 border-t border-white/20 shadow-lg">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="Index.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="font-label-sm text-[10px] mt-1">Home</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="category.html">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span class="font-label-sm text-[10px] mt-1">Categories</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="searchresult.html">
+        <span class="material-symbols-outlined">search</span>
+        <span class="font-label-sm text-[10px] mt-1">Search</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg p-2 transition-colors" href="cart.html">
+        <span class="material-symbols-outlined">shopping_bag</span>
+        <span class="font-label-sm text-[10px] mt-1">Cart</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold scale-95 transition-all bg-primary/10 rounded-lg p-2" href="myaccount.html">
+        <span class="material-symbols-outlined fill">person</span>
+        <span class="font-label-sm text-[10px] mt-1">Profile</span>
+    </a>
 </nav>
+
 <!-- Footer -->
-<footer class="bg-surface-container-lowest dark:bg-inverse-surface w-full pt-section-gap pb-8 md:pb-8 pb-24 border-t border-surface-container-low dark:border-surface-container-high">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
-<div class="col-span-1 md:col-span-4 mb-8">
-<span class="font-headline-md text-headline-md text-primary">Chennai Retail</span>
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface w-full pt-section-gap pb-8 border-t border-surface-container-low dark:border-surface-container-high hidden md:block">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter mb-12">
+    <div class="col-span-1">
+        <h2 class="font-headline-md text-headline-md text-primary mb-4">Chennai Retail</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant mb-6">Expert and premium, yet deeply rooted in the local landscape.</p>
+    </div>
+    <div class="col-span-1 md:col-span-3 flex flex-col md:flex-row md:justify-end space-y-6 md:space-y-0 md:space-x-12">
+        <div class="flex flex-col space-y-3">
+            <span class="font-label-sm text-label-sm text-on-background mb-2 opacity-60">Company</span>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Store Locations</a>
+        </div>
+        <div class="flex flex-col space-y-3">
+            <span class="font-label-sm text-label-sm text-on-background mb-2 opacity-60">Help</span>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Customer Support</a>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+        </div>
+        <div class="flex flex-col space-y-3">
+            <span class="font-label-sm text-label-sm text-on-background mb-2 opacity-60">Connect</span>
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Newsletter</a>
+        </div>
+    </div>
 </div>
-<div class="flex flex-col gap-3">
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">About Us</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Store Locations</a>
-</div>
-<div class="flex flex-col gap-3">
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Customer Support</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Privacy Policy</a>
-</div>
-<div class="flex flex-col gap-3">
-<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Newsletter</a>
-</div>
-<div class="col-span-1 md:col-span-4 mt-8 pt-8 border-t border-surface-container-low dark:border-surface-container-high text-center md:text-left">
-<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Chennai Retail. Serving Chennai with Pride.</p>
-</div>
+<div class="max-w-container-max mx-auto px-margin-desktop pt-8 border-t border-surface-container-low dark:border-surface-container-high flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+    <p class="font-body-md text-body-md text-on-surface-variant">&copy; 2024 Chennai Retail. Serving Chennai with Pride.</p>
+    <div class="mt-4 md:mt-0 flex items-center space-x-2 bg-surface-container py-1 px-3 rounded-full border border-outline-variant/30 shadow-sm">
+        <span class="font-label-sm text-label-sm text-on-surface-variant">Language:</span>
+        <button class="font-label-sm text-label-sm text-primary border-b border-primary pb-0.5">EN</button>
+        <span class="text-on-surface-variant/30 mx-1">|</span>
+        <button class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">&#x0BA4;&#x0BAE;&#x0BBF;&#x0BB4;&#x0BCD;</button>
+    </div>
 </div>
 </footer>
-</body></html>
+
+</body>
+</html>

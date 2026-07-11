@@ -1,307 +1,222 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Order Success - Chennai Retail</title>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "on-primary-fixed": "#3c0800",
-                      "on-background": "#171b2b",
-                      "surface": "#faf8ff",
-                      "primary-fixed": "#ffdbd2",
-                      "on-error": "#ffffff",
-                      "surface-variant": "#dee1f8",
-                      "inverse-surface": "#2c3041",
-                      "tertiary-fixed-dim": "#e6c185",
-                      "surface-container-high": "#e4e7fe",
-                      "tertiary-fixed": "#ffdeab",
-                      "background": "#faf8ff",
-                      "outline-variant": "#dbc1ba",
-                      "on-secondary": "#ffffff",
-                      "secondary-container": "#b3d1fd",
-                      "tertiary-container": "#b3915a",
-                      "on-primary-fixed-variant": "#7c2e19",
-                      "inverse-primary": "#ffb4a1",
-                      "secondary": "#436086",
-                      "on-surface-variant": "#55423e",
-                      "surface-container": "#ebedff",
-                      "tertiary": "#765a28",
-                      "surface-container-low": "#f3f2ff",
-                      "outline": "#88726d",
-                      "surface-tint": "#9a442d",
-                      "error": "#ba1a1a",
-                      "on-tertiary": "#ffffff",
-                      "secondary-fixed-dim": "#abc8f4",
-                      "on-primary-container": "#5b1604",
-                      "on-secondary-container": "#3c597f",
-                      "on-secondary-fixed-variant": "#2a486d",
-                      "on-primary": "#ffffff",
-                      "primary": "#9a442d",
-                      "on-secondary-fixed": "#001c39",
-                      "on-tertiary-fixed": "#271900",
-                      "on-tertiary-container": "#402b00",
-                      "primary-container": "#e07a5f",
-                      "surface-container-highest": "#dee1f8",
-                      "secondary-fixed": "#d3e3ff",
-                      "on-error-container": "#93000a",
-                      "inverse-on-surface": "#eff0ff",
-                      "surface-dim": "#d6d9ef",
-                      "error-container": "#ffdad6",
-                      "surface-container-lowest": "#ffffff",
-                      "on-surface": "#171b2b",
-                      "surface-bright": "#faf8ff",
-                      "primary-fixed-dim": "#ffb4a1",
-                      "on-tertiary-fixed-variant": "#5c4212"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "margin-mobile": "16px",
-                      "container-max": "1280px",
-                      "base": "8px",
-                      "gutter": "24px",
-                      "margin-desktop": "64px",
-                      "section-gap": "80px"
-              },
-              "fontFamily": {
-                      "tamil-override": [
-                              "Inter"
-                      ],
-                      "display-lg-mobile": [
-                              "Montserrat"
-                      ],
-                      "display-lg": [
-                              "Montserrat"
-                      ],
-                      "body-lg": [
-                              "Inter"
-                      ],
-                      "headline-md": [
-                              "Montserrat"
-                      ],
-                      "body-md": [
-                              "Inter"
-                      ],
-                      "label-sm": [
-                              "Inter"
-                      ]
-              },
-              "fontSize": {
-                      "tamil-override": [
-                              "105%",
-                              {
-                                      "lineHeight": "1.7"
-                              }
-                      ],
-                      "display-lg-mobile": [
-                              "32px",
-                              {
-                                      "lineHeight": "1.2",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "display-lg": [
-                              "48px",
-                              {
-                                      "lineHeight": "1.2",
-                                      "letterSpacing": "-0.02em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "body-lg": [
-                              "18px",
-                              {
-                                      "lineHeight": "1.6",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "headline-md": [
-                              "24px",
-                              {
-                                      "lineHeight": "1.4",
-                                      "fontWeight": "600"
-                              }
-                      ],
-                      "body-md": [
-                              "16px",
-                              {
-                                      "lineHeight": "1.6",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "label-sm": [
-                              "13px",
-                              {
-                                      "lineHeight": "1",
-                                      "letterSpacing": "0.05em",
-                                      "fontWeight": "600"
-                              }
-                      ]
-              }
-      },
-          },
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            "colors": {
+                "on-primary-fixed": "#3c0800",
+                "on-background": "#171b2b",
+                "surface": "#faf8ff",
+                "primary-fixed": "#ffdbd2",
+                "on-error": "#ffffff",
+                "surface-variant": "#dee1f8",
+                "inverse-surface": "#2c3041",
+                "tertiary-fixed-dim": "#e6c185",
+                "surface-container-high": "#e4e7fe",
+                "tertiary-fixed": "#ffdeab",
+                "background": "#faf8ff",
+                "outline-variant": "#dbc1ba",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#b3d1fd",
+                "tertiary-container": "#b3915a",
+                "on-primary-fixed-variant": "#7c2e19",
+                "inverse-primary": "#ffb4a1",
+                "secondary": "#436086",
+                "on-surface-variant": "#55423e",
+                "surface-container": "#ebedff",
+                "tertiary": "#765a28",
+                "surface-container-low": "#f3f2ff",
+                "outline": "#88726d",
+                "surface-tint": "#9a442d",
+                "error": "#ba1a1a",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#abc8f4",
+                "on-primary-container": "#5b1604",
+                "on-secondary-container": "#3c597f",
+                "on-secondary-fixed-variant": "#2a486d",
+                "on-primary": "#ffffff",
+                "primary": "#9a442d",
+                "on-secondary-fixed": "#001c39",
+                "on-tertiary-fixed": "#271900",
+                "on-tertiary-container": "#402b00",
+                "primary-container": "#e07a5f",
+                "surface-container-highest": "#dee1f8",
+                "secondary-fixed": "#d3e3ff",
+                "on-error-container": "#93000a",
+                "inverse-on-surface": "#eff0ff",
+                "surface-dim": "#d6d9ef",
+                "error-container": "#ffdad6",
+                "surface-container-lowest": "#ffffff",
+                "on-surface": "#171b2b",
+                "surface-bright": "#faf8ff",
+                "primary-fixed-dim": "#ffb4a1",
+                "on-tertiary-fixed-variant": "#5c4212"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-mobile": "16px",
+                "container-max": "1280px",
+                "base": "8px",
+                "gutter": "24px",
+                "margin-desktop": "64px",
+                "section-gap": "80px"
+            },
+            "fontFamily": {
+                "tamil-override": ["Inter"],
+                "display-lg-mobile": ["Montserrat"],
+                "display-lg": ["Montserrat"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Montserrat"],
+                "body-md": ["Inter"],
+                "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                "tamil-override": ["105%", { "lineHeight": "1.7" }],
+                "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "label-sm": ["13px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+            }
         }
-      </script>
-<style>
-        .confetti-piece {
-            position: absolute;
-            width: 10px;
-            height: 20px;
-            background: #e07a5f;
-            top: -20px;
-            opacity: 0;
-        }
-        @keyframes fall {
-            0% { opacity: 1; top: -10%; transform: translateX(0) rotate(0deg); }
-            100% { opacity: 0; top: 100%; transform: translateX(100px) rotate(360deg); }
-        }
-        .animate-fall {
-            animation: fall 3s ease-in-out infinite;
-        }
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
-        .delay-5 { animation-delay: 1.0s; }
-      </style>
+    }
+}
+</script>
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
 <!-- Confetti Background Effect -->
-<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" id="confetti-container">
-<!-- JS will populate confetti here -->
-</div>
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" id="confetti-container"></div>
+
 <!-- Main Content Canvas -->
 <main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap relative z-10">
 <div class="max-w-2xl mx-auto bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-8 md:p-12 backdrop-blur-md relative overflow-hidden">
-<!-- Ambient decorative glow -->
-<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-20 pointer-events-none"></div>
-<!-- Success Header -->
-<div class="flex flex-col items-center text-center mb-12">
-<div class="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center mb-6 shadow-sm border border-surface-variant relative">
-<span class="material-symbols-outlined text-display-lg text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-</div>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Thank you for your order!</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Your order has been placed successfully and is being processed.</p>
-</div>
-<!-- Order Details Section -->
-<div class="bg-surface-container-low rounded-lg p-6 mb-8 border border-surface-variant">
-<div class="flex justify-between items-center mb-6 border-b border-outline-variant pb-4">
-<div>
-<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Order ID</p>
-<p class="font-headline-md text-headline-md text-on-background">#CR-8829-451</p>
-</div>
-<div class="text-right">
-<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total</p>
-<p class="font-headline-md text-headline-md text-primary">₹12,450</p>
-</div>
-</div>
-<!-- Item Summary -->
-<div class="space-y-4">
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 bg-surface-variant rounded-md overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="A premium silk saree in deep maroon with intricate gold zari work, carefully folded in a modern, well-lit studio setting with soft natural light. The aesthetic is clean, sophisticated, and elegant, emphasizing the texture of the fabric. High resolution, shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAXuvoOLx0Suz6cRjHggRv88k5a4OLA12P2TSI4cjdbn479xIl8fvGYFawHKhD0EVANzKnWD4s4kcPCI28UFdytAizkPAgbMTBefF5ZlVpMnsHL5gD1KhjQ_ZM5YzCLREqBhkiymO9is-xf9tQoXIiArm92pwNoLCjfMyU6oRAiMdaDGzJ57G4tQQ2vc0GIFLnWHFZU8eczv5Ur7LeQoA4EdFKat1jZOO1_Yay9jIwr-2v_0jPC5YtAIG8qkguSOcTGe0Re_FHZTA"/>
-</div>
-<div class="flex-grow">
-<p class="font-body-md text-body-md font-semibold text-on-background">Kanchipuram Silk Saree</p>
-<p class="font-label-sm text-label-sm text-on-surface-variant">Deep Maroon | Qty: 1</p>
-</div>
-<p class="font-body-md text-body-md font-semibold text-on-background">₹12,450</p>
-</div>
-</div>
-</div>
-<!-- Pickup Location (Conditional Block) -->
-<div class="mb-12">
-<h2 class="font-headline-md text-headline-md text-on-background mb-4 flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary">storefront</span>
-                    Store Pickup Details
-                </h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm">
-<div class="p-6 flex flex-col justify-center">
-<p class="font-body-md text-body-md font-semibold text-on-background mb-2">Chennai Retail Flagship</p>
-<p class="font-body-md text-body-md text-on-surface-variant mb-1">128 Express Avenue Mall</p>
-<p class="font-body-md text-body-md text-on-surface-variant mb-4">Royapettah, Chennai 600014</p>
-<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full w-fit">
-<span class="material-symbols-outlined text-primary" style="font-size: 16px;">schedule</span>
-<span class="font-label-sm text-label-sm text-on-background">Ready tomorrow by 12 PM</span>
-</div>
-</div>
-<div class="h-48 md:h-full bg-surface-variant relative">
-<!-- Map Placeholder -->
-<div class="absolute inset-0 bg-secondary/10 flex items-center justify-center">
-<img class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A stylized, minimalist map illustration of central Chennai focusing on the Royapettah area. The map uses a soft, sophisticated color palette of light greys, muted blues, and a distinct terracotta-orange pin marker denoting a store location. Clean lines, modern cartography design." data-location="Chennai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP-F47ceYGiKZ9FmHCM1xM5-LB8xfJ90ZskP11piGeE2pqMKiFVI9lO-i-_QoK29MgcFwngrmCHpPb2kSR18hhhvz-tEI6yldoZ4oB9f_Ih3-Wc4wX5o0Iz81_qoezwC2k5zSC78-TS4QOO0FOYFJ0ucVxcI5OlAs4UnaYA4l-mpx-TsNkkeLYW1L7Ir28EmCQd5qynghJCejGrMAkCUMlkQ-Fy3rvA4pI-5o2TKGl1FacW8JcFeqM_swIoInMFCDgCEcFfiq_hlM"/>
-</div>
-</div>
-</div>
-</div>
-<!-- Actions -->
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button class="bg-primary-container text-on-primary font-body-md text-body-md px-8 py-3 rounded-xl hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
-<span class="material-symbols-outlined">local_shipping</span>
-                    Track Order
-                </button>
-<button class="bg-surface-container-lowest text-secondary border border-secondary font-body-md text-body-md px-8 py-3 rounded-xl hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">shopping_bag</span>
-                    Continue Shopping
-                </button>
-</div>
+    <!-- Ambient decorative glow -->
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-20 pointer-events-none"></div>
+    <!-- Success Header -->
+    <div class="flex flex-col items-center text-center mb-12">
+        <div class="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center mb-6 shadow-sm border border-surface-variant relative">
+            <span class="material-symbols-outlined text-display-lg text-primary fill">check_circle</span>
+        </div>
+        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-4">Thank you for your order!</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">Your order has been placed successfully and is being processed.</p>
+    </div>
+    <!-- Order Details Section -->
+    <div class="bg-surface-container-low rounded-lg p-6 mb-8 border border-surface-variant">
+        <div class="flex justify-between items-center mb-6 border-b border-outline-variant pb-4">
+            <div>
+                <p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Order ID</p>
+                <p class="font-headline-md text-headline-md text-on-background">#CR-8829-451</p>
+            </div>
+            <div class="text-right">
+                <p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total</p>
+                <p class="font-headline-md text-headline-md text-primary">&#8377;5,224</p>
+            </div>
+        </div>
+        <!-- Item Summary -->
+        <div class="space-y-4">
+            <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-surface-variant rounded-md overflow-hidden flex-shrink-0">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA" alt="Artisan Ceramic Mug"/>
+                </div>
+                <div class="flex-grow">
+                    <p class="font-body-md text-body-md font-semibold text-on-background">Artisan Ceramic Mug</p>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Matte White, 350ml | Qty: 2</p>
+                </div>
+                <p class="font-body-md text-body-md font-semibold text-on-background">&#8377;1,200</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-surface-variant rounded-md overflow-hidden flex-shrink-0">
+                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Hand-woven Cotton Throw"/>
+                </div>
+                <div class="flex-grow">
+                    <p class="font-body-md text-body-md font-semibold text-on-background">Hand-woven Cotton Throw</p>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant">Indigo Blue Pattern | Qty: 1</p>
+                </div>
+                <p class="font-body-md text-body-md font-semibold text-on-background">&#8377;3,450</p>
+            </div>
+        </div>
+    </div>
+    <!-- Delivery Info -->
+    <div class="mb-12">
+        <h2 class="font-headline-md text-headline-md text-on-background mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary">local_shipping</span>
+            Delivery Details
+        </h2>
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+            <p class="font-body-md text-body-md font-semibold text-on-background mb-2">Express Delivery</p>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-1">14, Wallace Garden 2nd St, Nungambakkam</p>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-4">Chennai, Tamil Nadu 600006</p>
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full w-fit">
+                <span class="material-symbols-outlined text-primary" style="font-size: 16px;">schedule</span>
+                <span class="font-label-sm text-label-sm text-on-background">Estimated delivery by today, 8 PM</span>
+            </div>
+        </div>
+    </div>
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="myaccount.html" class="bg-primary-container text-on-primary font-body-md text-body-md px-8 py-3 rounded-xl hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined">local_shipping</span>
+            Track Order
+        </a>
+        <a href="Index.html" class="bg-surface-container-lowest text-secondary border border-secondary font-body-md text-body-md px-8 py-3 rounded-xl hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            Continue Shopping
+        </a>
+    </div>
 </div>
 </main>
+
 <!-- Footer -->
-<footer class="w-full pt-section-gap pb-8 bg-surface-container-low dark:bg-surface-container-high max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-white/20 mt-auto">
+<footer class="w-full pt-section-gap pb-8 bg-surface-container-low dark:bg-surface-container-high max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-white/20 mt-auto hidden md:grid">
 <div class="col-span-1 md:col-span-4 mb-4">
-<span class="font-headline-md text-headline-md text-primary">Chennai Retail</span>
+    <span class="font-headline-md text-headline-md text-primary">Chennai Retail</span>
 </div>
 <div class="flex flex-col gap-2">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">About Us</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Store Locations</a>
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a>
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Store Locations</a>
 </div>
 <div class="flex flex-col gap-2">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Customer Support</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Privacy Policy</a>
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Customer Support</a>
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
 </div>
 <div class="flex flex-col gap-2">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Newsletter</a>
+    <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Newsletter</a>
 </div>
 <div class="col-span-1 md:col-span-4 mt-8 pt-4 border-t border-outline-variant/30">
-<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Chennai Retail. Serving Chennai with Pride.</p>
+    <p class="font-label-sm text-label-sm text-on-surface-variant">&copy; 2024 Chennai Retail. Serving Chennai with Pride.</p>
 </div>
 </footer>
+
 <script>
-        // Simple confetti generator for the success screen
-        document.addEventListener("DOMContentLoaded", () => {
-            const container = document.getElementById('confetti-container');
-            const colors = ['#e07a5f', '#436086', '#ffb4a1', '#b3d1fd'];
-
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti-piece', 'animate-fall');
-
-                // Randomize appearance
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = (Math.random() * 3) + 's';
-                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-
-                container.appendChild(confetti);
-            }
-        });
-    </script>
-</body></html>
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById('confetti-container');
+    const colors = ['#e07a5f', '#436086', '#ffb4a1', '#b3d1fd'];
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti-piece', 'animate-fall');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = (Math.random() * 3) + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        container.appendChild(confetti);
+    }
+});
+</script>
+</body>
+</html>

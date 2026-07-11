@@ -1,361 +1,316 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Chennai Retail - Checkout</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "on-primary-fixed": "#3c0800",
-                        "on-background": "#171b2b",
-                        "surface": "#faf8ff",
-                        "primary-fixed": "#ffdbd2",
-                        "on-error": "#ffffff",
-                        "surface-variant": "#dee1f8",
-                        "inverse-surface": "#2c3041",
-                        "tertiary-fixed-dim": "#e6c185",
-                        "surface-container-high": "#e4e7fe",
-                        "tertiary-fixed": "#ffdeab",
-                        "background": "#faf8ff",
-                        "outline-variant": "#dbc1ba",
-                        "on-secondary": "#ffffff",
-                        "secondary-container": "#b3d1fd",
-                        "tertiary-container": "#b3915a",
-                        "on-primary-fixed-variant": "#7c2e19",
-                        "inverse-primary": "#ffb4a1",
-                        "secondary": "#436086",
-                        "on-surface-variant": "#55423e",
-                        "surface-container": "#ebedff",
-                        "tertiary": "#765a28",
-                        "surface-container-low": "#f3f2ff",
-                        "outline": "#88726d",
-                        "surface-tint": "#9a442d",
-                        "error": "#ba1a1a",
-                        "on-tertiary": "#ffffff",
-                        "secondary-fixed-dim": "#abc8f4",
-                        "on-primary-container": "#5b1604",
-                        "on-secondary-container": "#3c597f",
-                        "on-secondary-fixed-variant": "#2a486d",
-                        "on-primary": "#ffffff",
-                        "primary": "#9a442d",
-                        "on-secondary-fixed": "#001c39",
-                        "on-tertiary-fixed": "#271900",
-                        "on-tertiary-container": "#402b00",
-                        "primary-container": "#e07a5f",
-                        "surface-container-highest": "#dee1f8",
-                        "secondary-fixed": "#d3e3ff",
-                        "on-error-container": "#93000a",
-                        "inverse-on-surface": "#eff0ff",
-                        "surface-dim": "#d6d9ef",
-                        "error-container": "#ffdad6",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface": "#171b2b",
-                        "surface-bright": "#faf8ff",
-                        "primary-fixed-dim": "#ffb4a1",
-                        "on-tertiary-fixed-variant": "#5c4212"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "margin-mobile": "16px",
-                        "container-max": "1280px",
-                        "base": "8px",
-                        "gutter": "24px",
-                        "margin-desktop": "64px",
-                        "section-gap": "80px"
-                    },
-                    fontFamily: {
-                        "display-lg": ["Montserrat"],
-                        "body-lg": ["Inter"],
-                        "headline-md": ["Montserrat"],
-                        "body-md": ["Inter"],
-                        "label-sm": ["Inter"]
-                    },
-                    fontSize: {
-                        "display-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
-                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
-                        "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
-                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
-                        "label-sm": ["13px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" }]
-                    }
-                }
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "on-primary-fixed": "#3c0800",
+                "on-background": "#171b2b",
+                "surface": "#faf8ff",
+                "primary-fixed": "#ffdbd2",
+                "on-error": "#ffffff",
+                "surface-variant": "#dee1f8",
+                "inverse-surface": "#2c3041",
+                "tertiary-fixed-dim": "#e6c185",
+                "surface-container-high": "#e4e7fe",
+                "tertiary-fixed": "#ffdeab",
+                "background": "#faf8ff",
+                "outline-variant": "#dbc1ba",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#b3d1fd",
+                "tertiary-container": "#b3915a",
+                "on-primary-fixed-variant": "#7c2e19",
+                "inverse-primary": "#ffb4a1",
+                "secondary": "#436086",
+                "on-surface-variant": "#55423e",
+                "surface-container": "#ebedff",
+                "tertiary": "#765a28",
+                "surface-container-low": "#f3f2ff",
+                "outline": "#88726d",
+                "surface-tint": "#9a442d",
+                "error": "#ba1a1a",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#abc8f4",
+                "on-primary-container": "#5b1604",
+                "on-secondary-container": "#3c597f",
+                "on-secondary-fixed-variant": "#2a486d",
+                "on-primary": "#ffffff",
+                "primary": "#9a442d",
+                "on-secondary-fixed": "#001c39",
+                "on-tertiary-fixed": "#271900",
+                "on-tertiary-container": "#402b00",
+                "primary-container": "#e07a5f",
+                "surface-container-highest": "#dee1f8",
+                "secondary-fixed": "#d3e3ff",
+                "on-error-container": "#93000a",
+                "inverse-on-surface": "#eff0ff",
+                "surface-dim": "#d6d9ef",
+                "error-container": "#ffdad6",
+                "surface-container-lowest": "#ffffff",
+                "on-surface": "#171b2b",
+                "surface-bright": "#faf8ff",
+                "primary-fixed-dim": "#ffb4a1",
+                "on-tertiary-fixed-variant": "#5c4212"
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            spacing: {
+                "margin-mobile": "16px",
+                "container-max": "1280px",
+                "base": "8px",
+                "gutter": "24px",
+                "margin-desktop": "64px",
+                "section-gap": "80px"
+            },
+            fontFamily: {
+                "display-lg": ["Montserrat"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Montserrat"],
+                "body-md": ["Inter"],
+                "label-sm": ["Inter"]
+            },
+            fontSize: {
+                "display-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+                "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+                "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                "label-sm": ["13px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "600" }]
             }
         }
-    </script>
-<style>
-        .shadow-level-2 {
-            box-shadow: 0 4px 12px rgba(45, 49, 66, 0.05), 0 1px 3px rgba(45, 49, 66, 0.02);
-        }
-        .glass-panel {
-            backdrop-filter: blur(12px);
-            background-color: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* Step progress custom styles */
-        .step-active .step-icon {
-            background-color: theme('colors.primary');
-            color: theme('colors.on-primary');
-            border-color: theme('colors.primary');
-        }
-        .step-active .step-label {
-            color: theme('colors.primary');
-            font-weight: 600;
-        }
-        .step-completed .step-icon {
-            background-color: theme('colors.primary-container');
-            color: theme('colors.on-primary-container');
-            border-color: theme('colors.primary-container');
-        }
-        .step-completed .step-line {
-            background-color: theme('colors.primary-container');
-        }
-        .step-pending .step-icon {
-            background-color: theme('colors.surface-container-low');
-            color: theme('colors.on-surface-variant');
-            border-color: theme('colors.outline-variant');
-        }
-    </style>
+    }
+}
+</script>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
-<!-- TopNav Suppressed for checkout flow as per "Automatic Suppression: Linear/Transactional" -->
+<!-- Simplified Checkout Header -->
 <header class="w-full py-6 px-margin-mobile md:px-margin-desktop flex justify-center items-center border-b border-surface-variant bg-surface/90 glass-panel sticky top-0 z-50">
-<div class="font-display-lg text-[24px] md:text-[32px] text-primary tracking-tight font-bold">
-            Chennai Retail
-        </div>
+<a href="Index.html" class="font-display-lg text-[24px] md:text-[32px] text-primary tracking-tight font-bold">
+    Chennai Retail
+</a>
 </header>
 <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
 <!-- Progress Bar -->
 <div class="w-full max-w-3xl mx-auto mb-16 px-4">
-<div class="flex items-center justify-between relative">
-<!-- Step 1 -->
-<div class="flex flex-col items-center relative z-10 step-completed group cursor-pointer w-1/3">
-<div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300">
-<span class="material-symbols-outlined text-[20px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+    <div class="flex items-center justify-between relative">
+        <div class="flex flex-col items-center relative z-10 step-completed group cursor-pointer w-1/3">
+            <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300">
+                <span class="material-symbols-outlined text-[20px] fill">check</span>
+            </div>
+            <span class="step-label font-label-sm text-label-sm text-on-surface-variant transition-colors duration-300">Address</span>
+        </div>
+        <div class="absolute top-5 left-1/6 right-1/2 h-1 step-line transition-colors duration-300" style="transform: translateY(-50%); z-index: 0;"></div>
+        <div class="flex flex-col items-center relative z-10 step-active w-1/3">
+            <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300 shadow-md shadow-primary/20">
+                <span class="font-label-sm text-label-sm">2</span>
+            </div>
+            <span class="step-label font-label-sm text-label-sm transition-colors duration-300">Delivery</span>
+        </div>
+        <div class="absolute top-5 left-1/2 right-1/6 h-1 bg-surface-variant transition-colors duration-300" style="transform: translateY(-50%); z-index: 0;"></div>
+        <div class="flex flex-col items-center relative z-10 step-pending w-1/3 opacity-70">
+            <div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300">
+                <span class="font-label-sm text-label-sm">3</span>
+            </div>
+            <span class="step-label font-label-sm text-label-sm text-on-surface-variant transition-colors duration-300">Payment</span>
+        </div>
+    </div>
 </div>
-<span class="step-label font-label-sm text-label-sm text-on-surface-variant transition-colors duration-300">Address</span>
-</div>
-<!-- Line 1 -->
-<div class="absolute top-5 left-1/6 right-1/2 h-1 step-line transition-colors duration-300" style="transform: translateY(-50%); z-index: 0;"></div>
-<!-- Step 2 -->
-<div class="flex flex-col items-center relative z-10 step-active w-1/3">
-<div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300 shadow-md shadow-primary/20">
-<span class="font-label-sm text-label-sm">2</span>
-</div>
-<span class="step-label font-label-sm text-label-sm transition-colors duration-300">Delivery</span>
-</div>
-<!-- Line 2 -->
-<div class="absolute top-5 left-1/2 right-1/6 h-1 bg-surface-variant transition-colors duration-300" style="transform: translateY(-50%); z-index: 0;"></div>
-<!-- Step 3 -->
-<div class="flex flex-col items-center relative z-10 step-pending w-1/3 opacity-70">
-<div class="step-icon w-10 h-10 rounded-full flex items-center justify-center border-2 mb-2 transition-colors duration-300">
-<span class="font-label-sm text-label-sm">3</span>
-</div>
-<span class="step-label font-label-sm text-label-sm text-on-surface-variant transition-colors duration-300">Payment</span>
-</div>
-</div>
-</div>
+
 <div class="flex flex-col lg:flex-row gap-gutter">
-<!-- Left Column: Forms & Selections -->
-<div class="w-full lg:w-2/3 flex flex-col gap-12">
-<!-- Delivery Options Section -->
-<section class="animate-fade-in-up">
-<h2 class="font-headline-md text-headline-md text-on-background mb-6 flex items-center">
-<span class="material-symbols-outlined mr-3 text-primary" data-icon="local_shipping" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
-                        Delivery Method
-                    </h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<!-- Standard -->
-<label class="cursor-pointer relative">
-<input class="peer sr-only" name="delivery_method" type="radio" value="standard"/>
-<div class="h-full p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all duration-200 hover:border-outline-variant flex flex-col justify-between">
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-secondary" data-icon="local_shipping" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
-<div class="w-5 h-5 rounded-full border border-outline-variant peer-checked:border-primary flex items-center justify-center">
-<div class="w-2.5 h-2.5 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
-</div>
-</div>
-<div>
-<h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Standard</h3>
-<p class="font-body-md text-[13px] text-on-surface-variant">3-5 Business Days</p>
-</div>
-</div>
-</label>
-<!-- Express -->
-<label class="cursor-pointer relative">
-<input checked="" class="peer sr-only" name="delivery_method" type="radio" value="express"/>
-<div class="h-full p-5 rounded-xl border border-primary bg-primary-fixed/10 shadow-level-2 transition-all duration-200 flex flex-col justify-between relative overflow-hidden">
-<div class="absolute top-0 right-0 bg-primary text-on-primary font-label-sm text-[10px] px-2 py-1 rounded-bl-lg font-bold tracking-wider">RECOMMENDED</div>
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-primary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
-<div class="w-5 h-5 rounded-full border border-primary flex items-center justify-center">
-<div class="w-2.5 h-2.5 rounded-full bg-primary transition-opacity"></div>
-</div>
-</div>
-<div>
-<h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Express</h3>
-<p class="font-body-md text-[13px] text-primary font-medium">Same-day Chennai</p>
-</div>
-</div>
-</label>
-<!-- Store Pickup -->
-<label class="cursor-pointer relative">
-<input class="peer sr-only" name="delivery_method" type="radio" value="pickup"/>
-<div class="h-full p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all duration-200 hover:border-outline-variant flex flex-col justify-between">
-<div class="flex justify-between items-start mb-4">
-<span class="material-symbols-outlined text-secondary" data-icon="storefront" style="font-variation-settings: 'FILL' 0;">storefront</span>
-<div class="w-5 h-5 rounded-full border border-outline-variant peer-checked:border-primary flex items-center justify-center">
-<div class="w-2.5 h-2.5 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
-</div>
-</div>
-<div>
-<h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Store Pickup</h3>
-<p class="font-body-md text-[13px] text-on-surface-variant">Ready in 2 hours</p>
-</div>
-</div>
-</label>
-</div>
-</section>
-<hr class="border-surface-variant"/>
-<!-- Address Selection Section -->
-<section>
-<div class="flex justify-between items-center mb-6">
-<h2 class="font-headline-md text-headline-md text-on-background flex items-center">
-<span class="material-symbols-outlined mr-3 text-primary" data-icon="location_on" style="font-variation-settings: 'FILL' 0;">location_on</span>
-                            Shipping Address
-                        </h2>
-<button class="font-label-sm text-label-sm text-primary hover:text-primary-container transition-colors flex items-center gap-1">
-<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
-                            New Address
-                        </button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<!-- Address Card 1 (Selected) -->
-<div class="p-5 rounded-xl border border-primary bg-primary-fixed/5 shadow-level-2 relative cursor-pointer hover:shadow-md transition-shadow">
-<div class="absolute top-4 right-4 text-primary">
-<span class="material-symbols-outlined" data-icon="radio_button_checked" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
-</div>
-<div class="flex items-center gap-2 mb-3">
-<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Home</span>
-<span class="font-label-sm text-label-sm font-bold">Karthik R.</span>
-</div>
-<p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
-                                14, Wallace Garden 2nd St<br/>
-                                Nungambakkam<br/>
-                                Chennai, Tamil Nadu 600006<br/>
-                                Ph: +91 98765 43210
-                            </p>
-<div class="mt-4 pt-3 border-t border-surface-variant flex gap-4">
-<button class="font-label-sm text-[12px] text-secondary hover:text-primary transition-colors">Edit</button>
-</div>
-</div>
-<!-- Address Card 2 -->
-<div class="p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 relative cursor-pointer hover:border-outline-variant hover:shadow-md transition-all">
-<div class="absolute top-4 right-4 text-outline-variant">
-<span class="material-symbols-outlined" data-icon="radio_button_unchecked" style="font-variation-settings: 'FILL' 0;">radio_button_unchecked</span>
-</div>
-<div class="flex items-center gap-2 mb-3">
-<span class="bg-surface-container text-on-surface-variant font-label-sm text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Office</span>
-<span class="font-label-sm text-label-sm font-bold">Karthik R.</span>
-</div>
-<p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
-                                Tech Park IV, OMR IT Expressway<br/>
-                                Taramani<br/>
-                                Chennai, Tamil Nadu 600113<br/>
-                                Ph: +91 98765 43210
-                            </p>
-<div class="mt-4 pt-3 border-t border-surface-variant flex gap-4">
-<button class="font-label-sm text-[12px] text-secondary hover:text-primary transition-colors">Edit</button>
-</div>
-</div>
-</div>
-</section>
-<!-- Action Buttons -->
-<div class="flex justify-between items-center pt-6">
-<button class="font-label-sm text-label-sm text-secondary hover:text-primary flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
-                        Back to Address
-                    </button>
-<button class="bg-primary hover:bg-surface-tint text-on-primary font-label-sm text-label-sm px-8 py-3.5 rounded-[12px] shadow-level-2 transition-all flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0">
-                        Continue to Payment
-                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
-</button>
-</div>
-</div>
-<!-- Right Column: Order Summary (Sticky) -->
-<div class="w-full lg:w-1/3">
-<div class="bg-surface rounded-xl p-6 shadow-level-2 border border-surface-variant sticky top-28 glass-panel">
-<h3 class="font-headline-md text-[20px] font-semibold text-on-background mb-6 border-b border-surface-variant pb-4">Order Summary</h3>
-<!-- Items -->
-<div class="space-y-4 mb-6 max-h-[409px] overflow-y-auto pr-2">
-<!-- Item 1 -->
-<div class="flex gap-4">
-<div class="w-16 h-16 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden relative">
-<img class="w-full h-full object-cover mix-blend-multiply" data-alt="A beautifully styled, high-end, bright and airy product photography shot of a minimalist artisan ceramic coffee mug resting on a subtle frosted glass pedestal. The background is a clean, warm off-white, reflecting the 'Reliable Comfort' aesthetic of the sophisticated neighbor brand. Soft natural light highlights the organic texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuxWUXeLa_7hwBUy59xVMv5MObAKdpprv9Xxm3c2csoTky_1ypGR-dKDPxfBhjjdR63K7N2Mrco-eBcuZJvpHGHYLaHXus-bpDR0IEwlGNiAWr-A5MsuBDr5U8ZuEysgr6UogI66c0t60r0e9gBLNohlO7vkQsAabvlJOHuHNjlF6uNMI2sRmudByCCLefqM5AssTI9zzLkaMHVksDG5Xmi3ufeKGFI5jkDZGHVY2bORgduX3EhTyFL3KJYEbJIhYGgMkfNkjGUVs"/>
-</div>
-<div class="flex-grow flex flex-col justify-between">
-<div class="flex justify-between">
-<span class="font-label-sm text-[14px] text-on-surface font-medium truncate pr-2">Artisan Ceramic Mug</span>
-<span class="font-label-sm text-[14px] font-bold">₹850</span>
-</div>
-<div class="font-body-md text-[13px] text-on-surface-variant">Qty: 2</div>
-</div>
-</div>
-<!-- Item 2 -->
-<div class="flex gap-4">
-<div class="w-16 h-16 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden relative">
-<img class="w-full h-full object-cover mix-blend-multiply" data-alt="A beautifully styled, high-end, bright and airy product photography shot of a premium handcrafted leather wallet resting on a subtle frosted glass pedestal. The background is a clean, warm off-white, reflecting the 'Reliable Comfort' aesthetic of the sophisticated neighbor brand. Soft natural light highlights the organic texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARXyWACa7sX4O-cpsqotqi1PnNxR5jNkgFPWet2M0iYcAnoWQH-e3m_4QmsKVPsFoCflXwClH-eYGmV7LVMvra3r5vHvEGlQkSznNLN4RGJDvzTHOLdOFsPlrTIM9pdkwroEMkh4Cb2hUEIJlE9l05m1UDYz6utTSuw_cXI7CA9L_emXhGWQ4XxO9lDk30F9qbzdqkv-nRYBd0y_Ul2_i2E1mA_wALPEg9laTb9nkxh5JEbG_OaxGHA1EgDo5rUtS8_mB_cJpbiDw"/>
-</div>
-<div class="flex-grow flex flex-col justify-between">
-<div class="flex justify-between">
-<span class="font-label-sm text-[14px] text-on-surface font-medium truncate pr-2">Classic Leather Wallet</span>
-<span class="font-label-sm text-[14px] font-bold">₹2,400</span>
-</div>
-<div class="font-body-md text-[13px] text-on-surface-variant">Qty: 1</div>
-</div>
-</div>
-</div>
-<!-- Promo Code -->
-<div class="mb-6">
-<div class="flex gap-2">
-<input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-2 font-body-md text-[14px] text-on-surface focus:ring-1 focus:ring-secondary outline-none transition-shadow placeholder-outline-variant" placeholder="Promo code" type="text"/>
-<button class="bg-surface-variant hover:bg-surface-dim text-on-surface font-label-sm text-[12px] px-4 py-2 rounded-lg transition-colors">Apply</button>
-</div>
-</div>
-<!-- Totals -->
-<div class="space-y-3 font-body-md text-[14px] text-on-surface-variant border-t border-surface-variant pt-4 mb-6">
-<div class="flex justify-between">
-<span>Subtotal</span>
-<span class="font-medium text-on-surface">₹4,100</span>
-</div>
-<div class="flex justify-between">
-<span>Delivery (Express)</span>
-<span class="font-medium text-on-surface">₹150</span>
-</div>
-<div class="flex justify-between">
-<span>Taxes (GST 18%)</span>
-<span class="font-medium text-on-surface">₹738</span>
-</div>
-</div>
-<div class="flex justify-between items-center font-label-sm text-[18px] text-on-background font-bold border-t border-surface-variant pt-4">
-<span>Total</span>
-<span class="text-primary">₹4,988</span>
-</div>
-</div>
-</div>
+    <!-- Left Column: Forms & Selections -->
+    <div class="w-full lg:w-2/3 flex flex-col gap-12">
+        <!-- Delivery Options Section -->
+        <section>
+            <h2 class="font-headline-md text-headline-md text-on-background mb-6 flex items-center">
+                <span class="material-symbols-outlined mr-3 text-primary">local_shipping</span>
+                Delivery Method
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <label class="cursor-pointer relative">
+                    <input class="peer sr-only" name="delivery_method" type="radio" value="standard"/>
+                    <div class="h-full p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all duration-200 hover:border-outline-variant flex flex-col justify-between">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="material-symbols-outlined text-secondary">local_shipping</span>
+                            <div class="w-5 h-5 rounded-full border border-outline-variant peer-checked:border-primary flex items-center justify-center">
+                                <div class="w-2.5 h-2.5 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Standard</h3>
+                            <p class="font-body-md text-[13px] text-on-surface-variant">3-5 Business Days</p>
+                        </div>
+                    </div>
+                </label>
+                <label class="cursor-pointer relative">
+                    <input checked="" class="peer sr-only" name="delivery_method" type="radio" value="express"/>
+                    <div class="h-full p-5 rounded-xl border border-primary bg-primary-fixed/10 shadow-level-2 transition-all duration-200 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-primary text-on-primary font-label-sm text-[10px] px-2 py-1 rounded-bl-lg font-bold tracking-wider">RECOMMENDED</div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="material-symbols-outlined text-primary fill">bolt</span>
+                            <div class="w-5 h-5 rounded-full border border-primary flex items-center justify-center">
+                                <div class="w-2.5 h-2.5 rounded-full bg-primary transition-opacity"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Express</h3>
+                            <p class="font-body-md text-[13px] text-primary font-medium">Same-day Chennai</p>
+                        </div>
+                    </div>
+                </label>
+                <label class="cursor-pointer relative">
+                    <input class="peer sr-only" name="delivery_method" type="radio" value="pickup"/>
+                    <div class="h-full p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 peer-checked:border-primary peer-checked:bg-primary-fixed/10 transition-all duration-200 hover:border-outline-variant flex flex-col justify-between">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="material-symbols-outlined text-secondary">storefront</span>
+                            <div class="w-5 h-5 rounded-full border border-outline-variant peer-checked:border-primary flex items-center justify-center">
+                                <div class="w-2.5 h-2.5 rounded-full bg-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-label-sm text-label-sm text-on-surface font-semibold mb-1">Store Pickup</h3>
+                            <p class="font-body-md text-[13px] text-on-surface-variant">Ready in 2 hours</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </section>
+        <hr class="border-surface-variant"/>
+        <!-- Address Selection Section -->
+        <section>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="font-headline-md text-headline-md text-on-background flex items-center">
+                    <span class="material-symbols-outlined mr-3 text-primary">location_on</span>
+                    Shipping Address
+                </h2>
+                <button class="font-label-sm text-label-sm text-primary hover:text-primary-container transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[16px]">add</span>
+                    New Address
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-5 rounded-xl border border-primary bg-primary-fixed/5 shadow-level-2 relative cursor-pointer hover:shadow-md transition-shadow">
+                    <div class="absolute top-4 right-4 text-primary">
+                        <span class="material-symbols-outlined fill">radio_button_checked</span>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-surface-container-high text-on-surface-variant font-label-sm text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Home</span>
+                        <span class="font-label-sm text-label-sm font-bold">Karthik R.</span>
+                    </div>
+                    <p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
+                        14, Wallace Garden 2nd St<br/>
+                        Nungambakkam<br/>
+                        Chennai, Tamil Nadu 600006<br/>
+                        Ph: +91 98765 43210
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-surface-variant flex gap-4">
+                        <button class="font-label-sm text-[12px] text-secondary hover:text-primary transition-colors">Edit</button>
+                    </div>
+                </div>
+                <div class="p-5 rounded-xl border border-surface-variant bg-surface shadow-level-2 relative cursor-pointer hover:border-outline-variant hover:shadow-md transition-all">
+                    <div class="absolute top-4 right-4 text-outline-variant">
+                        <span class="material-symbols-outlined">radio_button_unchecked</span>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-surface-container text-on-surface-variant font-label-sm text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Office</span>
+                        <span class="font-label-sm text-label-sm font-bold">Karthik R.</span>
+                    </div>
+                    <p class="font-body-md text-[14px] text-on-surface-variant leading-relaxed">
+                        Tech Park IV, OMR IT Expressway<br/>
+                        Taramani<br/>
+                        Chennai, Tamil Nadu 600113<br/>
+                        Ph: +91 98765 43210
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-surface-variant flex gap-4">
+                        <button class="font-label-sm text-[12px] text-secondary hover:text-primary transition-colors">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Action Buttons -->
+        <div class="flex justify-between items-center pt-6">
+            <a href="cart.html" class="font-label-sm text-label-sm text-secondary hover:text-primary flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-surface-container transition-colors">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Back to Cart
+            </a>
+            <a href="orderconfirm.html" class="bg-primary hover:bg-surface-tint text-on-primary font-label-sm text-label-sm px-8 py-3.5 rounded-[12px] shadow-level-2 transition-all flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0">
+                Continue to Payment
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Right Column: Order Summary (Sticky) -->
+    <div class="w-full lg:w-1/3">
+        <div class="bg-surface rounded-xl p-6 shadow-level-2 border border-surface-variant sticky top-28 glass-panel">
+            <h3 class="font-headline-md text-[20px] font-semibold text-on-background mb-6 border-b border-surface-variant pb-4">Order Summary</h3>
+            <div class="space-y-4 mb-6 max-h-[409px] overflow-y-auto pr-2">
+                <div class="flex gap-4">
+                    <div class="w-16 h-16 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden relative">
+                        <img class="w-full h-full object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA" alt="Artisan Ceramic Mug"/>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-between">
+                        <div class="flex justify-between">
+                            <span class="font-label-sm text-[14px] text-on-surface font-medium truncate pr-2">Artisan Ceramic Mug</span>
+                            <span class="font-label-sm text-[14px] font-bold">&#8377;850</span>
+                        </div>
+                        <div class="font-body-md text-[13px] text-on-surface-variant">Qty: 2</div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-16 h-16 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden relative">
+                        <img class="w-full h-full object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Hand-woven Cotton Throw"/>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-between">
+                        <div class="flex justify-between">
+                            <span class="font-label-sm text-[14px] text-on-surface font-medium truncate pr-2">Hand-woven Cotton Throw</span>
+                            <span class="font-label-sm text-[14px] font-bold">&#8377;3,450</span>
+                        </div>
+                        <div class="font-body-md text-[13px] text-on-surface-variant">Qty: 1</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Promo Code -->
+            <div class="mb-6">
+                <div class="flex gap-2">
+                    <input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-2 font-body-md text-[14px] text-on-surface focus:ring-1 focus:ring-secondary outline-none transition-shadow placeholder-outline-variant" placeholder="Promo code" type="text"/>
+                    <button class="bg-surface-variant hover:bg-surface-dim text-on-surface font-label-sm text-[12px] px-4 py-2 rounded-lg transition-colors">Apply</button>
+                </div>
+            </div>
+            <!-- Totals -->
+            <div class="space-y-3 font-body-md text-[14px] text-on-surface-variant border-t border-surface-variant pt-4 mb-6">
+                <div class="flex justify-between">
+                    <span>Subtotal</span>
+                    <span class="font-medium text-on-surface">&#8377;4,300</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Delivery (Express)</span>
+                    <span class="font-medium text-on-surface">&#8377;150</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Taxes (GST 18%)</span>
+                    <span class="font-medium text-on-surface">&#8377;774</span>
+                </div>
+            </div>
+            <div class="flex justify-between items-center font-label-sm text-[18px] text-on-background font-bold border-t border-surface-variant pt-4">
+                <span>Total</span>
+                <span class="text-primary">&#8377;5,224</span>
+            </div>
+        </div>
+    </div>
 </div>
 </main>
-<!-- Footer Suppressed for Checkout Flow -->
-</body></html>
+</body>
+</html>

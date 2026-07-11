@@ -1,0 +1,322 @@
+/* ============================================================
+   Chennai Retail - Shared Styles
+   A premium e-commerce design system for Chennai Retail
+   ============================================================ */
+
+/* --------------------------------------------------
+   1. CSS Custom Properties
+   -------------------------------------------------- */
+:root {
+    --primary: #9a442d;
+    --primary-container: #e07a5f;
+    --surface: #faf8ff;
+    --surface-container: #ebedff;
+    --surface-container-low: #f3f2ff;
+    --surface-container-lowest: #ffffff;
+    --on-surface: #171b2b;
+    --on-surface-variant: #55423e;
+    --secondary: #436086;
+    --outline-variant: #dbc1ba;
+    --error: #ba1a1a;
+    --shadow-color: 45, 49, 66;
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+}
+
+/* --------------------------------------------------
+   2. Base & Resets
+   -------------------------------------------------- */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+::selection {
+    background-color: var(--primary-container);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------
+   3. Material Symbols
+   -------------------------------------------------- */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    user-select: none;
+}
+.material-symbols-outlined.fill,
+.icon-fill {
+    font-variation-settings: 'FILL' 1;
+}
+
+/* --------------------------------------------------
+   4. Glass Panel (Glassmorphism)
+   -------------------------------------------------- */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* --------------------------------------------------
+   5. Shadow System
+   -------------------------------------------------- */
+.shadow-ambient {
+    box-shadow:
+        0 1px 2px rgba(var(--shadow-color), 0.04),
+        0 4px 12px rgba(var(--shadow-color), 0.06);
+}
+.soft-shadow {
+    box-shadow:
+        0 2px 4px rgba(var(--shadow-color), 0.03),
+        0 8px 24px rgba(var(--shadow-color), 0.06);
+}
+.shadow-level-2 {
+    box-shadow:
+        0 2px 4px rgba(var(--shadow-color), 0.04),
+        0 8px 24px rgba(var(--shadow-color), 0.07);
+}
+.shadow-elevated {
+    box-shadow:
+        0 4px 8px rgba(var(--shadow-color), 0.05),
+        0 16px 48px rgba(var(--shadow-color), 0.10);
+}
+
+/* --------------------------------------------------
+   6. Text Utilities
+   -------------------------------------------------- */
+.text-gradient {
+    background: linear-gradient(135deg, #9a442d 0%, #e07a5f 50%, #ffb4a1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* --------------------------------------------------
+   7. Navigation Active States
+   -------------------------------------------------- */
+.nav-link-active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 4px;
+}
+
+/* --------------------------------------------------
+   8. Scrollbar Utilities
+   -------------------------------------------------- */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.scrollbar-thin::-webkit-scrollbar { width: 4px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--outline-variant);
+    border-radius: 999px;
+}
+
+/* --------------------------------------------------
+   9. Card & Interactive Effects
+   -------------------------------------------------- */
+.card-hover {
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 4px 8px rgba(var(--shadow-color), 0.06),
+        0 16px 48px rgba(var(--shadow-color), 0.10);
+}
+
+.btn-press {
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+.btn-press:active {
+    transform: scale(0.97);
+}
+
+.img-zoom {
+    overflow: hidden;
+}
+.img-zoom img {
+    transition: transform 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.img-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* --------------------------------------------------
+   10. Focus Visible (Accessibility)
+   -------------------------------------------------- */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* --------------------------------------------------
+   11. Animations
+   -------------------------------------------------- */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.animate-scale-in {
+    animation: scaleIn 0.3s ease-out both;
+}
+
+/* Pulse Glow */
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(154, 68, 45, 0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(154, 68, 45, 0); }
+}
+.animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Confetti */
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: #e07a5f;
+    top: -20px;
+    opacity: 0;
+    border-radius: 2px;
+}
+@keyframes fall {
+    0% { opacity: 1; top: -10%; transform: translateX(0) rotate(0deg); }
+    100% { opacity: 0; top: 100%; transform: translateX(100px) rotate(360deg); }
+}
+.animate-fall {
+    animation: fall 3s ease-in-out infinite;
+}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1.0s; }
+
+/* Shimmer Loading */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.skeleton {
+    background: linear-gradient(90deg, var(--surface-container-low) 25%, var(--surface-container) 50%, var(--surface-container-low) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+/* --------------------------------------------------
+   12. Checkout Step Progress
+   -------------------------------------------------- */
+.step-active .step-icon {
+    background-color: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+.step-active .step-label {
+    color: var(--primary);
+    font-weight: 600;
+}
+.step-completed .step-icon {
+    background-color: var(--primary-container);
+    color: #ffffff;
+    border-color: var(--primary-container);
+}
+.step-completed .step-line {
+    background-color: var(--primary-container);
+}
+.step-pending .step-icon {
+    background-color: var(--surface-container-low);
+    color: var(--on-surface-variant);
+    border-color: var(--outline-variant);
+}
+
+/* --------------------------------------------------
+   13. Form Elements
+   -------------------------------------------------- */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+/* --------------------------------------------------
+   14. Utility Classes
+   -------------------------------------------------- */
+.line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+.line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+/* Container transition for mobile nav */
+.nav-slide-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+.nav-slide-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+}

@@ -80,12 +80,58 @@
                 <span class="text-text">Wishlist</span>
             </nav>
 
-            <div class="flex items-center justify-between mb-6">
-                <h1 class="text-xl font-semibold">Wishlist</h1>
+            <!-- Wishlist Header -->
+            <div id="wishlistHeader" class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                    <h1 class="text-xl font-semibold">Wishlist</h1>
+                    <p id="wishlistCount" class="text-sm text-text-secondary mt-1"></p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="sortBtn" onclick="toggleSortDropdown()" class="hidden items-center gap-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-text-tertiary transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:18px">sort</span>
+                        Sort
+                    </button>
+                    <button id="shareBtn" onclick="shareWishlist()" class="hidden items-center gap-2 px-4 py-2 border border-border rounded-lg text-sm hover:border-text-tertiary transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:18px">share</span>
+                        Share
+                    </button>
+                    <button id="moveAllBtn" onclick="moveAllToCart()" class="hidden items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-medium hover:bg-red-700 transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>
+                        Move All to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div id="sortDropdown" class="hidden mb-4">
+                <div class="inline-flex border border-border rounded-lg overflow-hidden bg-white">
+                    <button onclick="sortWishlist('default')" class="sort-option px-4 py-2 text-sm border-r border-border hover:bg-surface-alt transition-colors" data-sort="default">Featured</button>
+                    <button onclick="sortWishlist('price_asc')" class="sort-option px-4 py-2 text-sm border-r border-border hover:bg-surface-alt transition-colors" data-sort="price_asc">Price: Low to High</button>
+                    <button onclick="sortWishlist('price_desc')" class="sort-option px-4 py-2 text-sm border-r border-border hover:bg-surface-alt transition-colors" data-sort="price_desc">Price: High to Low</button>
+                    <button onclick="sortWishlist('name')" class="sort-option px-4 py-2 text-sm hover:bg-surface-alt transition-colors" data-sort="name">Name: A to Z</button>
+                </div>
             </div>
 
             <!-- Wishlist Grid -->
-            <div id="wishlistGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-5" data-reveal-stagger></div>
+            <div id="wishlistGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"></div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden">
+                <div class="text-center py-16">
+                    <span class="material-symbols-outlined text-text-tertiary mb-4 block" style="font-size:80px">favorite</span>
+                    <h2 class="text-lg font-semibold mb-2">Your wishlist is empty</h2>
+                    <p class="text-sm text-text-secondary mb-8">Save items you love to buy them later</p>
+                    <a href="category.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-lg text-sm font-medium hover:bg-red-700 transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>
+                        Browse Products
+                    </a>
+                </div>
+                <!-- Suggested Products -->
+                <div id="suggestedSection" class="mt-8">
+                    <h3 class="text-sm font-semibold mb-4">You might like</h3>
+                    <div id="suggestedList" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5"></div>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -171,16 +217,159 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async function() {
-            var products = await wishlistStore.getWishlistProducts();
+        var currentSort = 'default';
+        var allWishlistProducts = [];
+
+        function renderWishlistCard(product) {
+            var inWishlist = wishlistStore.isInWishlist(product.id);
+            return '<div class="product-card group block" data-product-id="' + product.id + '">' +
+                '<a href="product.html?id=' + product.id + '">' +
+                    '<div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">' +
+                        '<img src="' + product.image + '" alt="' + product.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="400" height="400">' +
+                        '<span class="absolute top-2 left-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded">' + (product.tag || '') + '</span>' +
+                    '</div>' +
+                '</a>' +
+                '<div class="flex items-start justify-between">' +
+                    '<div class="min-w-0 flex-1">' +
+                        '<h3 class="text-sm font-medium mb-1 truncate"><a href="product.html?id=' + product.id + '">' + product.name + '</a></h3>' +
+                        '<p class="text-sm font-semibold">' + formatPrice(product.price) + '</p>' +
+                    '</div>' +
+                    '<div class="flex items-center gap-1 ml-2 shrink-0">' +
+                        '<button onclick="event.stopPropagation(); moveSingleToCart(\'' + product.id + '\')" class="p-1.5 rounded-full hover:bg-surface-alt transition-colors" aria-label="Add ' + product.name + ' to cart" title="Move to cart">' +
+                            '<span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>' +
+                        '</button>' +
+                        '<button onclick="event.stopPropagation(); removeFromWishlist(\'' + product.id + '\',\'' + product.name.replace(/'/g, "\\'") + '\')" class="p-1.5 rounded-full hover:bg-surface-alt transition-colors" aria-label="Remove ' + product.name + ' from wishlist" title="Remove">' +
+                            '<span class="material-symbols-outlined" style="font-size:18px">close</span>' +
+                        '</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+        }
+
+        async function loadWishlist() {
+            allWishlistProducts = await wishlistStore.getWishlistProducts();
+            renderWishlist();
+        }
+
+        function renderWishlist() {
             var container = document.getElementById('wishlistGrid');
-            if (container) {
-                if (products.length === 0) {
-                    container.innerHTML = '<div class="col-span-full text-center py-16"><p class="text-text-secondary mb-4">Your wishlist is empty</p><a href="category.html" class="btn-primary">Browse Products</a></div>';
-                } else {
-                    container.innerHTML = products.map(renderProductCard).join('');
-                }
+            var emptyState = document.getElementById('emptyState');
+            var header = document.getElementById('wishlistHeader');
+            var countEl = document.getElementById('wishlistCount');
+            var sortBtn = document.getElementById('sortBtn');
+            var shareBtn = document.getElementById('shareBtn');
+            var moveAllBtn = document.getElementById('moveAllBtn');
+
+            if (allWishlistProducts.length === 0) {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                header.querySelector('h1').textContent = 'Wishlist';
+                countEl.textContent = '';
+                sortBtn.classList.add('hidden');
+                shareBtn.classList.add('hidden');
+                moveAllBtn.classList.add('hidden');
+                loadSuggested();
+            } else {
+                container.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                sortBtn.classList.remove('hidden');
+                sortBtn.classList.add('inline-flex');
+                shareBtn.classList.remove('hidden');
+                shareBtn.classList.add('inline-flex');
+                moveAllBtn.classList.remove('hidden');
+                moveAllBtn.classList.add('inline-flex');
+                var count = allWishlistProducts.length;
+                header.querySelector('h1').textContent = 'Wishlist (' + count + ')';
+                countEl.textContent = count + ' item' + (count !== 1 ? 's' : '') + ' saved';
+
+                var sorted = getSortedProducts();
+                container.innerHTML = sorted.map(renderWishlistCard).join('');
             }
+            wishlistStore.updateIcons();
+        }
+
+        function getSortedProducts() {
+            var products = [...allWishlistProducts];
+            switch (currentSort) {
+                case 'price_asc': return products.sort(function(a, b) { return a.price - b.price; });
+                case 'price_desc': return products.sort(function(a, b) { return b.price - a.price; });
+                case 'name': return products.sort(function(a, b) { return a.name.localeCompare(b.name); });
+                default: return products;
+            }
+        }
+
+        function sortWishlist(sortBy) {
+            currentSort = sortBy;
+            document.querySelectorAll('.sort-option').forEach(function(btn) {
+                btn.classList.toggle('bg-surface-alt', btn.dataset.sort === sortBy);
+                btn.classList.toggle('font-medium', btn.dataset.sort === sortBy);
+            });
+            renderWishlist();
+        }
+
+        function toggleSortDropdown() {
+            var dropdown = document.getElementById('sortDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function removeFromWishlist(productId, name) {
+            wishlistStore.toggle(productId, name);
+            allWishlistProducts = allWishlistProducts.filter(function(p) { return p.id !== productId; });
+            renderWishlist();
+        }
+
+        async function moveSingleToCart(productId) {
+            var product = allWishlistProducts.find(function(p) { return p.id === productId; });
+            if (!product) return;
+            cartStore.addItem(product, 1);
+            wishlistStore.toggle(productId, product.name);
+            allWishlistProducts = allWishlistProducts.filter(function(p) { return p.id !== productId; });
+            renderWishlist();
+        }
+
+        async function moveAllToCart() {
+            if (allWishlistProducts.length === 0) return;
+            var count = allWishlistProducts.length;
+            allWishlistProducts.forEach(function(product) {
+                cartStore.addItem(product, 1);
+            });
+            var ids = allWishlistProducts.map(function(p) { return p.id; });
+            ids.forEach(function(id) { wishlistStore.toggle(id, ''); });
+            allWishlistProducts = [];
+            renderWishlist();
+            window.showToast(count + ' item' + (count !== 1 ? 's' : '') + ' moved to cart');
+        }
+
+        function shareWishlist() {
+            var names = allWishlistProducts.map(function(p) { return p.name; }).join(', ');
+            var text = 'Check out my Chennai Retail wishlist: ' + names;
+            if (navigator.share) {
+                navigator.share({ title: 'My Wishlist', text: text }).catch(function() {});
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function() {
+                    window.showToast('Wishlist copied to clipboard');
+                });
+            } else {
+                window.showToast('Wishlist shared');
+            }
+        }
+
+        async function loadSuggested() {
+            try {
+                var featured = await ProductService.getFeaturedProducts();
+                var list = document.getElementById('suggestedList');
+                if (list && featured.length > 0) {
+                    list.innerHTML = featured.slice(0, 4).map(renderProductCardWithActions).join('');
+                    wishlistStore.updateIcons();
+                }
+            } catch(e) {}
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadWishlist();
+            window.EventBus.on('wishlist:updated', function() {
+                loadWishlist();
+            });
         });
     </script>
 </body>

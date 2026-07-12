@@ -90,6 +90,7 @@
     </script>
 </head>
 <body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col pb-24 md:pb-0">
+    <div class="scroll-progress"></div>
 
         <!-- ============================== -->
         <!-- 1. ANNOUNCEMENT BAR -->
@@ -219,9 +220,18 @@
             </div>
         </header>
 
+        <!-- Breadcrumb -->
+        <div class="max-w-[1280px] mx-auto px-4 md:px-16 py-3">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-sep material-symbols-outlined" style="font-size:14px">chevron_right</span>
+                <span class="breadcrumb-current">All Categories</span>
+            </nav>
+        </div>
+
     <!-- Main Content -->
     <main class="flex-1 pt-4 md:pt-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 page-transition">
 
             <!-- Breadcrumbs -->
             <nav class="flex items-center gap-2 text-sm text-on-surface-variant mb-4" aria-label="Breadcrumb">
@@ -231,7 +241,7 @@
             </nav>
 
             <!-- Page Title -->
-            <div class="mb-6">
+            <div class="mb-6" data-reveal>
                 <h1 class="font-display text-2xl md:text-3xl font-bold text-on-surface">Home Essentials</h1>
                 <p class="text-on-surface-variant mt-1">Elevate your living space with our premium selection.</p>
             </div>
@@ -390,7 +400,7 @@
                         <p class="text-sm text-on-surface-variant">Showing <span class="font-semibold text-on-surface">1-12</span> of <span class="font-semibold text-on-surface">154</span> results</p>
                         <div class="flex items-center gap-3 w-full sm:w-auto">
                             <!-- Mobile Filter Button -->
-                            <button onclick="openFilters()" class="lg:hidden flex items-center gap-2 px-4 py-2 text-sm font-medium bg-surface-container-low border border-outline-variant rounded-full hover:bg-surface-container transition-colors">
+                            <button onclick="openFilters()" class="lg:hidden flex items-center gap-2 px-4 py-2 text-sm font-medium bg-surface-container-low border border-outline-variant rounded-full hover:bg-surface-container transition-all">
                                 <span class="material-symbols-outlined" style="font-size:18px">tune</span>
                                 Filters
                             </button>
@@ -419,7 +429,7 @@
                     </div>
 
                     <!-- Product Grid -->
-                    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
 
                         <!-- Product Card 1: Minimalist Ceramic Table Lamp -->
                         <a href="product.html" class="group bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-hover block">
@@ -452,7 +462,7 @@
                                     <span class="font-display font-bold text-lg text-on-surface">₹3,499</span>
                                     <span class="text-sm text-on-surface-variant line-through">₹4,116</span>
                                 </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p1', name:'Minimalist Ceramic Table Lamp', price:3499})" class="btn-press w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
+                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p1', name:'Minimalist Ceramic Table Lamp', price:3499})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
                                     Add to Cart
                                 </button>
@@ -513,7 +523,7 @@
                                 <div class="flex items-center gap-2 mb-3">
                                     <span class="font-display font-bold text-lg text-on-surface">₹2,250</span>
                                 </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p3', name:'Matte Stone Planter Set', price:2250})" class="btn-press w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
+                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p3', name:'Matte Stone Planter Set', price:2250})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
                                     Add to Cart
                                 </button>
@@ -537,7 +547,7 @@
                                 <div class="flex items-center gap-2 mb-3">
                                     <span class="font-display font-bold text-lg text-on-surface">₹600</span>
                                 </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p4', name:'Artisan Ceramic Mug', price:600})" class="btn-press w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
+                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p4', name:'Artisan Ceramic Mug', price:600})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
                                     Add to Cart
                                 </button>
@@ -561,7 +571,7 @@
                                 <div class="flex items-center gap-2 mb-3">
                                     <span class="font-display font-bold text-lg text-on-surface">₹4,200</span>
                                 </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p5', name:'Brass Desk Lamp', price:4200})" class="btn-press w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
+                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p5', name:'Brass Desk Lamp', price:4200})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
                                     Add to Cart
                                 </button>
@@ -585,7 +595,7 @@
                                 <div class="flex items-center gap-2 mb-3">
                                     <span class="font-display font-bold text-lg text-on-surface">₹3,450</span>
                                 </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p6', name:'Hand-woven Cotton Throw', price:3450})" class="btn-press w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
+                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p6', name:'Hand-woven Cotton Throw', price:3450})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
                                     Add to Cart
                                 </button>

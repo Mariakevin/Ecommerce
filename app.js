@@ -503,4 +503,293 @@
         document.head.appendChild(style);
     });
 
+    /* --------------------------------------------------
+        21. Scroll Reveal Engine
+        -------------------------------------------------- */
+    function initScrollReveal() {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach(el => {
+            revealObserver.observe(el);
+        });
+    }
+
+    /* --------------------------------------------------
+        22. Scroll Progress Indicator
+        -------------------------------------------------- */
+    function initScrollProgress() {
+        const bar = document.querySelector('.scroll-progress');
+        if (!bar) return;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            bar.style.width = progress + '%';
+        }, { passive: true });
+    }
+
+    /* --------------------------------------------------
+        23. Cart Fly-to Animation
+        -------------------------------------------------- */
+    window.flyToCart = function(imageEl) {
+        if (!imageEl) return;
+        const cartIcon = document.querySelector('header .cart-badge, nav .cart-badge');
+        if (!cartIcon) return;
+
+        const imgRect = imageEl.getBoundingClientRect();
+        const cartRect = cartIcon.getBoundingClientRect();
+
+        const clone = imageEl.cloneNode(true);
+        clone.className = 'cart-fly-clone';
+        clone.style.width = imgRect.width + 'px';
+        clone.style.height = imgRect.height + 'px';
+        clone.style.left = imgRect.left + 'px';
+        clone.style.top = imgRect.top + 'px';
+        clone.style.setProperty('--fly-x', (cartRect.left - imgRect.left) * 0.5 + 'px');
+        clone.style.setProperty('--fly-y', (cartRect.top - imgRect.top) * 0.5 + 'px');
+        clone.style.setProperty('--fly-x-end', (cartRect.left - imgRect.left) + 'px');
+        clone.style.setProperty('--fly-y-end', (cartRect.top - imgRect.top) + 'px');
+        document.body.appendChild(clone);
+
+        setTimeout(() => clone.remove(), 750);
+    };
+
+    /* --------------------------------------------------
+        24. Wishlist Heart Burst
+        -------------------------------------------------- */
+    window.wishlistBurst = function(btn) {
+        if (!btn) return;
+        btn.classList.add('wishlist-burst');
+        setTimeout(() => btn.classList.remove('wishlist-burst'), 500);
+
+        // Create particles
+        for (let i = 0; i < 6; i++) {
+            const particle = document.createElement('span');
+            particle.className = 'wishlist-particle';
+            const angle = (i / 6) * 360;
+            const dist = 20 + Math.random() * 15;
+            particle.style.setProperty('--tx', Math.cos(angle * Math.PI / 180) * dist + 'px');
+            particle.style.setProperty('--ty', Math.sin(angle * Math.PI / 180) * dist + 'px');
+            particle.style.background = i % 2 === 0 ? 'var(--primary)' : 'var(--primary-container)';
+            btn.style.position = 'relative';
+            btn.appendChild(particle);
+            setTimeout(() => particle.remove(), 600);
+        }
+    };
+
+    /* --------------------------------------------------
+        25. Button Ripple Effect
+        -------------------------------------------------- */
+    document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-ripple');
+        if (!btn) return;
+        // The CSS ::after pseudo-element handles the ripple via :active
+    });
+
+    /* --------------------------------------------------
+        26. Sticky Add-to-Cart (Product Page)
+        -------------------------------------------------- */
+    function initStickyAddToCart() {
+        const stickyBar = document.querySelector('.sticky-add-cart');
+        const mainAddBtn = document.querySelector('[data-main-add-cart]');
+        if (!stickyBar || !mainAddBtn) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    stickyBar.classList.remove('visible');
+                } else {
+                    stickyBar.classList.add('visible');
+                }
+            });
+        }, { threshold: 0 });
+
+        observer.observe(mainAddBtn);
+    }
+
+    /* --------------------------------------------------
+        27. Image Lazy Loading
+        -------------------------------------------------- */
+    function initLazyImages() {
+        const imgObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        img.addEventListener('load', () => img.classList.add('loaded'));
+                    }
+                    imgObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '200px 0px' });
+
+        document.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
+    }
+
+    /* --------------------------------------------------
+        28. Swipe Gesture (Cart Delete)
+        -------------------------------------------------- */
+    function initSwipeGestures() {
+        document.querySelectorAll('.swipe-container').forEach(container => {
+            const content = container.querySelector('.swipe-content');
+            if (!content) return;
+
+            let startX = 0, currentX = 0, isDragging = false;
+
+            content.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                content.classList.add('swiping');
+            }, { passive: true });
+
+            content.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX - startX;
+                if (currentX < 0) {
+                    content.style.transform = `translateX(${Math.max(currentX, -80)}px)`;
+                }
+            }, { passive: true });
+
+            content.addEventListener('touchend', () => {
+                isDragging = false;
+                content.classList.remove('swiping');
+                if (currentX < -50) {
+                    content.style.transform = 'translateX(-80px)';
+                } else {
+                    content.style.transform = 'translateX(0)';
+                }
+                currentX = 0;
+            });
+        });
+    }
+
+    /* --------------------------------------------------
+        29. Animated Counter
+        -------------------------------------------------- */
+    window.animateCounter = function(el, target, duration = 1000) {
+        const start = parseInt(el.textContent) || 0;
+        const diff = target - start;
+        const startTime = performance.now();
+
+        function step(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            el.textContent = Math.round(start + diff * eased);
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    };
+
+    /* --------------------------------------------------
+        30. Parallax Scroll Effect
+        -------------------------------------------------- */
+    function initParallax() {
+        const sections = document.querySelectorAll('.parallax-section');
+        if (!sections.length) return;
+
+        window.addEventListener('scroll', () => {
+            sections.forEach(section => {
+                const bg = section.querySelector('.parallax-bg');
+                if (!bg) return;
+                const rect = section.getBoundingClientRect();
+                const speed = 0.3;
+                const yPos = (rect.top * speed);
+                bg.style.transform = `translateY(${yPos}px)`;
+            });
+        }, { passive: true });
+    }
+
+    /* --------------------------------------------------
+        31. Enhanced Toast with Progress Bar
+        -------------------------------------------------- */
+    window.showToastEnhanced = function(message, type = 'success', duration = 3500) {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            document.body.appendChild(container);
+        }
+
+        const icons = { success: 'check_circle', error: 'error', info: 'info' };
+
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type} toast-enter`;
+        toast.innerHTML = `
+            <span class="material-symbols-outlined fill" style="font-size:20px">${icons[type] || 'info'}</span>
+            <span style="flex:1">${message}</span>
+            <span class="material-symbols-outlined" style="font-size:16px;cursor:pointer;opacity:0.6" onclick="this.closest('.toast').remove()">close</span>
+            <div style="position:absolute;bottom:0;left:0;height:3px;background:currentColor;opacity:0.3;border-radius:0 0 0 var(--radius-lg);animation:toastProgress ${duration}ms linear forwards"></div>
+        `;
+        toast.style.position = 'relative';
+        toast.style.overflow = 'hidden';
+        container.appendChild(toast);
+
+        // Add progress animation
+        const progressStyle = document.createElement('style');
+        progressStyle.textContent = `@keyframes toastProgress { from { width: 100%; } to { width: 0%; } }`;
+        document.head.appendChild(progressStyle);
+
+        setTimeout(() => {
+            toast.classList.remove('toast-enter');
+            toast.classList.add('toast-exit');
+            setTimeout(() => toast.remove(), 300);
+        }, duration);
+    };
+
+    /* --------------------------------------------------
+        32. Skeleton Loading for Product Grid
+        -------------------------------------------------- */
+    window.showSkeletons = function(container, count = 6) {
+        if (!container) return;
+        const html = Array.from({ length: count }, () => `
+            <div class="skeleton-card">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line w-75"></div>
+                    <div class="skeleton-line w-50"></div>
+                    <div class="skeleton-line w-40"></div>
+                </div>
+            </div>
+        `).join('');
+        container.innerHTML = html;
+    };
+
+    /* --------------------------------------------------
+        33. Smooth Anchor Scroll
+        -------------------------------------------------- */
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+
+    /* --------------------------------------------------
+        34. Page Init
+        -------------------------------------------------- */
+    // Update DOMContentLoaded to include new inits
+    const origDOMContentLoaded = document.addEventListener;
+    document.addEventListener('DOMContentLoaded', function() {
+        initScrollReveal();
+        initScrollProgress();
+        initStickyAddToCart();
+        initLazyImages();
+        initSwipeGestures();
+        initParallax();
+    });
+
 })();

@@ -49,6 +49,8 @@
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col relative overflow-hidden pb-24 md:pb-0">
 
+  <div class="scroll-progress"></div>
+
   <!-- ============================== -->
   <!-- 1. ANNOUNCEMENT BAR -->
   <!-- ============================== -->
@@ -181,14 +183,14 @@
   <div id="confetti-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
 
   <!-- Main Content -->
-  <main class="relative z-10 w-full max-w-2xl mx-auto px-4 py-12 flex-1 flex items-center">
+  <main class="relative z-10 w-full max-w-2xl mx-auto px-4 py-12 flex-1 flex items-center page-transition">
     <div class="bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant p-8 md:p-12 relative overflow-hidden w-full">
 
       <!-- Ambient Glow -->
       <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container rounded-full blur-3xl opacity-20"></div>
 
       <!-- Success Header -->
-      <div class="text-center mb-8 relative">
+      <div data-reveal class="text-center mb-8 relative">
         <div class="w-24 h-24 rounded-full bg-surface-container mx-auto flex items-center justify-center mb-6 animate-scale-in">
           <span class="material-symbols-outlined fill text-primary" style="font-size: 48px; font-variation-settings: 'FILL' 1;">check_circle</span>
         </div>

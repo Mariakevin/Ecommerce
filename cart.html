@@ -56,9 +56,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-background text-on-background font-body antialiased overflow-x-hidden min-h-screen pb-24 md:pb-0">
+    <div class="scroll-progress"></div>
 
     <!-- Main wrapper for mobile header offset -->
-    <div class="pt-14 md:pt-0">
+    <div class="pt-14 md:pt-0 page-transition">
 
         <!-- ============================== -->
         <!-- 1. ANNOUNCEMENT BAR -->
@@ -194,6 +195,20 @@
       <h1 class="font-heading font-bold text-3xl md:text-4xl text-on-background mb-2">Your Cart</h1>
       <p class="text-on-surface/60 mb-10">2 items in your bag.</p>
 
+      <!-- Free Delivery Progress -->
+      <div class="bg-surface-container rounded-xl p-4 mb-6" data-reveal>
+          <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-on-surface-variant flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary">local_shipping</span>
+                  Add ₹501 more for <strong class="text-primary">FREE delivery</strong>
+              </span>
+              <span class="text-sm font-semibold text-primary">₹499 / ₹999</span>
+          </div>
+          <div class="progress-bar">
+              <div class="progress-bar-fill" style="width: 50%"></div>
+          </div>
+      </div>
+
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
 
         <!-- Left Column: Cart Items -->
@@ -264,7 +279,7 @@
         </div>
 
         <!-- Right Column: Order Summary -->
-        <div class="lg:col-span-4">
+        <div class="lg:col-span-4" data-reveal>
           <div class="glass-panel rounded-2xl p-6 lg:sticky lg:top-32">
             <h2 class="font-heading font-bold text-xl text-on-background mb-6">Order Summary</h2>
 
@@ -304,7 +319,7 @@
 
             <a
               href="checkout.html"
-              class="block w-full bg-primary-container hover:bg-primary text-white text-center font-heading font-semibold py-3.5 rounded-xl transition-colors"
+              class="block w-full bg-primary-container hover:bg-primary text-white text-center font-heading font-semibold py-3.5 rounded-xl transition-colors btn-ripple"
             >
               Proceed to Checkout
             </a>
@@ -316,6 +331,22 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="grid grid-cols-3 gap-3 mt-8" data-reveal>
+          <div class="trust-badge flex-col text-center py-4">
+              <span class="material-symbols-outlined">lock</span>
+              <p class="text-xs font-semibold text-on-surface mt-1">Secure Checkout</p>
+          </div>
+          <div class="trust-badge flex-col text-center py-4">
+              <span class="material-symbols-outlined">verified</span>
+              <p class="text-xs font-semibold text-on-surface mt-1">100% Authentic</p>
+          </div>
+          <div class="trust-badge flex-col text-center py-4">
+              <span class="material-symbols-outlined">swap_horiz</span>
+              <p class="text-xs font-semibold text-on-surface mt-1">Easy Returns</p>
+          </div>
       </div>
 
       <!-- Recommended Section -->

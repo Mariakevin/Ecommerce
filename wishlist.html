@@ -58,6 +58,8 @@
 </head>
 <body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col pb-24 md:pb-0">
 
+    <div class="scroll-progress"></div>
+
     <!-- ============================== -->
     <!-- 1. ANNOUNCEMENT BAR -->
     <!-- ============================== -->
@@ -181,7 +183,7 @@
     <!-- ============================== -->
     <!-- MAIN CONTENT -->
     <!-- ============================== -->
-    <main class="pt-[80px] md:pt-[120px] flex-1 pb-section-gap">
+    <main class="pt-[80px] md:pt-[120px] flex-1 pb-section-gap page-transition">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 
             <!-- Page Title -->
@@ -191,7 +193,7 @@
             </div>
 
             <!-- Wishlist Product Grid -->
-            <div id="wishlistGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div id="wishlistGrid" data-reveal-stagger class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
                 <!-- Product 1: Artisan Ceramic Mug -->
                 <div class="bg-surface rounded-xl overflow-hidden shadow-ambient card-hover group" data-product-id="p1">

@@ -68,8 +68,11 @@
 </head>
 <body class="bg-background text-on-background font-body antialiased overflow-x-hidden min-h-screen pb-24 md:pb-0">
 
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
     <!-- Main wrapper for mobile header offset -->
-    <div class="pt-14 md:pt-0">
+    <div class="pt-14 md:pt-0 page-transition">
 
         <!-- ============================== -->
         <!-- 1. ANNOUNCEMENT BAR -->
@@ -216,7 +219,7 @@
                         <h1 class="font-display text-display-lg-mobile md:text-display-lg text-on-primary mb-4 leading-tight">Quality you trust, delivered today.</h1>
                         <p class="text-body-lg text-on-primary/85 mb-8 max-w-lg">Premium products from trusted Chennai brands. Same-day delivery, store pickup, and authentic quality guaranteed.</p>
                         <div class="flex flex-wrap gap-4">
-                            <a href="category.html" class="inline-flex items-center gap-2 bg-on-primary text-primary px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-on-primary/90 transition-colors shadow-lg">
+                            <a href="category.html" class="inline-flex items-center gap-2 bg-on-primary text-primary px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-on-primary/90 transition-colors shadow-lg btn-ripple cta-glow">
                                 Shop Now
                                 <span class="material-symbols-outlined text-lg">arrow_forward</span>
                             </a>
@@ -232,7 +235,7 @@
         <!-- ============================== -->
         <!-- 5. USP BAR -->
         <!-- ============================== -->
-        <section class="max-w-[1280px] mx-auto px-4 md:px-16 py-16 section-gap">
+        <section class="max-w-[1280px] mx-auto px-4 md:px-16 py-16 section-gap" data-reveal>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" data-animate>
                 <div class="bg-surface-container-lowest rounded-xl p-6 text-center border border-outline-variant/20 hover:shadow-md transition-shadow">
                     <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -266,9 +269,45 @@
         </section>
 
         <!-- ============================== -->
+        <!-- TRUST BADGES -->
+        <!-- ============================== -->
+        <section class="max-w-[1280px] mx-auto px-16 py-8" data-reveal>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="trust-badge">
+                    <span class="material-symbols-outlined">verified</span>
+                    <div>
+                        <p class="text-sm font-semibold text-on-surface">100% Authentic</p>
+                        <p class="text-xs text-on-surface-variant">Certified products</p>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <span class="material-symbols-outlined">local_shipping</span>
+                    <div>
+                        <p class="text-sm font-semibold text-on-surface">Free Delivery</p>
+                        <p class="text-xs text-on-surface-variant">On orders above ₹999</p>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <span class="material-symbols-outlined">swap_horiz</span>
+                    <div>
+                        <p class="text-sm font-semibold text-on-surface">Easy Returns</p>
+                        <p class="text-xs text-on-surface-variant">7-day return policy</p>
+                    </div>
+                </div>
+                <div class="trust-badge">
+                    <span class="material-symbols-outlined">support_agent</span>
+                    <div>
+                        <p class="text-sm font-semibold text-on-surface">24/7 Support</p>
+                        <p class="text-xs text-on-surface-variant">WhatsApp us anytime</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================== -->
         <!-- 6. PROMOS BENTO GRID -->
         <!-- ============================== -->
-        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap">
+        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-reveal>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" data-animate>
                 <!-- Margazhi Festival Offers -->
                 <div class="col-span-1 md:col-span-2 bg-gradient-to-br from-tertiary-fixed to-tertiary-fixed-dim rounded-2xl p-8 md:p-10 relative overflow-hidden">
@@ -276,7 +315,7 @@
                         <span class="inline-block bg-primary/10 text-primary text-label-sm px-3 py-1.5 rounded-full mb-4 uppercase">Limited Time</span>
                         <h2 class="font-display text-headline-md md:text-display-lg-mobile text-on-surface mb-3">Margazhi Festival Offers</h2>
                         <p class="text-on-surface-variant text-body-md mb-6 max-w-md">Celebrate the season with exclusive discounts on silk sarees, traditional home decor, and artisan collections. Up to 40% off.</p>
-                        <a href="offers.html" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-semibold text-sm hover:bg-primary-container transition-colors">
+                        <a href="offers.html" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-semibold text-sm hover:bg-primary-container transition-colors btn-ripple">
                             Shop Festival Deals
                             <span class="material-symbols-outlined text-lg">arrow_forward</span>
                         </a>
@@ -290,7 +329,7 @@
                         <span class="material-symbols-outlined text-3xl text-on-secondary-container mb-4 block">storefront</span>
                         <h3 class="font-display text-headline-md text-on-secondary-container mb-2">Store Pickup</h3>
                         <p class="text-on-secondary-container/80 text-body-md mb-6">Order online, collect from our Chennai stores. Ready in 2 hours. No delivery charges.</p>
-                        <a href="stores.html" class="inline-flex items-center gap-2 bg-on-secondary-container text-secondary-container px-6 py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity">
+                        <a href="stores.html" class="inline-flex items-center gap-2 bg-on-secondary-container text-secondary-container px-6 py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity btn-ripple">
                             Find a Store
                             <span class="material-symbols-outlined text-lg">map</span>
                         </a>
@@ -304,7 +343,7 @@
         <!-- 7. SHOP BY CATEGORY -->
         <!-- ============================== -->
         <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap">
-            <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center justify-between mb-8" data-reveal>
                 <div>
                     <h2 class="font-display text-display-lg-mobile md:text-headline-md text-on-surface">Shop by Category</h2>
                     <p class="text-on-surface-variant text-body-md mt-1">Curated collections for every corner of your home</p>
@@ -314,7 +353,7 @@
                     <span class="material-symbols-outlined text-lg">arrow_forward</span>
                 </a>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" data-animate>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" data-reveal-stagger>
                 <!-- Home Decor -->
                 <a href="category.html" class="group relative rounded-xl overflow-hidden aspect-[4/5] block">
                     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Home Decor" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -358,7 +397,7 @@
         <!-- 8. BEST SELLERS -->
         <!-- ============================== -->
         <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap">
-            <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center justify-between mb-8" data-reveal>
                 <div>
                     <h2 class="font-display text-display-lg-mobile md:text-headline-md text-on-surface">Best Sellers</h2>
                     <p class="text-on-surface-variant text-body-md mt-1">Loved by Chennai homes, every single day</p>
@@ -368,7 +407,7 @@
                     <span class="material-symbols-outlined text-lg">arrow_forward</span>
                 </a>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" data-animate>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" data-reveal-stagger>
                 <!-- Product 1 -->
                 <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden hover:shadow-lg transition-shadow group">
                     <div class="relative aspect-square overflow-hidden">
@@ -387,7 +426,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-on-surface font-semibold">₹600</span>
-                            <button onclick="event.preventDefault(); addToCart({id:'p1',name:'Artisan Ceramic Mug',price:600})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p1',name:'Artisan Ceramic Mug',price:600})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -413,7 +452,7 @@
                                 <span class="text-on-surface font-semibold">₹3,499</span>
                                 <span class="text-on-surface-variant text-xs line-through ml-1.5">₹4,116</span>
                             </div>
-                            <button onclick="event.preventDefault(); addToCart({id:'p2',name:'Ceramic Table Lamp',price:3499})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p2',name:'Ceramic Table Lamp',price:3499})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -435,7 +474,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-on-surface font-semibold">₹3,450</span>
-                            <button onclick="event.preventDefault(); addToCart({id:'p3',name:'Cotton Throw Blanket',price:3450})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p3',name:'Cotton Throw Blanket',price:3450})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -458,7 +497,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-on-surface font-semibold">₹2,250</span>
-                            <button onclick="event.preventDefault(); addToCart({id:'p4',name:'Stone Planter Set',price:2250})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p4',name:'Stone Planter Set',price:2250})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -496,7 +535,7 @@
                             <span class="text-label-sm text-on-primary/70 uppercase">Secs</span>
                         </div>
                     </div>
-                    <a href="category.html" class="inline-flex items-center gap-2 bg-on-primary text-primary px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-on-primary/90 transition-colors shadow-lg">
+                    <a href="category.html" class="inline-flex items-center gap-2 bg-on-primary text-primary px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-on-primary/90 transition-colors shadow-lg btn-ripple">
                         Shop the Collection
                         <span class="material-symbols-outlined text-lg">arrow_forward</span>
                     </a>
@@ -509,7 +548,7 @@
         <!-- ============================== -->
         <!-- 10. CUSTOMER TESTIMONIALS -->
         <!-- ============================== -->
-        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap">
+        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-reveal>
             <div class="text-center mb-10">
                 <h2 class="font-display text-display-lg-mobile md:text-headline-md text-on-surface">What Our Customers Say</h2>
                 <p class="text-on-surface-variant text-body-md mt-2">Trusted by thousands of Chennai households</p>
@@ -581,7 +620,7 @@
         <!-- ============================== -->
         <!-- 11. STORE HIGHLIGHTS -->
         <!-- ============================== -->
-        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-animate>
+        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-animate data-reveal>
             <div class="bg-surface-container rounded-2xl p-8 md:p-12 text-center border border-outline-variant/20">
                 <span class="inline-flex items-center gap-2 bg-primary/10 text-primary text-label-sm px-4 py-2 rounded-full mb-4 uppercase">
                     <span class="material-symbols-outlined text-lg">verified</span>
@@ -601,7 +640,7 @@
         <!-- ============================== -->
         <!-- 12. NEWSLETTER -->
         <!-- ============================== -->
-        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-animate>
+        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-animate data-reveal>
             <div class="bg-gradient-to-br from-primary to-primary-container rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
                 <div class="relative z-10">
                     <span class="material-symbols-outlined text-4xl text-on-primary/80 mb-4 block">mail</span>
@@ -614,7 +653,7 @@
                             required
                             class="w-full flex-1 px-5 py-3.5 rounded-full bg-on-primary/20 backdrop-blur-sm text-on-primary placeholder:text-on-primary/60 border border-on-primary/30 focus:border-on-primary focus:ring-2 focus:ring-on-primary/30 focus:outline-none transition-all text-sm"
                         >
-                        <button type="submit" class="w-full sm:w-auto bg-on-primary text-primary px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-on-primary/90 transition-colors shadow-lg shrink-0">Subscribe</button>
+                        <button type="submit" class="w-full sm:w-auto bg-on-primary text-primary px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-on-primary/90 transition-colors shadow-lg shrink-0 btn-ripple">Subscribe</button>
                     </form>
                 </div>
                 <div class="absolute top-0 right-0 w-48 h-48 bg-on-primary/5 rounded-full -translate-y-1/2 translate-x-1/4"></div>

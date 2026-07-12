@@ -1068,3 +1068,564 @@ select:focus {
     header, nav, footer, .no-print { display: none !important; }
     body { background: white; }
 }
+
+/* --------------------------------------------------
+   41. Microinteractions - Ripple Effect
+   -------------------------------------------------- */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.35) 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.8s;
+}
+.btn-ripple:active::after {
+    transform: scale(0);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* --------------------------------------------------
+   42. Wishlist Heart Burst Animation
+   -------------------------------------------------- */
+@keyframes heartBurst {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.3); }
+    50% { transform: scale(0.95); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.wishlist-burst {
+    animation: heartBurst 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes heartParticles {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+}
+.wishlist-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    pointer-events: none;
+    animation: heartParticles 0.6s ease-out forwards;
+}
+
+/* --------------------------------------------------
+   43. Cart Fly Animation
+   -------------------------------------------------- */
+@keyframes cartFly {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    50% { opacity: 0.8; transform: translate(var(--fly-x, 50px), var(--fly-y, -100px)) scale(0.5); }
+    100% { opacity: 0; transform: translate(var(--fly-x-end, 200px), var(--fly-y-end, -300px)) scale(0.1); }
+}
+.cart-fly-clone {
+    position: fixed;
+    z-index: 99999;
+    pointer-events: none;
+    animation: cartFly 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* --------------------------------------------------
+   44. Scroll Reveal System
+   -------------------------------------------------- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-reveal="left"] {
+    transform: translateX(-40px);
+}
+[data-reveal="right"] {
+    transform: translateX(40px);
+}
+[data-reveal="scale"] {
+    transform: scale(0.92);
+}
+[data-reveal="fade"] {
+    transform: none;
+}
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Stagger children */
+[data-reveal-stagger] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-reveal-stagger].revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+[data-reveal-stagger].revealed > *:nth-child(1) { transition-delay: 0.05s; }
+[data-reveal-stagger].revealed > *:nth-child(2) { transition-delay: 0.1s; }
+[data-reveal-stagger].revealed > *:nth-child(3) { transition-delay: 0.15s; }
+[data-reveal-stagger].revealed > *:nth-child(4) { transition-delay: 0.2s; }
+[data-reveal-stagger].revealed > *:nth-child(5) { transition-delay: 0.25s; }
+[data-reveal-stagger].revealed > *:nth-child(6) { transition-delay: 0.3s; }
+[data-reveal-stagger].revealed > *:nth-child(7) { transition-delay: 0.35s; }
+[data-reveal-stagger].revealed > *:nth-child(8) { transition-delay: 0.4s; }
+
+/* --------------------------------------------------
+   45. Sticky Add-to-Cart Bar (Product Page)
+   -------------------------------------------------- */
+.sticky-add-cart {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface-container-lowest);
+    border-top: 1px solid var(--outline-variant);
+    padding: 12px 16px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -4px 24px rgba(var(--shadow-color), 0.1);
+}
+.sticky-add-cart.visible {
+    transform: translateY(0);
+}
+@media (min-width: 769px) {
+    .sticky-add-cart {
+        display: none;
+    }
+}
+
+/* --------------------------------------------------
+   46. Breadcrumb
+   -------------------------------------------------- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--on-surface-variant);
+    flex-wrap: wrap;
+}
+.breadcrumb a {
+    color: var(--on-surface-variant);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+.breadcrumb a:hover {
+    color: var(--primary);
+}
+.breadcrumb-sep {
+    color: var(--outline-variant);
+    font-size: 10px;
+}
+.breadcrumb-current {
+    color: var(--on-surface);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------
+   47. Enhanced Glassmorphism - Gradient Border
+   -------------------------------------------------- */
+.glass-gradient {
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+.glass-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(154,68,45,0.2), rgba(224,122,95,0.1), rgba(255,255,255,0.3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------
+   48. Dark Mode Support
+   -------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --surface: #1a1a2e;
+        --surface-bright: #2d2d44;
+        --surface-dim: #111122;
+        --surface-container: #22223a;
+        --surface-container-low: #1e1e34;
+        --surface-container-lowest: #16162a;
+        --surface-container-high: #2a2a42;
+        --surface-container-highest: #333350;
+        --surface-variant: #333350;
+        --on-surface: #e8e8f0;
+        --on-surface-variant: #a0a0b8;
+        --on-background: #e8e8f0;
+        --background: #1a1a2e;
+        --outline: #6a6a82;
+        --outline-variant: #3a3a52;
+    }
+}
+
+/* --------------------------------------------------
+   49. Swipe-to-Delete (Cart Items)
+   -------------------------------------------------- */
+.swipe-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+.swipe-content {
+    position: relative;
+    z-index: 2;
+    background: var(--surface-container-lowest);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.swipe-content.swiping {
+    transition: none;
+}
+.swipe-action {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--error);
+    color: var(--on-error);
+    z-index: 1;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+/* --------------------------------------------------
+   50. Product Card Enhancements
+   -------------------------------------------------- */
+.product-card {
+    position: relative;
+}
+.product-card .quick-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 5;
+}
+.product-card:hover .quick-actions {
+    opacity: 1;
+    transform: translateX(0);
+}
+.product-card .quick-actions button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(var(--shadow-color), 0.1);
+    transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.product-card .quick-actions button:hover {
+    background: var(--primary);
+    color: var(--on-primary);
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+.product-card .product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 5;
+}
+
+/* --------------------------------------------------
+   51. Trust Badges
+   -------------------------------------------------- */
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: var(--surface-container-lowest);
+    border: 1px solid var(--surface-variant);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.trust-badge:hover {
+    border-color: var(--primary-container);
+    box-shadow: 0 2px 12px rgba(154, 68, 45, 0.08);
+}
+.trust-badge .material-symbols-outlined {
+    font-size: 28px;
+    color: var(--primary);
+}
+.trust-badge p {
+    margin: 0;
+}
+
+/* --------------------------------------------------
+   52. Checkout Progress Steps
+   -------------------------------------------------- */
+.checkout-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 20px 0;
+}
+.checkout-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.checkout-step-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    border: 2px solid var(--outline-variant);
+    color: var(--on-surface-variant);
+    background: var(--surface-container-lowest);
+    transition: all var(--transition-base);
+}
+.checkout-step.active .checkout-step-icon {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--on-primary);
+}
+.checkout-step.completed .checkout-step-icon {
+    background: var(--primary-container);
+    border-color: var(--primary-container);
+    color: white;
+}
+.checkout-step-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--on-surface-variant);
+}
+.checkout-step.active .checkout-step-label {
+    color: var(--primary);
+    font-weight: 600;
+}
+.checkout-step-line {
+    width: 40px;
+    height: 2px;
+    background: var(--outline-variant);
+    margin: 0 8px;
+}
+.checkout-step.completed + .checkout-step-line,
+.checkout-step-line.filled {
+    background: var(--primary-container);
+}
+
+/* --------------------------------------------------
+   53. Enhanced Skeleton Loading
+   -------------------------------------------------- */
+.skeleton-card {
+    background: var(--surface-container-lowest);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--surface-variant);
+}
+.skeleton-card .skeleton-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(90deg,
+        var(--surface-container) 25%,
+        var(--surface-container-high) 50%,
+        var(--surface-container) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+.skeleton-card .skeleton-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.skeleton-card .skeleton-line {
+    height: 12px;
+    border-radius: 4px;
+    background: linear-gradient(90deg,
+        var(--surface-container) 25%,
+        var(--surface-container-high) 50%,
+        var(--surface-container) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+.skeleton-card .skeleton-line.w-75 { width: 75%; }
+.skeleton-card .skeleton-line.w-50 { width: 50%; }
+.skeleton-card .skeleton-line.w-40 { width: 40%; }
+
+/* --------------------------------------------------
+   54. Page Transition
+   -------------------------------------------------- */
+.page-transition {
+    animation: pageIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes pageIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------
+   55. Image Lazy Load Fade
+   -------------------------------------------------- */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+img[data-src].loaded,
+img:not([data-src]) {
+    opacity: 1;
+}
+
+/* --------------------------------------------------
+   56. Scroll Progress Indicator
+   -------------------------------------------------- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-container));
+    z-index: 9999;
+    transition: width 0.1s linear;
+    border-radius: 0 2px 2px 0;
+}
+
+/* --------------------------------------------------
+   57. Floating Label Inputs
+   -------------------------------------------------- */
+.float-label {
+    position: relative;
+}
+.float-label input,
+.float-label textarea {
+    width: 100%;
+    padding: 16px 14px 8px;
+    border: 1.5px solid var(--outline-variant);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    background: var(--surface-container-lowest);
+    color: var(--on-surface);
+    transition: border-color var(--transition-fast);
+}
+.float-label label {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--on-surface-variant);
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+.float-label input:focus + label,
+.float-label input:not(:placeholder-shown) + label {
+    top: 10px;
+    transform: translateY(0);
+    font-size: 11px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------
+   58. Neon Glow CTA (Hero)
+   -------------------------------------------------- */
+.cta-glow {
+    position: relative;
+    overflow: hidden;
+}
+.cta-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-container), var(--primary));
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    filter: blur(8px);
+}
+.cta-glow:hover::before {
+    opacity: 0.6;
+}
+
+/* --------------------------------------------------
+   59. Parallax Container
+   -------------------------------------------------- */
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+}
+.parallax-bg {
+    position: absolute;
+    inset: -20%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+}
+
+/* --------------------------------------------------
+   60. Counter Animation
+   -------------------------------------------------- */
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.counter-animate {
+    animation: countUp 0.4s ease-out both;
+}
+
+/* --------------------------------------------------
+   61. Reduced Motion
+   -------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
+    [data-reveal-stagger] > * {
+        opacity: 1;
+        transform: none;
+    }
+}

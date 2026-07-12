@@ -72,6 +72,8 @@
 </head>
 <body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col">
 
+    <div class="scroll-progress"></div>
+
     <!-- ============================== -->
     <!-- 1. ANNOUNCEMENT BAR -->
     <!-- ============================== -->
@@ -201,7 +203,27 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 py-8 md:py-12">
+    <main class="flex-1 py-8 md:py-12 page-transition">
+        <!-- Checkout Progress Steps -->
+        <div class="checkout-steps mb-8" data-reveal>
+            <div class="checkout-step completed">
+                <div class="checkout-step-icon">
+                    <span class="material-symbols-outlined" style="font-size:16px">check</span>
+                </div>
+                <span class="checkout-step-label hidden md:inline">Cart</span>
+            </div>
+            <div class="checkout-step-line filled"></div>
+            <div class="checkout-step active">
+                <div class="checkout-step-icon">2</div>
+                <span class="checkout-step-label hidden md:inline">Delivery</span>
+            </div>
+            <div class="checkout-step-line"></div>
+            <div class="checkout-step">
+                <div class="checkout-step-icon">3</div>
+                <span class="checkout-step-label hidden md:inline">Payment</span>
+            </div>
+        </div>
+
         <!-- Progress Bar -->
         <div class="max-w-3xl mx-auto mb-16 px-4">
             <div class="flex items-center justify-between relative">
@@ -386,7 +408,7 @@
                         <a href="cart.html" class="flex-1 px-6 py-3 text-center font-medium text-on-surface bg-surface-variant hover:bg-surface-variant/80 rounded-xl transition-colors border border-outline-variant">
                             Back to Cart
                         </a>
-                        <a href="order-success.html" class="flex-1 px-6 py-3 text-center font-medium text-white bg-primary hover:bg-surface-tint rounded-xl transition-colors shadow-level-2">
+                        <a href="order-success.html" class="flex-1 px-6 py-3 text-center font-medium text-white bg-primary hover:bg-surface-tint rounded-xl transition-colors shadow-level-2 btn-ripple">
                             Continue to Payment
                         </a>
                     </div>
@@ -451,6 +473,22 @@
                             <div class="flex justify-between font-heading font-bold text-lg pt-3 border-t border-outline-variant/50">
                                 <span>Total</span>
                                 <span class="text-primary">₹5,224</span>
+                            </div>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="flex items-center justify-center gap-6 mt-6 py-4 border-t border-surface-variant" data-reveal>
+                            <div class="flex items-center gap-2 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-primary" style="font-size:20px">lock</span>
+                                <span class="text-xs font-medium">SSL Encrypted</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-primary" style="font-size:20px">verified</span>
+                                <span class="text-xs font-medium">Secure Payment</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-primary" style="font-size:20px">shield</span>
+                                <span class="text-xs font-medium">Buyer Protection</span>
                             </div>
                         </div>
                     </div>

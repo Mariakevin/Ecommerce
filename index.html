@@ -818,7 +818,7 @@
             
             var container = document.getElementById('featuredProducts');
             if (container) {
-                container.innerHTML = '<div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div>';
+                container.innerHTML = '<div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div>';
                 container.innerHTML += '<div class="skeleton skeleton-text" style="margin-top:8px"></div><div class="skeleton skeleton-text-sm"></div><div class="skeleton skeleton-btn" style="margin-top:4px"></div>';
             }
             var products = await ProductService.getFeaturedProducts();

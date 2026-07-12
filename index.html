@@ -166,7 +166,79 @@
                             data-search-input
                             placeholder="Search sarees, decor, electronics..."
                             class="w-full pl-10 pr-4 py-2.5 bg-surface-container rounded-full text-sm text-on-surface placeholder:text-on-surface-variant/60 border border-outline-variant/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
+                            autocomplete="off"
                         >
+                        <!-- Search Dropdown -->
+                        <div data-search-dropdown class="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/30 py-3 z-50 max-h-80 overflow-y-auto">
+                            <div class="px-4 py-2">
+                                <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Trending Searches</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="search.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-xs font-medium text-on-surface hover:bg-primary/10 hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined" style="font-size:14px">trending_up</span>
+                                        Silk Sarees
+                                    </a>
+                                    <a href="search.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-xs font-medium text-on-surface hover:bg-primary/10 hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined" style="font-size:14px">trending_up</span>
+                                        Brass Lamp
+                                    </a>
+                                    <a href="search.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-xs font-medium text-on-surface hover:bg-primary/10 hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined" style="font-size:14px">trending_up</span>
+                                        Home Decor
+                                    </a>
+                                    <a href="search.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-xs font-medium text-on-surface hover:bg-primary/10 hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined" style="font-size:14px">trending_up</span>
+                                        Electronics
+                                    </a>
+                                </div>
+                            </div>
+                            <hr class="divider my-2">
+                            <div class="px-4 py-2" data-search-item>
+                                <a href="product.html" class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors">
+                                    <span class="material-symbols-outlined text-on-surface-variant" style="font-size:20px">search</span>
+                                    <div>
+                                        <p class="text-sm font-medium text-on-surface">Artisan Ceramic Mug</p>
+                                        <p class="text-xs text-on-surface-variant">Home Goods - ₹600</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="px-4 py-2" data-search-item>
+                                <a href="product.html" class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors">
+                                    <span class="material-symbols-outlined text-on-surface-variant" style="font-size:20px">search</span>
+                                    <div>
+                                        <p class="text-sm font-medium text-on-surface">Ceramic Table Lamp</p>
+                                        <p class="text-xs text-on-surface-variant">Aura Lighting - ₹3,499</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="px-4 py-2" data-search-item>
+                                <a href="product.html" class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors">
+                                    <span class="material-symbols-outlined text-on-surface-variant" style="font-size:20px">search</span>
+                                    <div>
+                                        <p class="text-sm font-medium text-on-surface">Cotton Throw Blanket</p>
+                                        <p class="text-xs text-on-surface-variant">Textiles - ₹3,450</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="px-4 py-2" data-search-item>
+                                <a href="product.html" class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container transition-colors">
+                                    <span class="material-symbols-outlined text-on-surface-variant" style="font-size:20px">search</span>
+                                    <div>
+                                        <p class="text-sm font-medium text-on-surface">Stone Planter Set</p>
+                                        <p class="text-xs text-on-surface-variant">Earth Elements - ₹2,250</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="px-4 py-2 text-center" data-no-results style="display:none">
+                                <p class="text-sm text-on-surface-variant py-4">No results found</p>
+                            </div>
+                            <hr class="divider my-2">
+                            <div class="px-4 py-2">
+                                <a href="search.html" class="flex items-center justify-center gap-2 text-primary text-sm font-semibold py-2 hover:bg-primary/5 rounded-lg transition-colors">
+                                    <span class="material-symbols-outlined" style="font-size:18px">search</span>
+                                    View all results
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -412,7 +484,7 @@
                 <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden hover:shadow-lg transition-shadow group">
                     <div class="relative aspect-square overflow-hidden">
                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA" alt="Artisan Ceramic Mug" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <button onclick="event.preventDefault(); toggleWishlist({id:'p1',name:'Artisan Ceramic Mug',price:600})" class="absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" aria-label="Add to wishlist">
+                        <button onclick="event.preventDefault(); toggleWishlist('p1', 'Artisan Ceramic Mug'); wishlistBurst(this)" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" data-product-id="p1" aria-label="Add to wishlist">
                             <span class="material-symbols-outlined text-lg text-on-surface-variant">favorite</span>
                         </button>
                     </div>
@@ -426,7 +498,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-on-surface font-semibold">₹600</span>
-                            <button onclick="event.preventDefault(); addToCart({id:'p1',name:'Artisan Ceramic Mug',price:600})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p1',name:'Artisan Ceramic Mug',price:600,image:'https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA'}); flyToCart(this.closest('.group').querySelector('img'))" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -435,7 +507,7 @@
                     <div class="relative aspect-square overflow-hidden">
                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Ceramic Table Lamp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         <span class="absolute top-3 left-3 bg-error-container text-on-error-container text-label-sm px-2.5 py-1 rounded-full">15% Off</span>
-                        <button onclick="event.preventDefault(); toggleWishlist({id:'p2',name:'Ceramic Table Lamp',price:3499})" class="absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" aria-label="Add to wishlist">
+                        <button onclick="event.preventDefault(); toggleWishlist('p2', 'Ceramic Table Lamp'); wishlistBurst(this)" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" data-product-id="p2" aria-label="Add to wishlist">
                             <span class="material-symbols-outlined text-lg text-on-surface-variant">favorite</span>
                         </button>
                     </div>
@@ -452,7 +524,7 @@
                                 <span class="text-on-surface font-semibold">₹3,499</span>
                                 <span class="text-on-surface-variant text-xs line-through ml-1.5">₹4,116</span>
                             </div>
-                            <button onclick="event.preventDefault(); addToCart({id:'p2',name:'Ceramic Table Lamp',price:3499})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p2',name:'Ceramic Table Lamp',price:3499,image:'https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ'}); flyToCart(this.closest('.group').querySelector('img'))" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -460,7 +532,7 @@
                 <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden hover:shadow-lg transition-shadow group">
                     <div class="relative aspect-square overflow-hidden">
                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Cotton Throw Blanket" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                        <button onclick="event.preventDefault(); toggleWishlist({id:'p3',name:'Cotton Throw Blanket',price:3450})" class="absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" aria-label="Add to wishlist">
+                        <button onclick="event.preventDefault(); toggleWishlist('p3', 'Cotton Throw Blanket'); wishlistBurst(this)" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" data-product-id="p3" aria-label="Add to wishlist">
                             <span class="material-symbols-outlined text-lg text-on-surface-variant">favorite</span>
                         </button>
                     </div>
@@ -474,7 +546,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-on-surface font-semibold">₹3,450</span>
-                            <button onclick="event.preventDefault(); addToCart({id:'p3',name:'Cotton Throw Blanket',price:3450})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p3',name:'Cotton Throw Blanket',price:3450,image:'https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU'}); flyToCart(this.closest('.group').querySelector('img'))" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -483,7 +555,7 @@
                     <div class="relative aspect-square overflow-hidden">
                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ" alt="Stone Planter Set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         <span class="absolute top-3 left-3 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm px-2.5 py-1 rounded-full">New</span>
-                        <button onclick="event.preventDefault(); toggleWishlist({id:'p4',name:'Stone Planter Set',price:2250})" class="absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" aria-label="Add to wishlist">
+                        <button onclick="event.preventDefault(); toggleWishlist('p4', 'Stone Planter Set'); wishlistBurst(this)" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-surface-container transition-colors" data-product-id="p4" aria-label="Add to wishlist">
                             <span class="material-symbols-outlined text-lg text-on-surface-variant">favorite</span>
                         </button>
                     </div>
@@ -497,7 +569,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-on-surface font-semibold">₹2,250</span>
-                            <button onclick="event.preventDefault(); addToCart({id:'p4',name:'Stone Planter Set',price:2250})" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
+                            <button onclick="event.preventDefault(); addToCart({id:'p4',name:'Stone Planter Set',price:2250,image:'https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ'}); flyToCart(this.closest('.group').querySelector('img'))" class="bg-primary text-on-primary px-4 py-2 rounded-full text-xs font-semibold hover:bg-primary-container transition-colors btn-ripple">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -640,7 +712,7 @@
         <!-- ============================== -->
         <!-- 12. NEWSLETTER -->
         <!-- ============================== -->
-        <section class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-animate data-reveal>
+        <section id="newsletter" class="max-w-[1280px] mx-auto px-4 md:px-16 pb-16 section-gap" data-animate data-reveal>
             <div class="bg-gradient-to-br from-primary to-primary-container rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
                 <div class="relative z-10">
                     <span class="material-symbols-outlined text-4xl text-on-primary/80 mb-4 block">mail</span>

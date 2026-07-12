@@ -1612,6 +1612,16 @@ img:not([data-src]) {
 }
 
 /* --------------------------------------------------
+   62. Search Dropdown
+   -------------------------------------------------- */
+[data-search-dropdown] {
+    display: none;
+}
+[data-search-dropdown].active {
+    display: block;
+}
+
+/* --------------------------------------------------
    61. Reduced Motion
    -------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {

@@ -86,8 +86,13 @@
 
         <!-- Cart Header -->
         <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-6" data-reveal>
-            <h1 class="text-2xl font-semibold">Your Cart</h1>
-            <p class="text-sm text-text-secondary mt-1" id="cartCount">3 items</p>
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-semibold">Your Cart</h1>
+                    <p class="text-sm text-text-secondary mt-1" id="cartCount">0 items</p>
+                </div>
+                <button id="clearCartBtn" class="text-sm text-text-tertiary hover:text-red-600 transition-colors hidden" style="display:none">Clear Cart</button>
+            </div>
         </div>
 
         <!-- Cart Content -->
@@ -96,7 +101,7 @@
 
                 <!-- Cart Items -->
                 <div class="lg:col-span-2 space-y-4" id="cartItems">
-                    <!-- Cart items rendered dynamically by cartStore -->
+                    <!-- Cart items rendered dynamically -->
                 </div>
 
                 <!-- Order Summary -->
@@ -107,11 +112,11 @@
                         <!-- Free Delivery Progress -->
                         <div class="mb-5 p-3 bg-surface-alt rounded-md">
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="material-symbols-outlined text-primary" style="font-size:18px">local_shipping</span>
-                                <span class="text-xs font-medium">Free delivery unlocked!</span>
+                                <span id="deliveryIcon" class="material-symbols-outlined text-primary" style="font-size:18px">local_shipping</span>
+                                <span id="deliveryText" class="text-xs font-medium">Spend ₹999 more for free delivery</span>
                             </div>
                             <div class="w-full bg-border rounded-full h-1.5">
-                                <div class="bg-primary h-1.5 rounded-full" style="width: 100%"></div>
+                                <div id="deliveryProgress" class="bg-primary h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
                             </div>
                         </div>
 
@@ -122,12 +127,17 @@
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Delivery</span>
-                                <span class="font-medium" id="summaryDelivery">Free</span>
+                                <span class="font-medium" id="summaryDelivery">₹99</span>
                             </div>
                             <div class="flex justify-between text-sm">
-                                <span class="text-text-secondary">Tax</span>
+                                <span class="text-text-secondary">Tax (5%)</span>
                                 <span class="font-medium" id="summaryTax">₹0</span>
                             </div>
+                        </div>
+
+                        <div id="discountRow" class="flex justify-between text-sm mb-3 hidden">
+                            <span class="text-green-600">Discount (10%)</span>
+                            <span class="font-medium text-green-600" id="summaryDiscount">-₹0</span>
                         </div>
 
                         <div class="border-t border-border pt-4 mb-5">
@@ -139,8 +149,8 @@
 
                         <!-- Coupon -->
                         <div class="flex gap-2 mb-5">
-                            <input type="text" placeholder="Coupon code" class="form-input text-sm py-2.5 flex-1" aria-label="Coupon code">
-                            <button class="btn-outline text-sm px-4 py-2.5" aria-label="Apply coupon">Apply</button>
+                            <input id="couponInput" type="text" placeholder="Coupon code" class="form-input text-sm py-2.5 flex-1" aria-label="Coupon code">
+                            <button id="couponBtn" class="btn-outline text-sm px-4 py-2.5" aria-label="Apply coupon">Apply</button>
                         </div>
 
                         <a href="checkout.html" class="btn-primary w-full text-center block mb-3">Proceed to Checkout</a>
@@ -247,60 +257,247 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
+        var couponApplied = false;
+
+        var emptyStateHTML =
+            '<div class="text-center py-16">' +
+                '<span class="material-symbols-outlined text-text-tertiary mb-3" style="font-size:64px">shopping_bag</span>' +
+                '<h2 class="text-lg font-semibold mb-2">Your cart is empty</h2>' +
+                '<p class="text-sm text-text-secondary mb-6">Looks like you haven\'t added anything yet</p>' +
+                '<a href="category.html" class="btn-primary">Start Shopping</a>' +
+            '</div>' +
+            '<div class="mt-12">' +
+                '<p class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-4 text-center">You might like these</p>' +
+                '<div id="suggestedProducts" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>' +
+            '</div>';
+
+        function cartItemHTML(item) {
+            return '<div class="swipe-container">' +
+                '<div class="swipe-content flex gap-4 p-4 border border-border rounded-lg">' +
+                    '<a href="product.html?id=' + item.id + '">' +
+                        '<img src="' + item.image + '" alt="' + item.name + '" class="w-20 h-20 md:w-24 md:h-24 rounded-md object-cover shrink-0">' +
+                    '</a>' +
+                    '<div class="flex-1 min-w-0">' +
+                        '<div class="flex items-start justify-between gap-2">' +
+                            '<div class="min-w-0">' +
+                                '<a href="product.html?id=' + item.id + '" class="text-sm font-medium truncate block hover:text-primary transition-colors">' + item.name + '</a>' +
+                                '<p class="text-xs text-text-tertiary mt-0.5">' + (item.category || '') + '</p>' +
+                            '</div>' +
+                            '<button data-remove="' + item.id + '" class="text-text-tertiary hover:text-red-600 transition-colors shrink-0" aria-label="Remove ' + item.name + '">' +
+                                '<span class="material-symbols-outlined" style="font-size:18px">close</span>' +
+                            '</button>' +
+                        '</div>' +
+                        '<div class="flex items-center justify-between mt-3">' +
+                            '<div class="qty-stepper">' +
+                                '<button data-action="dec" aria-label="Decrease quantity">&minus;</button>' +
+                                '<input type="number" value="' + item.qty + '" min="1" max="10" data-id="' + item.id + '" aria-label="Quantity">' +
+                                '<button data-action="inc" aria-label="Increase quantity">+</button>' +
+                            '</div>' +
+                            '<p class="text-sm font-semibold">' + formatPrice(item.price * item.qty) + '</p>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="swipe-action"><span class="material-symbols-outlined">delete</span></div>' +
+            '</div>';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             renderCart();
             window.EventBus.on('cart:updated', renderCart);
+
+            document.getElementById('clearCartBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear your cart?')) {
+                    cartStore.clear();
+                }
+            });
+
+            document.getElementById('couponBtn').addEventListener('click', function() {
+                if (couponApplied) {
+                    showToast('Coupon already applied', 'info');
+                    return;
+                }
+                var code = document.getElementById('couponInput').value.trim().toUpperCase();
+                if (!code) {
+                    showToast('Please enter a coupon code', 'error');
+                    return;
+                }
+                couponApplied = true;
+                showToast('Coupon applied! 10% off', 'success');
+                document.getElementById('couponBtn').textContent = 'Applied';
+                document.getElementById('couponBtn').disabled = true;
+                document.getElementById('couponBtn').classList.add('opacity-50', 'cursor-not-allowed');
+                updateSummary();
+            });
+
+            // Swipe-to-delete for mobile
+            initSwipeToDelete();
         });
 
         function renderCart() {
             var cart = CartService.getCart();
             var container = document.getElementById('cartItems');
             var countEl = document.getElementById('cartCount');
+            var clearBtn = document.getElementById('clearCartBtn');
 
             if (countEl) countEl.textContent = cart.length + ' item' + (cart.length !== 1 ? 's' : '');
+            if (clearBtn) clearBtn.style.display = cart.length > 0 ? '' : 'none';
 
             if (cart.length === 0) {
-                container.innerHTML = '<div class="text-center py-16"><p class="text-text-secondary mb-4">Your cart is empty</p><a href="category.html" class="btn-primary">Start Shopping</a></div>';
+                container.innerHTML = emptyStateHTML;
+                loadSuggestedProducts();
                 updateSummary();
                 return;
             }
 
             container.innerHTML = cart.map(function(item) {
-                return '<div class="swipe-container"><div class="swipe-content flex gap-4 p-4 border border-border rounded-lg">' +
-                    '<img src="' + item.image + '" alt="' + item.name + '" class="w-20 h-20 md:w-24 md:h-24 rounded-md object-cover shrink-0">' +
-                    '<div class="flex-1 min-w-0">' +
-                        '<h3 class="text-sm font-medium truncate">' + item.name + '</h3>' +
-                        '<p class="text-sm font-semibold mt-2">' + formatPrice(item.price) + '</p>' +
-                        '<div class="flex items-center justify-between mt-3">' +
-                            '<div class="qty-stepper">' +
-                                '<button data-action="dec">−</button>' +
-                                '<input type="number" value="' + item.qty + '" min="1" data-id="' + item.id + '">' +
-                                '<button data-action="inc">+</button>' +
-                            '</div>' +
-                            '<button onclick="cartStore.removeItem(\'' + item.id + '\')" class="text-xs text-text-tertiary hover:text-red-600 transition-colors">Remove</button>' +
-                        '</div>' +
-                    '</div>' +
-                '</div><div class="swipe-action"><span class="material-symbols-outlined">delete</span></div></div>';
+                return cartItemHTML(item);
             }).join('');
 
+            // Qty stepper buttons
+            container.querySelectorAll('.qty-stepper button').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var input = this.parentElement.querySelector('input');
+                    var id = input.dataset.id;
+                    var val = parseInt(input.value);
+                    if (this.dataset.action === 'inc') {
+                        cartStore.updateQty(id, val + 1);
+                    } else if (this.dataset.action === 'dec' && val > 1) {
+                        cartStore.updateQty(id, val - 1);
+                    }
+                });
+            });
+
+            // Qty input direct change
             container.querySelectorAll('.qty-stepper input').forEach(function(input) {
                 input.addEventListener('change', function() {
-                    cartStore.updateQty(this.dataset.id, parseInt(this.value));
+                    var val = parseInt(this.value) || 1;
+                    if (val < 1) val = 1;
+                    if (val > 10) val = 10;
+                    this.value = val;
+                    cartStore.updateQty(this.dataset.id, val);
+                });
+            });
+
+            // Remove buttons
+            container.querySelectorAll('[data-remove]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    cartStore.removeItem(this.dataset.remove);
                 });
             });
 
             updateSummary();
+            loadSuggestedProducts();
+            initSwipeToDelete();
         }
 
         function updateSummary() {
             var state = cartStore.getState();
             document.getElementById('summarySubtotal').textContent = formatPrice(state.subtotal);
             document.getElementById('summaryTax').textContent = formatPrice(state.tax);
-            document.getElementById('summaryTotal').textContent = formatPrice(state.total);
+            document.getElementById('summaryItemCount').textContent = 'Subtotal (' + state.count + ' item' + (state.count !== 1 ? 's' : '') + ')';
+
             var deliveryEl = document.getElementById('summaryDelivery');
-            if (deliveryEl) deliveryEl.textContent = state.deliveryFee === 0 ? 'Free' : formatPrice(state.deliveryFee);
-            var deliveryClass = document.getElementById('summaryDelivery');
-            if (deliveryClass && state.deliveryFee === 0) deliveryClass.className = 'font-medium text-green-700';
+            if (deliveryEl) {
+                if (state.deliveryFee === 0) {
+                    deliveryEl.textContent = 'Free';
+                    deliveryEl.className = 'font-medium text-green-700';
+                } else {
+                    deliveryEl.textContent = formatPrice(state.deliveryFee);
+                    deliveryEl.className = 'font-medium';
+                }
+            }
+
+            var grandTotal = state.total;
+            var discountRow = document.getElementById('discountRow');
+            if (couponApplied && state.subtotal > 0) {
+                var discount = Math.round(state.subtotal * 0.1);
+                grandTotal = grandTotal - discount;
+                document.getElementById('summaryDiscount').textContent = '-' + formatPrice(discount);
+                discountRow.classList.remove('hidden');
+            } else {
+                discountRow.classList.add('hidden');
+            }
+
+            document.getElementById('summaryTotal').textContent = formatPrice(grandTotal);
+
+            updateDeliveryProgress(state.subtotal);
+        }
+
+        function updateDeliveryProgress(subtotal) {
+            var threshold = FREE_DELIVERY_THRESHOLD;
+            var remaining = Math.max(0, threshold - subtotal);
+            var progress = Math.min(100, (subtotal / threshold) * 100);
+
+            var bar = document.getElementById('deliveryProgress');
+            var text = document.getElementById('deliveryText');
+            var icon = document.getElementById('deliveryIcon');
+
+            if (bar) bar.style.width = progress + '%';
+
+            if (remaining > 0) {
+                if (text) text.textContent = 'Spend ' + formatPrice(remaining) + ' more for free delivery';
+                if (icon) icon.textContent = 'local_shipping';
+            } else {
+                if (text) text.textContent = 'Free delivery unlocked!';
+                if (icon) icon.textContent = 'local_shipping';
+            }
+        }
+
+        function loadSuggestedProducts() {
+            var grid = document.getElementById('suggestedProducts');
+            if (!grid) return;
+            ProductService.getFeaturedProducts().then(function(products) {
+                var suggestions = products.slice(0, 3);
+                grid.innerHTML = suggestions.map(function(p) {
+                    return renderProductCard(p);
+                }).join('');
+            });
+        }
+
+        function initSwipeToDelete() {
+            if (window.innerWidth > 768) return;
+            document.querySelectorAll('.swipe-container').forEach(function(container) {
+                var startX = 0;
+                var currentX = 0;
+                var swiping = false;
+                var content = container.querySelector('.swipe-content');
+
+                content.addEventListener('touchstart', function(e) {
+                    startX = e.touches[0].clientX;
+                    swiping = true;
+                }, { passive: true });
+
+                content.addEventListener('touchmove', function(e) {
+                    if (!swiping) return;
+                    currentX = e.touches[0].clientX;
+                    var diff = startX - currentX;
+                    if (diff > 0 && diff < 100) {
+                        content.style.transform = 'translateX(-' + diff + 'px)';
+                        content.style.transition = 'none';
+                    }
+                }, { passive: true });
+
+                content.addEventListener('touchend', function() {
+                    swiping = false;
+                    var diff = startX - currentX;
+                    content.style.transition = 'transform 0.2s ease';
+                    if (diff > 60) {
+                        content.style.transform = 'translateX(-80px)';
+                    } else {
+                        content.style.transform = 'translateX(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.swipe-action').forEach(function(action) {
+                action.addEventListener('click', function() {
+                    var container = this.closest('.swipe-container');
+                    var removeBtn = container.querySelector('[data-remove]');
+                    if (removeBtn) {
+                        cartStore.removeItem(removeBtn.dataset.remove);
+                    }
+                });
+            });
         }
     </script>
 </body>

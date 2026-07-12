@@ -28,52 +28,54 @@
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-surface text-text">
+<body class="bg-[#eaeded] text-text">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
 
     <div class="scroll-progress"></div>
 
     <!-- Desktop Header -->
-    <header class="hidden md:flex sticky top-0 z-50 bg-white border-b border-border h-14 items-center">
-        <div class="max-w-[1600px] w-full mx-auto px-10 flex items-center justify-between">
-            <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-8"></a>
-            <nav class="flex items-center gap-8" aria-label="Main navigation">
-                <a href="index.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Home</a>
-                <a href="category.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Categories</a>
-                <a href="category.html?promo=true" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Offers</a>
-                <a href="account.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Account</a>
+    <header class="site-header hidden md:block">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo"><img src="images/logo.png" alt="Chennai Retail" class="h-8"></a>
+            <nav class="flex items-center gap-5 text-[13px]" aria-label="Main navigation">
+                <a href="index.html" class="hover:text-orange-300 transition-colors">Home</a>
+                <a href="category.html" class="hover:text-orange-300 transition-colors">Categories</a>
+                <a href="offer.html" class="hover:text-orange-300 transition-colors">Deals</a>
+                <a href="account.html" class="hover:text-orange-300 transition-colors">Account</a>
             </nav>
-            <div class="flex items-center gap-5">
-                <a href="search.html" class="text-text-secondary hover:text-text transition-colors" aria-label="Search">
+            <div class="header-search">
+                <input type="text" placeholder="Search products..." id="headerSearchInput" aria-label="Search products">
+                <button onclick="var q=document.getElementById('headerSearchInput').value.trim(); if(q) window.location.href='category.html?q='+encodeURIComponent(q)" aria-label="Search">
                     <span class="material-symbols-outlined" style="font-size:22px">search</span>
+                </button>
+            </div>
+            <div class="header-actions">
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span>Wishlist</span>
                 </a>
-                <a href="wishlist.html" class="text-text-secondary hover:text-text transition-colors relative" aria-label="Wishlist">
-                    <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
-                </a>
-                <a href="cart.html" class="text-text-secondary hover:text-text transition-colors relative" aria-label="Cart">
-                    <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
-                    <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
+                <a href="cart.html" class="cart-link" aria-label="Cart">
+                    <span class="material-symbols-outlined" style="font-size:26px">shopping_bag</span>
+                    <span class="cart-badge hidden">0</span>
+                    <span>Cart</span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Mobile Header -->
-    <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-border h-14 flex items-center px-4">
-        <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-8 shrink-0"></a>
-        <div class="flex items-center gap-3 ml-auto">
-            <a href="search.html" class="text-text-secondary" aria-label="Search">
-                <span class="material-symbols-outlined" style="font-size:22px">search</span>
-            </a>
-            <a href="cart.html" class="text-text-secondary relative" aria-label="Cart">
-                <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
-                <span class="cart-badge absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
-            </a>
-        </div>
+    <header class="mobile-header">
+        <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-7 shrink-0"></a>
+        <input type="text" class="mobile-search" placeholder="Search products..." id="mobileSearchInput" aria-label="Search products"
+            onkeydown="if(event.key==='Enter'){var q=this.value.trim();if(q)location.href='category.html?q='+encodeURIComponent(q)}">
+        <a href="cart.html" class="text-white relative" aria-label="Cart">
+            <span class="material-symbols-outlined" style="font-size:24px">shopping_bag</span>
+            <span class="cart-badge hidden" style="top:-4px;right:-6px">0</span>
+        </a>
     </header>
 
-    <div class="pt-14 md:pt-0 page-transition">
+    <div class="page-transition">
 
         <!-- Breadcrumb -->
         <div id="main-content" tabindex="-1" class="max-w-[1600px] mx-auto px-4 md:px-10 pt-6 pb-2">
@@ -176,85 +178,74 @@
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-border hidden md:block">
-        <div class="max-w-[1600px] mx-auto px-10 py-12">
-            <!-- Newsletter -->
-            <div class="bg-surface-alt rounded-lg p-6 mb-8">
-                <div class="flex flex-col md:flex-row items-center gap-4">
-                    <div class="flex-1">
-                        <h3 class="text-sm font-semibold mb-1">Stay in the loop</h3>
-                        <p class="text-xs text-text-secondary">Get new arrivals, design tips, and exclusive offers delivered to your inbox.</p>
-                    </div>
-                    <div class="flex w-full md:w-auto">
-                        <input type="email" placeholder="Your email address" class="flex-1 md:w-64 px-4 py-2 border border-border rounded-l-lg text-sm focus:outline-none focus:border-primary">
-                        <button onclick="if(this.previousElementSibling.value){showToast('Thanks for subscribing!');this.previousElementSibling.value=''}" class="px-6 py-2 bg-primary text-on-primary rounded-r-lg text-sm font-medium hover:bg-red-700 transition-colors">Subscribe</button>
-                    </div>
-                </div>
+    <div class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</div>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="category.html?cat=living">Living Room</a></li>
+                    <li><a href="category.html?cat=bedroom">Bedroom</a></li>
+                    <li><a href="category.html?cat=kitchen">Kitchen</a></li>
+                    <li><a href="category.html?cat=decor">Decor</a></li>
+                    <li><a href="category.html?cat=lighting">Lighting</a></li>
+                </ul>
             </div>
-            <div class="grid grid-cols-4 gap-8 mb-10">
-                <div>
-                    <h3 class="text-sm font-semibold mb-4">Shop</h3>
-                    <ul class="space-y-2.5">
-                        <li><a href="category.html?cat=living" class="text-sm text-text-secondary hover:text-text transition-colors">Living Room</a></li>
-                        <li><a href="category.html?cat=bedroom" class="text-sm text-text-secondary hover:text-text transition-colors">Bedroom</a></li>
-                        <li><a href="category.html?cat=kitchen" class="text-sm text-text-secondary hover:text-text transition-colors">Kitchen</a></li>
-                        <li><a href="category.html?cat=decor" class="text-sm text-text-secondary hover:text-text transition-colors">Decor</a></li>
-                        <li><a href="category.html?cat=lighting" class="text-sm text-text-secondary hover:text-text transition-colors">Lighting</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2.5">
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">About Us</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Stores</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Careers</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Press</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold mb-4">Help</h3>
-                    <ul class="space-y-2.5">
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">FAQs</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Shipping</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Returns</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold mb-4">Connect</h3>
-                    <ul class="space-y-2.5">
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Instagram</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Pinterest</a></li>
-                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">WhatsApp</a></li>
-                    </ul>
-                </div>
+            <div>
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Stores</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
             </div>
-            <div class="border-t border-border pt-6 flex items-center justify-between">
-                <p class="text-xs text-text-tertiary">&copy; 2026 Chennai Retail. All rights reserved.</p>
-                <p class="text-xs text-text-tertiary">Serving Chennai with pride</p>
+            <div>
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
             </div>
+            <div>
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Chennai Retail. All rights reserved. Serving Chennai with pride.
         </div>
     </footer>
 
     <!-- Mobile Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border safe-area-bottom" aria-label="Mobile navigation">
-        <div class="grid grid-cols-4 h-14">
-            <a href="index.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
-                <span class="material-symbols-outlined" style="font-size:22px">home</span>
-                <span class="text-[10px] font-medium">Home</span>
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <div class="grid">
+            <a href="index.html">
+                <span class="material-symbols-outlined">home</span>
+                <span>Home</span>
             </a>
-            <a href="category.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
-                <span class="material-symbols-outlined" style="font-size:22px">grid_view</span>
-                <span class="text-[10px] font-medium">Categories</span>
+            <a href="category.html">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span>Categories</span>
             </a>
-            <a href="cart.html" class="flex flex-col items-center justify-center gap-0.5 text-primary relative">
-                <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
-                <span class="cart-badge absolute top-1.5 right-1/4 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
-                <span class="text-[10px] font-medium">Cart</span>
+            <a href="offer.html">
+                <span class="material-symbols-outlined">local_offer</span>
+                <span>Deals</span>
             </a>
-            <a href="account.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
-                <span class="material-symbols-outlined" style="font-size:22px">person</span>
-                <span class="text-[10px] font-medium">Account</span>
+            <a href="cart.html" class="relative">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span class="cart-badge hidden">0</span>
+                <span>Cart</span>
+            </a>
+            <a href="account.html">
+                <span class="material-symbols-outlined">person</span>
+                <span>Account</span>
             </a>
         </div>
     </nav>

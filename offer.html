@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deals & Offers - Chennai Retail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#eaeded] text-text">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
+    <div class="scroll-progress"></div>
+
+    <!-- Desktop Header -->
+    <header class="site-header hidden md:block">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo"><img src="images/logo.png" alt="Chennai Retail" class="h-8"></a>
+            <nav class="flex items-center gap-5 text-[13px]" aria-label="Main navigation">
+                <a href="index.html" class="hover:text-orange-300 transition-colors">Home</a>
+                <a href="category.html" class="hover:text-orange-300 transition-colors">Categories</a>
+                <a href="offer.html" class="font-semibold text-white">Deals</a>
+                <a href="account.html" class="hover:text-orange-300 transition-colors">Account</a>
+            </nav>
+            <div class="header-search">
+                <input type="text" placeholder="Search products..." id="headerSearchInput" aria-label="Search products">
+                <button onclick="var q=document.getElementById('headerSearchInput').value.trim(); if(q) window.location.href='category.html?q='+encodeURIComponent(q)" aria-label="Search">
+                    <span class="material-symbols-outlined" style="font-size:22px">search</span>
+                </button>
+            </div>
+            <div class="header-actions">
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span>Wishlist</span>
+                </a>
+                <a href="cart.html" class="cart-link" aria-label="Cart">
+                    <span class="material-symbols-outlined" style="font-size:26px">shopping_bag</span>
+                    <span class="cart-badge hidden">0</span>
+                    <span>Cart</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-7 shrink-0"></a>
+        <input type="text" class="mobile-search" placeholder="Search products..." id="mobileSearchInput" aria-label="Search products"
+            onkeydown="if(event.key==='Enter'){var q=this.value.trim();if(q)location.href='category.html?q='+encodeURIComponent(q)}">
+        <a href="cart.html" class="text-white relative" aria-label="Cart">
+            <span class="material-symbols-outlined" style="font-size:24px">shopping_bag</span>
+            <span class="cart-badge hidden" style="top:-4px;right:-6px">0</span>
+        </a>
+    </header>
+
+    <div class="page-transition">
+
+        <!-- Breadcrumb -->
+        <div class="max-w-[1600px] mx-auto px-4 md:px-10 pt-4 pb-2">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current">Deals & Offers</span>
+            </nav>
+        </div>
+
+        <!-- Sale Banner (Flipkart-style) -->
+        <section id="main-content" class="max-w-[1600px] mx-auto px-4 md:px-10 py-6" data-reveal>
+            <div class="bg-gradient-to-r from-[#dc2626] via-[#b91c1c] to-[#991b1b] rounded-xl p-8 md:p-12 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+                <div class="relative">
+                    <span class="inline-block bg-white/20 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Limited Time Offer</span>
+                    <h1 class="text-3xl md:text-5xl font-bold mb-3">Mega Sale</h1>
+                    <p class="text-white/80 text-base md:text-lg mb-6 max-w-lg">Up to <span class="text-2xl md:text-3xl font-bold text-white">50% OFF</span> on home decor, furniture, and lifestyle essentials.</p>
+                    <a href="#deals-section" class="inline-flex items-center gap-2 bg-white text-[#dc2626] font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors">
+                        Shop All Deals
+                        <span class="material-symbols-outlined" style="font-size:20px">arrow_downward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Timer -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-6">
+            <div class="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
+                <span class="material-symbols-outlined text-primary" style="font-size:28px">timer</span>
+                <div>
+                    <p class="text-sm font-semibold">Deal ends in</p>
+                    <div id="dealCountdown" class="flex gap-3 text-lg font-bold text-primary">
+                        <span>23h</span> : <span>59m</span> : <span>59s</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deal Categories -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-8" data-reveal>
+            <h2 class="text-lg font-semibold mb-4">Shop by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <a href="category.html?cat=living" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">living</span>
+                    <span class="text-sm font-medium">Living Room</span>
+                    <p class="text-xs text-primary font-semibold mt-1">Up to 40% OFF</p>
+                </a>
+                <a href="category.html?cat=bedroom" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">bed</span>
+                    <span class="text-sm font-medium">Bedroom</span>
+                    <p class="text-xs text-primary font-semibold mt-1">Up to 35% OFF</p>
+                </a>
+                <a href="category.html?cat=kitchen" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">kitchen</span>
+                    <span class="text-sm font-medium">Kitchen</span>
+                    <p class="text-xs text-primary font-semibold mt-1">Up to 30% OFF</p>
+                </a>
+                <a href="category.html?cat=decor" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">palette</span>
+                    <span class="text-sm font-medium">Decor</span>
+                    <p class="text-xs text-primary font-semibold mt-1">Up to 50% OFF</p>
+                </a>
+                <a href="category.html?cat=lighting" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">lightbulb</span>
+                    <span class="text-sm font-medium">Lighting</span>
+                    <p class="text-xs text-primary font-semibold mt-1">Up to 45% OFF</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Flash Deals -->
+        <section id="deals-section" class="max-w-[1600px] mx-auto px-4 md:px-10 pb-10" data-reveal>
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h2 class="text-xl font-bold">Flash Deals</h2>
+                    <p class="text-sm text-text-secondary mt-1">Hurry! These offers won't last long.</p>
+                </div>
+                <a href="category.html" class="btn-outline text-sm">View All</a>
+            </div>
+            <div id="dealProducts" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+        <!-- Bulk Deals -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-10" data-reveal>
+            <h2 class="text-xl font-bold mb-6">Buy More, Save More</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-lg p-6 text-center hover:shadow-md transition-shadow">
+                    <div class="text-4xl font-bold text-primary mb-2">10%</div>
+                    <p class="text-sm font-semibold mb-1">Buy 2 or more items</p>
+                    <p class="text-xs text-text-secondary">Use code <span class="font-semibold text-primary">BUNDLE10</span></p>
+                </div>
+                <div class="bg-white rounded-lg p-6 text-center hover:shadow-md transition-shadow">
+                    <div class="text-4xl font-bold text-primary mb-2">15%</div>
+                    <p class="text-sm font-semibold mb-1">Buy 4 or more items</p>
+                    <p class="text-xs text-text-secondary">Use code <span class="font-semibold text-primary">BUNDLE15</span></p>
+                </div>
+                <div class="bg-white rounded-lg p-6 text-center hover:shadow-md transition-shadow">
+                    <div class="text-4xl font-bold text-primary mb-2">20%</div>
+                    <p class="text-sm font-semibold mb-1">Orders above ₹10,000</p>
+                    <p class="text-xs text-text-secondary">Use code <span class="font-semibold text-primary">MEGA20</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Offers -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-10" data-reveal>
+            <h2 class="text-xl font-bold mb-6">All Deals & Offers</h2>
+            <div id="allOfferProducts" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</div>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="category.html?cat=living">Living Room</a></li>
+                    <li><a href="category.html?cat=bedroom">Bedroom</a></li>
+                    <li><a href="category.html?cat=kitchen">Kitchen</a></li>
+                    <li><a href="category.html?cat=decor">Decor</a></li>
+                    <li><a href="category.html?cat=lighting">Lighting</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Stores</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Chennai Retail. All rights reserved.</div>
+    </footer>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <div class="grid">
+            <a href="index.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+            <a href="category.html"><span class="material-symbols-outlined">grid_view</span><span>Categories</span></a>
+            <a href="offer.html" class="active"><span class="material-symbols-outlined">local_offer</span><span>Deals</span></a>
+            <a href="cart.html" class="relative"><span class="material-symbols-outlined">shopping_bag</span><span class="cart-badge hidden">0</span><span>Cart</span></a>
+            <a href="account.html"><span class="material-symbols-outlined">person</span><span>Account</span></a>
+        </div>
+    </nav>
+
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
+    <script src="app.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        // Countdown timer
+        function startCountdown() {
+            var now = new Date();
+            var end = new Date(now);
+            end.setHours(23, 59, 59, 999);
+            function update() {
+                var diff = end - new Date();
+                if (diff <= 0) { startCountdown(); return; }
+                var h = Math.floor(diff / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
+                var el = document.getElementById('dealCountdown');
+                if (el) el.innerHTML = '<span>' + h + 'h</span> : <span>' + m + 'm</span> : <span>' + s + 's</span>';
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
+        async function init() {
+            startCountdown();
+            var products = await ProductService.getProducts();
+
+            // Flash deals: first 4 products
+            var dealContainer = document.getElementById('dealProducts');
+            if (dealContainer) {
+                dealContainer.innerHTML = products.slice(0, 4).map(renderProductCardWithActions).join('');
+            }
+
+            // All offers
+            var allContainer = document.getElementById('allOfferProducts');
+            if (allContainer) {
+                allContainer.innerHTML = products.map(renderProductCardWithActions).join('');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    })();
+    </script>
+</body>
+</html>

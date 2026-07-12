@@ -1,6 +1,6 @@
 /* ============================================================
-   Chennai Retail - Minimal Design System
-   Clean, content-focused, purposeful styling
+   Chennai Retail - Amazon/Flipkart Inspired Design System
+   Clean, conversion-focused, trust-building UI
    ============================================================ */
 
 /* --------------------------------------------------
@@ -8,49 +8,48 @@
    -------------------------------------------------- */
 :root {
     --primary: #dc2626;
-    --primary-light: #fecaca;
+    --primary-hover: #b91c1c;
+    --primary-light: #fef2f2;
     --on-primary: #ffffff;
     --surface: #ffffff;
-    --surface-alt: #f7f7f7;
-    --text: #111111;
-    --text-secondary: #666666;
-    --text-tertiary: #999999;
-    --border: #e5e5e5;
-    --border-light: #f0f0f0;
+    --surface-alt: #f5f5f5;
+    --surface-hover: #fafafa;
+    --text: #0f1111;
+    --text-secondary: #565959;
+    --text-tertiary: #888888;
+    --border: #d5d9d9;
+    --border-light: #e7e7e7;
     --error: #d32f2f;
-    --success: #2e7d32;
+    --success: #067d62;
+    --warning: #e47911;
+    --orange: #ff9900;
+    --blue: #007185;
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
-    --transition: 0.2s ease;
+    --radius-pill: 999px;
+    --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.15);
+    --transition: 0.15s ease;
 }
 
 /* --------------------------------------------------
    2. Base Reset
    -------------------------------------------------- */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-}
-
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
     color: var(--text);
-    background: var(--surface);
+    background: #eaeded;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
-
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
@@ -60,388 +59,518 @@ ul, ol { list-style: none; }
 /* --------------------------------------------------
    3. Typography
    -------------------------------------------------- */
-.font-display { font-family: 'Inter', sans-serif; }
-.font-body { font-family: 'Inter', sans-serif; }
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    line-height: 1.2;
-    color: var(--text);
-}
+h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text); }
 
 /* --------------------------------------------------
    4. Scroll Progress
    -------------------------------------------------- */
 .scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 2px;
-    background: var(--primary);
-    z-index: 9999;
-    transition: width 0.1s linear;
-    width: 0;
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--orange));
+    z-index: 9999; transition: width 0.1s linear; width: 0;
 }
 
 /* --------------------------------------------------
    5. Page Transition
    -------------------------------------------------- */
-.page-transition {
-    animation: pageIn 0.3s ease both;
+.page-transition { animation: pageIn 0.25s ease both; }
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --------------------------------------------------
+   6. Header (Amazon-style)
+   -------------------------------------------------- */
+.site-header {
+    background: #131921;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-@keyframes pageIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.site-header a { color: #fff; }
+.header-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 56px;
+}
+.header-logo img { height: 32px; }
+.header-logo { display: flex; align-items: center; flex-shrink: 0; }
+
+/* Amazon-style search bar */
+.header-search {
+    flex: 1;
+    max-width: 800px;
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 40px;
+}
+.header-search input {
+    flex: 1;
+    border: none;
+    padding: 0 14px;
+    font-size: 14px;
+    outline: none;
+    min-width: 0;
+}
+.header-search button {
+    background: var(--orange);
+    color: #111;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    transition: background var(--transition);
+}
+.header-search button:hover { background: #e68a00; }
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+.header-actions a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: color var(--transition);
+}
+.header-actions a:hover { color: var(--orange); }
+.header-actions .material-symbols-outlined { font-size: 22px; }
+
+.cart-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+}
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -4px;
+    background: var(--orange);
+    color: #111;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
 }
 
 /* --------------------------------------------------
-   6. Toast Notifications
+   7. Mobile Header
+   -------------------------------------------------- */
+.mobile-header {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: #131921;
+    height: 56px;
+    padding: 0 12px;
+    align-items: center;
+    gap: 10px;
+}
+.mobile-header .mobile-search {
+    flex: 1;
+    height: 38px;
+    border-radius: 8px;
+    border: none;
+    padding: 0 12px;
+    font-size: 14px;
+    outline: none;
+}
+@media (max-width: 768px) {
+    .site-header { display: none; }
+    .mobile-header { display: flex; }
+    body { padding-top: 56px; padding-bottom: 56px; }
+}
+
+/* --------------------------------------------------
+   8. Bottom Navigation (Mobile - Flipkart style)
+   -------------------------------------------------- */
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 100;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+}
+@media (max-width: 768px) { .bottom-nav { display: block; } }
+.bottom-nav .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 56px;
+}
+.bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 10px;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+}
+.bottom-nav a.active, .bottom-nav a:hover { color: var(--primary); }
+.bottom-nav .material-symbols-outlined { font-size: 22px; }
+.bottom-nav .cart-badge {
+    position: absolute;
+    top: 4px; right: 50%;
+    transform: translateX(14px);
+}
+
+/* --------------------------------------------------
+   9. Toast Notifications
    -------------------------------------------------- */
 #toast-container {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 80px;
+    right: 20px;
     z-index: 10000;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-
+@media (max-width: 768px) {
+    #toast-container { bottom: 70px; left: 16px; right: 16px; }
+}
 .toast {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 20px;
-    background: var(--text);
-    color: var(--surface);
+    padding: 12px 16px;
+    background: #333;
+    color: #fff;
     border-radius: var(--radius-md);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
     transform: translateX(120%);
     transition: transform 0.3s ease, opacity 0.3s ease;
-    max-width: 360px;
+    max-width: 400px;
 }
 .toast-enter { transform: translateX(0); }
 .toast-exit { transform: translateX(120%); opacity: 0; }
-.toast-success { border-left: 3px solid var(--success); }
-.toast-error { border-left: 3px solid var(--error); }
-.toast-info { border-left: 3px solid var(--primary); }
+.toast-success { border-left: 4px solid var(--success); }
+.toast-error { border-left: 4px solid var(--error); }
+.toast-info { border-left: 4px solid var(--blue); }
 
 /* --------------------------------------------------
-   7. Scroll Reveal
-   -------------------------------------------------- */
-[data-reveal] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-[data-reveal].revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-[data-reveal-stagger] > * {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-[data-reveal-stagger].revealed > * {
-    opacity: 1;
-    transform: translateY(0);
-}
-[data-reveal-stagger].revealed > *:nth-child(1) { transition-delay: 0.05s; }
-[data-reveal-stagger].revealed > *:nth-child(2) { transition-delay: 0.1s; }
-[data-reveal-stagger].revealed > *:nth-child(3) { transition-delay: 0.15s; }
-[data-reveal-stagger].revealed > *:nth-child(4) { transition-delay: 0.2s; }
-[data-reveal-stagger].revealed > *:nth-child(5) { transition-delay: 0.25s; }
-[data-reveal-stagger].revealed > *:nth-child(6) { transition-delay: 0.3s; }
-
-/* --------------------------------------------------
-   8. Cart Fly Animation
-   -------------------------------------------------- */
-@keyframes cartFly {
-    0% { opacity: 1; transform: translate(0, 0) scale(1); }
-    100% { opacity: 0; transform: translate(var(--fly-x-end, 200px), var(--fly-y-end, -300px)) scale(0.1); }
-}
-.cart-fly-clone {
-    position: fixed;
-    z-index: 99999;
-    pointer-events: none;
-    border-radius: var(--radius-md);
-    object-fit: cover;
-    animation: cartFly 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-/* --------------------------------------------------
-   9. Wishlist Heart Burst
-   -------------------------------------------------- */
-@keyframes heartBurst {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.25); }
-    100% { transform: scale(1); }
-}
-.wishlist-burst {
-    animation: heartBurst 0.3s ease;
-}
-@keyframes heartParticle {
-    0% { opacity: 1; transform: translate(0, 0) scale(1); }
-    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
-}
-.wishlist-particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--primary);
-    pointer-events: none;
-    animation: heartParticle 0.5s ease-out forwards;
-}
-
-/* --------------------------------------------------
-   10. Sticky Add-to-Cart (Product Page)
-   -------------------------------------------------- */
-.sticky-add-cart {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 12px 16px;
-    z-index: 90;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-}
-.sticky-add-cart.visible {
-    transform: translateY(0);
-}
-@media (min-width: 769px) {
-    .sticky-add-cart { display: none; }
-}
-
-/* --------------------------------------------------
-   11. Breadcrumb
-   -------------------------------------------------- */
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-tertiary);
-    flex-wrap: wrap;
-}
-.breadcrumb a {
-    color: var(--text-secondary);
-    transition: color var(--transition);
-}
-.breadcrumb a:hover { color: var(--primary); }
-.breadcrumb-sep { color: var(--border); font-size: 10px; }
-.breadcrumb-current { color: var(--text); font-weight: 500; }
-
-/* --------------------------------------------------
-   12. Search Dropdown
-   -------------------------------------------------- */
-[data-search-dropdown] {
-    display: none;
-}
-[data-search-dropdown].active {
-    display: block;
-}
-
-/* --------------------------------------------------
-   13. Image Lazy Load
-   -------------------------------------------------- */
-img[data-src] {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-img[data-src].loaded,
-img:not([data-src]) {
-    opacity: 1;
-}
-
-/* --------------------------------------------------
-   14. Product Cards
-   -------------------------------------------------- */
-.product-card {
-    transition: transform 0.2s ease;
-}
-.product-card:hover {
-    transform: translateY(-2px);
-}
-.product-card .quick-actions {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    opacity: 0;
-    transform: translateX(8px);
-    transition: opacity 0.2s, transform 0.2s;
-    z-index: 5;
-}
-.product-card:hover .quick-actions {
-    opacity: 1;
-    transform: translateX(0);
-}
-.product-card .quick-actions button {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-sm);
-    transition: border-color var(--transition);
-}
-.product-card .quick-actions button:hover {
-    border-color: var(--primary);
-}
-
-/* --------------------------------------------------
-   15. Buttons
+   10. Buttons (Amazon/Flipkart style)
    -------------------------------------------------- */
 .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 24px;
-    background: var(--primary);
-    color: var(--on-primary);
-    font-size: 14px;
+    padding: 10px 20px;
+    background: linear-gradient(to bottom, #f7d066, #e8a817);
+    color: #111;
+    font-size: 13px;
     font-weight: 600;
-    border-radius: var(--radius-md);
-    transition: background var(--transition), transform var(--transition);
-    border: none;
+    border-radius: 20px;
+    border: 1px solid #c79100;
     cursor: pointer;
+    transition: background var(--transition);
+    width: 100%;
 }
-.btn-primary:hover {
-    background: #b91c1c;
+.btn-primary:hover { background: linear-gradient(to bottom, #f5c842, #d99b00); }
+
+.btn-buy-now {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(to bottom, #ffa41c, #ff8f00);
+    color: #111;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid #c77800;
+    cursor: pointer;
+    transition: background var(--transition);
+    width: 100%;
 }
-.btn-primary:active {
-    transform: scale(0.98);
-}
+.btn-buy-now:hover { background: linear-gradient(to bottom, #fa9b00, #e07800); }
 
 .btn-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 24px;
-    background: transparent;
+    padding: 10px 20px;
+    background: #fff;
     color: var(--text);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    transition: border-color var(--transition), background var(--transition);
+    border-radius: 20px;
     cursor: pointer;
+    transition: background var(--transition), border-color var(--transition);
 }
-.btn-outline:hover {
-    border-color: var(--text);
-    background: var(--surface-alt);
+.btn-outline:hover { background: var(--surface-alt); border-color: #888; }
+
+.btn-add-cart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(to bottom, #f7d066, #e8a817);
+    color: #111;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid #c79100;
+    cursor: pointer;
+    transition: background var(--transition);
 }
+.btn-add-cart:hover { background: linear-gradient(to bottom, #f5c842, #d99b00); }
 
 .btn-text {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 6px 10px;
+    font-size: 13px;
     font-weight: 500;
-    color: var(--primary);
+    color: var(--blue);
     border-radius: var(--radius-sm);
-    transition: background var(--transition);
+    transition: color var(--transition);
     cursor: pointer;
 }
-.btn-text:hover {
-    background: rgba(154, 68, 45, 0.06);
-}
+.btn-text:hover { color: #c7511f; text-decoration: underline; }
 
 /* --------------------------------------------------
-   16. Forms
+   11. Product Card (Amazon/Flipkart style)
    -------------------------------------------------- */
-.form-input {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--border);
+.product-card {
+    background: #fff;
     border-radius: var(--radius-md);
-    font-size: 14px;
-    background: var(--surface);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.product-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+}
+.product-card .aspect-square {
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.product-card .aspect-square img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    padding: 8px;
+}
+.product-card:hover .aspect-square img { transform: scale(1.05); }
+
+/* Discount badge (Flipkart style) */
+.discount-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+/* Product card info */
+.product-card-info {
+    padding: 10px 12px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.product-card-title {
+    font-size: 13px;
+    font-weight: 400;
     color: var(--text);
-    transition: border-color var(--transition);
-    outline: none;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
-.form-input:focus {
-    border-color: var(--primary);
+.product-card-title:hover { color: var(--blue); }
+
+/* Rating (Amazon style) */
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
 }
-.form-input::placeholder {
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background: #388e3c;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+.rating-badge .material-symbols-outlined { font-size: 12px; }
+.rating-count {
+    font-size: 12px;
     color: var(--text-tertiary);
 }
 
+/* Price row (Amazon style) */
+.price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+.price-current {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+}
+.price-original {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-decoration: line-through;
+}
+.price-discount {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Delivery info (Amazon style) */
+.delivery-info {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+.delivery-info strong { color: var(--text); }
+
+/* Quick actions (wishlist + add to cart on hover) */
+.product-card-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.product-card:hover .product-card-actions { opacity: 1; }
+.product-card-actions .btn-add-cart { flex: 1; }
+.product-card-actions .wishlist-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: #fff;
+    transition: border-color var(--transition);
+    flex-shrink: 0;
+}
+.product-card-actions .wishlist-btn:hover { border-color: var(--primary); }
+.product-card-actions .wishlist-btn .material-symbols-outlined { font-size: 18px; }
+
+/* --------------------------------------------------
+   12. Forms
+   -------------------------------------------------- */
+.form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+.form-input:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 0 3px rgba(228, 121, 17, 0.15);
+}
+.form-input::placeholder { color: var(--text-tertiary); }
 .form-label {
     display: block;
     font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
 }
 
 /* --------------------------------------------------
-   17. Quantity Stepper
+   13. Quantity Stepper (Amazon style)
    -------------------------------------------------- */
 .qty-stepper {
     display: inline-flex;
     align-items: center;
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    border-radius: 8px;
     overflow: hidden;
+    background: #f0f2f2;
 }
 .qty-stepper button {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    color: var(--text-secondary);
+    font-size: 16px;
+    color: var(--text);
+    background: #f0f2f2;
     transition: background var(--transition);
 }
-.qty-stepper button:hover {
-    background: var(--surface-alt);
-}
+.qty-stepper button:hover { background: #e3e6e6; }
 .qty-stepper input {
-    width: 48px;
-    height: 36px;
+    width: 42px;
+    height: 34px;
     text-align: center;
     border: none;
     border-left: 1px solid var(--border);
     border-right: 1px solid var(--border);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
+    background: #fff;
     -moz-appearance: textfield;
     outline: none;
 }
 .qty-stepper input::-webkit-outer-spin-button,
-.qty-stepper input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
+.qty-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; }
 
 /* --------------------------------------------------
-   18. Tabs
+   14. Tabs
    -------------------------------------------------- */
 .tab-btn {
     padding: 10px 16px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--text-secondary);
     border-bottom: 2px solid transparent;
@@ -449,28 +578,21 @@ img:not([data-src]) {
     cursor: pointer;
 }
 .tab-btn:hover { color: var(--text); }
-.tab-btn.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-}
-.tab-panel {
-    display: none;
-}
-.tab-panel.active {
-    display: block;
-}
+.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
 
 /* --------------------------------------------------
-   19. Accordion
+   15. Accordion
    -------------------------------------------------- */
 .accordion-trigger {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 14px 0;
+    padding: 12px 0;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
     border-bottom: 1px solid var(--border-light);
     cursor: pointer;
@@ -480,358 +602,311 @@ img:not([data-src]) {
     color: var(--text-tertiary);
     transition: transform 0.2s ease;
 }
-.accordion-trigger[aria-expanded="true"] .material-symbols-outlined {
-    transform: rotate(180deg);
-}
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
+.accordion-trigger[aria-expanded="true"] .material-symbols-outlined { transform: rotate(180deg); }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
 
 /* --------------------------------------------------
-   20. Mobile Filter Drawer
+   16. Mobile Filter Drawer
    -------------------------------------------------- */
 .filter-drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 320px;
-    max-width: 85vw;
-    background: var(--surface);
-    z-index: 100;
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: 320px; max-width: 85vw;
+    background: var(--surface); z-index: 100;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     overflow-y: auto;
 }
-.filter-drawer.active {
-    transform: translateX(0);
-}
+.filter-drawer.active { transform: translateX(0); }
 .filter-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: 99;
-    opacity: 0;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 99; opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
 }
-.filter-backdrop.active {
-    opacity: 1;
-    pointer-events: auto;
-}
+.filter-backdrop.active { opacity: 1; pointer-events: auto; }
 
 /* --------------------------------------------------
-   21. Swipe to Delete
+   17. Swipe to Delete
    -------------------------------------------------- */
-.swipe-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--radius-md);
-}
-.swipe-content {
-    position: relative;
-    z-index: 2;
-    background: var(--surface);
-    transition: transform 0.3s ease;
-}
-.swipe-content.swiping {
-    transition: none;
-}
+.swipe-container { position: relative; overflow: hidden; border-radius: var(--radius-md); }
+.swipe-content { position: relative; z-index: 2; background: var(--surface); transition: transform 0.3s ease; }
+.swipe-content.swiping { transition: none; }
 .swipe-action {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--error);
-    color: var(--on-primary);
-    z-index: 1;
+    position: absolute; top: 0; right: 0; bottom: 0; width: 80px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--error); color: var(--on-primary); z-index: 1;
 }
 
 /* --------------------------------------------------
-   22. Reduced Motion
+   18. Sticky Add-to-Cart (Mobile)
    -------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
-    [data-reveal] { opacity: 1; transform: none; }
-    [data-reveal-stagger] > * { opacity: 1; transform: none; }
+.sticky-add-cart {
+    position: fixed; bottom: 56px; left: 0; right: 0;
+    background: #fff; border-top: 1px solid var(--border);
+    padding: 10px 16px; z-index: 90;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
 }
+.sticky-add-cart.visible { transform: translateY(0); }
+@media (min-width: 769px) { .sticky-add-cart { display: none; } }
 
 /* --------------------------------------------------
-   23. Safe Area (Mobile)
+   19. Breadcrumb
    -------------------------------------------------- */
-.safe-area-bottom {
-    padding-bottom: env(safe-area-inset-bottom, 0);
-}
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-tertiary); flex-wrap: wrap; }
+.breadcrumb a { color: var(--text-secondary); transition: color var(--transition); }
+.breadcrumb a:hover { color: var(--blue); text-decoration: underline; }
+.breadcrumb-sep { color: var(--border); font-size: 10px; }
+.breadcrumb-current { color: var(--text); font-weight: 500; }
 
 /* --------------------------------------------------
-   24. Accessibility
+   20. Search Dropdown
    -------------------------------------------------- */
-*:focus-visible {
-    outline: 2px solid #dc2626;
-    outline-offset: 2px;
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-.sr-only.focus\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: inherit;
-    margin: inherit;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-}
+[data-search-dropdown] { display: none; }
+[data-search-dropdown].active { display: block; }
 
 /* --------------------------------------------------
-   25. Loading Skeletons
+   21. Loading Skeletons
    -------------------------------------------------- */
-@keyframes shimmer {
-    0% { background-position: -200px 0; }
-    100% { background-position: calc(200px + 100%) 0; }
-}
-.skeleton {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200px 100%;
-    animation: shimmer 1.5s infinite;
-    border-radius: 4px;
-}
+@keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: calc(200px + 100%) 0; } }
+.skeleton { background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%); background-size: 200px 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
 .skeleton-text { height: 14px; margin-bottom: 8px; }
 .skeleton-text-sm { height: 12px; width: 60%; }
 .skeleton-img { aspect-ratio: 1; border-radius: 8px; }
 .skeleton-btn { height: 40px; border-radius: 8px; }
 
 /* --------------------------------------------------
-   26. Enhanced Animations & Micro-interactions
+   22. Scroll Reveal
    -------------------------------------------------- */
+[data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+[data-reveal-stagger] > * { opacity: 0; transform: translateY(15px); transition: opacity 0.4s ease, transform 0.4s ease; }
+[data-reveal-stagger].revealed > * { opacity: 1; transform: translateY(0); }
+[data-reveal-stagger].revealed > *:nth-child(1) { transition-delay: 0.05s; }
+[data-reveal-stagger].revealed > *:nth-child(2) { transition-delay: 0.1s; }
+[data-reveal-stagger].revealed > *:nth-child(3) { transition-delay: 0.15s; }
+[data-reveal-stagger].revealed > *:nth-child(4) { transition-delay: 0.2s; }
+[data-reveal-stagger].revealed > *:nth-child(5) { transition-delay: 0.25s; }
+[data-reveal-stagger].revealed > *:nth-child(6) { transition-delay: 0.3s; }
 
-/* Page load fade-in */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* --------------------------------------------------
+   23. Cart Fly Animation
+   -------------------------------------------------- */
+@keyframes cartFly {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--fly-x-end, 200px), var(--fly-y-end, -300px)) scale(0.1); }
 }
-body { animation: fadeIn 0.4s ease-out; }
-
-/* Product card hover lift */
-.product-card {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-}
-
-/* Product image zoom on card hover */
-.product-card .aspect-square img {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.product-card:hover .aspect-square img {
-    transform: scale(1.05);
-}
-
-/* Primary button hover effects */
-.btn-primary {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-}
-.btn-primary:active {
-    transform: translateY(0);
-    box-shadow: none;
+.cart-fly-clone {
+    position: fixed; z-index: 99999; pointer-events: none;
+    border-radius: var(--radius-md); object-fit: cover;
+    animation: cartFly 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Secondary button hover */
-.btn-outline {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.btn-outline:hover {
-    transform: translateY(-1px);
-    border-color: var(--primary);
-    color: var(--primary);
-}
+/* --------------------------------------------------
+   24. Wishlist Heart Burst
+   -------------------------------------------------- */
+@keyframes heartBurst { 0% { transform: scale(1); } 50% { transform: scale(1.25); } 100% { transform: scale(1); } }
+.wishlist-burst { animation: heartBurst 0.3s ease; }
 
-/* Nav link underline animation */
-nav a:not(.btn-primary):not(.btn-outline) {
-    position: relative;
-}
-nav a:not(.btn-primary):not(.btn-outline)::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-nav a:not(.btn-primary):not(.btn-outline):hover::after {
-    width: 100%;
-}
+/* --------------------------------------------------
+   25. Cart Badge Bounce
+   -------------------------------------------------- */
+@keyframes badgeBounce { 0% { transform: scale(1); } 30% { transform: scale(1.4); } 60% { transform: scale(0.9); } 100% { transform: scale(1); } }
+.cart-badge.bounce { animation: badgeBounce 0.4s ease-out; }
 
-/* Wishlist button heart pulse */
-.wishlist-btn {
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.wishlist-btn:hover {
-    transform: scale(1.1);
-}
-.wishlist-btn .material-symbols-outlined.fill {
-    animation: heartPulse 0.3s ease-out;
-}
-@keyframes heartPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
-
-/* Cart badge bounce */
-@keyframes badgeBounce {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.4); }
-    60% { transform: scale(0.9); }
-    100% { transform: scale(1); }
-}
-.cart-badge.bounce {
-    animation: badgeBounce 0.4s ease-out;
-}
-
-/* Toast slide-in */
-@keyframes toastSlideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-@keyframes toastSlideOut {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(100%); opacity: 0; }
-}
-
-/* Scroll reveal animations */
-[data-reveal] {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-[data-reveal].revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-[data-reveal-stagger] > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-[data-reveal-stagger].revealed > * {
-    opacity: 1;
-    transform: translateY(0);
-}
-[data-reveal-stagger].revealed > *:nth-child(1) { transition-delay: 0ms; }
-[data-reveal-stagger].revealed > *:nth-child(2) { transition-delay: 80ms; }
-[data-reveal-stagger].revealed > *:nth-child(3) { transition-delay: 160ms; }
-[data-reveal-stagger].revealed > *:nth-child(4) { transition-delay: 240ms; }
-[data-reveal-stagger].revealed > *:nth-child(5) { transition-delay: 320ms; }
-[data-reveal-stagger].revealed > *:nth-child(6) { transition-delay: 400ms; }
-
-/* Filter chip hover */
+/* --------------------------------------------------
+   26. Filter Chips
+   -------------------------------------------------- */
 .filter-chip {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 6px 12px; font-size: 12px; font-weight: 500;
+    background: #fff; border: 1px solid var(--border); border-radius: 20px;
+    cursor: pointer; transition: all 0.15s ease;
 }
-.filter-chip:hover {
-    background: var(--border-light);
-    border-color: var(--border);
+.filter-chip:hover { background: var(--surface-alt); border-color: #888; }
+.filter-chip.active { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+.filter-chip .material-symbols-outlined { font-size: 14px; }
+
+/* --------------------------------------------------
+   27. Section Cards (Amazon-style white cards)
+   -------------------------------------------------- */
+.section-card {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-xs);
 }
-.filter-chip.active {
+
+/* --------------------------------------------------
+   28. Offer/Sale Badges
+   -------------------------------------------------- */
+.sale-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     background: var(--primary);
-    color: white;
-    border-color: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Image lazy load fade-in */
-img[data-src] {
-    opacity: 0;
-    transition: opacity 0.4s ease;
+/* --------------------------------------------------
+   29. Trust Bar (Flipkart style)
+   -------------------------------------------------- */
+.trust-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0;
 }
-img[data-src].loaded {
-    opacity: 1;
+.trust-bar-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+.trust-item .material-symbols-outlined { font-size: 18px; color: var(--primary); }
+
+/* --------------------------------------------------
+   30. Footer (Amazon-style dark)
+   -------------------------------------------------- */
+.site-footer {
+    background: #232f3e;
+    color: #ddd;
+}
+.site-footer a { color: #ddd; }
+.site-footer a:hover { color: #fff; text-decoration: underline; }
+.footer-back-top {
+    background: #37475a;
+    text-align: center;
+    padding: 14px;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+    transition: background var(--transition);
+}
+.footer-back-top:hover { background: #485769; }
+.footer-grid {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+.footer-grid h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.footer-grid ul { list-style: none; }
+.footer-grid li { margin-bottom: 8px; }
+.footer-grid a { font-size: 13px; color: #ddd; }
+.footer-bottom {
+    border-top: 1px solid #3a4553;
+    padding: 20px 16px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 
-/* Smooth focus states */
-*:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-    border-radius: 4px;
+/* --------------------------------------------------
+   31. Cart Page (Amazon-style)
+   -------------------------------------------------- */
+.cart-item-card {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    box-shadow: var(--shadow-xs);
+}
+.cart-item-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    background: #fff;
+    flex-shrink: 0;
 }
 
-/* Category card hover */
-.category-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* --------------------------------------------------
+   32. Checkout (Amazon-style steps)
+   -------------------------------------------------- */
+.checkout-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background var(--transition);
 }
-.category-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+.checkout-step.active { background: var(--primary-light); }
+.checkout-step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
 }
+.checkout-step.completed .checkout-step-num { background: var(--success); }
 
-/* Hero section parallax-like effect */
-.hero-section {
+/* --------------------------------------------------
+   33. Product Page (Amazon-style)
+   -------------------------------------------------- */
+.product-gallery-main {
+    background: #fff;
+    border-radius: var(--radius-md);
     overflow: hidden;
+    border: 1px solid var(--border-light);
 }
-.hero-section img {
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+.product-gallery-main img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    padding: 16px;
 }
-.hero-section:hover img {
-    transform: scale(1.02);
+.gallery-thumb {
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity var(--transition), border-color var(--transition);
+    background: #fff;
 }
+.gallery-thumb.active,
+.gallery-thumb:hover { opacity: 1; border-color: var(--primary); }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 
-/* Trust signal icon pulse */
-.trust-signal:hover .material-symbols-outlined {
-    animation: iconPulse 0.3s ease-out;
-}
-@keyframes iconPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
-/* Newsletter input focus */
-.newsletter-input:focus {
-    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-    border-color: var(--primary);
-}
-
-/* Quantity stepper button hover */
-.qty-stepper button {
-    transition: all 0.2s ease;
-}
-.qty-stepper button:hover {
-    background: var(--border-light);
-}
-.qty-stepper button:active {
-    transform: scale(0.95);
-}
-
-/* Reduced motion support */
+/* --------------------------------------------------
+   34. Reduced Motion
+   -------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -841,7 +916,20 @@ img[data-src].loaded {
     body { animation: none; }
     .product-card:hover { transform: none; }
     .product-card:hover .aspect-square img { transform: none; }
-    .btn-primary:hover { transform: none; }
     [data-reveal] { opacity: 1; transform: none; }
     [data-reveal-stagger] > * { opacity: 1; transform: none; }
 }
+
+/* --------------------------------------------------
+   35. Accessibility
+   -------------------------------------------------- */
+*:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* --------------------------------------------------
+   36. Safe Area (Mobile)
+   -------------------------------------------------- */
+.safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }

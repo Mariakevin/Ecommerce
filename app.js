@@ -1,115 +1,13 @@
 /* ============================================================
-   Chennai Retail - Shared JavaScript
-   Cart, search, toasts, and UI components
+   Chennai Retail - Application Shell
+   UI interactions only — data/business logic in services/store
    ============================================================ */
 
 (function() {
     'use strict';
 
     /* --------------------------------------------------
-       1. Toast Notification System
-       -------------------------------------------------- */
-    window.showToast = function(message, type = 'success', duration = 3000) {
-        let container = document.getElementById('toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.id = 'toast-container';
-            document.body.appendChild(container);
-        }
-
-        const icons = { success: 'check_circle', error: 'error', info: 'info' };
-
-        const toast = document.createElement('div');
-        toast.className = 'toast toast-' + type + ' toast-enter';
-        toast.innerHTML = '<span class="material-symbols-outlined" style="font-size:20px">' + (icons[type] || 'info') + '</span><span>' + message + '</span>';
-        container.appendChild(toast);
-
-        setTimeout(function() {
-            toast.classList.remove('toast-enter');
-            toast.classList.add('toast-exit');
-            setTimeout(function() { toast.remove(); }, 300);
-        }, duration);
-    };
-
-    /* --------------------------------------------------
-       2. Cart Management
-       -------------------------------------------------- */
-    var CART_KEY = 'chennai_retail_cart';
-
-    function getCart() {
-        try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
-        catch(e) { return []; }
-    }
-
-    function saveCart(cart) {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
-        updateCartBadge();
-    }
-
-    window.addToCart = function(product) {
-        var cart = getCart();
-        var existing = cart.find(function(item) { return item.id === product.id; });
-        if (existing) {
-            existing.qty += (product.qty || 1);
-        } else {
-            cart.push(Object.assign({}, product, { qty: product.qty || 1 }));
-        }
-        saveCart(cart);
-        showToast(product.name + ' added to cart');
-    };
-
-    function updateCartBadge() {
-        var count = getCart().reduce(function(sum, item) { return sum + item.qty; }, 0);
-        document.querySelectorAll('.cart-badge').forEach(function(badge) {
-            badge.textContent = count;
-            badge.style.display = count > 0 ? 'flex' : 'none';
-        });
-    }
-
-    /* --------------------------------------------------
-       3. Wishlist Management
-       -------------------------------------------------- */
-    var WISH_KEY = 'chennai_retail_wishlist';
-
-    function getWishlist() {
-        try { return JSON.parse(localStorage.getItem(WISH_KEY)) || []; }
-        catch(e) { return []; }
-    }
-
-    function saveWishlist(list) {
-        localStorage.setItem(WISH_KEY, JSON.stringify(list));
-        updateWishlistIcons();
-    }
-
-    window.toggleWishlist = function(productId, name) {
-        var list = getWishlist();
-        var idx = list.indexOf(productId);
-        if (idx > -1) {
-            list.splice(idx, 1);
-            showToast(name + ' removed from wishlist', 'info');
-        } else {
-            list.push(productId);
-            showToast(name + ' added to wishlist');
-        }
-        saveWishlist(list);
-    };
-
-    function updateWishlistIcons() {
-        document.querySelectorAll('.wishlist-btn').forEach(function(btn) {
-            var id = btn.dataset.productId;
-            var icon = btn.querySelector('.material-symbols-outlined');
-            if (getWishlist().indexOf(id) > -1) {
-                icon.classList.add('fill');
-                btn.style.color = 'var(--primary)';
-            } else {
-                icon.classList.remove('fill');
-                btn.style.color = '';
-            }
-        });
-    }
-
-    /* --------------------------------------------------
-       4. Quantity Stepper
+       1. Quantity Stepper (delegated)
        -------------------------------------------------- */
     document.addEventListener('click', function(e) {
         var btn = e.target.closest('.qty-stepper button');
@@ -127,7 +25,7 @@
     });
 
     /* --------------------------------------------------
-       5. Tab System
+       2. Tab System (delegated)
        -------------------------------------------------- */
     document.addEventListener('click', function(e) {
         var tabBtn = e.target.closest('.tab-btn');
@@ -143,7 +41,7 @@
     });
 
     /* --------------------------------------------------
-       6. Mobile Filter Drawer
+       3. Mobile Filter Drawer
        -------------------------------------------------- */
     window.openFilters = function() {
         var drawer = document.getElementById('filterDrawer');
@@ -162,26 +60,7 @@
     };
 
     /* --------------------------------------------------
-       7. Scroll Animations
-       -------------------------------------------------- */
-    function initScrollAnimations() {
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in-up');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('[data-animate]').forEach(function(el) {
-            el.style.opacity = '0';
-            observer.observe(el);
-        });
-    }
-
-    /* --------------------------------------------------
-       8. Image Gallery
+       4. Image Gallery
        -------------------------------------------------- */
     window.initGallery = function(container) {
         var mainImg = container.querySelector('.gallery-main img');
@@ -216,7 +95,7 @@
     };
 
     /* --------------------------------------------------
-       9. Search Functionality
+       5. Search Functionality
        -------------------------------------------------- */
     window.initSearch = function(input, dropdown) {
         if (!input || !dropdown) return;
@@ -247,36 +126,7 @@
     };
 
     /* --------------------------------------------------
-       10. Pincode Check
-       -------------------------------------------------- */
-    window.checkPincode = function(pincode) {
-        var codes = ['600001','600002','600003','600004','600005','600006','600017','600018','600028','600029','600030','600040','600041','600042','600060','600061','600062','600063','600064','600065','600066','600073','600074','600075','600076','600077','600078','600079','600080','600081','600082','600083','600084','600085','600086','600087','600088','600089','600090','600091','600092','600093','600094','600095','600096','600097','600100','600101','600102','600103','600104','600105','600106','600107','600113','600119','603102','603103','603104','603105','603106','603107','603108','603109','603110'];
-        return codes.indexOf(pincode) > -1;
-    };
-
-    /* --------------------------------------------------
-       11. Accordion
-       -------------------------------------------------- */
-    document.addEventListener('click', function(e) {
-        var trigger = e.target.closest('.accordion-trigger');
-        if (!trigger) return;
-        var item = trigger.closest('.accordion-item');
-        var content = item ? item.querySelector('.accordion-content') : null;
-        if (!content) return;
-        var isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-        var group = item.closest('.accordion-group');
-        if (group) {
-            group.querySelectorAll('.accordion-content').forEach(function(c) { c.style.maxHeight = '0px'; });
-            group.querySelectorAll('.accordion-trigger').forEach(function(t) { t.setAttribute('aria-expanded', 'false'); });
-        }
-        if (!isOpen) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            trigger.setAttribute('aria-expanded', 'true');
-        }
-    });
-
-    /* --------------------------------------------------
-       12. Sticky Header
+       6. Sticky Header
        -------------------------------------------------- */
     function initStickyHeader() {
         var header = document.querySelector('header');
@@ -291,7 +141,7 @@
     }
 
     /* --------------------------------------------------
-       13. Product View Toggle
+       7. Product View Toggle
        -------------------------------------------------- */
     window.setProductView = function(view) {
         var grid = document.getElementById('productGrid');
@@ -301,24 +151,18 @@
         if (view === 'list') {
             grid.classList.remove('grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3');
             grid.classList.add('flex', 'flex-col', 'gap-4');
-            grid.querySelectorAll(':scope > a, :scope > div').forEach(function(card) {
-                card.classList.add('product-card-list');
-            });
             if (listBtn) listBtn.classList.add('active');
             if (gridBtn) gridBtn.classList.remove('active');
         } else {
             grid.classList.remove('flex', 'flex-col', 'gap-4');
             grid.classList.add('grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3');
-            grid.querySelectorAll(':scope > a, :scope > div').forEach(function(card) {
-                card.classList.remove('product-card-list');
-            });
             if (gridBtn) gridBtn.classList.add('active');
             if (listBtn) listBtn.classList.remove('active');
         }
     };
 
     /* --------------------------------------------------
-       14. Scroll Reveal
+       8. Scroll Reveal
        -------------------------------------------------- */
     function initScrollReveal() {
         var observer = new IntersectionObserver(function(entries) {
@@ -336,7 +180,7 @@
     }
 
     /* --------------------------------------------------
-       15. Scroll Progress
+       9. Scroll Progress
        -------------------------------------------------- */
     function initScrollProgress() {
         var bar = document.querySelector('.scroll-progress');
@@ -350,7 +194,7 @@
     }
 
     /* --------------------------------------------------
-       16. Cart Fly-to Animation
+       10. Cart Fly-to Animation
        -------------------------------------------------- */
     window.flyToCart = function(imageEl) {
         if (!imageEl) return;
@@ -373,7 +217,7 @@
     };
 
     /* --------------------------------------------------
-       17. Wishlist Heart Burst
+       11. Wishlist Heart Burst
        -------------------------------------------------- */
     window.wishlistBurst = function(btn) {
         if (!btn) return;
@@ -393,7 +237,7 @@
     };
 
     /* --------------------------------------------------
-       18. Sticky Add-to-Cart
+       12. Sticky Add-to-Cart
        -------------------------------------------------- */
     function initStickyAddToCart() {
         var stickyBar = document.querySelector('.sticky-add-cart');
@@ -401,70 +245,14 @@
         if (!stickyBar || !mainAddBtn) return;
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    stickyBar.classList.remove('visible');
-                } else {
-                    stickyBar.classList.add('visible');
-                }
+                stickyBar.classList.toggle('visible', !entry.isIntersecting);
             });
         }, { threshold: 0 });
         observer.observe(mainAddBtn);
     }
 
     /* --------------------------------------------------
-       19. Image Lazy Loading
-       -------------------------------------------------- */
-    function initLazyImages() {
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    var img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
-                        img.addEventListener('load', function() { img.classList.add('loaded'); });
-                    }
-                    observer.unobserve(img);
-                }
-            });
-        }, { rootMargin: '200px 0px' });
-        document.querySelectorAll('img[data-src]').forEach(function(img) { observer.observe(img); });
-    }
-
-    /* --------------------------------------------------
-       20. Swipe Gesture (Cart Delete)
-       -------------------------------------------------- */
-    function initSwipeGestures() {
-        document.querySelectorAll('.swipe-container').forEach(function(container) {
-            var content = container.querySelector('.swipe-content');
-            if (!content) return;
-            var startX = 0, currentX = 0, isDragging = false;
-
-            content.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-                content.classList.add('swiping');
-            }, { passive: true });
-
-            content.addEventListener('touchmove', function(e) {
-                if (!isDragging) return;
-                currentX = e.touches[0].clientX - startX;
-                if (currentX < 0) {
-                    content.style.transform = 'translateX(' + Math.max(currentX, -80) + 'px)';
-                }
-            }, { passive: true });
-
-            content.addEventListener('touchend', function() {
-                isDragging = false;
-                content.classList.remove('swiping');
-                content.style.transform = currentX < -50 ? 'translateX(-80px)' : 'translateX(0)';
-                currentX = 0;
-            });
-        });
-    }
-
-    /* --------------------------------------------------
-       21. Smooth Anchor Scroll
+       13. Smooth Anchor Scroll
        -------------------------------------------------- */
     document.addEventListener('click', function(e) {
         var link = e.target.closest('a[href^="#"]');
@@ -477,21 +265,23 @@
     });
 
     /* --------------------------------------------------
-       22. Init on DOM Ready
+       14. Init on DOM Ready
        -------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', function() {
-        updateCartBadge();
-        updateWishlistIcons();
-        initScrollAnimations();
+        // Initialize stores
+        if (window.cartStore) window.cartStore.init();
+        if (window.wishlistStore) window.wishlistStore.updateIcons();
+
+        // Initialize UI
         initScrollReveal();
         initScrollProgress();
         initStickyHeader();
         initStickyAddToCart();
-        initLazyImages();
-        initSwipeGestures();
 
+        // Initialize galleries
         document.querySelectorAll('[data-gallery]').forEach(function(g) { initGallery(g); });
 
+        // Initialize search
         document.querySelectorAll('[data-search-input]').forEach(function(input) {
             var dropdown = input.closest('.relative');
             if (dropdown) dropdown = dropdown.querySelector('[data-search-dropdown]');

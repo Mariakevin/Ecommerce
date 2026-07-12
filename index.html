@@ -116,40 +116,7 @@
                 <h2 class="text-xl font-semibold">Featured Products</h2>
                 <a href="category.html" class="text-sm font-medium text-primary hover:underline">View all</a>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" data-reveal-stagger>
-                <!-- Product 1 -->
-                <a href="product.html?id=p1" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7" alt="Handwoven Cotton Throw" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Handwoven Cotton Throw</h3>
-                    <p class="text-sm font-semibold">₹3,450</p>
-                </a>
-                <!-- Product 2 -->
-                <a href="product.html?id=p2" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Ceramic Table Lamp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Ceramic Table Lamp</h3>
-                    <p class="text-sm font-semibold">₹3,499</p>
-                </a>
-                <!-- Product 3 -->
-                <a href="product.html?id=p3" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Stone Planter Set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Stone Planter Set</h3>
-                    <p class="text-sm font-semibold">₹2,250</p>
-                </a>
-                <!-- Product 4 -->
-                <a href="product.html?id=p4" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ" alt="Brass Wall Clock" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Brass Wall Clock</h3>
-                    <p class="text-sm font-semibold">₹4,200</p>
-                </a>
-            </div>
+            <div id="featuredProducts" class="grid grid-cols-2 lg:grid-cols-4 gap-5" data-reveal-stagger></div>
         </section>
 
         <!-- Value Props -->
@@ -265,7 +232,27 @@
         </div>
     </nav>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/OrderService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            var products = await ProductService.getFeaturedProducts();
+            var container = document.getElementById('featuredProducts');
+            if (container) {
+                container.innerHTML = products.map(renderProductCard).join('');
+            }
+        });
+    </script>
     <script>
         // Countdown Timer
         document.addEventListener('DOMContentLoaded', function() {

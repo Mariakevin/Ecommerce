@@ -93,26 +93,16 @@
                     <div class="gallery-main aspect-square bg-surface-alt rounded-lg overflow-hidden mb-4 cursor-zoom-in">
                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7" alt="Handwoven Cotton Throw" class="w-full h-full object-cover transition-transform duration-300">
                     </div>
-                    <div class="flex gap-2">
-                        <button class="gallery-thumb active w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border-2 border-primary opacity-100">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7" alt="Thumb 1" class="w-full h-full object-cover">
-                        </button>
-                        <button class="gallery-thumb w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-opacity">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Thumb 2" class="w-full h-full object-cover">
-                        </button>
-                        <button class="gallery-thumb w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-opacity">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ" alt="Thumb 3" class="w-full h-full object-cover">
-                        </button>
-                    </div>
+                    <div id="galleryThumbs" class="flex gap-2"></div>
                 </div>
 
                 <!-- Info -->
                 <div>
                     <p class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-2">Living Room</p>
-                    <h1 class="text-2xl md:text-3xl font-semibold mb-3">Handwoven Cotton Throw</h1>
-                    <p class="text-2xl font-semibold mb-6">₹3,450</p>
+                    <h1 id="productTitle" class="text-2xl md:text-3xl font-semibold mb-3"></h1>
+                    <p id="productPrice" class="text-2xl font-semibold mb-6"></p>
 
-                    <p class="text-sm text-text-secondary leading-relaxed mb-8">Crafted by artisans in Chettinad, this cotton throw brings warmth and texture to any space. Made from 100% organic cotton with a subtle herringbone weave.</p>
+                    <p id="productDesc" class="text-sm text-text-secondary leading-relaxed mb-8"></p>
 
                     <!-- Quantity -->
                     <div class="mb-6">
@@ -126,11 +116,11 @@
 
                     <!-- Actions -->
                     <div class="flex gap-3 mb-8">
-                        <button onclick="addToCart({id:'p1',name:'Handwoven Cotton Throw',price:3450,image:'https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7'}); flyToCart(document.querySelector('.gallery-main img'))" data-main-add-cart class="btn-primary flex-1">
+                        <button data-main-add-cart class="btn-primary flex-1">
                             <span class="material-symbols-outlined" style="font-size:20px">shopping_bag</span>
                             Add to Cart
                         </button>
-                        <button onclick="toggleWishlist('p1','Handwoven Cotton Throw'); wishlistBurst(this)" class="wishlist-btn btn-outline px-4" data-product-id="p1">
+                        <button class="wishlist-btn btn-outline px-4">
                             <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
                         </button>
                     </div>
@@ -169,12 +159,7 @@
                                     <span class="material-symbols-outlined">expand_more</span>
                                 </button>
                                 <div class="accordion-content">
-                                    <div class="py-4 text-sm text-text-secondary space-y-2">
-                                        <p><span class="font-medium text-text">Material:</span> 100% Organic Cotton</p>
-                                        <p><span class="font-medium text-text">Size:</span> 150cm x 200cm</p>
-                                        <p><span class="font-medium text-text">Weight:</span> 450g</p>
-                                        <p><span class="font-medium text-text">Origin:</span> Chettinad, Tamil Nadu</p>
-                                    </div>
+                                    <div id="productSpecs" class="py-4 text-sm text-text-secondary space-y-2"></div>
                                 </div>
                             </div>
                             <div class="accordion-item">
@@ -199,36 +184,7 @@
         <!-- Related Products -->
         <section class="max-w-[1200px] mx-auto px-4 md:px-10 py-16 border-t border-border" data-reveal>
             <h2 class="text-xl font-semibold mb-8">You may also like</h2>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-5" data-reveal-stagger>
-                <a href="product.html?id=p2" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Ceramic Table Lamp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Ceramic Table Lamp</h3>
-                    <p class="text-sm font-semibold">₹3,499</p>
-                </a>
-                <a href="product.html?id=p3" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Stone Planter Set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Stone Planter Set</h3>
-                    <p class="text-sm font-semibold">₹2,250</p>
-                </a>
-                <a href="product.html?id=p4" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ" alt="Brass Wall Clock" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Brass Wall Clock</h3>
-                    <p class="text-sm font-semibold">₹4,200</p>
-                </a>
-                <a href="product.html?id=p5" class="product-card group block">
-                    <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr3K0r1Q7pT0v3x8z9y2w4u6t8o0i2u4y6w8e0r2t4y6u8i0o2p4s6d8f0g2h4j6k8l0z2x4c6v8b0n2m4" alt="Linen Cushion Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
-                    </div>
-                    <h3 class="text-sm font-medium mb-1">Linen Cushion Cover</h3>
-                    <p class="text-sm font-semibold">₹890</p>
-                </a>
-            </div>
+            <div id="relatedProducts" class="grid grid-cols-2 lg:grid-cols-4 gap-5" data-reveal-stagger></div>
         </section>
 
     </div>
@@ -236,10 +192,9 @@
     <!-- Sticky Add to Cart (Mobile) -->
     <div class="sticky-add-cart">
         <div class="flex items-center gap-3">
-            <span class="text-sm font-semibold">₹3,450</span>
-            <span class="text-xs text-text-tertiary">Qty: 1</span>
+            <span class="text-sm font-semibold text-sm"></span>
         </div>
-        <button onclick="addToCart({id:'p1',name:'Handwoven Cotton Throw',price:3450})" class="btn-primary text-sm px-5 py-2.5">
+        <button class="btn-primary text-sm px-5 py-2.5">
             <span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>
             Add to Cart
         </button>
@@ -314,6 +269,83 @@
         </div>
     </nav>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/OrderService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            var id = getUrlParam('id') || 'p1';
+            var product = await ProductService.getProductById(id);
+            if (!product) {
+                document.querySelector('main').innerHTML = '<div class="text-center py-20"><h1>Product not found</h1></div>';
+                return;
+            }
+
+            document.title = product.name + ' - Chennai Retail';
+            document.getElementById('productTitle').textContent = product.name;
+            document.getElementById('productPrice').textContent = formatPrice(product.price);
+            document.getElementById('productDesc').textContent = product.description;
+            document.querySelector('.breadcrumb-current').textContent = product.name;
+
+            var mainImg = document.querySelector('.gallery-main img');
+            if (mainImg) mainImg.src = product.image;
+            var thumbsContainer = document.getElementById('galleryThumbs');
+            if (thumbsContainer && product.images) {
+                thumbsContainer.innerHTML = product.images.map(function(img, i) {
+                    return '<button class="gallery-thumb ' + (i === 0 ? 'active' : '') + ' w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border-2 ' + (i === 0 ? 'border-primary' : 'border-transparent') + ' opacity-' + (i === 0 ? '100' : '60') + ' hover:opacity-100 transition-opacity">' +
+                        '<img src="' + img + '" alt="Thumb ' + (i+1) + '" class="w-full h-full object-cover">' +
+                    '</button>';
+                }).join('');
+                initGallery(document.querySelector('[data-gallery]'));
+            }
+
+            var specsContainer = document.getElementById('productSpecs');
+            if (specsContainer && product.specs) {
+                specsContainer.innerHTML = Object.entries(product.specs).map(function(entry) {
+                    return '<p><span class="font-medium text-text">' + entry[0] + ':</span> ' + entry[1] + '</p>';
+                }).join('');
+            }
+
+            var allProducts = await ProductService.getProducts();
+            var related = allProducts.filter(function(p) { return p.id !== product.id; }).slice(0, 4);
+            var relatedContainer = document.getElementById('relatedProducts');
+            if (relatedContainer) {
+                relatedContainer.innerHTML = related.map(renderProductCard).join('');
+            }
+
+            var addBtn = document.querySelector('[data-main-add-cart]');
+            if (addBtn) {
+                addBtn.onclick = function() {
+                    cartStore.addItem(product);
+                    flyToCart(document.querySelector('.gallery-main img'));
+                };
+            }
+
+            var wishBtn = document.querySelector('.wishlist-btn');
+            if (wishBtn) {
+                wishBtn.dataset.productId = product.id;
+                wishBtn.onclick = function() {
+                    wishlistStore.toggle(product.id, product.name);
+                    wishlistBurst(this);
+                };
+            }
+
+            var stickyBtn = document.querySelector('.sticky-add-cart button');
+            if (stickyBtn) {
+                stickyBtn.onclick = function() { cartStore.addItem(product); };
+            }
+            var stickyPrice = document.querySelector('.sticky-add-cart .text-sm');
+            if (stickyPrice) stickyPrice.textContent = formatPrice(product.price);
+        });
+    </script>
 </body>
 </html>

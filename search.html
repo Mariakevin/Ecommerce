@@ -138,8 +138,8 @@
                 </div>
             </div>
 
-            <!-- Search Results Empty State -->
-            <div class="text-center py-16">
+            <!-- Search Results -->
+            <div id="searchResults" class="text-center py-16">
                 <span class="material-symbols-outlined text-text-tertiary mb-4 block" style="font-size:64px">search</span>
                 <p class="text-text-secondary mb-1">Start typing to search</p>
                 <p class="text-xs text-text-tertiary">Find furniture, decor, and more from our collection</p>
@@ -216,6 +216,38 @@
         </div>
     </nav>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/OrderService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var input = document.querySelector('[data-search-input]');
+            var resultsContainer = document.getElementById('searchResults');
+            if (!input || !resultsContainer) return;
+
+            input.addEventListener('input', async function() {
+                var query = this.value.trim();
+                if (query.length < 2) {
+                    resultsContainer.innerHTML = '<p class="text-text-secondary text-center py-8">Type to search products</p>';
+                    return;
+                }
+                var products = await ProductService.searchProducts(query);
+                if (products.length === 0) {
+                    resultsContainer.innerHTML = '<p class="text-text-secondary text-center py-8">No products found</p>';
+                } else {
+                    resultsContainer.innerHTML = products.map(renderProductCard).join('');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

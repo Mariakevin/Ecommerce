@@ -43,12 +43,12 @@
             <div class="border border-border rounded-lg p-5 mb-6 text-left">
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-xs text-text-tertiary">Order Number</span>
-                    <span class="text-sm font-semibold">#CR-2026-7842</span>
+                    <span id="orderNumber" class="text-sm font-semibold">#</span>
                 </div>
                 <div class="border-t border-border-light pt-4 space-y-3">
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">shopping_bag</span>
-                        <span class="text-sm text-text-secondary">3 items</span>
+                        <span id="orderItems" class="text-sm text-text-secondary">0 items</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">location_on</span>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">local_shipping</span>
-                        <span class="text-sm text-text-secondary">Estimated delivery: July 18, 2026</span>
+                        <span id="orderDelivery" class="text-sm text-text-secondary"></span>
                     </div>
                 </div>
             </div>
@@ -69,6 +69,30 @@
         </div>
     </div>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/OrderService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var orderId = getUrlParam('id');
+            if (orderId) {
+                var order = OrderService.getOrderById(orderId);
+                if (order) {
+                    document.getElementById('orderNumber').textContent = '#' + order.id;
+                    document.getElementById('orderItems').textContent = order.items.length + ' items';
+                    document.getElementById('orderDelivery').textContent = order.estimatedDelivery;
+                }
+            }
+        });
+    </script>
 </body>
 </html>

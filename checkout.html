@@ -161,37 +161,12 @@
                     <div class="border border-border rounded-lg p-6 sticky top-20">
                         <h2 class="text-lg font-semibold mb-5">Order Summary</h2>
 
-                        <div class="space-y-3 mb-5">
-                            <div class="flex gap-3">
-                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7" alt="Throw" class="w-14 h-14 rounded object-cover">
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium truncate">Handwoven Cotton Throw</p>
-                                    <p class="text-xs text-text-tertiary">Qty: 1</p>
-                                </div>
-                                <span class="text-sm font-medium">₹3,450</span>
-                            </div>
-                            <div class="flex gap-3">
-                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Lamp" class="w-14 h-14 rounded object-cover">
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium truncate">Ceramic Table Lamp</p>
-                                    <p class="text-xs text-text-tertiary">Qty: 1</p>
-                                </div>
-                                <span class="text-sm font-medium">₹3,499</span>
-                            </div>
-                            <div class="flex gap-3">
-                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Planter" class="w-14 h-14 rounded object-cover">
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium truncate">Stone Planter Set</p>
-                                    <p class="text-xs text-text-tertiary">Qty: 2</p>
-                                </div>
-                                <span class="text-sm font-medium">₹4,500</span>
-                            </div>
-                        </div>
+                        <div id="checkoutItems" class="space-y-3 mb-5"></div>
 
                         <div class="border-t border-border pt-4 space-y-2 mb-5">
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Subtotal</span>
-                                <span class="font-medium">₹11,449</span>
+                                <span class="font-medium" id="checkoutSubtotal">₹0</span>
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Delivery</span>
@@ -199,18 +174,18 @@
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Tax</span>
-                                <span class="font-medium">₹572</span>
+                                <span class="font-medium" id="checkoutTax">₹0</span>
                             </div>
                         </div>
 
                         <div class="border-t border-border pt-4 mb-5">
                             <div class="flex justify-between">
                                 <span class="font-semibold">Total</span>
-                                <span class="font-semibold text-lg">₹12,021</span>
+                                <span class="font-semibold text-lg" id="checkoutTotal">₹0</span>
                             </div>
                         </div>
 
-                        <button onclick="window.location.href='order-success.html'" class="btn-primary w-full text-center">Place Order</button>
+                        <button data-place-order class="btn-primary w-full text-center">Place Order</button>
 
                         <div class="mt-4 pt-4 border-t border-border flex items-center justify-center gap-2">
                             <span class="material-symbols-outlined text-text-tertiary" style="font-size:16px">lock</span>
@@ -234,6 +209,51 @@
         </div>
     </footer>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/OrderService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var cart = CartService.getCart();
+            var summaryItems = document.getElementById('checkoutItems');
+            if (summaryItems) {
+                summaryItems.innerHTML = cart.map(function(item) {
+                    return '<div class="flex gap-3"><img src="' + item.image + '" alt="' + item.name + '" class="w-14 h-14 rounded object-cover"><div class="flex-1 min-w-0"><p class="text-sm font-medium truncate">' + item.name + '</p><p class="text-xs text-text-tertiary">Qty: ' + item.qty + '</p></div><span class="text-sm font-medium">' + formatPrice(item.price * item.qty) + '</span></div>';
+                }).join('');
+            }
+
+            var state = cartStore.getState();
+            document.getElementById('checkoutSubtotal').textContent = formatPrice(state.subtotal);
+            document.getElementById('checkoutTax').textContent = formatPrice(state.tax);
+            document.getElementById('checkoutTotal').textContent = formatPrice(state.total);
+
+            var placeBtn = document.querySelector('[data-place-order]');
+            if (placeBtn) {
+                placeBtn.addEventListener('click', function() {
+                    var shipping = {
+                        firstName: document.querySelector('[name="firstName"]').value,
+                        lastName: document.querySelector('[name="lastName"]').value,
+                        phone: document.querySelector('[name="phone"]').value,
+                        address: document.querySelector('[name="address"]').value,
+                        city: document.querySelector('[name="city"]').value,
+                        pincode: document.querySelector('[name="pincode"]').value
+                    };
+                    var order = OrderService.createOrder(shipping);
+                    if (order) {
+                        window.location.href = 'order-success.html?id=' + order.id;
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

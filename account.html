@@ -83,10 +83,10 @@
                 <!-- Profile Sidebar -->
                 <aside class="md:w-64 shrink-0">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center text-lg font-semibold">PS</div>
+                        <div id="userInitials" class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center text-lg font-semibold">PS</div>
                         <div>
-                            <p class="font-semibold text-sm">Priya Sharma</p>
-                            <p class="text-xs text-text-tertiary">priya@email.com</p>
+                            <p id="userName" class="font-semibold text-sm">Priya Sharma</p>
+                            <p id="userEmail" class="text-xs text-text-tertiary">priya@email.com</p>
                         </div>
                     </div>
                     <nav class="flex md:flex-col gap-1">
@@ -107,38 +107,7 @@
                     <!-- Orders Tab -->
                     <div class="account-content" data-content="orders">
                         <h1 class="text-xl font-semibold mb-6">My Orders</h1>
-                        <div class="space-y-4">
-                            <div class="border border-border rounded-lg p-4 md:p-5">
-                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
-                                    <div>
-                                        <p class="font-medium text-sm">Order #CR-2026-7831</p>
-                                        <p class="text-xs text-text-tertiary mt-0.5">Placed on June 28, 2026</p>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700">Delivered</span>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3 border-t border-border-light">
-                                    <p class="text-sm text-text-secondary">2 items &middot; Handwoven Cotton Throw, Stone Planter Set</p>
-                                    <p class="text-sm font-semibold">&#8377;5,700</p>
-                                </div>
-                            </div>
-                            <div class="border border-border rounded-lg p-4 md:p-5">
-                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
-                                    <div>
-                                        <p class="font-medium text-sm">Order #CR-2026-7842</p>
-                                        <p class="text-xs text-text-tertiary mt-0.5">Placed on July 10, 2026</p>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Processing</span>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3 border-t border-border-light">
-                                    <p class="text-sm text-text-secondary">3 items &middot; Ceramic Table Lamp, Brass Wall Clock, Jute Runner</p>
-                                    <p class="text-sm font-semibold">&#8377;11,649</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div id="ordersList" class="space-y-4"></div>
                     </div>
 
                     <!-- Wishlist Tab -->
@@ -261,6 +230,38 @@
         </div>
     </nav>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/OrderService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var user = AuthService.getUser();
+            if (user) {
+                var nameEl = document.getElementById('userName');
+                var emailEl = document.getElementById('userEmail');
+                var initialsEl = document.getElementById('userInitials');
+                if (nameEl) nameEl.textContent = user.firstName + ' ' + user.lastName;
+                if (emailEl) emailEl.textContent = user.email;
+                if (initialsEl) initialsEl.textContent = user.firstName[0] + user.lastName[0];
+            }
+
+            var orders = OrderService.getOrders();
+            var ordersContainer = document.getElementById('ordersList');
+            if (ordersContainer && orders.length > 0) {
+                ordersContainer.innerHTML = orders.map(function(order) {
+                    return '<div class="flex items-center justify-between p-4 border border-border rounded-lg"><div><p class="text-sm font-medium">Order #' + order.id + '</p><p class="text-xs text-text-tertiary">' + formatDate(order.createdAt) + '</p></div><div class="text-right"><span class="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-green-50 text-green-700">' + order.status + '</span><p class="text-sm font-semibold mt-1">' + formatPrice(order.total) + '</p></div></div>';
+                }).join('');
+            }
+        });
+    </script>
 </body>
 </html>

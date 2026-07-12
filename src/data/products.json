@@ -1,0 +1,123 @@
+[
+    {
+        "id": "p1",
+        "name": "Handwoven Cotton Throw",
+        "price": 3450,
+        "category": "living",
+        "tag": "Living Room",
+        "description": "Crafted by artisans in Chettinad, this cotton throw brings warmth and texture to any space. Made from 100% organic cotton with a subtle herringbone weave.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7",
+        "images": [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU"
+        ],
+        "specs": {
+            "Material": "100% Organic Cotton",
+            "Size": "150cm x 200cm",
+            "Weight": "450g",
+            "Origin": "Chettinad, Tamil Nadu"
+        },
+        "inStock": true,
+        "featured": true
+    },
+    {
+        "id": "p2",
+        "name": "Ceramic Table Lamp",
+        "price": 3499,
+        "category": "lighting",
+        "tag": "Lighting",
+        "description": "A minimalist ceramic lamp with a warm, diffused glow. Hand-thrown on the potter's wheel in Mahabalipuram.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ",
+        "images": [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ"
+        ],
+        "specs": {
+            "Material": "Ceramic",
+            "Height": "35cm",
+            "Bulb": "E27 (not included)",
+            "Origin": "Mahabalipuram"
+        },
+        "inStock": true,
+        "featured": true
+    },
+    {
+        "id": "p3",
+        "name": "Stone Planter Set",
+        "price": 2250,
+        "category": "decor",
+        "tag": "Decor",
+        "description": "A set of three hand-carved stone planters in graduating sizes. Perfect for indoor succulents or small ferns.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU",
+        "images": [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU"
+        ],
+        "specs": {
+            "Material": "Natural Stone",
+            "Sizes": "Small (10cm), Medium (15cm), Large (20cm)",
+            "Weight": "2.8kg total",
+            "Origin": "Kodaikanal"
+        },
+        "inStock": true,
+        "featured": true
+    },
+    {
+        "id": "p4",
+        "name": "Brass Wall Clock",
+        "price": 4200,
+        "category": "decor",
+        "tag": "Decor",
+        "description": "A hand-forged brass clock with a clean, modern face. Each piece has unique patina from the artisan's hammer.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ",
+        "images": [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ"
+        ],
+        "specs": {
+            "Material": "Hand-forged Brass",
+            "Diameter": "30cm",
+            "Mechanism": "Silent quartz",
+            "Origin": "Karaikudi"
+        },
+        "inStock": true,
+        "featured": true
+    },
+    {
+        "id": "p5",
+        "name": "Linen Cushion Cover",
+        "price": 890,
+        "category": "living",
+        "tag": "Living Room",
+        "description": "Stonewashed linen cushion cover with a hidden zipper. Gets softer with every wash.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDr3K0r1Q7pT0v3x8z9y2w4u6t8o0i2u4y6w8e0r2t4y6u8i0o2p4s6d8f0g2h4j6k8l0z2x4c6v8b0n2m4",
+        "images": [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuDr3K0r1Q7pT0v3x8z9y2w4u6t8o0i2u4y6w8e0r2t4y6u8i0o2p4s6d8f0g2h4j6k8l0z2x4c6v8b0n2m4"
+        ],
+        "specs": {
+            "Material": "100% Linen",
+            "Size": "45cm x 45cm",
+            "Care": "Machine washable",
+            "Origin": "Erode"
+        },
+        "inStock": true,
+        "featured": false
+    },
+    {
+        "id": "p6",
+        "name": "Walnut Wood Tray",
+        "price": 1850,
+        "category": "kitchen",
+        "tag": "Kitchen",
+        "description": "A solid walnut serving tray with carved handles. Food-safe oil finish.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuEf5K2r3Q9pT1v5x0z1y4w6u8t0o2i4u6y8w0e2r4t6y8u0i2o4p6s8d0f2g4h6j8k0l2z4x6c8v0b2n4m6",
+        "images": [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuEf5K2r3Q9pT1v5x0z1y4w6u8t0o2i4u6y8w0e2r4t6y8u0i2o4p6s8d0f2g4h6j8k0l2z4x6c8v0b2n4m6"
+        ],
+        "specs": {
+            "Material": "Solid Walnut Wood",
+            "Size": "40cm x 25cm x 3cm",
+            "Finish": "Food-safe oil",
+            "Origin": "Chennai"
+        },
+        "inStock": true,
+        "featured": false
+    }
+]

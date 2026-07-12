@@ -94,71 +94,7 @@
 
                 <!-- Cart Items -->
                 <div class="lg:col-span-2 space-y-4" id="cartItems">
-                    <div class="swipe-container">
-                        <div class="swipe-content flex gap-4 p-4 border border-border rounded-lg">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7" alt="Cotton Throw" class="w-20 h-20 md:w-24 md:h-24 rounded-md object-cover shrink-0">
-                            <div class="flex-1 min-w-0">
-                                <h3 class="text-sm font-medium truncate">Handwoven Cotton Throw</h3>
-                                <p class="text-xs text-text-tertiary mt-0.5">Color: Natural</p>
-                                <p class="text-sm font-semibold mt-2">₹3,450</p>
-                                <div class="flex items-center justify-between mt-3">
-                                    <div class="qty-stepper">
-                                        <button data-action="dec">−</button>
-                                        <input type="number" value="1" min="1">
-                                        <button data-action="inc">+</button>
-                                    </div>
-                                    <button onclick="this.closest('.swipe-container').remove()" class="text-xs text-text-tertiary hover:text-red-600 transition-colors">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swipe-action">
-                            <span class="material-symbols-outlined">delete</span>
-                        </div>
-                    </div>
-
-                    <div class="swipe-container">
-                        <div class="swipe-content flex gap-4 p-4 border border-border rounded-lg">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Table Lamp" class="w-20 h-20 md:w-24 md:h-24 rounded-md object-cover shrink-0">
-                            <div class="flex-1 min-w-0">
-                                <h3 class="text-sm font-medium truncate">Ceramic Table Lamp</h3>
-                                <p class="text-xs text-text-tertiary mt-0.5">Color: White</p>
-                                <p class="text-sm font-semibold mt-2">₹3,499</p>
-                                <div class="flex items-center justify-between mt-3">
-                                    <div class="qty-stepper">
-                                        <button data-action="dec">−</button>
-                                        <input type="number" value="1" min="1">
-                                        <button data-action="inc">+</button>
-                                    </div>
-                                    <button onclick="this.closest('.swipe-container').remove()" class="text-xs text-text-tertiary hover:text-red-600 transition-colors">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swipe-action">
-                            <span class="material-symbols-outlined">delete</span>
-                        </div>
-                    </div>
-
-                    <div class="swipe-container">
-                        <div class="swipe-content flex gap-4 p-4 border border-border rounded-lg">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Planter Set" class="w-20 h-20 md:w-24 md:h-24 rounded-md object-cover shrink-0">
-                            <div class="flex-1 min-w-0">
-                                <h3 class="text-sm font-medium truncate">Stone Planter Set</h3>
-                                <p class="text-xs text-text-tertiary mt-0.5">Size: Medium</p>
-                                <p class="text-sm font-semibold mt-2">₹2,250</p>
-                                <div class="flex items-center justify-between mt-3">
-                                    <div class="qty-stepper">
-                                        <button data-action="dec">−</button>
-                                        <input type="number" value="2" min="1">
-                                        <button data-action="inc">+</button>
-                                    </div>
-                                    <button onclick="this.closest('.swipe-container').remove()" class="text-xs text-text-tertiary hover:text-red-600 transition-colors">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swipe-action">
-                            <span class="material-symbols-outlined">delete</span>
-                        </div>
-                    </div>
+                    <!-- Cart items rendered dynamically by cartStore -->
                 </div>
 
                 <!-- Order Summary -->
@@ -179,23 +115,23 @@
 
                         <div class="space-y-3 mb-5">
                             <div class="flex justify-between text-sm">
-                                <span class="text-text-secondary">Subtotal (4 items)</span>
-                                <span class="font-medium">₹12,649</span>
+                                <span class="text-text-secondary" id="summaryItemCount">Subtotal (0 items)</span>
+                                <span class="font-medium" id="summarySubtotal">₹0</span>
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Delivery</span>
-                                <span class="font-medium text-green-700">Free</span>
+                                <span class="font-medium" id="summaryDelivery">Free</span>
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Tax</span>
-                                <span class="font-medium">₹632</span>
+                                <span class="font-medium" id="summaryTax">₹0</span>
                             </div>
                         </div>
 
                         <div class="border-t border-border pt-4 mb-5">
                             <div class="flex justify-between">
                                 <span class="font-semibold">Total</span>
-                                <span class="font-semibold text-lg">₹13,281</span>
+                                <span class="font-semibold text-lg" id="summaryTotal">₹0</span>
                             </div>
                         </div>
 
@@ -296,6 +232,74 @@
         </div>
     </nav>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/utils/constants.js"></script>
+    <script src="src/store/EventBus.js"></script>
+    <script src="src/services/ProductService.js"></script>
+    <script src="src/services/CartService.js"></script>
+    <script src="src/services/OrderService.js"></script>
+    <script src="src/services/AuthService.js"></script>
+    <script src="src/store/cartStore.js"></script>
+    <script src="src/store/wishlistStore.js"></script>
+    <script src="src/components/Toast.js"></script>
+    <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCart();
+            window.EventBus.on('cart:updated', renderCart);
+        });
+
+        function renderCart() {
+            var cart = CartService.getCart();
+            var container = document.getElementById('cartItems');
+            var countEl = document.getElementById('cartCount');
+
+            if (countEl) countEl.textContent = cart.length + ' item' + (cart.length !== 1 ? 's' : '');
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="text-center py-16"><p class="text-text-secondary mb-4">Your cart is empty</p><a href="category.html" class="btn-primary">Start Shopping</a></div>';
+                updateSummary();
+                return;
+            }
+
+            container.innerHTML = cart.map(function(item) {
+                return '<div class="swipe-container"><div class="swipe-content flex gap-4 p-4 border border-border rounded-lg">' +
+                    '<img src="' + item.image + '" alt="' + item.name + '" class="w-20 h-20 md:w-24 md:h-24 rounded-md object-cover shrink-0">' +
+                    '<div class="flex-1 min-w-0">' +
+                        '<h3 class="text-sm font-medium truncate">' + item.name + '</h3>' +
+                        '<p class="text-sm font-semibold mt-2">' + formatPrice(item.price) + '</p>' +
+                        '<div class="flex items-center justify-between mt-3">' +
+                            '<div class="qty-stepper">' +
+                                '<button data-action="dec">−</button>' +
+                                '<input type="number" value="' + item.qty + '" min="1" data-id="' + item.id + '">' +
+                                '<button data-action="inc">+</button>' +
+                            '</div>' +
+                            '<button onclick="cartStore.removeItem(\'' + item.id + '\')" class="text-xs text-text-tertiary hover:text-red-600 transition-colors">Remove</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div><div class="swipe-action"><span class="material-symbols-outlined">delete</span></div></div>';
+            }).join('');
+
+            container.querySelectorAll('.qty-stepper input').forEach(function(input) {
+                input.addEventListener('change', function() {
+                    cartStore.updateQty(this.dataset.id, parseInt(this.value));
+                });
+            });
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            var state = cartStore.getState();
+            document.getElementById('summarySubtotal').textContent = formatPrice(state.subtotal);
+            document.getElementById('summaryTax').textContent = formatPrice(state.tax);
+            document.getElementById('summaryTotal').textContent = formatPrice(state.total);
+            var deliveryEl = document.getElementById('summaryDelivery');
+            if (deliveryEl) deliveryEl.textContent = state.deliveryFee === 0 ? 'Free' : formatPrice(state.deliveryFee);
+            var deliveryClass = document.getElementById('summaryDelivery');
+            if (deliveryClass && state.deliveryFee === 0) deliveryClass.className = 'font-medium text-green-700';
+        }
+    </script>
 </body>
 </html>

@@ -73,7 +73,6 @@
 
     <div class="page-transition pt-14 md:pt-0">
         <main id="main-content" tabindex="-1" class="max-w-[1200px] mx-auto px-4 md:px-10 py-6 md:py-10">
-            <!-- Breadcrumb -->
             <nav class="breadcrumb flex items-center gap-2 text-xs text-text-tertiary mb-6" aria-label="Breadcrumb">
                 <a href="index.html" class="hover:text-text transition-colors">Home</a>
                 <span>/</span>
@@ -84,21 +83,27 @@
                 <!-- Profile Sidebar -->
                 <aside class="md:w-64 shrink-0">
                     <div class="flex items-center gap-4 mb-6">
-                        <div id="userInitials" class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center text-lg font-semibold">PS</div>
+                        <div id="userInitials" class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center text-lg font-semibold">--</div>
                         <div>
-                            <p id="userName" class="font-semibold text-sm">Priya Sharma</p>
-                            <p id="userEmail" class="text-xs text-text-tertiary">priya@email.com</p>
+                            <p id="userName" class="font-semibold text-sm">Loading...</p>
+                            <p id="userEmail" class="text-xs text-text-tertiary">...</p>
                         </div>
                     </div>
-                    <nav class="flex md:flex-col gap-1">
-                        <button class="account-tab active md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium bg-surface-alt text-text" data-tab="orders">
+                    <nav class="flex md:flex-col gap-1" aria-label="Account navigation">
+                        <button class="account-tab active md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium bg-surface-alt text-text flex items-center" data-tab="orders">
                             <span class="material-symbols-outlined align-middle mr-2" style="font-size:18px">package_2</span>Orders
                         </button>
-                        <button class="account-tab md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium text-text-secondary hover:bg-surface-alt transition-colors" data-tab="wishlist">
+                        <button class="account-tab md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium text-text-secondary hover:bg-surface-alt transition-colors flex items-center" data-tab="wishlist">
                             <span class="material-symbols-outlined align-middle mr-2" style="font-size:18px">favorite</span>Wishlist
                         </button>
-                        <button class="account-tab md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium text-text-secondary hover:bg-surface-alt transition-colors" data-tab="settings">
+                        <button class="account-tab md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium text-text-secondary hover:bg-surface-alt transition-colors flex items-center" data-tab="addresses">
+                            <span class="material-symbols-outlined align-middle mr-2" style="font-size:18px">location_on</span>Addresses
+                        </button>
+                        <button class="account-tab md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium text-text-secondary hover:bg-surface-alt transition-colors flex items-center" data-tab="settings">
                             <span class="material-symbols-outlined align-middle mr-2" style="font-size:18px">settings</span>Settings
+                        </button>
+                        <button id="logoutBtn" class="md:text-left text-xs md:text-sm px-3 py-2.5 rounded-md font-medium text-text-secondary hover:bg-red-50 hover:text-red-600 transition-colors flex items-center mt-2">
+                            <span class="material-symbols-outlined align-middle mr-2" style="font-size:18px">logout</span>Logout
                         </button>
                     </nav>
                 </aside>
@@ -114,52 +119,111 @@
                     <!-- Wishlist Tab -->
                     <div class="account-content hidden" data-content="wishlist">
                         <h1 class="text-xl font-semibold mb-6">My Wishlist</h1>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            <a href="#" class="product-card group block">
-                                <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                                    <div class="w-full h-full flex items-center justify-center text-text-tertiary">
-                                        <span class="material-symbols-outlined" style="font-size:48px">image</span>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-text-secondary mb-1">Living Room</p>
-                                <p class="text-sm font-medium mb-1 group-hover:text-primary transition-colors">Handwoven Cotton Throw</p>
-                                <p class="text-sm font-semibold">&#8377;3,450</p>
-                            </a>
-                            <a href="#" class="product-card group block">
-                                <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3">
-                                    <div class="w-full h-full flex items-center justify-center text-text-tertiary">
-                                        <span class="material-symbols-outlined" style="font-size:48px">image</span>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-text-secondary mb-1">Decor</p>
-                                <p class="text-sm font-medium mb-1 group-hover:text-primary transition-colors">Ceramic Table Lamp</p>
-                                <p class="text-sm font-semibold">&#8377;3,499</p>
-                            </a>
+                        <div id="wishlistGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+                    </div>
+
+                    <!-- Addresses Tab -->
+                    <div class="account-content hidden" data-content="addresses">
+                        <div class="flex items-center justify-between mb-6">
+                            <h1 class="text-xl font-semibold">My Addresses</h1>
+                            <button onclick="showAddressForm()" class="btn-primary text-sm py-2 px-4">
+                                <span class="material-symbols-outlined" style="font-size:18px">add</span>Add Address
+                            </button>
                         </div>
+                        <div id="addressesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
                     </div>
 
                     <!-- Settings Tab -->
                     <div class="account-content hidden" data-content="settings">
                         <h1 class="text-xl font-semibold mb-6">Account Settings</h1>
-                        <form class="max-w-md space-y-4">
-                            <div>
-                                <label class="form-label">Full Name</label>
-                                <input type="text" class="form-input" value="Priya Sharma">
+                        <form id="settingsForm" class="max-w-md space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="form-label" for="settingsFirstName">First Name</label>
+                                    <input type="text" id="settingsFirstName" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label class="form-label" for="settingsLastName">Last Name</label>
+                                    <input type="text" id="settingsLastName" class="form-input" required>
+                                </div>
                             </div>
                             <div>
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-input" value="priya@email.com">
+                                <label class="form-label" for="settingsEmail">Email</label>
+                                <input type="email" id="settingsEmail" class="form-input" required>
                             </div>
                             <div>
-                                <label class="form-label">Phone</label>
-                                <input type="tel" class="form-input" value="+91 98765 43210">
+                                <label class="form-label" for="settingsPhone">Phone</label>
+                                <input type="tel" id="settingsPhone" class="form-input">
                             </div>
-                            <button type="button" class="btn-primary">Save Changes</button>
+                            <button type="submit" class="btn-primary">Save Changes</button>
                         </form>
+                        <div class="mt-12 pt-6 border-t border-border">
+                            <h2 class="text-sm font-semibold text-red-600 mb-2">Danger Zone</h2>
+                            <p class="text-xs text-text-tertiary mb-4">Permanently delete your account and all associated data.</p>
+                            <button id="deleteAccountBtn" class="px-4 py-2 text-sm font-medium text-red-600 border border-red-200 rounded-md hover:bg-red-50 transition-colors">Delete Account</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Address Modal -->
+    <div id="addressModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/30" onclick="hideAddressForm()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative max-h-[90vh] overflow-y-auto">
+                <button onclick="hideAddressForm()" class="absolute top-4 right-4 text-text-tertiary hover:text-text" aria-label="Close">
+                    <span class="material-symbols-outlined" style="font-size:22px">close</span>
+                </button>
+                <h2 id="addressModalTitle" class="text-lg font-semibold mb-4">Add Address</h2>
+                <form id="addressForm" class="space-y-4">
+                    <input type="hidden" id="addressEditId" value="">
+                    <div>
+                        <label class="form-label" for="addressLabel">Label</label>
+                        <select id="addressLabel" class="form-input">
+                            <option value="Home">Home</option>
+                            <option value="Work">Work</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="addressName">Full Name</label>
+                        <input type="text" id="addressName" class="form-input" placeholder="Recipient name" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="addressLine1">Address Line 1</label>
+                        <input type="text" id="addressLine1" class="form-input" placeholder="House/Flat no., Street" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="addressLine2">Address Line 2</label>
+                        <input type="text" id="addressLine2" class="form-input" placeholder="Area, Landmark (optional)">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="form-label" for="addressCity">City</label>
+                            <input type="text" id="addressCity" class="form-input" placeholder="City" required>
+                        </div>
+                        <div>
+                            <label class="form-label" for="addressPincode">Pincode</label>
+                            <input type="text" id="addressPincode" class="form-input" placeholder="600001" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label" for="addressPhone">Phone</label>
+                        <input type="tel" id="addressPhone" class="form-input" placeholder="+91 98765 43210" required>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="addressDefault" class="accent-primary w-4 h-4">
+                        <label for="addressDefault" class="text-sm text-text-secondary">Set as default address</label>
+                    </div>
+                    <div class="flex gap-3 pt-2">
+                        <button type="button" onclick="hideAddressForm()" class="btn-outline flex-1">Cancel</button>
+                        <button type="submit" class="btn-primary flex-1">Save Address</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Desktop Footer -->
@@ -244,24 +308,311 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var user = AuthService.getUser();
-            if (user) {
-                var nameEl = document.getElementById('userName');
-                var emailEl = document.getElementById('userEmail');
-                var initialsEl = document.getElementById('userInitials');
-                if (nameEl) nameEl.textContent = user.firstName + ' ' + user.lastName;
-                if (emailEl) emailEl.textContent = user.email;
-                if (initialsEl) initialsEl.textContent = user.firstName[0] + user.lastName[0];
+        var AddressService = {
+            KEY: 'chennai_retail_addresses',
+            get: function() {
+                try { return JSON.parse(localStorage.getItem(this.KEY)) || []; }
+                catch(e) { return []; }
+            },
+            save: function(list) { localStorage.setItem(this.KEY, JSON.stringify(list)); },
+            add: function(addr) {
+                var list = this.get();
+                addr.id = 'addr-' + Date.now();
+                list.push(addr);
+                this.save(list);
+                return addr;
+            },
+            update: function(id, data) {
+                var list = this.get();
+                var i = list.findIndex(function(a) { return a.id === id; });
+                if (i > -1) { Object.assign(list[i], data); this.save(list); }
+            },
+            remove: function(id) {
+                var list = this.get().filter(function(a) { return a.id !== id; });
+                this.save(list);
+            },
+            setDefault: function(id) {
+                var list = this.get().map(function(a) {
+                    a.isDefault = (a.id === id);
+                    return a;
+                });
+                this.save(list);
+            }
+        };
+
+        window.showAddressForm = function(editId) {
+            var modal = document.getElementById('addressModal');
+            var title = document.getElementById('addressModalTitle');
+            var form = document.getElementById('addressForm');
+            var editInput = document.getElementById('addressEditId');
+            form.reset();
+            editInput.value = '';
+
+            if (editId) {
+                title.textContent = 'Edit Address';
+                editInput.value = editId;
+                var addresses = AddressService.get();
+                var addr = addresses.find(function(a) { return a.id === editId; });
+                if (addr) {
+                    document.getElementById('addressLabel').value = addr.label || 'Home';
+                    document.getElementById('addressName').value = addr.name || '';
+                    document.getElementById('addressLine1').value = addr.line1 || '';
+                    document.getElementById('addressLine2').value = addr.line2 || '';
+                    document.getElementById('addressCity').value = addr.city || '';
+                    document.getElementById('addressPincode').value = addr.pincode || '';
+                    document.getElementById('addressPhone').value = addr.phone || '';
+                    document.getElementById('addressDefault').checked = !!addr.isDefault;
+                }
+            } else {
+                title.textContent = 'Add Address';
+            }
+            modal.classList.remove('hidden');
+        };
+
+        window.hideAddressForm = function() {
+            document.getElementById('addressModal').classList.add('hidden');
+        };
+
+        function renderAddressCards() {
+            var list = AddressService.get();
+            var container = document.getElementById('addressesGrid');
+            if (!container) return;
+
+            if (list.length === 0) {
+                container.innerHTML =
+                    '<div class="col-span-full text-center py-16">' +
+                        '<span class="material-symbols-outlined text-text-tertiary mb-3 block" style="font-size:56px">location_off</span>' +
+                        '<p class="text-sm font-medium mb-1">No addresses saved</p>' +
+                        '<p class="text-xs text-text-tertiary mb-4">Add a delivery address to speed up checkout.</p>' +
+                        '<button onclick="showAddressForm()" class="btn-primary text-sm py-2 px-4">Add Address</button>' +
+                    '</div>';
+                return;
             }
 
+            container.innerHTML = list.map(function(addr) {
+                var defaultBadge = addr.isDefault
+                    ? '<span class="px-1.5 py-0.5 text-[10px] font-medium bg-primary/10 text-primary rounded">Default</span>'
+                    : '';
+                var lines = [];
+                if (addr.line1) lines.push(addr.line1);
+                if (addr.line2) lines.push(addr.line2);
+                if (addr.city || addr.pincode) lines.push((addr.city || '') + (addr.pincode ? ' - ' + addr.pincode : ''));
+                var escapedId = addr.id.replace(/'/g, "\\'");
+                return '<div class="border border-border rounded-lg p-4 relative">' +
+                    '<div class="flex items-center gap-2 mb-2">' +
+                        '<span class="text-sm font-semibold">' + (addr.label || 'Home') + '</span>' +
+                        defaultBadge +
+                    '</div>' +
+                    '<p class="text-sm text-text-secondary">' + (addr.name || '') + '</p>' +
+                    lines.map(function(l) { return '<p class="text-sm text-text-secondary">' + l + '</p>'; }).join('') +
+                    (addr.phone ? '<p class="text-sm text-text-secondary">' + addr.phone + '</p>' : '') +
+                    '<div class="flex gap-3 mt-3 pt-3 border-t border-border-light">' +
+                        '<button onclick="showAddressForm(\'' + escapedId + '\')" class="text-xs font-medium text-primary hover:underline">Edit</button>' +
+                        '<button onclick="deleteAddress(\'' + escapedId + '\')" class="text-xs font-medium text-text-tertiary hover:text-red-600">Delete</button>' +
+                        (addr.isDefault ? '' : '<button onclick="setDefaultAddress(\'' + escapedId + '\')" class="text-xs font-medium text-text-tertiary hover:text-primary ml-auto">Set as Default</button>') +
+                    '</div>' +
+                '</div>';
+            }).join('');
+        }
+
+        window.deleteAddress = function(id) {
+            AddressService.remove(id);
+            renderAddressCards();
+            showToast('Address removed', 'info');
+        };
+
+        window.setDefaultAddress = function(id) {
+            AddressService.setDefault(id);
+            renderAddressCards();
+            showToast('Default address updated');
+        };
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            var user = AuthService.getUser();
+            if (!user) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            var nameEl = document.getElementById('userName');
+            var emailEl = document.getElementById('userEmail');
+            var initialsEl = document.getElementById('userInitials');
+            if (nameEl) nameEl.textContent = user.firstName + ' ' + user.lastName;
+            if (emailEl) emailEl.textContent = user.email;
+            if (initialsEl) initialsEl.textContent = (user.firstName[0] || '') + (user.lastName[0] || '');
+
+            document.getElementById('settingsFirstName').value = user.firstName || '';
+            document.getElementById('settingsLastName').value = user.lastName || '';
+            document.getElementById('settingsEmail').value = user.email || '';
+            document.getElementById('settingsPhone').value = user.phone || '';
+
+            // Tab switching
+            document.querySelectorAll('.account-tab').forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.account-tab').forEach(function(t) {
+                        t.classList.remove('active', 'bg-surface-alt', 'text-text');
+                        t.classList.add('text-text-secondary');
+                    });
+                    document.querySelectorAll('.account-content').forEach(function(c) {
+                        c.classList.add('hidden');
+                    });
+                    tab.classList.add('active', 'bg-surface-alt', 'text-text');
+                    tab.classList.remove('text-text-secondary');
+                    var target = tab.getAttribute('data-tab');
+                    var panel = document.querySelector('[data-content="' + target + '"]');
+                    if (panel) panel.classList.remove('hidden');
+                });
+            });
+
+            // Load orders
             var orders = OrderService.getOrders();
             var ordersContainer = document.getElementById('ordersList');
-            if (ordersContainer && orders.length > 0) {
-                ordersContainer.innerHTML = orders.map(function(order) {
-                    return '<div class="flex items-center justify-between p-4 border border-border rounded-lg"><div><p class="text-sm font-medium">Order #' + order.id + '</p><p class="text-xs text-text-tertiary">' + formatDate(order.createdAt) + '</p></div><div class="text-right"><span class="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-green-50 text-green-700">' + order.status + '</span><p class="text-sm font-semibold mt-1">' + formatPrice(order.total) + '</p></div></div>';
-                }).join('');
+            if (ordersContainer) {
+                if (orders.length === 0) {
+                    ordersContainer.innerHTML =
+                        '<div class="text-center py-16">' +
+                            '<span class="material-symbols-outlined text-text-tertiary mb-3 block" style="font-size:56px">inventory_2</span>' +
+                            '<p class="text-sm font-medium mb-1">No orders yet</p>' +
+                            '<p class="text-xs text-text-tertiary mb-4">Your order history will appear here.</p>' +
+                            '<a href="category.html" class="btn-primary text-sm py-2 px-4 inline-flex">Start Shopping</a>' +
+                        '</div>';
+                } else {
+                    ordersContainer.innerHTML = orders.map(function(order) {
+                        var items = (order.items || []).map(function(item) {
+                            return '<div class="flex items-center gap-3">' +
+                                '<img src="' + (item.image || 'images/product-throw.jpg') + '" alt="' + (item.name || 'Product') + '" class="w-14 h-14 rounded object-cover" width="56" height="56">' +
+                                '<div class="flex-1 min-w-0">' +
+                                    '<p class="text-sm font-medium truncate">' + (item.name || 'Product') + '</p>' +
+                                    '<p class="text-xs text-text-tertiary">Qty: ' + (item.qty || item.quantity || 1) + '</p>' +
+                                '</div>' +
+                                '<p class="text-sm font-semibold">' + formatPrice(item.price) + '</p>' +
+                            '</div>';
+                        }).join('');
+
+                        var statusColors = {
+                            processing: 'bg-blue-50 text-blue-700',
+                            shipped: 'bg-amber-50 text-amber-700',
+                            delivered: 'bg-green-50 text-green-700',
+                            cancelled: 'bg-red-50 text-red-700'
+                        };
+                        var statusClass = statusColors[order.status] || 'bg-green-50 text-green-700';
+                        var dateStr = order.createdAt ? formatDate(order.createdAt) : '';
+
+                        return '<div class="border border-border rounded-lg overflow-hidden">' +
+                            '<div class="flex items-center justify-between p-4 bg-surface-alt">' +
+                                '<div>' +
+                                    '<p class="text-sm font-semibold">Order #' + order.id + '</p>' +
+                                    '<p class="text-xs text-text-tertiary">' + dateStr + '</p>' +
+                                '</div>' +
+                                '<span class="px-2 py-0.5 text-xs font-medium rounded-full ' + statusClass + '">' + order.status + '</span>' +
+                            '</div>' +
+                            '<div class="p-4 space-y-3">' + items + '</div>' +
+                            '<div class="flex items-center justify-between p-4 border-t border-border">' +
+                                '<p class="text-xs text-text-secondary">' + (order.estimatedDelivery ? 'Est. delivery: ' + order.estimatedDelivery : '') + '</p>' +
+                                '<p class="text-sm font-semibold">Total: ' + formatPrice(order.total) + '</p>' +
+                            '</div>' +
+                        '</div>';
+                    }).join('');
+                }
             }
+
+            // Load wishlist
+            try {
+                var wishlistProducts = await wishlistStore.getWishlistProducts();
+                var wishlistGrid = document.getElementById('wishlistGrid');
+                if (wishlistGrid) {
+                    if (wishlistProducts.length === 0) {
+                        wishlistGrid.innerHTML =
+                            '<div class="col-span-full text-center py-16">' +
+                                '<span class="material-symbols-outlined text-text-tertiary mb-3 block" style="font-size:56px">favorite_border</span>' +
+                                '<p class="text-sm font-medium mb-1">Your wishlist is empty</p>' +
+                                '<p class="text-xs text-text-tertiary mb-4">Save items you love for later.</p>' +
+                                '<a href="category.html" class="btn-primary text-sm py-2 px-4 inline-flex">Discover Products</a>' +
+                            '</div>';
+                    } else {
+                        wishlistGrid.innerHTML = wishlistProducts.map(function(product) {
+                            return renderProductCardWithActions(product);
+                        }).join('');
+                        wishlistStore.updateIcons();
+                    }
+                }
+            } catch(e) {
+                console.warn('Wishlist load error:', e);
+            }
+
+            // Load addresses
+            renderAddressCards();
+
+            // Address form submit
+            document.getElementById('addressForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var editId = document.getElementById('addressEditId').value;
+                var data = {
+                    label: document.getElementById('addressLabel').value,
+                    name: document.getElementById('addressName').value,
+                    line1: document.getElementById('addressLine1').value,
+                    line2: document.getElementById('addressLine2').value,
+                    city: document.getElementById('addressCity').value,
+                    pincode: document.getElementById('addressPincode').value,
+                    phone: document.getElementById('addressPhone').value,
+                    isDefault: document.getElementById('addressDefault').checked
+                };
+
+                if (data.isDefault) {
+                    AddressService.get().forEach(function(a) { a.isDefault = false; });
+                    AddressService.save(AddressService.get());
+                }
+
+                if (editId) {
+                    AddressService.update(editId, data);
+                    showToast('Address updated');
+                } else {
+                    AddressService.add(data);
+                    showToast('Address added');
+                }
+
+                hideAddressForm();
+                renderAddressCards();
+            });
+
+            // Settings form submit
+            document.getElementById('settingsForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                AuthService.updateProfile({
+                    firstName: document.getElementById('settingsFirstName').value,
+                    lastName: document.getElementById('settingsLastName').value,
+                    email: document.getElementById('settingsEmail').value,
+                    phone: document.getElementById('settingsPhone').value
+                });
+                var updated = AuthService.getUser();
+                if (updated) {
+                    var initialsEl2 = document.getElementById('userInitials');
+                    var nameEl2 = document.getElementById('userName');
+                    var emailEl2 = document.getElementById('userEmail');
+                    if (nameEl2) nameEl2.textContent = updated.firstName + ' ' + updated.lastName;
+                    if (emailEl2) emailEl2.textContent = updated.email;
+                    if (initialsEl2) initialsEl2.textContent = (updated.firstName[0] || '') + (updated.lastName[0] || '');
+                }
+                showToast('Profile updated successfully');
+            });
+
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                AuthService.logout();
+                window.location.href = 'index.html';
+            });
+
+            // Delete account
+            document.getElementById('deleteAccountBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
+                    AuthService.logout();
+                    localStorage.removeItem('chennai_retail_addresses');
+                    localStorage.removeItem('chennai_retail_orders');
+                    localStorage.removeItem('chennai_retail_wishlist');
+                    localStorage.removeItem('chennai_retail_cart');
+                    window.location.href = 'index.html';
+                }
+            });
         });
     </script>
 </body>

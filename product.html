@@ -80,29 +80,58 @@
             <nav class="breadcrumb" aria-label="Breadcrumb">
                 <a href="index.html">Home</a>
                 <span class="breadcrumb-sep">/</span>
-                <a href="category.html">Categories</a>
+                <a href="category.html" class="breadcrumb-cat">Categories</a>
                 <span class="breadcrumb-sep">/</span>
-                <span class="breadcrumb-current">Handwoven Cotton Throw</span>
+                <span class="breadcrumb-current">Product</span>
             </nav>
         </div>
 
+        <!-- Product Not Found -->
+        <div id="productNotFound" class="hidden max-w-[1200px] mx-auto px-4 md:px-10">
+            <div class="text-center py-20">
+                <span class="material-symbols-outlined text-text-tertiary mb-3" style="font-size:64px">search_off</span>
+                <h1 class="text-xl font-semibold mb-2">Product not found</h1>
+                <p class="text-sm text-text-secondary mb-6">This product doesn't exist or has been removed</p>
+                <a href="category.html" class="btn-primary">Browse Products</a>
+            </div>
+        </div>
+
         <!-- Product Detail -->
-        <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-8" data-reveal>
+        <div id="productDetail" class="max-w-[1200px] mx-auto px-4 md:px-10 py-8" data-reveal>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
 
                 <!-- Gallery -->
                 <div data-gallery>
                     <div class="gallery-main aspect-square bg-surface-alt rounded-lg overflow-hidden mb-4 cursor-zoom-in">
-                        <img src="" alt="Handwoven Cotton Throw" class="w-full h-full object-cover transition-transform duration-300" loading="eager" width="600" height="600">
+                        <img src="" alt="" class="w-full h-full object-cover transition-transform duration-300" loading="eager" width="600" height="600">
                     </div>
                     <div id="galleryThumbs" class="flex gap-2"></div>
                 </div>
 
                 <!-- Info -->
                 <div>
-                    <p class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-2">Living Room</p>
-                    <h1 id="productTitle" class="text-2xl md:text-3xl font-semibold mb-3"></h1>
-                    <p id="productPrice" class="text-2xl font-semibold mb-6"></p>
+                    <p id="productCategory" class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-2"></p>
+                    <h1 id="productTitle" class="text-2xl md:text-3xl font-semibold mb-2"></h1>
+
+                    <!-- Rating Stars -->
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="flex items-center gap-0.5">
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star_half</span>
+                        </div>
+                        <span class="text-sm text-text-secondary">4.5 (12 reviews)</span>
+                    </div>
+
+                    <p id="productPrice" class="text-2xl font-semibold mb-3"></p>
+
+                    <!-- Stock Status -->
+                    <div class="flex items-center gap-2 mb-6">
+                        <span id="stockBadge" class="px-2 py-0.5 text-xs font-medium rounded-full bg-green-50 text-green-700">In Stock</span>
+                        <span class="text-xs text-text-tertiary">Usually ships within 24 hours</span>
+                    </div>
 
                     <p id="productDesc" class="text-sm text-text-secondary leading-relaxed mb-8"></p>
 
@@ -124,6 +153,9 @@
                         </button>
                         <button class="wishlist-btn btn-outline px-4" aria-label="Add to wishlist">
                             <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
+                        </button>
+                        <button id="shareBtn" class="btn-outline px-4" aria-label="Share product">
+                            <span class="material-symbols-outlined" style="font-size:20px">share</span>
                         </button>
                     </div>
 
@@ -194,12 +226,18 @@
     <!-- Sticky Add to Cart (Mobile) -->
     <div class="sticky-add-cart">
         <div class="flex items-center gap-3">
-            <span class="text-sm font-semibold text-sm"></span>
+            <span id="stickyPrice" class="text-sm font-semibold"></span>
+            <span id="stickyName" class="text-xs text-text-secondary truncate max-w-[120px]"></span>
         </div>
-        <button class="btn-primary text-sm px-5 py-2.5" aria-label="Add to cart">
-            <span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>
-            Add to Cart
-        </button>
+        <div class="flex items-center gap-2">
+            <button id="stickyWishlist" class="p-2 border border-border rounded-md" aria-label="Add to wishlist">
+                <span class="material-symbols-outlined" style="font-size:18px">favorite</span>
+            </button>
+            <button id="stickyAddCart" class="btn-primary text-sm px-5 py-2.5">
+                <span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>
+                Add to Cart
+            </button>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -284,69 +322,150 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
+        function initGallery(container) {
+            var mainImg = container.querySelector('.gallery-main img');
+            var thumbs = container.querySelectorAll('.gallery-thumb');
+            thumbs.forEach(function(thumb) {
+                thumb.addEventListener('click', function() {
+                    thumbs.forEach(function(t) {
+                        t.classList.remove('active', 'border-primary');
+                        t.classList.add('border-transparent', 'opacity-60');
+                    });
+                    this.classList.add('active', 'border-primary');
+                    this.classList.remove('border-transparent', 'opacity-60');
+                    this.style.opacity = '1';
+                    mainImg.src = this.querySelector('img').src;
+                });
+            });
+        }
+
+        function showNotFound() {
+            document.getElementById('productDetail').classList.add('hidden');
+            document.getElementById('productNotFound').classList.remove('hidden');
+        }
+
         document.addEventListener('DOMContentLoaded', async function() {
-            var id = getUrlParam('id') || 'p1';
+            var id = getUrlParam('id');
+            if (!id) { showNotFound(); return; }
+
             var product = await ProductService.getProductById(id);
-            if (!product) {
-                document.querySelector('main').innerHTML = '<div class="text-center py-20"><h1>Product not found</h1></div>';
-                return;
-            }
+            if (!product) { showNotFound(); return; }
 
             document.title = product.name + ' - Chennai Retail';
+
+            // Update breadcrumb
+            var catLink = document.querySelector('.breadcrumb-cat');
+            if (catLink) {
+                catLink.textContent = product.tag || product.category;
+                catLink.href = 'category.html?cat=' + product.category;
+            }
+            document.querySelector('.breadcrumb-current').textContent = product.name;
+
+            // Update product info
             document.getElementById('productTitle').textContent = product.name;
             document.getElementById('productPrice').textContent = formatPrice(product.price);
             document.getElementById('productDesc').textContent = product.description;
-            document.querySelector('.breadcrumb-current').textContent = product.name;
+            document.getElementById('productCategory').textContent = product.tag || product.category;
 
+            // Stock status
+            var stockBadge = document.getElementById('stockBadge');
+            if (product.inStock === false) {
+                stockBadge.textContent = 'Out of Stock';
+                stockBadge.className = 'px-2 py-0.5 text-xs font-medium rounded-full bg-red-50 text-red-700';
+                document.querySelector('[data-main-add-cart]').disabled = true;
+                document.querySelector('[data-main-add-cart]').classList.add('opacity-50', 'cursor-not-allowed');
+            }
+
+            // Gallery
             var mainImg = document.querySelector('.gallery-main img');
-            if (mainImg) mainImg.src = product.image;
+            mainImg.src = product.image;
+            mainImg.alt = product.name;
+
             var thumbsContainer = document.getElementById('galleryThumbs');
-            if (thumbsContainer && product.images) {
+            if (product.images && product.images.length > 1) {
                 thumbsContainer.innerHTML = product.images.map(function(img, i) {
-                    return '<button class="gallery-thumb ' + (i === 0 ? 'active' : '') + ' w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border-2 ' + (i === 0 ? 'border-primary' : 'border-transparent') + ' opacity-' + (i === 0 ? '100' : '60') + ' hover:opacity-100 transition-opacity">' +
-                        '<img src="' + img + '" alt="Thumb ' + (i+1) + '" class="w-full h-full object-cover">' +
+                    return '<button class="gallery-thumb w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border-2 ' +
+                        (i === 0 ? 'border-primary active opacity-100' : 'border-transparent opacity-60') +
+                        ' hover:opacity-100 transition-opacity">' +
+                        '<img src="' + img + '" alt="' + product.name + ' view ' + (i + 1) + '" class="w-full h-full object-cover">' +
                     '</button>';
                 }).join('');
                 initGallery(document.querySelector('[data-gallery]'));
             }
 
+            // Specs
             var specsContainer = document.getElementById('productSpecs');
-            if (specsContainer && product.specs) {
+            if (product.specs) {
                 specsContainer.innerHTML = Object.entries(product.specs).map(function(entry) {
                     return '<p><span class="font-medium text-text">' + entry[0] + ':</span> ' + entry[1] + '</p>';
                 }).join('');
             }
 
+            // Quantity stepper
+            var qtyInput = document.querySelector('.qty-stepper input');
+            document.querySelectorAll('.qty-stepper button').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var val = parseInt(qtyInput.value);
+                    if (this.dataset.action === 'inc' && val < 10) qtyInput.value = val + 1;
+                    else if (this.dataset.action === 'dec' && val > 1) qtyInput.value = val - 1;
+                });
+            });
+
+            // Add to Cart
+            document.querySelector('[data-main-add-cart]').addEventListener('click', function() {
+                var qty = parseInt(qtyInput.value) || 1;
+                for (var i = 0; i < qty; i++) cartStore.addItem(product);
+                flyToCart(document.querySelector('.gallery-main img'));
+            });
+
+            // Wishlist
+            var wishBtn = document.querySelector('.wishlist-btn');
+            wishBtn.dataset.productId = product.id;
+            wishBtn.addEventListener('click', function() {
+                wishlistStore.toggle(product.id, product.name);
+                wishlistBurst(this);
+            });
+
+            // Share
+            document.getElementById('shareBtn').addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({ title: product.name, text: product.description, url: window.location.href });
+                } else {
+                    navigator.clipboard.writeText(window.location.href);
+                    showToast('Link copied to clipboard');
+                }
+            });
+
+            // Accordion
+            document.querySelectorAll('.accordion-trigger').forEach(function(trigger) {
+                trigger.addEventListener('click', function() {
+                    var expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !expanded);
+                    var content = this.nextElementSibling;
+                    if (!expanded) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+
+            // Sticky bar
+            document.getElementById('stickyPrice').textContent = formatPrice(product.price);
+            document.getElementById('stickyName').textContent = product.name;
+            document.getElementById('stickyAddCart').addEventListener('click', function() {
+                var qty = parseInt(qtyInput.value) || 1;
+                for (var i = 0; i < qty; i++) cartStore.addItem(product);
+            });
+            document.getElementById('stickyWishlist').addEventListener('click', function() {
+                wishlistStore.toggle(product.id, product.name);
+            });
+
+            // Related products
             var allProducts = await ProductService.getProducts();
             var related = allProducts.filter(function(p) { return p.id !== product.id; }).slice(0, 4);
-            var relatedContainer = document.getElementById('relatedProducts');
-            if (relatedContainer) {
-                relatedContainer.innerHTML = related.map(renderProductCard).join('');
-            }
-
-            var addBtn = document.querySelector('[data-main-add-cart]');
-            if (addBtn) {
-                addBtn.onclick = function() {
-                    cartStore.addItem(product);
-                    flyToCart(document.querySelector('.gallery-main img'));
-                };
-            }
-
-            var wishBtn = document.querySelector('.wishlist-btn');
-            if (wishBtn) {
-                wishBtn.dataset.productId = product.id;
-                wishBtn.onclick = function() {
-                    wishlistStore.toggle(product.id, product.name);
-                    wishlistBurst(this);
-                };
-            }
-
-            var stickyBtn = document.querySelector('.sticky-add-cart button');
-            if (stickyBtn) {
-                stickyBtn.onclick = function() { cartStore.addItem(product); };
-            }
-            var stickyPrice = document.querySelector('.sticky-add-cart .text-sm');
-            if (stickyPrice) stickyPrice.textContent = formatPrice(product.price);
+            document.getElementById('relatedProducts').innerHTML = related.map(renderProductCardWithActions).join('');
+            wishlistStore.updateIcons();
         });
     </script>
 </body>

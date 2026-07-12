@@ -27,45 +27,163 @@
         }
     </script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: confetti-fall 2s ease-out forwards;
+        }
+        @keyframes bounce-in {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        .success-icon { animation: bounce-in 0.5s ease-out; }
+        @media print {
+            .no-print { display: none !important; }
+        }
+    </style>
 </head>
 <body class="bg-surface font-sans text-text">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
-    <div id="main-content" tabindex="-1" class="min-h-screen flex items-center justify-center px-4">
-        <div class="max-w-md w-full text-center">
+
+    <div id="main-content" tabindex="-1" class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div id="orderContent" class="max-w-md w-full text-center">
             <!-- Success Icon -->
-            <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 success-icon">
                 <span class="material-symbols-outlined text-primary" style="font-size:40px">check_circle</span>
             </div>
 
             <h1 class="text-2xl font-semibold mb-2">Order Placed!</h1>
-            <p class="text-text-secondary text-sm mb-6">Thank you for shopping with us</p>
+            <p class="text-text-secondary text-sm mb-2">Thank you for shopping with us</p>
 
-            <!-- Order Details -->
+            <!-- Email Confirmation -->
+            <p class="text-xs text-text-tertiary mb-6">
+                <span class="material-symbols-outlined align-middle mr-1" style="font-size:14px">email</span>
+                A confirmation email has been sent to <span id="userEmail">your email</span>
+            </p>
+
+            <!-- Order Details Card -->
             <div class="border border-border rounded-lg p-5 mb-6 text-left">
                 <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs text-text-tertiary">Order Number</span>
-                    <span id="orderNumber" class="text-sm font-semibold">#</span>
+                    <div>
+                        <span id="orderNumber" class="text-sm font-semibold">#CR-2026-1234</span>
+                        <p id="orderDate" class="text-xs text-text-tertiary mt-0.5">12 July 2026</p>
+                    </div>
+                    <span class="px-2 py-0.5 text-xs font-medium rounded-full bg-green-50 text-green-700">Confirmed</span>
                 </div>
-                <div class="border-t border-border-light pt-4 space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">shopping_bag</span>
-                        <span id="orderItems" class="text-sm text-text-secondary">0 items</span>
+
+                <!-- Items -->
+                <div id="orderItemsList" class="border-t border-border-light pt-4 space-y-3 mb-4"></div>
+
+                <!-- Shipping -->
+                <div class="border-t border-border-light pt-4 mb-4">
+                    <p class="text-xs font-semibold text-text-tertiary uppercase mb-2">Shipping Address</p>
+                    <div id="shippingAddress"></div>
+                </div>
+
+                <!-- Delivery -->
+                <div class="border-t border-border-light pt-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary" style="font-size:18px">local_shipping</span>
+                        <span id="orderDelivery" class="text-sm font-medium">Estimated: 15 July 2026</span>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">location_on</span>
-                        <span class="text-sm text-text-secondary">22, Mahatma Gandhi Road, T. Nagar, Chennai - 600017</span>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="border-t border-border-light pt-4 space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">Subtotal</span>
+                        <span id="summarySubtotal" class="font-medium">₹0</span>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">local_shipping</span>
-                        <span id="orderDelivery" class="text-sm text-text-secondary"></span>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">Delivery</span>
+                        <span id="summaryDelivery" class="font-medium">Free</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-text-secondary">Tax</span>
+                        <span id="summaryTax" class="font-medium">₹0</span>
+                    </div>
+                    <div class="flex justify-between font-semibold pt-2 border-t border-border-light">
+                        <span>Total</span>
+                        <span id="summaryTotal">₹0</span>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="border-t border-border-light pt-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">payments</span>
+                        <span class="text-sm text-text-secondary">Cash on Delivery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What's Next -->
+            <div class="border border-border rounded-lg p-5 mb-6 text-left">
+                <h2 class="text-sm font-semibold mb-4">What's Next</h2>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined" style="font-size:14px">check</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Order Confirmed</p>
+                            <p class="text-xs text-text-tertiary">We've received your order</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
+                            <span class="text-xs font-bold">2</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Processing</p>
+                            <p class="text-xs text-text-tertiary">We're preparing your items</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
+                            <span class="text-xs font-bold">3</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Shipped</p>
+                            <p class="text-xs text-text-tertiary">On its way to you</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
+                            <span class="text-xs font-bold">4</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-text-secondary">Delivered</p>
+                            <p class="text-xs text-text-tertiary">Estimated: <span id="deliveryDate">DATE</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Actions -->
-            <div class="flex flex-col sm:flex-row gap-3">
+            <div class="flex flex-col sm:flex-row gap-3 mb-3 no-print">
                 <a href="category.html" class="btn-primary flex-1 text-center">Continue Shopping</a>
                 <a href="account.html" class="btn-outline flex-1 text-center">Track Order</a>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 no-print">
+                <button id="shareOrderBtn" class="btn-outline flex-1">
+                    <span class="material-symbols-outlined" style="font-size:18px">share</span>
+                    Share Order
+                </button>
+                <button id="printReceiptBtn" class="btn-outline flex-1">
+                    <span class="material-symbols-outlined" style="font-size:18px">print</span>
+                    Print Receipt
+                </button>
             </div>
         </div>
     </div>
@@ -85,15 +203,89 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var orderId = getUrlParam('id');
-            if (orderId) {
-                var order = OrderService.getOrderById(orderId);
-                if (order) {
-                    document.getElementById('orderNumber').textContent = '#' + order.id;
-                    document.getElementById('orderItems').textContent = order.items.length + ' items';
-                    document.getElementById('orderDelivery').textContent = order.estimatedDelivery;
+
+            if (!orderId) { showNotFound(); return; }
+
+            var order = OrderService.getOrderById(orderId);
+            if (!order) { showNotFound(); return; }
+
+            // Confetti
+            createConfetti();
+
+            // Fill order details
+            document.getElementById('orderNumber').textContent = '#' + order.id;
+            document.getElementById('orderDate').textContent = formatDate(order.createdAt);
+            document.getElementById('orderItems').textContent = order.items.length + ' item' + (order.items.length !== 1 ? 's' : '');
+            document.getElementById('orderDelivery').textContent = 'Estimated: ' + order.estimatedDelivery;
+
+            // Shipping address
+            var addr = order.shipping;
+            document.getElementById('shippingAddress').innerHTML =
+                '<p class="text-sm">' + addr.firstName + ' ' + addr.lastName + '</p>' +
+                '<p class="text-sm text-text-secondary">' + addr.address + '</p>' +
+                '<p class="text-sm text-text-secondary">' + addr.city + ' - ' + addr.pincode + '</p>' +
+                '<p class="text-sm text-text-secondary">' + addr.phone + '</p>';
+
+            // Items list
+            document.getElementById('orderItemsList').innerHTML = order.items.map(function(item) {
+                return '<div class="flex items-center gap-3">' +
+                    '<img src="' + item.image + '" alt="' + item.name + '" class="w-12 h-12 rounded object-cover" width="48" height="48">' +
+                    '<div class="flex-1 min-w-0">' +
+                        '<p class="text-sm font-medium truncate">' + item.name + '</p>' +
+                        '<p class="text-xs text-text-tertiary">Qty: ' + item.qty + '</p>' +
+                    '</div>' +
+                    '<p class="text-sm font-medium">' + formatPrice(item.price * item.qty) + '</p>' +
+                '</div>';
+            }).join('');
+
+            // Price breakdown
+            document.getElementById('summarySubtotal').textContent = formatPrice(order.subtotal);
+            document.getElementById('summaryDelivery').textContent = order.deliveryFee === 0 ? 'Free' : formatPrice(order.deliveryFee);
+            if (order.deliveryFee === 0) document.getElementById('summaryDelivery').className = 'font-medium text-green-700';
+            document.getElementById('summaryTax').textContent = formatPrice(order.tax);
+            document.getElementById('summaryTotal').textContent = formatPrice(order.total);
+
+            // User email
+            var user = AuthService.getUser();
+            if (user) document.getElementById('userEmail').textContent = user.email;
+
+            // Delivery date in timeline
+            document.getElementById('deliveryDate').textContent = order.estimatedDelivery;
+
+            // Share button
+            document.getElementById('shareOrderBtn').addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({ title: 'Order #' + order.id, text: 'I just ordered from Chennai Retail!' });
+                } else {
+                    navigator.clipboard.writeText(order.id);
+                    showToast('Order ID copied!');
                 }
-            }
+            });
+
+            // Print button
+            document.getElementById('printReceiptBtn').addEventListener('click', function() {
+                window.print();
+            });
         });
+
+        function createConfetti() {
+            var colors = ['#dc2626', '#fecaca', '#111111', '#e5e5e5'];
+            for (var i = 0; i < 25; i++) {
+                var el = document.createElement('div');
+                el.className = 'confetti';
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.top = '-10px';
+                el.style.background = colors[Math.floor(Math.random() * colors.length)];
+                el.style.animationDelay = Math.random() * 0.5 + 's';
+                el.style.animationDuration = (1.5 + Math.random()) + 's';
+                document.body.appendChild(el);
+            }
+            setTimeout(function() { document.querySelectorAll('.confetti').forEach(function(c) { c.remove(); }); }, 3000);
+        }
+
+        function showNotFound() {
+            document.getElementById('orderContent').innerHTML = '<div class="text-center py-16"><span class="material-symbols-outlined text-text-tertiary mb-3" style="font-size:64px">error</span><h2 class="text-lg font-semibold mb-2">Order not found</h2><p class="text-sm text-text-secondary mb-6">We couldn\'t find this order</p><a href="index.html" class="btn-primary">Go Home</a></div>';
+        }
     </script>
 </body>
 </html>

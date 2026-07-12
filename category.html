@@ -14,21 +14,20 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: { DEFAULT: '#dc2626', light: '#fecaca' },
-                        surface: { DEFAULT: '#ffffff', alt: '#f7f7f7' },
+                        primary: { DEFAULT: '#DC2626', light: '#FEE2E2' },
+                        surface: { DEFAULT: '#FFFFFF', alt: '#F9FAFB' },
                         'on-primary': '#ffffff',
-                        text: { DEFAULT: '#111111', secondary: '#666666', tertiary: '#999999' },
-                        border: { DEFAULT: '#e5e5e5', light: '#f0f0f0' },
+                        text: { DEFAULT: '#111111', secondary: '#4B5563', tertiary: '#9CA3AF' },
+                        border: { DEFAULT: '#E5E7EB', light: '#F3F4F6' },
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    borderRadius: { sm: '4px', md: '8px', lg: '12px' },
                 }
             }
         }
     </script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#eaeded] text-text">
+<body class="bg-[#F3F4F6] text-[#111111]">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
 
@@ -37,12 +36,12 @@
     <!-- Desktop Header -->
     <header class="site-header hidden md:block">
         <div class="header-inner">
-            <a href="index.html" class="header-logo"><img src="images/logo.png" alt="Chennai Retail" class="h-8"></a>
+            <a href="index.html" class="header-logo"><img src="images/logo.svg" alt="Chennai Retail" class="h-8"></a>
             <nav class="flex items-center gap-5 text-[13px]" aria-label="Main navigation">
-                <a href="index.html" class="hover:text-orange-300 transition-colors">Home</a>
-                <a href="category.html" class="hover:text-orange-300 transition-colors">Categories</a>
-                <a href="offer.html" class="hover:text-orange-300 transition-colors">Deals</a>
-                <a href="account.html" class="hover:text-orange-300 transition-colors">Account</a>
+                <a href="index.html" class="hover:text-[#DC2626] transition-colors">Home</a>
+                <a href="category.html" class="hover:text-[#DC2626] transition-colors">Categories</a>
+                <a href="offer.html" class="hover:text-[#DC2626] transition-colors">Deals</a>
+                <a href="account.html" class="hover:text-[#DC2626] transition-colors">Account</a>
             </nav>
             <div class="header-search">
                 <input type="text" placeholder="Search products..." id="headerSearchInput" aria-label="Search products">
@@ -66,7 +65,7 @@
 
     <!-- Mobile Header -->
     <header class="mobile-header">
-        <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-7 shrink-0"></a>
+        <a href="index.html"><img src="images/logo.svg" alt="Chennai Retail" class="h-7 shrink-0"></a>
         <input type="text" class="mobile-search" placeholder="Search products..." id="mobileSearchInput" aria-label="Search products"
             onkeydown="if(event.key==='Enter'){var q=this.value.trim();if(q)location.href='category.html?q='+encodeURIComponent(q)}">
         <a href="cart.html" class="text-white relative" aria-label="Cart">

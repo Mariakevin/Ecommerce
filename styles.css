@@ -1,40 +1,43 @@
 /* ============================================================
-   Chennai Retail - Amazon/Flipkart Inspired Design System
-   Clean, conversion-focused, trust-building UI
+   Chennai Retail - Red/Black/White Design System
+   Bold, high-contrast, conversion-focused
    ============================================================ */
 
 /* --------------------------------------------------
    1. CSS Custom Properties
    -------------------------------------------------- */
 :root {
-    --primary: #dc2626;
-    --primary-hover: #b91c1c;
-    --primary-light: #fef2f2;
-    --on-primary: #ffffff;
-    --surface: #ffffff;
-    --surface-alt: #f5f5f5;
-    --surface-hover: #fafafa;
-    --text: #0f1111;
-    --text-secondary: #565959;
-    --text-tertiary: #888888;
-    --border: #d5d9d9;
-    --border-light: #e7e7e7;
-    --error: #d32f2f;
-    --success: #067d62;
-    --warning: #e47911;
-    --orange: #ff9900;
-    --blue: #007185;
+    --primary: #DC2626;
+    --primary-hover: #B91C1C;
+    --primary-light: #FEE2E2;
+    --primary-dark: #991B1B;
+    --black: #111111;
+    --black-light: #1F1F1F;
+    --white: #FFFFFF;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --error: #DC2626;
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
+    --radius-xl: 16px;
     --radius-pill: 999px;
-    --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow-md: 0 2px 8px rgba(0,0,0,0.1);
-    --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
-    --shadow-card: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.15);
-    --transition: 0.15s ease;
+    --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    --transition: 0.2s ease;
 }
 
 /* --------------------------------------------------
@@ -46,8 +49,8 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--text);
-    background: #eaeded;
+    color: var(--black);
+    background: var(--gray-100);
     -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; height: auto; display: block; }
@@ -59,34 +62,34 @@ ul, ol { list-style: none; }
 /* --------------------------------------------------
    3. Typography
    -------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text); }
+h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black); }
 
 /* --------------------------------------------------
    4. Scroll Progress
    -------------------------------------------------- */
 .scroll-progress {
     position: fixed; top: 0; left: 0; height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--orange));
+    background: var(--primary);
     z-index: 9999; transition: width 0.1s linear; width: 0;
 }
 
 /* --------------------------------------------------
    5. Page Transition
    -------------------------------------------------- */
-.page-transition { animation: pageIn 0.25s ease both; }
+.page-transition { animation: pageIn 0.3s ease both; }
 @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* --------------------------------------------------
-   6. Header (Amazon-style)
+   6. Header (Red/Black/White)
    -------------------------------------------------- */
 .site-header {
-    background: #131921;
-    color: #fff;
+    background: var(--black);
+    color: var(--white);
     position: sticky;
     top: 0;
     z-index: 100;
 }
-.site-header a { color: #fff; }
+.site-header a { color: var(--white); }
 .header-inner {
     max-width: 1600px;
     margin: 0 auto;
@@ -99,12 +102,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .header-logo img { height: 32px; }
 .header-logo { display: flex; align-items: center; flex-shrink: 0; }
 
-/* Amazon-style search bar */
+/* Search bar */
 .header-search {
     flex: 1;
-    max-width: 800px;
+    max-width: 700px;
     display: flex;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     height: 40px;
 }
@@ -117,14 +120,14 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     min-width: 0;
 }
 .header-search button {
-    background: var(--orange);
-    color: #111;
+    background: var(--primary);
+    color: var(--white);
     padding: 0 16px;
     display: flex;
     align-items: center;
     transition: background var(--transition);
 }
-.header-search button:hover { background: #e68a00; }
+.header-search button:hover { background: var(--primary-hover); }
 
 .header-actions {
     display: flex;
@@ -141,7 +144,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     white-space: nowrap;
     transition: color var(--transition);
 }
-.header-actions a:hover { color: var(--orange); }
+.header-actions a:hover { color: var(--primary); }
 .header-actions .material-symbols-outlined { font-size: 22px; }
 
 .cart-link {
@@ -154,9 +157,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     position: absolute;
     top: -6px;
     right: -4px;
-    background: var(--orange);
-    color: #111;
-    font-size: 12px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 11px;
     font-weight: 700;
     min-width: 18px;
     height: 18px;
@@ -175,7 +178,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    background: #131921;
+    background: var(--black);
     height: 56px;
     padding: 0 12px;
     align-items: center;
@@ -184,7 +187,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .mobile-header .mobile-search {
     flex: 1;
     height: 38px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     border: none;
     padding: 0 12px;
     font-size: 14px;
@@ -197,16 +200,16 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 }
 
 /* --------------------------------------------------
-   8. Bottom Navigation (Mobile - Flipkart style)
+   8. Bottom Navigation (Mobile)
    -------------------------------------------------- */
 .bottom-nav {
     display: none;
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 100;
-    background: #fff;
-    border-top: 1px solid var(--border);
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
 }
 @media (max-width: 768px) { .bottom-nav { display: block; } }
 .bottom-nav .grid {
@@ -221,7 +224,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     justify-content: center;
     gap: 2px;
     font-size: 10px;
-    color: var(--text-secondary);
+    color: var(--gray-500);
     transition: color var(--transition);
 }
 .bottom-nav a.active, .bottom-nav a:hover { color: var(--primary); }
@@ -252,8 +255,8 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     align-items: center;
     gap: 10px;
     padding: 12px 16px;
-    background: #333;
-    color: #fff;
+    background: var(--black);
+    color: var(--white);
     border-radius: var(--radius-md);
     font-size: 13px;
     font-weight: 500;
@@ -266,63 +269,65 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .toast-exit { transform: translateX(120%); opacity: 0; }
 .toast-success { border-left: 4px solid var(--success); }
 .toast-error { border-left: 4px solid var(--error); }
-.toast-info { border-left: 4px solid var(--blue); }
+.toast-info { border-left: 4px solid var(--primary); }
 
 /* --------------------------------------------------
-   10. Buttons (Amazon/Flipkart style)
+   10. Buttons (Red/Black/White)
    -------------------------------------------------- */
 .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 20px;
-    background: linear-gradient(to bottom, #f7d066, #e8a817);
-    color: #111;
-    font-size: 13px;
+    padding: 11px 24px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 14px;
     font-weight: 600;
-    border-radius: 20px;
-    border: 1px solid #c79100;
+    border-radius: var(--radius-md);
+    border: none;
     cursor: pointer;
-    transition: background var(--transition);
+    transition: background var(--transition), transform var(--transition);
     width: 100%;
 }
-.btn-primary:hover { background: linear-gradient(to bottom, #f5c842, #d99b00); }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-primary:active { transform: scale(0.98); }
 
 .btn-buy-now {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 20px;
-    background: linear-gradient(to bottom, #ffa41c, #ff8f00);
-    color: #111;
-    font-size: 13px;
+    padding: 11px 24px;
+    background: var(--black);
+    color: var(--white);
+    font-size: 14px;
     font-weight: 600;
-    border-radius: 20px;
-    border: 1px solid #c77800;
+    border-radius: var(--radius-md);
+    border: none;
     cursor: pointer;
-    transition: background var(--transition);
+    transition: background var(--transition), transform var(--transition);
     width: 100%;
 }
-.btn-buy-now:hover { background: linear-gradient(to bottom, #fa9b00, #e07800); }
+.btn-buy-now:hover { background: var(--gray-800); }
+.btn-buy-now:active { transform: scale(0.98); }
 
 .btn-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 20px;
-    background: #fff;
-    color: var(--text);
-    font-size: 13px;
+    padding: 11px 24px;
+    background: var(--white);
+    color: var(--black);
+    font-size: 14px;
     font-weight: 500;
-    border: 1px solid var(--border);
-    border-radius: 20px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
     cursor: pointer;
     transition: background var(--transition), border-color var(--transition);
 }
-.btn-outline:hover { background: var(--surface-alt); border-color: #888; }
+.btn-outline:hover { background: var(--gray-50); border-color: var(--gray-400); }
 
 .btn-add-cart {
     display: inline-flex;
@@ -330,16 +335,16 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     justify-content: center;
     gap: 6px;
     padding: 8px 16px;
-    background: linear-gradient(to bottom, #f7d066, #e8a817);
-    color: #111;
+    background: var(--primary);
+    color: var(--white);
     font-size: 12px;
     font-weight: 600;
-    border-radius: 20px;
-    border: 1px solid #c79100;
+    border-radius: var(--radius-md);
+    border: none;
     cursor: pointer;
     transition: background var(--transition);
 }
-.btn-add-cart:hover { background: linear-gradient(to bottom, #f5c842, #d99b00); }
+.btn-add-cart:hover { background: var(--primary-hover); }
 
 .btn-text {
     display: inline-flex;
@@ -348,31 +353,32 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     padding: 6px 10px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--blue);
+    color: var(--primary);
     border-radius: var(--radius-sm);
     transition: color var(--transition);
     cursor: pointer;
 }
-.btn-text:hover { color: #c7511f; text-decoration: underline; }
+.btn-text:hover { color: var(--primary-hover); text-decoration: underline; }
 
 /* --------------------------------------------------
-   11. Product Card (Amazon/Flipkart style)
+   11. Product Card (Red/Black/White)
    -------------------------------------------------- */
 .product-card {
-    background: #fff;
-    border-radius: var(--radius-md);
+    background: var(--white);
+    border-radius: var(--radius-lg);
     overflow: hidden;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     display: flex;
     flex-direction: column;
     position: relative;
+    border: 1px solid var(--gray-200);
 }
 .product-card:hover {
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
 }
 .product-card .aspect-square {
-    background: #fff;
+    background: var(--white);
     overflow: hidden;
     position: relative;
 }
@@ -381,27 +387,27 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     height: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
-    padding: 8px;
+    padding: 12px;
 }
 .product-card:hover .aspect-square img { transform: scale(1.05); }
 
-/* Discount badge (Flipkart style) */
+/* Discount badge */
 .discount-badge {
     position: absolute;
-    top: 8px;
-    left: 8px;
+    top: 10px;
+    left: 10px;
     background: var(--primary);
-    color: #fff;
+    color: var(--white);
     font-size: 11px;
     font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 3px;
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
     z-index: 2;
 }
 
 /* Product card info */
 .product-card-info {
-    padding: 10px 12px 12px;
+    padding: 12px 14px 14px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -409,55 +415,55 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .product-card-title {
     font-size: 13px;
     font-weight: 400;
-    color: var(--text);
+    color: var(--gray-800);
     line-height: 1.3;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.product-card-title:hover { color: var(--blue); }
+.product-card-title:hover { color: var(--primary); }
 
-/* Rating (Amazon style) */
+/* Rating */
 .rating-row {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 .rating-badge {
     display: inline-flex;
     align-items: center;
     gap: 2px;
-    background: #388e3c;
-    color: #fff;
+    background: var(--black);
+    color: var(--white);
     font-size: 11px;
     font-weight: 600;
-    padding: 1px 6px;
-    border-radius: 3px;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
 }
 .rating-badge .material-symbols-outlined { font-size: 12px; }
 .rating-count {
     font-size: 12px;
-    color: var(--text-tertiary);
+    color: var(--gray-500);
 }
 
-/* Price row (Amazon style) */
+/* Price row */
 .price-row {
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 4px;
 }
 .price-current {
     font-size: 18px;
-    font-weight: 600;
-    color: var(--text);
+    font-weight: 700;
+    color: var(--black);
 }
 .price-original {
     font-size: 12px;
-    color: var(--text-tertiary);
+    color: var(--gray-400);
     text-decoration: line-through;
 }
 .price-discount {
@@ -466,19 +472,19 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     color: var(--primary);
 }
 
-/* Delivery info (Amazon style) */
+/* Delivery info */
 .delivery-info {
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--gray-500);
     margin-top: 2px;
 }
-.delivery-info strong { color: var(--text); }
+.delivery-info strong { color: var(--black); }
 
-/* Quick actions (wishlist + add to cart on hover) */
+/* Quick actions */
 .product-card-actions {
     display: flex;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 8px;
+    margin-top: 10px;
     opacity: 0;
     transition: opacity 0.2s ease;
 }
@@ -490,9 +496,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    background: var(--white);
     transition: border-color var(--transition);
     flex-shrink: 0;
 }
@@ -505,60 +511,60 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .form-input {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--gray-300);
     border-radius: var(--radius-md);
     font-size: 13px;
-    background: var(--surface);
-    color: var(--text);
+    background: var(--white);
+    color: var(--black);
     transition: border-color var(--transition), box-shadow var(--transition);
     outline: none;
 }
 .form-input:focus {
-    border-color: #e77600;
-    box-shadow: 0 0 0 3px rgba(228, 121, 17, 0.15);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
-.form-input::placeholder { color: var(--text-tertiary); }
+.form-input::placeholder { color: var(--gray-400); }
 .form-label {
     display: block;
     font-size: 13px;
     font-weight: 600;
-    color: var(--text);
+    color: var(--black);
     margin-bottom: 4px;
 }
 
 /* --------------------------------------------------
-   13. Quantity Stepper (Amazon style)
+   13. Quantity Stepper
    -------------------------------------------------- */
 .qty-stepper {
     display: inline-flex;
     align-items: center;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    background: #f0f2f2;
+    background: var(--gray-50);
 }
 .qty-stepper button {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    color: var(--text);
-    background: #f0f2f2;
+    color: var(--black);
+    background: var(--gray-50);
     transition: background var(--transition);
 }
-.qty-stepper button:hover { background: #e3e6e6; }
+.qty-stepper button:hover { background: var(--gray-200); }
 .qty-stepper input {
-    width: 42px;
-    height: 34px;
+    width: 44px;
+    height: 36px;
     text-align: center;
     border: none;
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    font-size: 13px;
+    border-left: 1px solid var(--gray-300);
+    border-right: 1px solid var(--gray-300);
+    font-size: 14px;
     font-weight: 600;
-    background: #fff;
+    background: var(--white);
     -moz-appearance: textfield;
     outline: none;
 }
@@ -572,12 +578,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     padding: 10px 16px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--text-secondary);
+    color: var(--gray-500);
     border-bottom: 2px solid transparent;
     transition: color var(--transition), border-color var(--transition);
     cursor: pointer;
 }
-.tab-btn:hover { color: var(--text); }
+.tab-btn:hover { color: var(--black); }
 .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
@@ -594,12 +600,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     font-size: 14px;
     font-weight: 600;
     text-align: left;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--gray-200);
     cursor: pointer;
 }
 .accordion-trigger .material-symbols-outlined {
     font-size: 20px;
-    color: var(--text-tertiary);
+    color: var(--gray-400);
     transition: transform 0.2s ease;
 }
 .accordion-trigger[aria-expanded="true"] .material-symbols-outlined { transform: rotate(180deg); }
@@ -611,7 +617,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .filter-drawer {
     position: fixed; top: 0; left: 0; bottom: 0;
     width: 320px; max-width: 85vw;
-    background: var(--surface); z-index: 100;
+    background: var(--white); z-index: 100;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     overflow-y: auto;
@@ -619,7 +625,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .filter-drawer.active { transform: translateX(0); }
 .filter-backdrop {
     position: fixed; inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     z-index: 99; opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -630,12 +636,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
    17. Swipe to Delete
    -------------------------------------------------- */
 .swipe-container { position: relative; overflow: hidden; border-radius: var(--radius-md); }
-.swipe-content { position: relative; z-index: 2; background: var(--surface); transition: transform 0.3s ease; }
+.swipe-content { position: relative; z-index: 2; background: var(--white); transition: transform 0.3s ease; }
 .swipe-content.swiping { transition: none; }
 .swipe-action {
     position: absolute; top: 0; right: 0; bottom: 0; width: 80px;
     display: flex; align-items: center; justify-content: center;
-    background: var(--error); color: var(--on-primary); z-index: 1;
+    background: var(--error); color: var(--white); z-index: 1;
 }
 
 /* --------------------------------------------------
@@ -643,12 +649,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
    -------------------------------------------------- */
 .sticky-add-cart {
     position: fixed; bottom: 56px; left: 0; right: 0;
-    background: #fff; border-top: 1px solid var(--border);
+    background: var(--white); border-top: 1px solid var(--gray-200);
     padding: 10px 16px; z-index: 90;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
     transform: translateY(100%);
     transition: transform 0.3s ease;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
 }
 .sticky-add-cart.visible { transform: translateY(0); }
 @media (min-width: 769px) { .sticky-add-cart { display: none; } }
@@ -656,11 +662,11 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 /* --------------------------------------------------
    19. Breadcrumb
    -------------------------------------------------- */
-.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-tertiary); flex-wrap: wrap; }
-.breadcrumb a { color: var(--text-secondary); transition: color var(--transition); }
-.breadcrumb a:hover { color: var(--blue); text-decoration: underline; }
-.breadcrumb-sep { color: var(--border); font-size: 10px; }
-.breadcrumb-current { color: var(--text); font-weight: 500; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-400); flex-wrap: wrap; }
+.breadcrumb a { color: var(--gray-500); transition: color var(--transition); }
+.breadcrumb a:hover { color: var(--primary); text-decoration: underline; }
+.breadcrumb-sep { color: var(--gray-300); font-size: 10px; }
+.breadcrumb-current { color: var(--black); font-weight: 500; }
 
 /* --------------------------------------------------
    20. Search Dropdown
@@ -672,7 +678,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
    21. Loading Skeletons
    -------------------------------------------------- */
 @keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: calc(200px + 100%) 0; } }
-.skeleton { background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%); background-size: 200px 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
+.skeleton { background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%); background-size: 200px 100%; animation: shimmer 1.5s infinite; border-radius: 4px; }
 .skeleton-text { height: 14px; margin-bottom: 8px; }
 .skeleton-text-sm { height: 12px; width: 60%; }
 .skeleton-img { aspect-ratio: 1; border-radius: 8px; }
@@ -715,13 +721,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
 }
 .wishlist-particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary);
-    pointer-events: none;
-    animation: heartParticle 0.5s ease-out forwards;
+    position: absolute; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--primary);
+    pointer-events: none; animation: heartParticle 0.5s ease-out forwards;
 }
 
 /* --------------------------------------------------
@@ -736,47 +738,48 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .filter-chip {
     display: inline-flex; align-items: center; gap: 4px;
     padding: 6px 12px; font-size: 12px; font-weight: 500;
-    background: #fff; border: 1px solid var(--border); border-radius: 20px;
+    background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-pill);
     cursor: pointer; transition: all 0.15s ease;
 }
-.filter-chip:hover { background: var(--surface-alt); border-color: #888; }
+.filter-chip:hover { background: var(--gray-50); border-color: var(--gray-400); }
 .filter-chip.active { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
 .filter-chip .material-symbols-outlined { font-size: 14px; }
 
 /* --------------------------------------------------
-   27. Section Cards (Amazon-style white cards)
+   27. Section Cards
    -------------------------------------------------- */
 .section-card {
-    background: #fff;
-    border-radius: var(--radius-md);
+    background: var(--white);
+    border-radius: var(--radius-lg);
     padding: 20px;
     box-shadow: var(--shadow-xs);
+    border: 1px solid var(--gray-200);
 }
 
 /* --------------------------------------------------
-   28. Offer/Sale Badges
+   28. Sale/Offer Badges
    -------------------------------------------------- */
 .sale-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
     background: var(--primary);
-    color: #fff;
+    color: var(--white);
     font-size: 11px;
     font-weight: 700;
     padding: 3px 10px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 /* --------------------------------------------------
-   29. Trust Bar (Flipkart style)
+   29. Trust Bar
    -------------------------------------------------- */
 .trust-bar {
-    background: #fff;
-    border-bottom: 1px solid var(--border);
-    padding: 8px 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 10px 0;
 }
 .trust-bar-inner {
     max-width: 1600px;
@@ -793,29 +796,29 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     align-items: center;
     gap: 6px;
     font-size: 12px;
-    color: var(--text-secondary);
+    color: var(--gray-600);
 }
 .trust-item .material-symbols-outlined { font-size: 18px; color: var(--primary); }
 
 /* --------------------------------------------------
-   30. Footer (Amazon-style dark)
+   30. Footer (Red/Black/White)
    -------------------------------------------------- */
 .site-footer {
-    background: #232f3e;
-    color: #ddd;
+    background: var(--black);
+    color: var(--gray-300);
 }
-.site-footer a { color: #ddd; }
-.site-footer a:hover { color: #fff; text-decoration: underline; }
+.site-footer a { color: var(--gray-300); }
+.site-footer a:hover { color: var(--white); text-decoration: underline; }
 .footer-back-top {
-    background: #37475a;
+    background: var(--gray-800);
     text-align: center;
     padding: 14px;
     font-size: 13px;
-    color: #fff;
+    color: var(--white);
     cursor: pointer;
     transition: background var(--transition);
 }
-.footer-back-top:hover { background: #485769; }
+.footer-back-top:hover { background: var(--gray-700); }
 .footer-grid {
     max-width: 1600px;
     margin: 0 auto;
@@ -824,16 +827,16 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
 }
-.footer-grid h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.footer-grid h3 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
 .footer-grid ul { list-style: none; }
 .footer-grid li { margin-bottom: 8px; }
-.footer-grid a { font-size: 13px; color: #ddd; }
+.footer-grid a { font-size: 13px; color: var(--gray-300); }
 .footer-bottom {
-    border-top: 1px solid #3a4553;
+    border-top: 1px solid var(--gray-700);
     padding: 20px 16px;
     text-align: center;
     font-size: 12px;
-    color: #999;
+    color: var(--gray-500);
     max-width: 1600px;
     margin: 0 auto;
 }
@@ -842,27 +845,27 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 }
 
 /* --------------------------------------------------
-   31. Cart Page (Amazon-style)
+   31. Cart Page
    -------------------------------------------------- */
 .cart-item-card {
-    background: #fff;
-    border-radius: var(--radius-md);
+    background: var(--white);
+    border-radius: var(--radius-lg);
     padding: 16px;
     display: flex;
     gap: 16px;
-    box-shadow: var(--shadow-xs);
+    border: 1px solid var(--gray-200);
 }
 .cart-item-card img {
     width: 120px;
     height: 120px;
     object-fit: contain;
     border-radius: var(--radius-md);
-    background: #fff;
+    background: var(--white);
     flex-shrink: 0;
 }
 
 /* --------------------------------------------------
-   32. Checkout (Amazon-style steps)
+   32. Checkout Steps
    -------------------------------------------------- */
 .checkout-step {
     display: flex;
@@ -879,7 +882,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     height: 28px;
     border-radius: 50%;
     background: var(--primary);
-    color: #fff;
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -890,13 +893,13 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
 .checkout-step.completed .checkout-step-num { background: var(--success); }
 
 /* --------------------------------------------------
-   33. Product Page (Amazon-style)
+   33. Product Page Gallery
    -------------------------------------------------- */
 .product-gallery-main {
-    background: #fff;
-    border-radius: var(--radius-md);
+    background: var(--white);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--gray-200);
 }
 .product-gallery-main img {
     width: 100%;
@@ -911,7 +914,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
     cursor: pointer;
     opacity: 0.6;
     transition: opacity var(--transition), border-color var(--transition);
-    background: #fff;
+    background: var(--white);
 }
 .gallery-thumb.active,
 .gallery-thumb:hover { opacity: 1; border-color: var(--primary); }

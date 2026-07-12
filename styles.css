@@ -1188,9 +1188,8 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black)
 }
 .social-proof-inner {
     display: flex;
-    animation: tickerScroll 30s linear infinite;
+    animation: tickerScroll 25s linear infinite;
     gap: 48px;
-    padding-left: 100%;
 }
 .social-proof-item {
     display: flex;
@@ -2539,7 +2538,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black)
 /* Product Grid */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     width: 100%;
 }

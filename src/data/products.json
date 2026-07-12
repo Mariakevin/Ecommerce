@@ -76,7 +76,7 @@
             "Color": "White"
         },
         "inStock": true,
-        "featured": true,
+        "featured": false,
         "stock": 15
     },
     {

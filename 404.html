@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Chennai Retail</title>
+    <title>404 - Page Not Found - Chennai Retail</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,25 +27,172 @@
         }
     </script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 404 Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-12px) rotate(2deg); }
+            66% { transform: translateY(-6px) rotate(-1deg); }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(3deg); }
+        }
+        @keyframes floatDelayed {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(-2deg); }
+        }
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(5px, -8px) rotate(2deg); }
+            50% { transform: translate(-3px, -15px) rotate(-1deg); }
+            75% { transform: translate(8px, -5px) rotate(1deg); }
+        }
+        .float-1 { animation: float 4s ease-in-out infinite; }
+        .float-2 { animation: floatSlow 5s ease-in-out infinite 0.5s; }
+        .float-3 { animation: floatDelayed 4.5s ease-in-out infinite 1s; }
+        .float-4 { animation: drift 6s ease-in-out infinite 0.3s; }
+        .float-5 { animation: float 5.5s ease-in-out infinite 0.8s; }
+
+        /* 404 big number glow */
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.06; }
+            50% { opacity: 0.12; }
+        }
+        .glow-404 {
+            animation: glow-pulse 4s ease-in-out infinite;
+        }
+
+        /* Search input focus ring */
+        .search-404 input:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        /* Product card hover */
+        .suggestion-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .suggestion-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+    </style>
 </head>
 <body class="bg-surface font-sans text-text">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
-    <div id="main-content" tabindex="-1" class="min-h-screen flex items-center justify-center px-4">
-        <div class="max-w-md w-full text-center">
-            <!-- 404 -->
-            <p class="text-[120px] md:text-[160px] font-bold text-primary/10 leading-none mb-4 select-none">404</p>
 
-            <h1 class="text-2xl font-semibold mb-2">Page not found</h1>
-            <p class="text-text-secondary text-sm mb-8">The page you're looking for doesn't exist or has been moved.</p>
+    <div id="main-content" tabindex="-1" class="min-h-screen flex flex-col">
 
-            <!-- Actions -->
-            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                <a href="index.html" class="btn-primary px-6">Go Home</a>
-                <a href="category.html" class="btn-outline px-6">Browse Categories</a>
+        <!-- Floating decorative elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+            <!-- Floating product silhouettes -->
+            <div class="float-1 absolute top-[15%] left-[8%] w-16 h-16 md:w-20 md:h-20 rounded-lg bg-primary/5 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary/20" style="font-size:32px">light</span>
+            </div>
+            <div class="float-2 absolute top-[20%] right-[12%] w-14 h-14 md:w-18 md:h-18 rounded-full bg-primary/5 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary/20" style="font-size:28px">chair</span>
+            </div>
+            <div class="float-3 absolute bottom-[25%] left-[15%] w-12 h-12 md:w-16 md:h-16 rounded-lg bg-primary/5 flex items-center justify-center rotate-12">
+                <span class="material-symbols-outlined text-primary/20" style="font-size:24px">flower</span>
+            </div>
+            <div class="float-4 absolute top-[40%] right-[6%] w-10 h-10 md:w-14 md:h-14 rounded-full bg-primary/5 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary/20" style="font-size:20px">decorating</span>
+            </div>
+            <div class="float-5 absolute bottom-[30%] right-[20%] w-14 h-14 md:w-16 md:h-16 rounded-lg bg-primary/5 flex items-center justify-center -rotate-6">
+                <span class="material-symbols-outlined text-primary/20" style="font-size:28px">table_restaurant</span>
             </div>
         </div>
+
+        <!-- Main content -->
+        <div class="flex-1 flex items-center justify-center px-4 py-12 relative z-10">
+            <div class="max-w-lg w-full text-center">
+
+                <!-- 404 Number with glow -->
+                <div class="relative mb-6">
+                    <p class="text-[100px] md:text-[140px] font-bold leading-none select-none glow-404" style="color: rgba(220, 38, 38, 0.08);">404</p>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary" style="font-size:48px">search_off</span>
+                    </div>
+                </div>
+
+                <!-- Copy -->
+                <h1 class="text-2xl md:text-3xl font-bold mb-3">This page has left the room</h1>
+                <p class="text-text-secondary text-sm md:text-base mb-8 max-w-sm mx-auto">Looks like this page wandered off to find a better home. Let us help you find your way back.</p>
+
+                <!-- Search Bar -->
+                <div class="search-404 relative max-w-md mx-auto mb-8">
+                    <form id="searchForm" class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-tertiary" style="font-size:20px">search</span>
+                        <input id="searchInput" type="text" placeholder="Search for products..." class="w-full pl-11 pr-4 py-3 bg-surface-alt border border-border rounded-lg text-sm placeholder:text-text-tertiary transition-all" aria-label="Search products">
+                        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-primary text-white text-xs font-medium rounded-md hover:bg-red-700 transition-colors">Search</button>
+                    </form>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+                    <a href="index.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:16px">home</span>
+                        Home
+                    </a>
+                    <a href="category.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:16px">grid_view</span>
+                        Categories
+                    </a>
+                    <a href="category.html?cat=featured" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:16px">local_fire_department</span>
+                        Trending
+                    </a>
+                    <a href="cart.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:16px">shopping_bag</span>
+                        Cart
+                    </a>
+                </div>
+
+                <!-- Popular Products -->
+                <div>
+                    <p class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-4">You might like these instead</p>
+                    <div id="suggestedProducts" class="grid grid-cols-2 md:grid-cols-3 gap-3"></div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
+    <script src="src/utils/format.js"></script>
+    <script src="src/services/ProductService.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Search redirect
+            document.getElementById('searchForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var q = document.getElementById('searchInput').value.trim();
+                if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+            });
+
+            // Load suggested products
+            try {
+                var products = await ProductService.getProducts();
+                var featured = products.filter(function(p) { return p.featured; }).slice(0, 3);
+                var container = document.getElementById('suggestedProducts');
+                if (container && featured.length) {
+                    container.innerHTML = featured.map(function(p) {
+                        return '<a href="product.html?id=' + p.id + '" class="suggestion-card block bg-white border border-border rounded-lg overflow-hidden">' +
+                            '<div class="aspect-square bg-surface-alt overflow-hidden">' +
+                                '<img src="' + p.image + '" alt="' + p.name + '" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" width="200" height="200">' +
+                            '</div>' +
+                            '<div class="p-3 text-left">' +
+                                '<p class="text-xs font-medium truncate">' + p.name + '</p>' +
+                                '<p class="text-sm font-semibold mt-0.5">' + formatPrice(p.price) + '</p>' +
+                            '</div>' +
+                        '</a>';
+                    }).join('');
+                }
+            } catch(e) {}
+        });
+    </script>
 </body>
 </html>

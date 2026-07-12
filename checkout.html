@@ -801,53 +801,68 @@
             }
 
             // --- Form Validation ---
-            function clearErrors() {
-                ['FirstName', 'LastName', 'Phone', 'Address', 'City', 'Pincode'].forEach(function(field) {
-                    var el = document.getElementById('error' + field);
-                    if (el) { el.textContent = ''; el.classList.remove('visible'); }
-                });
-            }
 
             function showError(field, message) {
                 var el = document.getElementById('error' + field);
                 if (el) { el.textContent = message; el.classList.add('visible'); }
+                var input = document.querySelector('[name="' + field.charAt(0).toLowerCase() + field.slice(1) + '"]');
+                if (input) input.classList.add('error');
+            }
+
+            function clearErrors() {
+                document.querySelectorAll('.field-error').forEach(function(el) {
+                    el.textContent = '';
+                    el.classList.remove('visible');
+                });
+                document.querySelectorAll('.form-input-premium').forEach(function(el) {
+                    el.classList.remove('error');
+                });
+            }
+
+            function validateField(name, value) {
+                var valid = true;
+                var msg = '';
+                switch (name) {
+                    case 'firstName':
+                        if (!value || value.length < 2) { valid = false; msg = 'First name is required (min 2 characters)'; }
+                        break;
+                    case 'lastName':
+                        if (!value) { valid = false; msg = 'Last name is required'; }
+                        break;
+                    case 'phone':
+                        if (!value || value.replace(/\D/g, '').length < 10) { valid = false; msg = 'Valid phone number required (10+ digits)'; }
+                        break;
+                    case 'address':
+                        if (!value || value.length < 5) { valid = false; msg = 'Address is required (min 5 characters)'; }
+                        break;
+                    case 'city':
+                        if (!value) { valid = false; msg = 'City is required'; }
+                        break;
+                    case 'pincode':
+                        if (!value || !/^\d{6}$/.test(value)) { valid = false; msg = 'Valid 6-digit pincode required'; }
+                        break;
+                }
+                var errorEl = document.getElementById('error' + name.charAt(0).toUpperCase() + name.slice(1));
+                var inputEl = document.querySelector('[name="' + name + '"]');
+                if (!valid) {
+                    if (errorEl) { errorEl.textContent = msg; errorEl.classList.add('visible'); }
+                    if (inputEl) inputEl.classList.add('error');
+                } else {
+                    if (errorEl) { errorEl.textContent = ''; errorEl.classList.remove('visible'); }
+                    if (inputEl) inputEl.classList.remove('error');
+                }
+                return valid;
             }
 
             function validateShippingForm() {
                 clearErrors();
                 var form = document.getElementById('shippingForm');
-                var firstName = form.querySelector('[name="firstName"]').value.trim();
-                var lastName = form.querySelector('[name="lastName"]').value.trim();
-                var phone = form.querySelector('[name="phone"]').value.trim();
-                var address = form.querySelector('[name="address"]').value.trim();
-                var city = form.querySelector('[name="city"]').value.trim();
-                var pincode = form.querySelector('[name="pincode"]').value.trim();
+                var fields = ['firstName', 'lastName', 'phone', 'address', 'city', 'pincode'];
                 var valid = true;
-
-                if (!firstName || firstName.length < 2) {
-                    showError('FirstName', 'First name is required (min 2 characters)');
-                    valid = false;
-                }
-                if (!lastName) {
-                    showError('LastName', 'Last name is required');
-                    valid = false;
-                }
-                if (!phone || phone.replace(/\D/g, '').length < 10) {
-                    showError('Phone', 'Valid phone number required (10+ digits)');
-                    valid = false;
-                }
-                if (!address || address.length < 5) {
-                    showError('Address', 'Address is required (min 5 characters)');
-                    valid = false;
-                }
-                if (!city) {
-                    showError('City', 'City is required');
-                    valid = false;
-                }
-                if (!pincode || !/^\d{6}$/.test(pincode)) {
-                    showError('Pincode', 'Valid 6-digit pincode required');
-                    valid = false;
-                }
+                fields.forEach(function(f) {
+                    var val = form.querySelector('[name="' + f + '"]').value.trim();
+                    if (!validateField(f, val)) valid = false;
+                });
                 return valid;
             }
 
@@ -941,6 +956,19 @@
                     shippingData = collectFormData();
                     goToStep(2);
                 }
+            });
+
+            // --- On-blur validation for shipping fields ---
+            document.querySelectorAll('#shippingForm input[name]').forEach(function(input) {
+                if (input.name === 'state' || input.name === 'address2') return;
+                input.addEventListener('blur', function() {
+                    validateField(this.name, this.value.trim());
+                });
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('error')) {
+                        validateField(this.name, this.value.trim());
+                    }
+                });
             });
 
             // --- Continue to Review ---

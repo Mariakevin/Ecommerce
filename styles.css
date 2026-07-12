@@ -141,12 +141,17 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black)
 }
 .promo-close {
     position: absolute;
-    right: 16px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--white);
     opacity: 0.8;
     transition: opacity 0.2s;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .promo-close:hover { opacity: 1; }
 
@@ -769,8 +774,8 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black)
     background: var(--gray-50);
 }
 .qty-stepper button {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -782,7 +787,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black)
 .qty-stepper button:hover { background: var(--gray-200); }
 .qty-stepper input {
     width: 44px;
-    height: 36px;
+    height: 44px;
     text-align: center;
     border: none;
     border-left: 1px solid var(--gray-300);
@@ -3923,6 +3928,13 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black)
 }
 .form-input-premium:hover:not(:focus) {
     border-color: var(--gray-300);
+}
+.form-input-premium.error {
+    border-color: var(--primary);
+    background: #FFFBFB;
+}
+.form-input-premium.error:focus {
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12);
 }
 .form-input-icon {
     position: absolute;

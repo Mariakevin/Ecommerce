@@ -157,66 +157,102 @@
 
     <div class="page-transition">
 
-        <!-- Breadcrumb -->
-        <div class="max-w-[1600px] mx-auto px-4 md:px-10 pt-6 pb-2">
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="index.html">Home</a>
-                <span class="breadcrumb-sep">/</span>
-                <span class="breadcrumb-current" id="breadcrumbTitle">All Products</span>
-            </nav>
-        </div>
-
-        <!-- Category Banner -->
-        <div id="main-content" tabindex="-1" class="max-w-[1600px] mx-auto px-4 md:px-10 py-4" data-reveal>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <a href="category.html?cat=living" class="relative rounded-lg overflow-hidden aspect-[3/2] group">
-                    <img src="images/hero-living-room.jpg" alt="Living Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="400" height="267">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-                        <span class="text-white font-semibold text-sm">Living Room</span>
+        <!-- Hero Banner -->
+        <div id="main-content" tabindex="-1" class="category-hero" data-reveal>
+            <div class="category-hero-bg">
+                <img src="images/hero-living-room.jpg" alt="" class="category-hero-img" id="heroImage">
+                <div class="category-hero-overlay"></div>
+            </div>
+            <div class="category-hero-content">
+                <nav class="category-breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">
+                        <span class="material-symbols-outlined" style="font-size:16px">home</span>
+                        Home
+                    </a>
+                    <span class="category-breadcrumb-sep">
+                        <span class="material-symbols-outlined" style="font-size:14px">chevron_right</span>
+                    </span>
+                    <span class="category-breadcrumb-current" id="breadcrumbTitle">All Products</span>
+                </nav>
+                <h1 class="category-hero-title" id="pageTitle">All Products</h1>
+                <p class="category-hero-subtitle" data-product-count>Showing 0 products</p>
+                <div class="category-hero-stats">
+                    <div class="category-hero-stat">
+                        <span class="material-symbols-outlined" style="font-size:16px">local_shipping</span>
+                        Free delivery on orders over ₹999
                     </div>
-                </a>
-                <a href="category.html?cat=bedroom" class="relative rounded-lg overflow-hidden aspect-[3/2] group">
-                    <img src="images/hero-bedroom.jpg" alt="Bedroom" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="400" height="267">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-                        <span class="text-white font-semibold text-sm">Bedroom</span>
+                    <div class="category-hero-stat">
+                        <span class="material-symbols-outlined" style="font-size:16px">verified</span>
+                        100% Authentic Products
                     </div>
-                </a>
-                <a href="category.html?cat=kitchen" class="relative rounded-lg overflow-hidden aspect-[3/2] group">
-                    <img src="images/hero-kitchen.jpg" alt="Kitchen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="400" height="267">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-                        <span class="text-white font-semibold text-sm">Kitchen</span>
+                    <div class="category-hero-stat">
+                        <span class="material-symbols-outlined" style="font-size:16px">autorenew</span>
+                        Easy 7-Day Returns
                     </div>
-                </a>
+                </div>
             </div>
         </div>
 
-        <!-- Page Header -->
-        <div class="max-w-[1600px] mx-auto px-4 md:px-10 py-6" data-reveal>
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                    <h1 class="text-2xl font-semibold mb-1" id="pageTitle">All Products</h1>
-                    <p class="text-sm text-text-secondary" data-product-count>Showing 0 products</p>
+        <!-- Quick Filter Chips -->
+        <div class="max-w-[1600px] mx-auto px-4 md:px-10 mt-6 mb-2">
+            <div class="filter-chips-bar">
+                <div class="filter-chips-scroll" id="filterChips">
+                    <button class="filter-chip active" data-quick-filter="all">
+                        <span class="material-symbols-outlined" style="font-size:14px">apps</span>
+                        All
+                    </button>
+                    <button class="filter-chip" data-quick-filter="living">
+                        <span class="material-symbols-outlined" style="font-size:14px">living</span>
+                        Living Room
+                    </button>
+                    <button class="filter-chip" data-quick-filter="bedroom">
+                        <span class="material-symbols-outlined" style="font-size:14px">bed</span>
+                        Bedroom
+                    </button>
+                    <button class="filter-chip" data-quick-filter="kitchen">
+                        <span class="material-symbols-outlined" style="font-size:14px">restaurant</span>
+                        Kitchen
+                    </button>
+                    <button class="filter-chip" data-quick-filter="decor">
+                        <span class="material-symbols-outlined" style="font-size:14px">palette</span>
+                        Decor
+                    </button>
+                    <button class="filter-chip" data-quick-filter="lighting">
+                        <span class="material-symbols-outlined" style="font-size:14px">lightbulb</span>
+                        Lighting
+                    </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Sort & View Bar -->
+        <div class="max-w-[1600px] mx-auto px-4 md:px-10 py-4">
+            <div class="category-toolbar">
                 <div class="flex items-center gap-3">
                     <!-- Mobile filter button -->
-                    <button id="mobileFilterBtn" onclick="openFilters()" class="md:hidden btn-outline text-sm px-4 py-2" aria-label="Open filters">
+                    <button id="mobileFilterBtn" onclick="openFilters()" class="category-toolbar-btn md:hidden" aria-label="Open filters">
                         <span class="material-symbols-outlined" style="font-size:18px">filter_list</span>
                         Filters
                         <span id="mobileFilterBadge" class="hidden bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center">0</span>
                     </button>
                     <!-- Sort -->
-                    <select id="sortSelect" class="form-input text-sm py-2 w-44" aria-label="Sort products">
-                        <option value="featured">Featured</option>
-                        <option value="price_asc">Price: Low to High</option>
-                        <option value="price_desc">Price: High to Low</option>
-                        <option value="name">Name: A to Z</option>
-                    </select>
+                    <div class="relative">
+                        <select id="sortSelect" class="category-toolbar-select" aria-label="Sort products">
+                            <option value="featured">Featured</option>
+                            <option value="price_asc">Price: Low to High</option>
+                            <option value="price_desc">Price: High to Low</option>
+                            <option value="name">Name: A to Z</option>
+                        </select>
+                        <span class="material-symbols-outlined category-toolbar-select-icon" style="font-size:16px">unfold_more</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
                     <!-- View Toggle -->
-                    <div class="hidden md:flex items-center border border-border rounded-md overflow-hidden">
-                        <button id="viewGrid" onclick="setCategoryView('grid')" class="p-2 bg-surface-alt" aria-label="Grid view">
+                    <div class="category-view-toggle">
+                        <button id="viewGrid" onclick="setCategoryView('grid')" class="category-view-btn active" aria-label="Grid view">
                             <span class="material-symbols-outlined" style="font-size:18px">grid_view</span>
                         </button>
-                        <button id="viewList" onclick="setCategoryView('list')" class="p-2" aria-label="List view">
+                        <button id="viewList" onclick="setCategoryView('list')" class="category-view-btn" aria-label="List view">
                             <span class="material-symbols-outlined" style="font-size:18px">view_list</span>
                         </button>
                     </div>
@@ -226,66 +262,144 @@
 
         <!-- Active Filters -->
         <div class="max-w-[1600px] mx-auto px-4 md:px-10">
-            <div class="flex flex-wrap gap-2 mb-4" id="activeFilters"></div>
+            <div class="active-filters-bar" id="activeFilters"></div>
+        </div>
+
+        <!-- Category Quick Links (below hero, before grid) -->
+        <div class="max-w-[1600px] mx-auto px-4 md:px-10 py-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="categoryQuickLinks">
+                <a href="category.html?cat=living" class="category-link-card group">
+                    <img src="images/hero-living-room.jpg" alt="Living Room" class="category-link-img" loading="lazy" width="400" height="267">
+                    <div class="category-link-overlay"></div>
+                    <div class="category-link-content">
+                        <span class="category-link-label">Living Room</span>
+                        <span class="category-link-arrow material-symbols-outlined" style="font-size:20px">arrow_forward</span>
+                    </div>
+                </a>
+                <a href="category.html?cat=bedroom" class="category-link-card group">
+                    <img src="images/hero-bedroom.jpg" alt="Bedroom" class="category-link-img" loading="lazy" width="400" height="267">
+                    <div class="category-link-overlay"></div>
+                    <div class="category-link-content">
+                        <span class="category-link-label">Bedroom</span>
+                        <span class="category-link-arrow material-symbols-outlined" style="font-size:20px">arrow_forward</span>
+                    </div>
+                </a>
+                <a href="category.html?cat=kitchen" class="category-link-card group">
+                    <img src="images/hero-kitchen.jpg" alt="Kitchen" class="category-link-img" loading="lazy" width="400" height="267">
+                    <div class="category-link-overlay"></div>
+                    <div class="category-link-content">
+                        <span class="category-link-label">Kitchen</span>
+                        <span class="category-link-arrow material-symbols-outlined" style="font-size:20px">arrow_forward</span>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="max-w-[1600px] mx-auto px-4 md:px-10 pb-20 flex gap-8">
 
             <!-- Desktop Sidebar Filters -->
-            <aside class="hidden md:block w-56 shrink-0">
-                <div class="sticky top-20 space-y-6">
+            <aside class="hidden md:block w-60 shrink-0">
+                <div class="sticky top-20 space-y-0">
+                    <!-- Filter Header -->
+                    <div class="sidebar-filter-header">
+                        <span class="material-symbols-outlined" style="font-size:18px">tune</span>
+                        <h2 class="text-sm font-semibold">Filters</h2>
+                        <button onclick="clearAllFilters()" class="sidebar-clear-btn">Clear all</button>
+                    </div>
+
                     <!-- Category -->
-                    <div>
-                        <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Category</h3>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-category value="living"> Living Room
+                    <div class="sidebar-filter-section">
+                        <h3 class="sidebar-filter-title">Category</h3>
+                        <div class="space-y-3">
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="living">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">Living Room</span>
                             </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-category value="bedroom"> Bedroom
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="bedroom">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">Bedroom</span>
                             </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-category value="kitchen"> Kitchen
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="kitchen">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">Kitchen</span>
                             </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-category value="decor"> Decor
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="decor">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">Decor</span>
                             </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-category value="lighting"> Lighting
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="lighting">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">Lighting</span>
                             </label>
                         </div>
                     </div>
+
                     <!-- Price -->
-                    <div>
-                        <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Price</h3>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-price value="0-1000"> Under ₹1,000
+                    <div class="sidebar-filter-section">
+                        <h3 class="sidebar-filter-title">Price Range</h3>
+                        <div class="space-y-3">
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="0-1000">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">Under ₹1,000</span>
                             </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-price value="1000-3000"> ₹1,000 - ₹3,000
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="1000-3000">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">₹1,000 - ₹3,000</span>
                             </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-price value="3000-5000"> ₹3,000 - ₹5,000
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="3000-5000">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">₹3,000 - ₹5,000</span>
                             </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary" data-filter-price value="5000+"> Above ₹5,000
+                            <label class="sidebar-checkbox">
+                                <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="5000+">
+                                <span class="sidebar-checkbox-custom"></span>
+                                <span class="sidebar-checkbox-label">Above ₹5,000</span>
                             </label>
                         </div>
                     </div>
+
                     <!-- Availability -->
-                    <div>
-                        <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Availability</h3>
-                        <label class="flex items-center gap-2 text-sm cursor-pointer">
-                            <input type="checkbox" class="accent-primary" id="filterInStock" checked> In Stock
+                    <div class="sidebar-filter-section">
+                        <h3 class="sidebar-filter-title">Availability</h3>
+                        <label class="sidebar-checkbox">
+                            <input type="checkbox" class="sidebar-checkbox-input" id="filterInStock" checked>
+                            <span class="sidebar-checkbox-custom"></span>
+                            <span class="sidebar-checkbox-label">In Stock Only</span>
                         </label>
+                    </div>
+
+                    <!-- Trust Section -->
+                    <div class="sidebar-trust-card">
+                        <div class="sidebar-trust-icon">
+                            <span class="material-symbols-outlined" style="font-size:24px">tips_and_updates</span>
+                        </div>
+                        <h4 class="sidebar-trust-title">Did you know?</h4>
+                        <p class="sidebar-trust-text">Free shipping on all orders above ₹999. Most orders delivered within 3-5 business days across Chennai.</p>
+                        <div class="sidebar-trust-badges">
+                            <span class="sidebar-trust-badge">
+                                <span class="material-symbols-outlined" style="font-size:14px">verified</span>
+                                Secure Checkout
+                            </span>
+                            <span class="sidebar-trust-badge">
+                                <span class="material-symbols-outlined" style="font-size:14px">support_agent</span>
+                                24/7 Support
+                            </span>
+                        </div>
                     </div>
                 </div>
             </aside>
 
             <!-- Product Grid -->
-            <div class="flex-1">
-                <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            <div class="flex-1 min-w-0">
+                <div id="productGrid" class="product-grid"></div>
 
                 <!-- Pagination -->
                 <div id="pagination" class="hidden flex items-center justify-center gap-2 mt-10"></div>
@@ -296,43 +410,84 @@
 
     <!-- Mobile Filter Drawer -->
     <div id="filterBackdrop" class="filter-backdrop" onclick="closeFilters()"></div>
-    <div id="filterDrawer" class="filter-drawer p-5">
-        <div class="flex items-center justify-between mb-6">
-            <h2 class="text-lg font-semibold">Filters</h2>
-            <button onclick="closeFilters()" class="text-text-secondary" aria-label="Close filters">
-                <span class="material-symbols-outlined">close</span>
+    <div id="filterDrawer" class="filter-drawer">
+        <div class="filter-drawer-header">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined" style="font-size:20px">tune</span>
+                <h2 class="text-lg font-semibold">Filters</h2>
+            </div>
+            <button onclick="closeFilters()" class="filter-drawer-close" aria-label="Close filters">
+                <span class="material-symbols-outlined" style="font-size:22px">close</span>
             </button>
         </div>
-        <div class="space-y-6">
-            <div>
-                <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Category</h3>
-                <div class="space-y-2">
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="living"> Living Room</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="bedroom"> Bedroom</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="kitchen"> Kitchen</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="decor"> Decor</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="lighting"> Lighting</label>
+        <div class="filter-drawer-body">
+            <div class="filter-drawer-section">
+                <h3 class="filter-drawer-section-title">Category</h3>
+                <div class="space-y-3">
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="living">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">Living Room</span>
+                    </label>
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="bedroom">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">Bedroom</span>
+                    </label>
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="kitchen">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">Kitchen</span>
+                    </label>
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="decor">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">Decor</span>
+                    </label>
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-category value="lighting">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">Lighting</span>
+                    </label>
                 </div>
             </div>
-            <div>
-                <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Price</h3>
-                <div class="space-y-2">
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="0-1000"> Under ₹1,000</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="1000-3000"> ₹1,000 - ₹3,000</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="3000-5000"> ₹3,000 - ₹5,000</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="5000+"> Above ₹5,000</label>
+            <div class="filter-drawer-section">
+                <h3 class="filter-drawer-section-title">Price Range</h3>
+                <div class="space-y-3">
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="0-1000">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">Under ₹1,000</span>
+                    </label>
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="1000-3000">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">₹1,000 - ₹3,000</span>
+                    </label>
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="3000-5000">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">₹3,000 - ₹5,000</span>
+                    </label>
+                    <label class="filter-drawer-checkbox">
+                        <input type="checkbox" class="sidebar-checkbox-input" data-filter-price value="5000+">
+                        <span class="sidebar-checkbox-custom"></span>
+                        <span class="sidebar-checkbox-label">Above ₹5,000</span>
+                    </label>
                 </div>
             </div>
-            <div>
-                <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Availability</h3>
-                <label class="flex items-center gap-2 text-sm cursor-pointer">
-                    <input type="checkbox" class="accent-primary" id="filterInStockMobile" checked> In Stock
+            <div class="filter-drawer-section">
+                <h3 class="filter-drawer-section-title">Availability</h3>
+                <label class="filter-drawer-checkbox">
+                    <input type="checkbox" class="sidebar-checkbox-input" id="filterInStockMobile" checked>
+                    <span class="sidebar-checkbox-custom"></span>
+                    <span class="sidebar-checkbox-label">In Stock Only</span>
                 </label>
             </div>
-            <div class="flex gap-3">
-                <button class="btn-outline flex-1" onclick="resetMobileFilters()">Reset</button>
-                <button class="btn-primary flex-1" onclick="applyMobileFilters()">Apply Filters</button>
-            </div>
+        </div>
+        <div class="filter-drawer-footer">
+            <button class="btn-outline flex-1" onclick="resetMobileFilters()">Reset</button>
+            <button class="btn-primary flex-1" onclick="applyMobileFilters()">Apply Filters</button>
         </div>
     </div>
 
@@ -446,6 +601,14 @@
             lighting: 'Lighting'
         };
 
+        var CATEGORY_HERO_IMAGES = {
+            living: 'images/hero-living-room.jpg',
+            bedroom: 'images/hero-bedroom.jpg',
+            kitchen: 'images/hero-kitchen.jpg',
+            decor: 'images/hero-living-room.jpg',
+            lighting: 'images/hero-bedroom.jpg'
+        };
+
         var PRICE_LABELS = {
             '0-1000': 'Under \u20B91,000',
             '1000-3000': '\u20B91,000 - \u20B93,000',
@@ -455,10 +618,12 @@
 
         var EMPTY_STATE_HTML =
             '<div class="text-center py-16 col-span-full">' +
-                '<span class="material-symbols-outlined text-text-tertiary mb-3" style="font-size:64px">search_off</span>' +
+                '<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 mb-4">' +
+                    '<span class="material-symbols-outlined text-text-tertiary" style="font-size:40px">search_off</span>' +
+                '</div>' +
                 '<h2 class="text-lg font-semibold mb-2">No products found</h2>' +
                 '<p class="text-sm text-text-secondary mb-6">Try adjusting your filters or search terms</p>' +
-                '<button onclick="clearAllFilters()" class="btn-primary">Clear All Filters</button>' +
+                '<button onclick="clearAllFilters()" class="btn-primary" style="width:auto;display:inline-flex">Clear All Filters</button>' +
             '</div>';
 
         function init() {
@@ -466,8 +631,10 @@
                 allProducts = products;
                 parseUrlParams();
                 syncCheckboxesFromState();
+                updateQuickChips();
                 applyFilters();
                 bindListeners();
+                bindQuickFilters();
             });
         }
 
@@ -509,6 +676,11 @@
             if (h1) h1.textContent = title;
             if (bc) bc.textContent = breadcrumb;
             document.title = title + ' - Chennai Retail';
+
+            if (param && CATEGORY_HERO_IMAGES[param]) {
+                var heroImg = document.getElementById('heroImage');
+                if (heroImg) heroImg.src = CATEGORY_HERO_IMAGES[param];
+            }
         }
 
         function bindListeners() {
@@ -528,6 +700,7 @@
                         currentFilters.categories = currentFilters.categories.filter(function(c) { return c !== this.value; }.bind(this));
                     }
                     currentPage = 1;
+                    updateQuickChips();
                     applyFilters();
                 });
             });
@@ -550,6 +723,37 @@
                 currentFilters.inStock = this.checked;
                 currentPage = 1;
                 applyFilters();
+            });
+        }
+
+        function bindQuickFilters() {
+            document.querySelectorAll('[data-quick-filter]').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                    var filter = this.getAttribute('data-quick-filter');
+                    document.querySelectorAll('[data-quick-filter]').forEach(function(c) { c.classList.remove('active'); });
+                    this.classList.add('active');
+
+                    if (filter === 'all') {
+                        currentFilters.categories = [];
+                    } else {
+                        currentFilters.categories = [filter];
+                    }
+                    syncCheckboxesFromState();
+                    currentPage = 1;
+                    applyFilters();
+                });
+            });
+        }
+
+        function updateQuickChips() {
+            document.querySelectorAll('[data-quick-filter]').forEach(function(chip) {
+                var filter = chip.getAttribute('data-quick-filter');
+                chip.classList.remove('active');
+                if (filter === 'all' && currentFilters.categories.length === 0) {
+                    chip.classList.add('active');
+                } else if (currentFilters.categories.length === 1 && currentFilters.categories[0] === filter) {
+                    chip.classList.add('active');
+                }
             });
         }
 
@@ -633,10 +837,10 @@
             }
 
             if (currentView === 'grid') {
-                container.className = 'grid grid-cols-2 lg:grid-cols-3 gap-5';
+                container.className = 'product-grid';
                 container.innerHTML = pageProducts.map(renderProductCardWithActions).join('');
             } else {
-                container.className = 'grid grid-cols-1 gap-4';
+                container.className = 'product-grid-list';
                 container.innerHTML = pageProducts.map(renderListItem).join('');
             }
 
@@ -659,16 +863,16 @@
             });
 
             if (tags.length > 0) {
-                tags.push('<button onclick="clearAllFilters()" class="text-xs text-primary font-medium hover:underline ml-1">Clear all</button>');
+                tags.push('<button onclick="clearAllFilters()" class="active-filter-clear"><span class="material-symbols-outlined" style="font-size:14px">close</span> Clear all</button>');
             }
 
             container.innerHTML = tags.join('');
         }
 
         function makeFilterTag(type, value, label) {
-            return '<span class="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">' +
+            return '<span class="active-filter-tag">' +
                 label +
-                '<button onclick="removeFilter(\'' + type + '\',\'' + value + '\')" class="hover:text-red-700" aria-label="Remove ' + label + ' filter">' +
+                '<button onclick="removeFilter(\'' + type + '\',\'' + value + '\')" class="active-filter-remove" aria-label="Remove ' + label + ' filter">' +
                     '<span class="material-symbols-outlined" style="font-size:14px">close</span>' +
                 '</button>' +
             '</span>';
@@ -678,7 +882,7 @@
             var el = document.querySelector('[data-product-count]');
             if (el) {
                 var total = filteredProducts.length;
-                el.textContent = 'Showing ' + total + ' product' + (total !== 1 ? 's' : '');
+                el.textContent = total + ' product' + (total !== 1 ? 's' : '') + ' found';
             }
         }
 
@@ -696,19 +900,19 @@
             container.classList.remove('hidden');
             var html = '';
 
-            html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium ' + (currentPage === 1 ? 'text-text-tertiary cursor-not-allowed' : 'text-text-secondary hover:bg-surface-alt transition-colors') + '" onclick="goToPage(' + (currentPage - 1) + ')" ' + (currentPage === 1 ? 'disabled' : '') + ' aria-label="Previous page">' +
+            html += '<button class="pagination-btn ' + (currentPage === 1 ? 'disabled' : '') + '" onclick="goToPage(' + (currentPage - 1) + ')" ' + (currentPage === 1 ? 'disabled' : '') + ' aria-label="Previous page">' +
                 '<span class="material-symbols-outlined" style="font-size:18px">chevron_left</span>' +
             '</button>';
 
             for (var i = 1; i <= totalPages; i++) {
                 if (i === currentPage) {
-                    html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium bg-primary text-on-primary" aria-label="Page ' + i + '" aria-current="page">' + i + '</button>';
+                    html += '<button class="pagination-btn active" aria-label="Page ' + i + '" aria-current="page">' + i + '</button>';
                 } else {
-                    html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" onclick="goToPage(' + i + ')" aria-label="Page ' + i + '">' + i + '</button>';
+                    html += '<button class="pagination-btn" onclick="goToPage(' + i + ')" aria-label="Page ' + i + '">' + i + '</button>';
                 }
             }
 
-            html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium ' + (currentPage === totalPages ? 'text-text-tertiary cursor-not-allowed' : 'text-text-secondary hover:bg-surface-alt transition-colors') + '" onclick="goToPage(' + (currentPage + 1) + ')" ' + (currentPage === totalPages ? 'disabled' : '') + ' aria-label="Next page">' +
+            html += '<button class="pagination-btn ' + (currentPage === totalPages ? 'disabled' : '') + '" onclick="goToPage(' + (currentPage + 1) + ')" ' + (currentPage === totalPages ? 'disabled' : '') + ' aria-label="Next page">' +
                 '<span class="material-symbols-outlined" style="font-size:18px">chevron_right</span>' +
             '</button>';
 
@@ -733,6 +937,7 @@
                 document.querySelectorAll('[data-filter-price="' + value + '"]').forEach(function(cb) { cb.checked = false; });
             }
             currentPage = 1;
+            updateQuickChips();
             applyFilters();
         };
 
@@ -741,6 +946,7 @@
             document.querySelectorAll('[data-filter-category], [data-filter-price]').forEach(function(cb) { cb.checked = false; });
             document.getElementById('filterInStock').checked = true;
             currentPage = 1;
+            updateQuickChips();
             applyFilters();
         };
 
@@ -749,11 +955,11 @@
             var gridBtn = document.getElementById('viewGrid');
             var listBtn = document.getElementById('viewList');
             if (view === 'grid') {
-                gridBtn.className = 'p-2 bg-surface-alt';
-                listBtn.className = 'p-2';
+                gridBtn.classList.add('active');
+                listBtn.classList.remove('active');
             } else {
-                gridBtn.className = 'p-2';
-                listBtn.className = 'p-2 bg-surface-alt';
+                gridBtn.classList.remove('active');
+                listBtn.classList.add('active');
             }
             renderProducts();
         };
@@ -815,6 +1021,7 @@
 
             syncCheckboxesFromState();
             currentPage = 1;
+            updateQuickChips();
             applyFilters();
             closeFilters();
         };

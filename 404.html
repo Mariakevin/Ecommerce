@@ -6,7 +6,7 @@
     <title>404 - Page Not Found - Chennai Retail</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,7 +14,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: { DEFAULT: '#DC2626', light: '#FEE2E2' },
+                        primary: { DEFAULT: '#DC2626', light: '#FEE2E2', dark: '#991B1B' },
                         surface: { DEFAULT: '#FFFFFF', alt: '#F9FAFB' },
                         'on-primary': '#ffffff',
                         text: { DEFAULT: '#111111', secondary: '#4B5563', tertiary: '#9CA3AF' },
@@ -27,7 +27,7 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* 404 Floating animation */
+        /* ===== Core Animations ===== */
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             33% { transform: translateY(-12px) rotate(2deg); }
@@ -53,30 +53,125 @@
         .float-4 { animation: drift 6s ease-in-out infinite 0.3s; }
         .float-5 { animation: float 5.5s ease-in-out infinite 0.8s; }
 
-        /* 404 big number glow */
+        /* ===== 404 Glow ===== */
         @keyframes glow-pulse {
-            0%, 100% { opacity: 0.06; }
-            50% { opacity: 0.12; }
+            0%, 100% { opacity: 0.04; }
+            50% { opacity: 0.1; }
         }
         .glow-404 {
             animation: glow-pulse 4s ease-in-out infinite;
         }
 
-        /* Search input focus ring */
+        /* ===== SVG Illustration Animations ===== */
+        @keyframes svgDash {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes svgFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes svgBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes svgSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes cartWobble {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        @keyframes boxFloat {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+        @keyframes starPulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        @keyframes questionBob {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        .svg-cart { animation: cartWobble 3s ease-in-out infinite; transform-origin: center bottom; }
+        .svg-box { animation: boxFloat 4s ease-in-out infinite 0.5s; }
+        .svg-star-1 { animation: starPulse 2s ease-in-out infinite; }
+        .svg-star-2 { animation: starPulse 2.5s ease-in-out infinite 0.3s; }
+        .svg-star-3 { animation: starPulse 3s ease-in-out infinite 0.6s; }
+        .svg-question { animation: questionBob 3.5s ease-in-out infinite 0.2s; }
+
+        /* ===== Search Focus ===== */
         .search-404 input:focus {
             outline: none;
             border-color: #dc2626;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.08);
         }
 
-        /* Product card hover */
+        /* ===== Product Card Hover ===== */
         .suggestion-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
         }
         .suggestion-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
         }
+
+        /* ===== Interactive Bounce Button ===== */
+        .cta-bounce {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cta-bounce:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35);
+        }
+        .cta-bounce:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* ===== Category Pill ===== */
+        .cat-pill {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cat-pill:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* ===== Cursor Trail Particle ===== */
+        .trail-particle {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: particleFade 0.6s ease-out forwards;
+        }
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0) translateY(-20px); }
+        }
+
+        /* ===== Shake on Click ===== */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+            20%, 40%, 60%, 80% { transform: translateX(4px); }
+        }
+        .shake-click { animation: shake 0.5s ease-in-out; }
+
+        /* ===== Slide-up entrance ===== */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-up-1 { animation: slideUp 0.6s ease-out 0.1s both; }
+        .slide-up-2 { animation: slideUp 0.6s ease-out 0.25s both; }
+        .slide-up-3 { animation: slideUp 0.6s ease-out 0.4s both; }
+        .slide-up-4 { animation: slideUp 0.6s ease-out 0.55s both; }
+        .slide-up-5 { animation: slideUp 0.6s ease-out 0.7s both; }
+        .slide-up-6 { animation: slideUp 0.6s ease-out 0.85s both; }
     </style>
 </head>
 <body class="bg-[#F3F4F6] text-[#111111]">
@@ -99,7 +194,6 @@
             <a href="index.html" class="header-logo">
                 <img src="images/logo.svg" alt="Chennai Retail" class="h-8 header-logo-img">
             </a>
-            
             <nav class="header-nav" aria-label="Main navigation">
                 <a href="index.html" class="nav-link">Home</a>
                 <div class="nav-dropdown" data-mega-menu>
@@ -151,7 +245,6 @@
                 </a>
                 <a href="account.html" class="nav-link">Account</a>
             </nav>
-
             <div class="header-search">
                 <input type="text" placeholder="Search products..." id="headerSearchInput" aria-label="Search products" autocomplete="off">
                 <button onclick="var q=document.getElementById('headerSearchInput').value.trim(); if(q) window.location.href='category.html?q='+encodeURIComponent(q)" aria-label="Search">
@@ -175,7 +268,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="header-actions">
                 <a href="wishlist.html" class="header-action-btn" aria-label="Wishlist">
                     <span class="material-symbols-outlined">favorite</span>
@@ -205,7 +297,6 @@
 
         <!-- Floating decorative elements -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-            <!-- Floating product silhouettes -->
             <div class="float-1 absolute top-[15%] left-[8%] w-16 h-16 md:w-20 md:h-20 rounded-lg bg-primary/5 flex items-center justify-center">
                 <span class="material-symbols-outlined text-primary/20" style="font-size:32px">light</span>
             </div>
@@ -224,53 +315,177 @@
         </div>
 
         <!-- Main content -->
-        <div class="flex-1 flex items-center justify-center px-4 py-12 relative z-10">
-            <div class="max-w-lg w-full text-center">
+        <div class="flex-1 flex items-center justify-center px-4 py-10 md:py-16 relative z-10">
+            <div class="max-w-2xl w-full text-center">
 
-                <!-- 404 Number with glow -->
-                <div class="relative mb-6">
-                    <p class="text-[100px] md:text-[140px] font-bold leading-none select-none glow-404" style="color: rgba(220, 38, 38, 0.08);">404</p>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-primary" style="font-size:48px">search_off</span>
+                <!-- ===== Animated SVG Illustration ===== -->
+                <div class="relative mb-6 slide-up-1">
+                    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-sm mx-auto" aria-hidden="true">
+                        <!-- Background circle glow -->
+                        <circle cx="200" cy="140" r="120" fill="#DC2626" opacity="0.04" class="glow-404"/>
+
+                        <!-- Broken path / road -->
+                        <path d="M60 220 Q130 200, 160 190 T240 180" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.2"/>
+                        <path d="M260 180 Q290 175, 340 170" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.15"/>
+
+                        <!-- Lost package box -->
+                        <g class="svg-box">
+                            <rect x="140" y="130" width="56" height="48" rx="6" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+                            <line x1="140" y1="148" x2="196" y2="148" stroke="#DC2626" stroke-width="1.5" opacity="0.3"/>
+                            <line x1="168" y1="130" x2="168" y2="178" stroke="#DC2626" stroke-width="1.5" opacity="0.3"/>
+                            <path d="M158 148 L168 138 L178 148" stroke="#DC2626" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <!-- Question mark on box -->
+                            <text x="168" y="172" text-anchor="middle" fill="#DC2626" font-size="14" font-weight="700">?</text>
+                        </g>
+
+                        <!-- Wandering cart -->
+                        <g class="svg-cart">
+                            <path d="M240 158 L248 158 L258 180 L288 180 L294 164 L254 164" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <circle cx="262" cy="186" r="5" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+                            <circle cx="284" cy="186" r="5" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+                            <!-- Items poking out -->
+                            <line x1="260" y1="160" x2="256" y2="148" stroke="#DC2626" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                            <line x1="274" y1="158" x2="276" y2="146" stroke="#DC2626" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                            <line x1="286" y1="160" x2="290" y2="150" stroke="#DC2626" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                        </g>
+
+                        <!-- Big floating question marks -->
+                        <g class="svg-question">
+                            <text x="100" y="100" fill="#DC2626" font-size="36" font-weight="800" opacity="0.08">?</text>
+                        </g>
+                        <g style="animation: questionBob 4s ease-in-out infinite 1s;">
+                            <text x="290" y="90" fill="#DC2626" font-size="28" font-weight="800" opacity="0.06">?</text>
+                        </g>
+                        <g style="animation: questionBob 3s ease-in-out infinite 0.5s;">
+                            <text x="330" y="140" fill="#DC2626" font-size="22" font-weight="800" opacity="0.07">?</text>
+                        </g>
+
+                        <!-- Stars / sparkles -->
+                        <g class="svg-star-1">
+                            <path d="M80 160 L83 154 L86 160 L92 157 L86 164 L83 170 L80 164 L74 167 Z" fill="#DC2626" opacity="0.2"/>
+                        </g>
+                        <g class="svg-star-2">
+                            <path d="M320 130 L322 126 L324 130 L328 128 L324 132 L322 136 L320 132 L316 134 Z" fill="#DC2626" opacity="0.15"/>
+                        </g>
+                        <g class="svg-star-3">
+                            <path d="M170 80 L172 76 L174 80 L178 78 L174 82 L172 86 L170 82 L166 84 Z" fill="#DC2626" opacity="0.18"/>
+                        </g>
+
+                        <!-- Ground line -->
+                        <line x1="40" y1="220" x2="360" y2="220" stroke="#DC2626" stroke-width="1" opacity="0.08" stroke-dasharray="4 8"/>
+
+                        <!-- Directional arrows pointing away -->
+                        <g opacity="0.1">
+                            <path d="M90 195 L75 188 L75 202 Z" fill="#DC2626"/>
+                            <path d="M310 195 L325 188 L325 202 Z" fill="#DC2626"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- ===== Error Code Badge ===== -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-5 slide-up-2">
+                    <span class="material-symbols-outlined" style="font-size:16px">error</span>
+                    Error 404
+                </div>
+
+                <!-- ===== Typography ===== -->
+                <h1 class="text-3xl md:text-[42px] font-extrabold leading-tight mb-3 text-text slide-up-2">
+                    Oops! Page not found
+                </h1>
+                <p class="text-text-secondary text-base md:text-lg mb-8 max-w-md mx-auto leading-relaxed slide-up-3">
+                    The page you're looking for doesn't exist or has been moved.
+                    <br class="hidden md:block">
+                    Let's get you back on track.
+                </p>
+
+                <!-- ===== Search Bar ===== -->
+                <div class="search-404 relative max-w-lg mx-auto mb-8 slide-up-4">
+                    <form id="searchForm" class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-tertiary" style="font-size:22px">search</span>
+                        <input id="searchInput" type="text" placeholder="What are you looking for?"
+                            class="w-full pl-12 pr-24 py-3.5 bg-white border-2 border-border rounded-xl text-sm placeholder:text-text-tertiary transition-all focus:border-primary focus:shadow-[0_0_0_4px_rgba(220,38,38,0.08)]"
+                            aria-label="Search products">
+                        <button type="submit"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-colors cta-bounce">
+                            Search
+                        </button>
+                    </form>
+                    <!-- Quick search suggestions -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 mt-3">
+                        <span class="text-xs text-text-tertiary">Try:</span>
+                        <a href="category.html?q=sofa" class="text-xs text-primary/70 hover:text-primary underline underline-offset-2 transition-colors">Sofas</a>
+                        <span class="text-text-tertiary/40">·</span>
+                        <a href="category.html?q=table" class="text-xs text-primary/70 hover:text-primary underline underline-offset-2 transition-colors">Tables</a>
+                        <span class="text-text-tertiary/40">·</span>
+                        <a href="category.html?q=lamp" class="text-xs text-primary/70 hover:text-primary underline underline-offset-2 transition-colors">Lamps</a>
+                        <span class="text-text-tertiary/40">·</span>
+                        <a href="category.html?q=chair" class="text-xs text-primary/70 hover:text-primary underline underline-offset-2 transition-colors">Chairs</a>
                     </div>
                 </div>
 
-                <!-- Copy -->
-                <h1 class="text-2xl md:text-3xl font-bold mb-3">This page has left the room</h1>
-                <p class="text-text-secondary text-sm md:text-base mb-8 max-w-sm mx-auto">Looks like this page wandered off to find a better home. Let us help you find your way back.</p>
-
-                <!-- Search Bar -->
-                <div class="search-404 relative max-w-md mx-auto mb-8">
-                    <form id="searchForm" class="relative">
-                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-tertiary" style="font-size:20px">search</span>
-                        <input id="searchInput" type="text" placeholder="Search for products..." class="w-full pl-11 pr-4 py-3 bg-surface-alt border border-border rounded-lg text-sm placeholder:text-text-tertiary transition-all" aria-label="Search products">
-                        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-primary text-white text-xs font-medium rounded-md hover:bg-red-700 transition-colors">Search</button>
-                    </form>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
-                    <a href="index.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
-                        <span class="material-symbols-outlined" style="font-size:16px">home</span>
-                        Home
+                <!-- ===== CTA Buttons ===== -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 slide-up-5">
+                    <a href="index.html"
+                        class="cta-bounce inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-xl text-sm">
+                        <span class="material-symbols-outlined" style="font-size:20px">home</span>
+                        Back to Home
                     </a>
-                    <a href="category.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
-                        <span class="material-symbols-outlined" style="font-size:16px">grid_view</span>
-                        Categories
-                    </a>
-                    <a href="category.html?cat=featured" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
-                        <span class="material-symbols-outlined" style="font-size:16px">local_fire_department</span>
-                        Trending
-                    </a>
-                    <a href="cart.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-surface-alt rounded-full hover:bg-border-light transition-colors">
-                        <span class="material-symbols-outlined" style="font-size:16px">shopping_bag</span>
-                        Cart
+                    <a href="category.html"
+                        class="cta-bounce inline-flex items-center gap-2 px-7 py-3.5 bg-white text-text border-2 border-border font-semibold rounded-xl text-sm hover:border-primary/30 transition-colors">
+                        <span class="material-symbols-outlined" style="font-size:20px">grid_view</span>
+                        Browse Categories
                     </a>
                 </div>
 
-                <!-- Popular Products -->
-                <div>
-                    <p class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-4">You might like these instead</p>
+                <!-- ===== Popular Categories ===== -->
+                <div class="mb-10 slide-up-5">
+                    <p class="text-xs font-bold tracking-[0.2em] text-text-tertiary uppercase mb-4">Popular Categories</p>
+                    <div class="flex flex-wrap items-center justify-center gap-2.5">
+                        <a href="category.html?cat=living" class="cat-pill inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-border rounded-xl text-sm font-medium text-text-secondary hover:text-primary hover:border-primary/30 transition-colors">
+                            <span class="material-symbols-outlined text-primary/60" style="font-size:18px">weekend</span>
+                            Living Room
+                        </a>
+                        <a href="category.html?cat=bedroom" class="cat-pill inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-border rounded-xl text-sm font-medium text-text-secondary hover:text-primary hover:border-primary/30 transition-colors">
+                            <span class="material-symbols-outlined text-primary/60" style="font-size:18px">bed</span>
+                            Bedroom
+                        </a>
+                        <a href="category.html?cat=kitchen" class="cat-pill inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-border rounded-xl text-sm font-medium text-text-secondary hover:text-primary hover:border-primary/30 transition-colors">
+                            <span class="material-symbols-outlined text-primary/60" style="font-size:18px">table_restaurant</span>
+                            Kitchen
+                        </a>
+                        <a href="category.html?cat=decor" class="cat-pill inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-border rounded-xl text-sm font-medium text-text-secondary hover:text-primary hover:border-primary/30 transition-colors">
+                            <span class="material-symbols-outlined text-primary/60" style="font-size:18px">palette</span>
+                            Decor
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== Quick Links ===== -->
+                <div class="mb-10 slide-up-5">
+                    <p class="text-xs font-bold tracking-[0.2em] text-text-tertiary uppercase mb-4">Quick Links</p>
+                    <div class="flex flex-wrap items-center justify-center gap-2">
+                        <a href="offer.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-white border border-border rounded-full hover:bg-primary hover:text-white hover:border-primary transition-all">
+                            <span class="material-symbols-outlined" style="font-size:16px">local_fire_department</span>
+                            Today's Deals
+                        </a>
+                        <a href="cart.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-white border border-border rounded-full hover:bg-primary hover:text-white hover:border-primary transition-all">
+                            <span class="material-symbols-outlined" style="font-size:16px">shopping_bag</span>
+                            Cart
+                        </a>
+                        <a href="wishlist.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-white border border-border rounded-full hover:bg-primary hover:text-white hover:border-primary transition-all">
+                            <span class="material-symbols-outlined" style="font-size:16px">favorite</span>
+                            Wishlist
+                        </a>
+                        <a href="account.html" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-text-secondary bg-white border border-border rounded-full hover:bg-primary hover:text-white hover:border-primary transition-all">
+                            <span class="material-symbols-outlined" style="font-size:16px">person</span>
+                            Account
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== Suggested Products ===== -->
+                <div class="slide-up-6">
+                    <p class="text-xs font-bold tracking-[0.2em] text-text-tertiary uppercase mb-4">You might like these instead</p>
                     <div id="suggestedProducts" class="grid grid-cols-2 md:grid-cols-3 gap-3"></div>
                 </div>
 
@@ -300,6 +515,34 @@
                 if (q) window.location.href = 'category.html?q=' + encodeURIComponent(q);
             });
 
+            // Interactive: Click the SVG illustration to shake it
+            var svgEl = document.querySelector('.slide-up-1 svg');
+            if (svgEl) {
+                svgEl.style.cursor = 'pointer';
+                svgEl.addEventListener('click', function() {
+                    this.classList.add('shake-click');
+                    setTimeout(function() { svgEl.classList.remove('shake-click'); }, 500);
+                });
+            }
+
+            // Cursor trail particles on mousemove (desktop only)
+            if (window.matchMedia('(pointer: fine)').matches) {
+                var lastTrail = 0;
+                document.addEventListener('mousemove', function(e) {
+                    var now = Date.now();
+                    if (now - lastTrail < 60) return;
+                    lastTrail = now;
+                    var particle = document.createElement('div');
+                    particle.className = 'trail-particle';
+                    particle.style.left = (e.clientX - 4) + 'px';
+                    particle.style.top = (e.clientY - 4) + 'px';
+                    var colors = ['#DC2626', '#F87171', '#FCA5A5', '#111111'];
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    document.body.appendChild(particle);
+                    setTimeout(function() { particle.remove(); }, 600);
+                });
+            }
+
             // Load suggested products
             try {
                 var products = await ProductService.getProducts();
@@ -307,13 +550,13 @@
                 var container = document.getElementById('suggestedProducts');
                 if (container && featured.length) {
                     container.innerHTML = featured.map(function(p) {
-                        return '<a href="product.html?id=' + p.id + '" class="suggestion-card block bg-white border border-border rounded-lg overflow-hidden">' +
+                        return '<a href="product.html?id=' + p.id + '" class="suggestion-card block bg-white border border-border rounded-xl overflow-hidden">' +
                             '<div class="aspect-square bg-surface-alt overflow-hidden">' +
-                                '<img src="' + p.image + '" alt="' + p.name + '" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" width="200" height="200">' +
+                                '<img src="' + p.image + '" alt="' + p.name + '" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" loading="lazy" width="200" height="200">' +
                             '</div>' +
                             '<div class="p-3 text-left">' +
                                 '<p class="text-xs font-medium truncate">' + p.name + '</p>' +
-                                '<p class="text-sm font-semibold mt-0.5">' + formatPrice(p.price) + '</p>' +
+                                '<p class="text-sm font-bold text-primary mt-0.5">' + formatPrice(p.price) + '</p>' +
                             '</div>' +
                         '</a>';
                     }).join('');

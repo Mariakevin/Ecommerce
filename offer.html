@@ -25,6 +25,209 @@
             }
         }
     </script>
+    <style>
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #111111 0%, #1F2937 50%, #DC2626 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            background: linear-gradient(90deg, #DC2626, #B91C1C);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(220, 38, 38, 0.2); }
+        }
+        
+        .countdown-box {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Category Tabs */
+        .category-tabs {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab-active {
+            background: #DC2626;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        /* Lightning Deals */
+        .lightning-section {
+            background: linear-gradient(180deg, #111111 0%, #1F2937 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lightning-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #DC2626, transparent);
+        }
+        
+        .lightning-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .lightning-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #DC2626, #EF4444);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Product Cards */
+        .product-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+        
+        .product-card .discount-badge {
+            background: linear-gradient(135deg, #DC2626, #B91C1C);
+            animation: badge-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .product-card .wishlist-btn {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .wishlist-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Newsletter */
+        .newsletter-section {
+            background: linear-gradient(135deg, #111111 0%, #1F2937 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #DC2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+        }
+        
+        .newsletter-btn {
+            background: linear-gradient(135deg, #DC2626, #B91C1C);
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar for category tabs */
+        .category-tabs {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading animation for product cards */
+        .product-card-loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-[#F3F4F6] text-[#111111]">
@@ -162,106 +365,295 @@
             </nav>
         </div>
 
-        <!-- Sale Banner (Flipkart-style) -->
+        <!-- Premium Hero Banner with Countdown -->
         <section id="main-content" class="max-w-[1600px] mx-auto px-4 md:px-10 py-6" data-reveal>
-            <div class="bg-gradient-to-r from-[#dc2626] via-[#b91c1c] to-[#991b1b] rounded-xl p-8 md:p-12 text-white relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-                <div class="relative">
-                    <span class="inline-block bg-white/20 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Limited Time Offer</span>
-                    <h1 class="text-3xl md:text-5xl font-bold mb-3">Mega Sale</h1>
-                    <p class="text-white/80 text-base md:text-lg mb-6 max-w-lg">Up to <span class="text-2xl md:text-3xl font-bold text-white">50% OFF</span> on home decor, furniture, and lifestyle essentials.</p>
-                    <a href="#deals-section" class="inline-flex items-center gap-2 bg-white text-[#dc2626] font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors">
-                        Shop All Deals
-                        <span class="material-symbols-outlined" style="font-size:20px">arrow_downward</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Countdown Timer -->
-        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-6">
-            <div class="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
-                <span class="material-symbols-outlined text-primary" style="font-size:28px">timer</span>
-                <div>
-                    <p class="text-sm font-semibold">Deal ends in</p>
-                    <div id="dealCountdown" class="flex gap-3 text-lg font-bold text-primary">
-                        <span>23h</span> : <span>59m</span> : <span>59s</span>
+            <div class="hero-banner rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
+                <div class="hero-content">
+                    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                        <div class="flex-1">
+                            <span class="hero-badge inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full mb-4 uppercase tracking-wider">
+                                <span class="material-symbols-outlined" style="font-size:16px">bolt</span>
+                                Limited Time Offer
+                            </span>
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">
+                                MEGA <span class="text-[#DC2626]">SUMMER</span> SALE
+                            </h1>
+                            <p class="text-white/80 text-lg md:text-xl mb-6 max-w-xl">
+                                Up to <span class="text-3xl md:text-4xl font-black text-white">50% OFF</span> on premium home decor, furniture, and lifestyle essentials.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="#deals-section" class="inline-flex items-center gap-2 bg-white text-[#111111] font-bold px-8 py-4 rounded-full hover:bg-gray-100 transition-all hover:scale-105">
+                                    <span class="material-symbols-outlined" style="font-size:20px">shopping_bag</span>
+                                    Shop All Deals
+                                </a>
+                                <a href="#lightning-deals" class="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-8 py-4 rounded-full hover:bg-white/10 transition-all">
+                                    <span class="material-symbols-outlined" style="font-size:20px">bolt</span>
+                                    Lightning Deals
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Countdown Timer -->
+                        <div class="countdown-box rounded-2xl p-6 md:p-8 min-w-[280px]">
+                            <div class="text-center mb-4">
+                                <p class="text-white/80 text-sm font-medium mb-1">Deal ends in</p>
+                                <div id="dealCountdown" class="flex items-center justify-center gap-2">
+                                    <div class="bg-[#DC2626] rounded-lg p-3 min-w-[60px]">
+                                        <span class="text-2xl font-bold block" id="countdown-hours">23</span>
+                                        <span class="text-xs text-white/60 uppercase">Hours</span>
+                                    </div>
+                                    <span class="text-2xl font-bold text-white/40">:</span>
+                                    <div class="bg-[#DC2626] rounded-lg p-3 min-w-[60px]">
+                                        <span class="text-2xl font-bold block" id="countdown-minutes">59</span>
+                                        <span class="text-xs text-white/60 uppercase">Mins</span>
+                                    </div>
+                                    <span class="text-2xl font-bold text-white/40">:</span>
+                                    <div class="bg-[#DC2626] rounded-lg p-3 min-w-[60px]">
+                                        <span class="text-2xl font-bold block" id="countdown-seconds">59</span>
+                                        <span class="text-xs text-white/60 uppercase">Secs</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-white/60 text-xs">Hurry! Limited stock remaining</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Deal Categories -->
+        <!-- Category Filter Tabs -->
         <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-8" data-reveal>
-            <h2 class="text-lg font-semibold mb-4">Shop by Category</h2>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <a href="category.html?cat=living" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">living</span>
-                    <span class="text-sm font-medium">Living Room</span>
-                    <p class="text-xs text-primary font-semibold mt-1">Up to 40% OFF</p>
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold">Shop by Category</h2>
+                <a href="category.html" class="text-sm font-medium text-[#DC2626] hover:underline flex items-center gap-1">
+                    View All
+                    <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
                 </a>
-                <a href="category.html?cat=bedroom" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">bed</span>
-                    <span class="text-sm font-medium">Bedroom</span>
-                    <p class="text-xs text-primary font-semibold mt-1">Up to 35% OFF</p>
+            </div>
+            
+            <!-- Category Tabs -->
+            <div class="category-tabs flex gap-3 overflow-x-auto pb-4 mb-6" id="categoryTabs">
+                <button class="category-tab tab-active flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap transition-all" data-category="all">
+                    <span class="material-symbols-outlined" style="font-size:18px">grid_view</span>
+                    All Deals
+                </button>
+                <button class="category-tab flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap transition-all bg-white border border-gray-200 hover:border-[#DC2626] hover:text-[#DC2626]" data-category="living">
+                    <span class="material-symbols-outlined" style="font-size:18px">living</span>
+                    Living Room
+                </button>
+                <button class="category-tab flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap transition-all bg-white border border-gray-200 hover:border-[#DC2626] hover:text-[#DC2626]" data-category="bedroom">
+                    <span class="material-symbols-outlined" style="font-size:18px">bed</span>
+                    Bedroom
+                </button>
+                <button class="category-tab flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap transition-all bg-white border border-gray-200 hover:border-[#DC2626] hover:text-[#DC2626]" data-category="kitchen">
+                    <span class="material-symbols-outlined" style="font-size:18px">kitchen</span>
+                    Kitchen
+                </button>
+                <button class="category-tab flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap transition-all bg-white border border-gray-200 hover:border-[#DC2626] hover:text-[#DC2626]" data-category="decor">
+                    <span class="material-symbols-outlined" style="font-size:18px">palette</span>
+                    Decor
+                </button>
+                <button class="category-tab flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap transition-all bg-white border border-gray-200 hover:border-[#DC2626] hover:text-[#DC2626]" data-category="lighting">
+                    <span class="material-symbols-outlined" style="font-size:18px">lightbulb</span>
+                    Lighting
+                </button>
+            </div>
+            
+            <!-- Category Quick Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="categoryCards">
+                <a href="category.html?cat=living" class="category-card bg-white rounded-xl p-5 text-center hover:shadow-lg transition-all hover:border-[#DC2626] border-2 border-transparent">
+                    <div class="w-14 h-14 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="material-symbols-outlined text-[#DC2626] text-2xl">living</span>
+                    </div>
+                    <span class="text-sm font-semibold block">Living Room</span>
+                    <p class="text-xs text-[#DC2626] font-bold mt-1">Up to 40% OFF</p>
                 </a>
-                <a href="category.html?cat=kitchen" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">kitchen</span>
-                    <span class="text-sm font-medium">Kitchen</span>
-                    <p class="text-xs text-primary font-semibold mt-1">Up to 30% OFF</p>
+                <a href="category.html?cat=bedroom" class="category-card bg-white rounded-xl p-5 text-center hover:shadow-lg transition-all hover:border-[#DC2626] border-2 border-transparent">
+                    <div class="w-14 h-14 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="material-symbols-outlined text-[#DC2626] text-2xl">bed</span>
+                    </div>
+                    <span class="text-sm font-semibold block">Bedroom</span>
+                    <p class="text-xs text-[#DC2626] font-bold mt-1">Up to 35% OFF</p>
                 </a>
-                <a href="category.html?cat=decor" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">palette</span>
-                    <span class="text-sm font-medium">Decor</span>
-                    <p class="text-xs text-primary font-semibold mt-1">Up to 50% OFF</p>
+                <a href="category.html?cat=kitchen" class="category-card bg-white rounded-xl p-5 text-center hover:shadow-lg transition-all hover:border-[#DC2626] border-2 border-transparent">
+                    <div class="w-14 h-14 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="material-symbols-outlined text-[#DC2626] text-2xl">kitchen</span>
+                    </div>
+                    <span class="text-sm font-semibold block">Kitchen</span>
+                    <p class="text-xs text-[#DC2626] font-bold mt-1">Up to 30% OFF</p>
                 </a>
-                <a href="category.html?cat=lighting" class="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-2 block">lightbulb</span>
-                    <span class="text-sm font-medium">Lighting</span>
-                    <p class="text-xs text-primary font-semibold mt-1">Up to 45% OFF</p>
+                <a href="category.html?cat=decor" class="category-card bg-white rounded-xl p-5 text-center hover:shadow-lg transition-all hover:border-[#DC2626] border-2 border-transparent">
+                    <div class="w-14 h-14 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="material-symbols-outlined text-[#DC2626] text-2xl">palette</span>
+                    </div>
+                    <span class="text-sm font-semibold block">Decor</span>
+                    <p class="text-xs text-[#DC2626] font-bold mt-1">Up to 50% OFF</p>
+                </a>
+                <a href="category.html?cat=lighting" class="category-card bg-white rounded-xl p-5 text-center hover:shadow-lg transition-all hover:border-[#DC2626] border-2 border-transparent">
+                    <div class="w-14 h-14 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span class="material-symbols-outlined text-[#DC2626] text-2xl">lightbulb</span>
+                    </div>
+                    <span class="text-sm font-semibold block">Lighting</span>
+                    <p class="text-xs text-[#DC2626] font-bold mt-1">Up to 45% OFF</p>
                 </a>
             </div>
         </section>
 
-        <!-- Flash Deals -->
-        <section id="deals-section" class="max-w-[1600px] mx-auto px-4 md:px-10 pb-10" data-reveal>
-            <div class="flex items-center justify-between mb-6">
+        <!-- Lightning Deals Section -->
+        <section id="lightning-deals" class="lightning-section py-12 my-8" data-reveal>
+            <div class="max-w-[1600px] mx-auto px-4 md:px-10">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-[#DC2626] rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-2xl">bolt</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">Lightning Deals</h2>
+                            <p class="text-white/60 text-sm">Limited quantities at rock-bottom prices</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-[#DC2626] px-4 py-2 rounded-full">
+                        <span class="material-symbols-outlined text-white" style="font-size:18px">timer</span>
+                        <span class="text-white font-bold text-sm" id="lightningCountdown">02:45:30</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="lightningProducts">
+                    <!-- Lightning deal cards will be populated by JavaScript -->
+                </div>
+                
+                <div class="text-center mt-8">
+                    <a href="category.html" class="inline-flex items-center gap-2 bg-white/10 text-white font-bold px-8 py-4 rounded-full hover:bg-white/20 transition-all">
+                        <span class="material-symbols-outlined" style="font-size:20px">shopping_bag</span>
+                        View All Lightning Deals
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flash Deals Section -->
+        <section id="deals-section" class="max-w-[1600px] mx-auto px-4 md:px-10 py-10" data-reveal>
+            <div class="flex items-center justify-between mb-8">
                 <div>
-                    <h2 class="text-xl font-bold">Flash Deals</h2>
+                    <h2 class="text-2xl font-bold">Flash Deals</h2>
                     <p class="text-sm text-text-secondary mt-1">Hurry! These offers won't last long.</p>
                 </div>
                 <a href="category.html" class="btn-outline text-sm">View All</a>
             </div>
-            <div id="dealProducts" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+            <div id="dealProducts" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
         </section>
 
-        <!-- Bulk Deals -->
-        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-10" data-reveal>
-            <h2 class="text-xl font-bold mb-6">Buy More, Save More</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-md transition-shadow">
-                    <div class="text-4xl font-bold text-primary mb-2">10%</div>
-                    <p class="text-sm font-semibold mb-1">Buy 2 or more items</p>
-                    <p class="text-xs text-text-secondary">Use code <span class="font-semibold text-primary">BUNDLE10</span></p>
+        <!-- Bulk Deals Section -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-10" data-reveal>
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold">Buy More, Save More</h2>
+                    <p class="text-sm text-text-secondary mt-1">Stack discounts on bulk orders</p>
                 </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-md transition-shadow">
-                    <div class="text-4xl font-bold text-primary mb-2">15%</div>
-                    <p class="text-sm font-semibold mb-1">Buy 4 or more items</p>
-                    <p class="text-xs text-text-secondary">Use code <span class="font-semibold text-primary">BUNDLE15</span></p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-8 text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-[#DC2626]">
+                    <div class="w-16 h-16 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="material-symbols-outlined text-[#DC2626] text-3xl">inventory_2</span>
+                    </div>
+                    <div class="text-4xl font-black text-[#DC2626] mb-2">10%</div>
+                    <p class="text-base font-semibold mb-2">Buy 2 or more items</p>
+                    <p class="text-sm text-text-secondary mb-4">Use code at checkout</p>
+                    <div class="bg-[#FEE2E2] px-4 py-2 rounded-lg">
+                        <code class="font-bold text-[#DC2626] text-lg">BUNDLE10</code>
+                    </div>
                 </div>
-                <div class="bg-white rounded-lg p-6 text-center hover:shadow-md transition-shadow">
-                    <div class="text-4xl font-bold text-primary mb-2">20%</div>
-                    <p class="text-sm font-semibold mb-1">Orders above ₹10,000</p>
-                    <p class="text-xs text-text-secondary">Use code <span class="font-semibold text-primary">MEGA20</span></p>
+                <div class="bg-white rounded-2xl p-8 text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-[#DC2626]">
+                    <div class="w-16 h-16 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="material-symbols-outlined text-[#DC2626] text-3xl">local_shipping</span>
+                    </div>
+                    <div class="text-4xl font-black text-[#DC2626] mb-2">15%</div>
+                    <p class="text-base font-semibold mb-2">Buy 4 or more items</p>
+                    <p class="text-sm text-text-secondary mb-4">Use code at checkout</p>
+                    <div class="bg-[#FEE2E2] px-4 py-2 rounded-lg">
+                        <code class="font-bold text-[#DC2626] text-lg">BUNDLE15</code>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8 text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-[#DC2626]">
+                    <div class="w-16 h-16 bg-[#FEE2E2] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="material-symbols-outlined text-[#DC2626] text-3xl">payments</span>
+                    </div>
+                    <div class="text-4xl font-black text-[#DC2626] mb-2">20%</div>
+                    <p class="text-base font-semibold mb-2">Orders above ₹10,000</p>
+                    <p class="text-sm text-text-secondary mb-4">Use code at checkout</p>
+                    <div class="bg-[#FEE2E2] px-4 py-2 rounded-lg">
+                        <code class="font-bold text-[#DC2626] text-lg">MEGA20</code>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- All Offers -->
-        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-10" data-reveal>
-            <h2 class="text-xl font-bold mb-6">All Deals & Offers</h2>
-            <div id="allOfferProducts" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        <!-- All Offers Section -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-10" data-reveal>
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold">All Deals & Offers</h2>
+                    <p class="text-sm text-text-secondary mt-1">Browse our complete collection</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span class="text-sm text-text-secondary">Sort by:</span>
+                    <select class="bg-white border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#DC2626] focus:border-transparent" id="sortSelect">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="discount">Biggest Discount</option>
+                    </select>
+                </div>
+            </div>
+            <div id="allOfferProducts" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-10">
+                <button id="loadMoreBtn" class="inline-flex items-center gap-2 bg-white text-[#111111] font-bold px-8 py-4 rounded-full border-2 border-gray-200 hover:border-[#DC2626] hover:text-[#DC2626] transition-all">
+                    <span class="material-symbols-outlined" style="font-size:20px">refresh</span>
+                    Load More Products
+                </button>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter-section py-16 my-8" data-reveal>
+            <div class="max-w-[1600px] mx-auto px-4 md:px-10">
+                <div class="max-w-2xl mx-auto text-center">
+                    <div class="w-16 h-16 bg-[#DC2626] rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-symbols-outlined text-white text-3xl">mail</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Get Exclusive Deals</h2>
+                    <p class="text-white/70 mb-8 text-lg">Subscribe to our newsletter and be the first to know about flash sales, new arrivals, and member-only discounts.</p>
+                    
+                    <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email address" required
+                            class="newsletter-input flex-1 px-6 py-4 rounded-full text-white placeholder-white/50 focus:outline-none">
+                        <button type="submit" class="newsletter-btn px-8 py-4 rounded-full text-white font-bold">
+                            Subscribe Now
+                        </button>
+                    </form>
+                    
+                    <p class="text-white/50 text-sm mt-4">No spam, unsubscribe anytime. By subscribing you agree to our Privacy Policy.</p>
+                    
+                    <div class="flex items-center justify-center gap-6 mt-8">
+                        <div class="flex items-center gap-2 text-white/70">
+                            <span class="material-symbols-outlined" style="font-size:20px">check_circle</span>
+                            <span class="text-sm">Early access to sales</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-white/70">
+                            <span class="material-symbols-outlined" style="font-size:20px">check_circle</span>
+                            <span class="text-sm">Exclusive discounts</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-white/70">
+                            <span class="material-symbols-outlined" style="font-size:20px">check_circle</span>
+                            <span class="text-sm">New arrivals alert</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </div>
@@ -337,40 +729,286 @@
     (function() {
         'use strict';
 
-        // Countdown timer
-        function startCountdown() {
+        // Countdown timer for hero banner
+        function startHeroCountdown() {
             var now = new Date();
             var end = new Date(now);
             end.setHours(23, 59, 59, 999);
+            
             function update() {
                 var diff = end - new Date();
-                if (diff <= 0) { startCountdown(); return; }
+                if (diff <= 0) { startHeroCountdown(); return; }
+                
                 var h = Math.floor(diff / 3600000);
                 var m = Math.floor((diff % 3600000) / 60000);
                 var s = Math.floor((diff % 60000) / 1000);
-                var el = document.getElementById('dealCountdown');
-                if (el) el.innerHTML = '<span>' + h + 'h</span> : <span>' + m + 'm</span> : <span>' + s + 's</span>';
+                
+                var hoursEl = document.getElementById('countdown-hours');
+                var minutesEl = document.getElementById('countdown-minutes');
+                var secondsEl = document.getElementById('countdown-seconds');
+                
+                if (hoursEl) hoursEl.textContent = h.toString().padStart(2, '0');
+                if (minutesEl) minutesEl.textContent = m.toString().padStart(2, '0');
+                if (secondsEl) secondsEl.textContent = s.toString().padStart(2, '0');
             }
+            
             update();
             setInterval(update, 1000);
         }
 
-        async function init() {
-            startCountdown();
-            var products = await ProductService.getProducts();
+        // Lightning deals countdown
+        function startLightningCountdown() {
+            var duration = 2 * 60 * 60 + 45 * 60 + 30; // 2h 45m 30s
+            var startTime = Date.now();
+            var endTime = startTime + duration * 1000;
+            
+            function update() {
+                var diff = endTime - Date.now();
+                if (diff <= 0) {
+                    duration = 3 * 60 * 60; // Reset to 3 hours
+                    endTime = Date.now() + duration * 1000;
+                    return;
+                }
+                
+                var h = Math.floor(diff / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
+                
+                var el = document.getElementById('lightningCountdown');
+                if (el) {
+                    el.textContent = h.toString().padStart(2, '0') + ':' + 
+                                    m.toString().padStart(2, '0') + ':' + 
+                                    s.toString().padStart(2, '0');
+                }
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
 
-            // Flash deals: first 4 products
+        // Category filter tabs
+        function initCategoryTabs() {
+            var tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(function(t) {
+                        t.classList.remove('tab-active');
+                        t.classList.add('bg-white', 'border', 'border-gray-200');
+                    });
+                    this.classList.add('tab-active');
+                    this.classList.remove('bg-white', 'border', 'border-gray-200');
+                    
+                    var category = this.getAttribute('data-category');
+                    filterProducts(category);
+                });
+            });
+        }
+
+        // Filter products by category
+        function filterProducts(category) {
+            var allCards = document.querySelectorAll('.product-card-wrapper');
+            allCards.forEach(function(card) {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Render lightning deal card with progress bar
+        function renderLightningCard(product) {
+            var sold = Math.floor(Math.random() * 70) + 30; // 30-99% sold
+            var originalPrice = product.price * 1.4;
+            var savings = originalPrice - product.price;
+            
+            return '<div class="lightning-card rounded-xl overflow-hidden product-card-wrapper" data-category="' + (product.category || 'all') + '">' +
+                '<div class="relative">' +
+                    '<img src="' + (product.image || 'images/placeholder.jpg') + '" alt="' + product.name + '" class="w-full h-48 object-cover">' +
+                    '<div class="absolute top-3 left-3 bg-[#DC2626] text-white text-xs font-bold px-3 py-1 rounded-full">' +
+                        '<span class="material-symbols-outlined" style="font-size:14px; vertical-align: middle;">bolt</span> FLASH SALE' +
+                    '</div>' +
+                    '<div class="absolute top-3 right-3 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full">' +
+                        '-' + Math.round((1 - product.price/originalPrice) * 100) + '%' +
+                    '</div>' +
+                '</div>' +
+                '<div class="p-5">' +
+                    '<h3 class="font-bold text-white text-lg mb-2 line-clamp-2">' + product.name + '</h3>' +
+                    '<div class="flex items-center gap-3 mb-4">' +
+                        '<span class="text-[#DC2626] text-2xl font-black">₹' + product.price.toLocaleString() + '</span>' +
+                        '<span class="text-white/40 text-sm line-through">₹' + originalPrice.toLocaleString() + '</span>' +
+                    '</div>' +
+                    '<div class="mb-4">' +
+                        '<div class="flex justify-between text-xs mb-2">' +
+                            '<span class="text-white/60">' + sold + '% claimed</span>' +
+                            '<span class="text-white/60">' + (100 - sold) + ' left</span>' +
+                        '</div>' +
+                        '<div class="w-full bg-white/10 rounded-full h-2">' +
+                            '<div class="progress-bar h-2 rounded-full" style="width: ' + sold + '%"></div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<button onclick="addToCart(' + product.id + ')" class="w-full bg-[#DC2626] text-white font-bold py-3 rounded-lg hover:bg-[#B91C1C] transition-colors flex items-center justify-center gap-2">' +
+                        '<span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>' +
+                        'Add to Cart' +
+                    '</button>' +
+                '</div>' +
+            '</div>';
+        }
+
+        // Render product card with actions
+        function renderProductCardWithActions(product) {
+            var originalPrice = product.price * 1.3;
+            var discount = Math.round((1 - product.price/originalPrice) * 100);
+            
+            return '<div class="product-card rounded-xl overflow-hidden product-card-wrapper" data-category="' + (product.category || 'all') + '">' +
+                '<div class="relative">' +
+                    '<img src="' + (product.image || 'images/placeholder.jpg') + '" alt="' + product.name + '" class="w-full h-56 object-cover">' +
+                    '<div class="discount-badge absolute top-3 left-3 bg-[#DC2626] text-white text-xs font-bold px-3 py-1 rounded-full">' +
+                        '-' + discount + '%' +
+                    '</div>' +
+                    '<button class="wishlist-btn absolute top-3 right-3 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#FEE2E2] transition-colors" onclick="toggleWishlist(' + product.id + ')">' +
+                        '<span class="material-symbols-outlined text-gray-400 hover:text-[#DC2626]" style="font-size:20px">favorite</span>' +
+                    '</button>' +
+                '</div>' +
+                '<div class="p-5">' +
+                    '<h3 class="font-semibold text-[#111111] mb-2 line-clamp-2">' + product.name + '</h3>' +
+                    '<div class="flex items-center gap-2 mb-3">' +
+                        '<div class="flex text-yellow-400">' +
+                            '<span class="material-symbols-outlined" style="font-size:16px">star</span>' +
+                            '<span class="material-symbols-outlined" style="font-size:16px">star</span>' +
+                            '<span class="material-symbols-outlined" style="font-size:16px">star</span>' +
+                            '<span class="material-symbols-outlined" style="font-size:16px">star</span>' +
+                            '<span class="material-symbols-outlined" style="font-size:16px">star_half</span>' +
+                        '</div>' +
+                        '<span class="text-xs text-text-secondary">(4.5)</span>' +
+                    '</div>' +
+                    '<div class="flex items-center gap-3 mb-4">' +
+                        '<span class="text-[#DC2626] text-xl font-bold">₹' + product.price.toLocaleString() + '</span>' +
+                        '<span class="text-text-tertiary text-sm line-through">₹' + originalPrice.toLocaleString() + '</span>' +
+                    '</div>' +
+                    '<button onclick="addToCart(' + product.id + ')" class="w-full bg-[#111111] text-white font-bold py-3 rounded-lg hover:bg-[#DC2626] transition-colors flex items-center justify-center gap-2">' +
+                        '<span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>' +
+                        'Add to Cart' +
+                    '</button>' +
+                '</div>' +
+            '</div>';
+        }
+
+        // Sort products
+        function sortProducts(products, sortBy) {
+            var sorted = products.slice();
+            switch(sortBy) {
+                case 'price-low':
+                    sorted.sort(function(a, b) { return a.price - b.price; });
+                    break;
+                case 'price-high':
+                    sorted.sort(function(a, b) { return b.price - a.price; });
+                    break;
+                case 'discount':
+                    sorted.sort(function(a, b) { return (b.price * 1.3 - b.price) - (a.price * 1.3 - a.price); });
+                    break;
+                default:
+                    // featured - keep original order
+                    break;
+            }
+            return sorted;
+        }
+
+        // Newsletter form
+        function initNewsletter() {
+            var form = document.getElementById('newsletterForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var email = this.querySelector('input[type="email"]').value;
+                    if (email) {
+                        // Simulate subscription
+                        var btn = this.querySelector('button');
+                        btn.textContent = 'Subscribed!';
+                        btn.classList.add('bg-green-500');
+                        setTimeout(function() {
+                            btn.textContent = 'Subscribe Now';
+                            btn.classList.remove('bg-green-500');
+                            form.reset();
+                        }, 2000);
+                    }
+                });
+            }
+        }
+
+        // Load more products
+        function initLoadMore(allProducts) {
+            var loadMoreBtn = document.getElementById('loadMoreBtn');
+            var showCount = 8;
+            
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() {
+                    showCount += 4;
+                    var allContainer = document.getElementById('allOfferProducts');
+                    if (allContainer) {
+                        allContainer.innerHTML = allProducts.slice(0, showCount).map(renderProductCardWithActions).join('');
+                        if (showCount >= allProducts.length) {
+                            loadMoreBtn.style.display = 'none';
+                        }
+                    }
+                });
+            }
+        }
+
+        // Initialize everything
+        async function init() {
+            startHeroCountdown();
+            startLightningCountdown();
+            initCategoryTabs();
+            initNewsletter();
+            
+            var products = await ProductService.getProducts();
+            
+            // Lightning deals: first 4 products with different data
+            var lightningContainer = document.getElementById('lightningProducts');
+            if (lightningContainer) {
+                lightningContainer.innerHTML = products.slice(0, 4).map(renderLightningCard).join('');
+            }
+
+            // Flash deals: next 4 products
             var dealContainer = document.getElementById('dealProducts');
             if (dealContainer) {
-                dealContainer.innerHTML = products.slice(0, 4).map(renderProductCardWithActions).join('');
+                dealContainer.innerHTML = products.slice(4, 8).map(renderProductCardWithActions).join('');
             }
 
             // All offers
             var allContainer = document.getElementById('allOfferProducts');
             if (allContainer) {
-                allContainer.innerHTML = products.map(renderProductCardWithActions).join('');
+                allContainer.innerHTML = products.slice(0, 8).map(renderProductCardWithActions).join('');
+                initLoadMore(products);
+            }
+            
+            // Sort functionality
+            var sortSelect = document.getElementById('sortSelect');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function() {
+                    var sorted = sortProducts(products, this.value);
+                    var allContainer = document.getElementById('allOfferProducts');
+                    if (allContainer) {
+                        allContainer.innerHTML = sorted.slice(0, 8).map(renderProductCardWithActions).join('');
+                    }
+                });
             }
         }
+
+        // Add to cart function
+        window.addToCart = function(productId) {
+            if (typeof cartStore !== 'undefined' && cartStore.addToCart) {
+                cartStore.addToCart(productId);
+            }
+        };
+
+        // Toggle wishlist function
+        window.toggleWishlist = function(productId) {
+            if (typeof wishlistStore !== 'undefined' && wishlistStore.toggleWishlist) {
+                wishlistStore.toggleWishlist(productId);
+            }
+        };
 
         document.addEventListener('DOMContentLoaded', init);
     })();

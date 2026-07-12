@@ -126,21 +126,17 @@
     };
 
     /* --------------------------------------------------
-       6. Sticky Header
+       6. Shrinking Sticky Header
        -------------------------------------------------- */
     function initStickyHeader() {
-        var headers = document.querySelectorAll('header');
-        if (!headers.length) return;
+        var header = document.getElementById('desktopHeader');
+        if (!header) return;
         window.addEventListener('scroll', function() {
-            headers.forEach(function(header) {
-                if (header.offsetParent !== null) {
-                    if (window.scrollY > 10) {
-                        header.classList.add('shadow-sm');
-                    } else {
-                        header.classList.remove('shadow-sm');
-                    }
-                }
-            });
+            if (window.scrollY > 80) {
+                header.classList.add('shrunken');
+            } else {
+                header.classList.remove('shrunken');
+            }
         }, { passive: true });
     }
 

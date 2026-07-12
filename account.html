@@ -31,31 +31,109 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
     <div class="scroll-progress"></div>
 
+    <!-- Promo Banner -->
+    <div class="promo-banner" id="promoBanner">
+        <div class="promo-inner">
+            <span class="material-symbols-outlined" style="font-size:16px">local_offer</span>
+            <span>Summer Sale! Use code <strong>SUMMER25</strong> for 25% off on all orders</span>
+            <button class="promo-close" onclick="document.getElementById('promoBanner').style.display='none'" aria-label="Close promotion">
+                <span class="material-symbols-outlined" style="font-size:16px">close</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Desktop Header -->
-    <header class="site-header hidden md:block">
+    <header class="site-header hidden md:block" id="desktopHeader">
         <div class="header-inner">
-            <a href="index.html" class="header-logo"><img src="images/logo.svg" alt="Chennai Retail" class="h-8"></a>
-            <nav class="flex items-center gap-5 text-[13px]" aria-label="Main navigation">
-                <a href="index.html" class="hover:text-[#DC2626] transition-colors">Home</a>
-                <a href="category.html" class="hover:text-[#DC2626] transition-colors">Categories</a>
-                <a href="offer.html" class="hover:text-[#DC2626] transition-colors">Deals</a>
-                <a href="account.html" class="hover:text-[#DC2626] transition-colors">Account</a>
+            <a href="index.html" class="header-logo">
+                <img src="images/logo.svg" alt="Chennai Retail" class="h-8 header-logo-img">
+            </a>
+            
+            <nav class="header-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-dropdown" data-mega-menu>
+                    <a href="category.html" class="nav-link">
+                        Categories
+                        <span class="material-symbols-outlined nav-arrow">expand_more</span>
+                    </a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-inner">
+                            <div class="mega-col">
+                                <h4 class="mega-title">Living Room</h4>
+                                <a href="category.html?cat=living" class="mega-link">Sofas & Couches</a>
+                                <a href="category.html?cat=living" class="mega-link">Coffee Tables</a>
+                                <a href="category.html?cat=living" class="mega-link">TV Units</a>
+                                <a href="category.html?cat=living" class="mega-link">Shelving</a>
+                            </div>
+                            <div class="mega-col">
+                                <h4 class="mega-title">Bedroom</h4>
+                                <a href="category.html?cat=bedroom" class="mega-link">Beds</a>
+                                <a href="category.html?cat=bedroom" class="mega-link">Wardrobes</a>
+                                <a href="category.html?cat=bedroom" class="mega-link">Nightstands</a>
+                                <a href="category.html?cat=bedroom" class="mega-link">Dressers</a>
+                            </div>
+                            <div class="mega-col">
+                                <h4 class="mega-title">Kitchen</h4>
+                                <a href="category.html?cat=kitchen" class="mega-link">Dining Tables</a>
+                                <a href="category.html?cat=kitchen" class="mega-link">Chairs</a>
+                                <a href="category.html?cat=kitchen" class="mega-link">Storage</a>
+                                <a href="category.html?cat=kitchen" class="mega-link">Accessories</a>
+                            </div>
+                            <div class="mega-col">
+                                <h4 class="mega-title">Decor</h4>
+                                <a href="category.html?cat=decor" class="mega-link">Wall Art</a>
+                                <a href="category.html?cat=decor" class="mega-link">Vases</a>
+                                <a href="category.html?cat=decor" class="mega-link">Lighting</a>
+                                <a href="category.html?cat=decor" class="mega-link">Rugs</a>
+                            </div>
+                            <div class="mega-featured">
+                                <img src="images/hero-living-room.jpg" alt="Featured collection" class="mega-featured-img">
+                                <p class="mega-featured-text">New Summer Collection</p>
+                                <a href="category.html" class="mega-featured-link">Shop Now →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="offer.html" class="nav-link">
+                    Deals
+                    <span class="nav-badge">HOT</span>
+                </a>
+                <a href="account.html" class="nav-link active">Account</a>
             </nav>
+
             <div class="header-search">
-                <input type="text" placeholder="Search products..." id="headerSearchInput" aria-label="Search products">
+                <input type="text" placeholder="Search products..." id="headerSearchInput" aria-label="Search products" autocomplete="off">
                 <button onclick="var q=document.getElementById('headerSearchInput').value.trim(); if(q) window.location.href='category.html?q='+encodeURIComponent(q)" aria-label="Search">
                     <span class="material-symbols-outlined" style="font-size:22px">search</span>
                 </button>
+                <div class="search-suggestions" id="searchSuggestions">
+                    <div class="suggestion-group">
+                        <p class="suggestion-label">Popular Searches</p>
+                        <a href="category.html?q=table" class="suggestion-item">
+                            <span class="material-symbols-outlined" style="font-size:16px">trending_up</span>
+                            Coffee Table
+                        </a>
+                        <a href="category.html?q=lamp" class="suggestion-item">
+                            <span class="material-symbols-outlined" style="font-size:16px">trending_up</span>
+                            Table Lamp
+                        </a>
+                        <a href="category.html?q=vase" class="suggestion-item">
+                            <span class="material-symbols-outlined" style="font-size:16px">trending_up</span>
+                            Ceramic Vase
+                        </a>
+                    </div>
+                </div>
             </div>
+
             <div class="header-actions">
-                <a href="wishlist.html" aria-label="Wishlist">
+                <a href="wishlist.html" class="header-action-btn" aria-label="Wishlist">
                     <span class="material-symbols-outlined">favorite</span>
-                    <span>Wishlist</span>
+                    <span class="header-action-label">Wishlist</span>
                 </a>
-                <a href="cart.html" class="cart-link" aria-label="Cart">
-                    <span class="material-symbols-outlined" style="font-size:26px">shopping_bag</span>
+                <a href="cart.html" class="header-action-btn cart-link" aria-label="Cart">
+                    <span class="material-symbols-outlined">shopping_bag</span>
                     <span class="cart-badge hidden">0</span>
-                    <span>Cart</span>
+                    <span class="header-action-label">Cart</span>
                 </a>
             </div>
         </div>

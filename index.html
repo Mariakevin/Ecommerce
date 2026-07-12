@@ -260,30 +260,6 @@
             }
         });
     </script>
-    <script>
-        // Countdown Timer
-        document.addEventListener('DOMContentLoaded', function() {
-            var endDate = new Date();
-            endDate.setDate(endDate.getDate() + 3);
-            function updateCountdown() {
-                var diff = endDate - new Date();
-                if (diff <= 0) return;
-                var d = Math.floor(diff / 86400000);
-                var h = Math.floor((diff % 86400000) / 3600000);
-                var m = Math.floor((diff % 3600000) / 60000);
-                var s = Math.floor((diff % 60000) / 1000);
-                var days = document.querySelector('[data-days]');
-                var hours = document.querySelector('[data-hours]');
-                var mins = document.querySelector('[data-mins]');
-                var secs = document.querySelector('[data-secs]');
-                if (days) days.textContent = String(d).padStart(2, '0');
-                if (hours) hours.textContent = String(h).padStart(2, '0');
-                if (mins) mins.textContent = String(m).padStart(2, '0');
-                if (secs) secs.textContent = String(s).padStart(2, '0');
-            }
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        });
-    </script>
+
 </body>
 </html>

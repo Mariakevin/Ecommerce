@@ -146,6 +146,7 @@
                         <li><a href="category.html?cat=bedroom" class="text-sm text-text-secondary hover:text-text transition-colors">Bedroom</a></li>
                         <li><a href="category.html?cat=kitchen" class="text-sm text-text-secondary hover:text-text transition-colors">Kitchen</a></li>
                         <li><a href="category.html?cat=decor" class="text-sm text-text-secondary hover:text-text transition-colors">Decor</a></li>
+                        <li><a href="category.html?cat=lighting" class="text-sm text-text-secondary hover:text-text transition-colors">Lighting</a></li>
                     </ul>
                 </div>
                 <div>
@@ -154,6 +155,7 @@
                         <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">About Us</a></li>
                         <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Stores</a></li>
                         <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Press</a></li>
                     </ul>
                 </div>
                 <div>
@@ -333,8 +335,13 @@
             allWishlistProducts.forEach(function(product) {
                 cartStore.addItem(product, 1);
             });
-            var ids = allWishlistProducts.map(function(p) { return p.id; });
-            ids.forEach(function(id) { wishlistStore.toggle(id, ''); });
+            ids.forEach(function(id) {
+                var list = wishlistStore.getWishlist();
+                var idx = list.indexOf(id);
+                if (idx > -1) list.splice(idx, 1);
+                localStorage.setItem(wishlistStore.STORAGE_KEY, JSON.stringify(list));
+            });
+            wishlistStore.updateIcons();
             allWishlistProducts = [];
             renderWishlist();
             window.showToast(count + ' item' + (count !== 1 ? 's' : '') + ' moved to cart');

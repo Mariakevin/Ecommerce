@@ -80,7 +80,7 @@
                 <nav class="breadcrumb" aria-label="Breadcrumb">
                 <a href="index.html">Home</a>
                 <span class="breadcrumb-sep">/</span>
-                <span class="breadcrumb-current">All Products</span>
+                <span class="breadcrumb-current" id="breadcrumbTitle">All Products</span>
             </nav>
         </div>
 
@@ -88,33 +88,39 @@
         <div id="main-content" tabindex="-1" class="max-w-[1200px] mx-auto px-4 md:px-10 py-6" data-reveal>
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
-                    <h1 class="text-2xl font-semibold mb-1">All Products</h1>
+                    <h1 class="text-2xl font-semibold mb-1" id="pageTitle">All Products</h1>
                     <p class="text-sm text-text-secondary" data-product-count>Showing 0 products</p>
                 </div>
                 <div class="flex items-center gap-3">
                     <!-- Mobile filter button -->
-                    <button onclick="openFilters()" class="md:hidden btn-outline text-sm px-4 py-2" aria-label="Open filters">
+                    <button id="mobileFilterBtn" onclick="openFilters()" class="md:hidden btn-outline text-sm px-4 py-2" aria-label="Open filters">
                         <span class="material-symbols-outlined" style="font-size:18px">filter_list</span>
                         Filters
+                        <span id="mobileFilterBadge" class="hidden bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center">0</span>
                     </button>
                     <!-- Sort -->
-                    <select class="form-input text-sm py-2 w-44" aria-label="Sort products">
-                        <option>Featured</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Newest</option>
+                    <select id="sortSelect" class="form-input text-sm py-2 w-44" aria-label="Sort products">
+                        <option value="featured">Featured</option>
+                        <option value="price_asc">Price: Low to High</option>
+                        <option value="price_desc">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
                     </select>
                     <!-- View Toggle -->
                     <div class="hidden md:flex items-center border border-border rounded-md overflow-hidden">
-                        <button id="viewGrid" onclick="setProductView('grid')" class="p-2 bg-surface-alt" aria-label="Grid view">
+                        <button id="viewGrid" onclick="setCategoryView('grid')" class="p-2 bg-surface-alt" aria-label="Grid view">
                             <span class="material-symbols-outlined" style="font-size:18px">grid_view</span>
                         </button>
-                        <button id="viewList" onclick="setProductView('list')" class="p-2" aria-label="List view">
+                        <button id="viewList" onclick="setCategoryView('list')" class="p-2" aria-label="List view">
                             <span class="material-symbols-outlined" style="font-size:18px">view_list</span>
                         </button>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Active Filters -->
+        <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+            <div class="flex flex-wrap gap-2 mb-4" id="activeFilters"></div>
         </div>
 
         <div class="max-w-[1200px] mx-auto px-4 md:px-10 pb-20 flex gap-8">
@@ -127,19 +133,19 @@
                         <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Category</h3>
                         <div class="space-y-2">
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> Living Room
+                                <input type="checkbox" class="accent-primary" data-filter-category value="living"> Living Room
                             </label>
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> Bedroom
+                                <input type="checkbox" class="accent-primary" data-filter-category value="bedroom"> Bedroom
                             </label>
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> Kitchen
+                                <input type="checkbox" class="accent-primary" data-filter-category value="kitchen"> Kitchen
                             </label>
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> Decor
+                                <input type="checkbox" class="accent-primary" data-filter-category value="decor"> Decor
                             </label>
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> Lighting
+                                <input type="checkbox" class="accent-primary" data-filter-category value="lighting"> Lighting
                             </label>
                         </div>
                     </div>
@@ -148,16 +154,16 @@
                         <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Price</h3>
                         <div class="space-y-2">
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> Under ₹1,000
+                                <input type="checkbox" class="accent-primary" data-filter-price value="0-1000"> Under ₹1,000
                             </label>
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> ₹1,000 - ₹3,000
+                                <input type="checkbox" class="accent-primary" data-filter-price value="1000-3000"> ₹1,000 - ₹3,000
                             </label>
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> ₹3,000 - ₹5,000
+                                <input type="checkbox" class="accent-primary" data-filter-price value="3000-5000"> ₹3,000 - ₹5,000
                             </label>
                             <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="checkbox" class="accent-primary"> Above ₹5,000
+                                <input type="checkbox" class="accent-primary" data-filter-price value="5000+"> Above ₹5,000
                             </label>
                         </div>
                     </div>
@@ -165,7 +171,7 @@
                     <div>
                         <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Availability</h3>
                         <label class="flex items-center gap-2 text-sm cursor-pointer">
-                            <input type="checkbox" class="accent-primary" checked> In Stock
+                            <input type="checkbox" class="accent-primary" id="filterInStock" checked> In Stock
                         </label>
                     </div>
                 </div>
@@ -176,13 +182,7 @@
                 <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-5" data-reveal-stagger></div>
 
                 <!-- Pagination -->
-                <div class="flex items-center justify-center gap-2 mt-10">
-                        <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium bg-primary text-on-primary" aria-label="Page 1" aria-current="page">1</button>
-                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" aria-label="Page 2">2</button>
-                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" aria-label="Page 3">3</button>
-                    <span class="text-text-tertiary px-1" aria-hidden="true">...</span>
-                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" aria-label="Page 8">8</button>
-                </div>
+                <div id="pagination" class="hidden flex items-center justify-center gap-2 mt-10"></div>
             </div>
         </div>
 
@@ -201,23 +201,32 @@
             <div>
                 <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Category</h3>
                 <div class="space-y-2">
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Living Room</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Bedroom</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Kitchen</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Decor</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Lighting</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="living"> Living Room</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="bedroom"> Bedroom</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="kitchen"> Kitchen</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="decor"> Decor</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-category value="lighting"> Lighting</label>
                 </div>
             </div>
             <div>
                 <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Price</h3>
                 <div class="space-y-2">
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Under ₹1,000</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> ₹1,000 - ₹3,000</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> ₹3,000 - ₹5,000</label>
-                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Above ₹5,000</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="0-1000"> Under ₹1,000</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="1000-3000"> ₹1,000 - ₹3,000</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="3000-5000"> ₹3,000 - ₹5,000</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary" data-filter-price value="5000+"> Above ₹5,000</label>
                 </div>
             </div>
-            <button class="btn-primary w-full" onclick="closeFilters()">Apply Filters</button>
+            <div>
+                <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Availability</h3>
+                <label class="flex items-center gap-2 text-sm cursor-pointer">
+                    <input type="checkbox" class="accent-primary" id="filterInStockMobile" checked> In Stock
+                </label>
+            </div>
+            <div class="flex gap-3">
+                <button class="btn-outline flex-1" onclick="resetMobileFilters()">Reset</button>
+                <button class="btn-primary flex-1" onclick="applyMobileFilters()">Apply Filters</button>
+            </div>
         </div>
     </div>
 
@@ -303,25 +312,421 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', async function() {
-            var category = getUrlParam('cat');
-            var products = await ProductService.getProductsByCategory(category);
-            var container = document.getElementById('productGrid');
-            if (container) {
-                container.innerHTML = products.map(renderProductCard).join('');
-            }
-            var catName = category ? category.charAt(0).toUpperCase() + category.slice(1) : 'All';
-            document.querySelector('h1').textContent = category ? catName + ' Products' : 'All Products';
-            document.querySelector('[data-product-count]').textContent = 'Showing ' + products.length + ' products';
+    (function() {
+        'use strict';
 
-            var sortSelect = document.querySelector('select');
-            if (sortSelect) {
-                sortSelect.addEventListener('change', async function() {
-                    var sorted = await ProductService.sortProducts(products, this.value);
-                    container.innerHTML = sorted.map(renderProductCard).join('');
-                });
+        var ITEMS_PER_PAGE = 12;
+
+        var currentFilters = {
+            categories: [],
+            priceRanges: [],
+            inStock: true
+        };
+        var currentSort = 'featured';
+        var currentView = 'grid';
+        var allProducts = [];
+        var filteredProducts = [];
+        var currentPage = 1;
+
+        var CATEGORY_LABELS = {
+            living: 'Living Room',
+            bedroom: 'Bedroom',
+            kitchen: 'Kitchen',
+            decor: 'Decor',
+            lighting: 'Lighting'
+        };
+
+        var PRICE_LABELS = {
+            '0-1000': 'Under \u20B91,000',
+            '1000-3000': '\u20B91,000 - \u20B93,000',
+            '3000-5000': '\u20B93,000 - \u20B95,000',
+            '5000+': 'Above \u20B95,000'
+        };
+
+        var EMPTY_STATE_HTML =
+            '<div class="text-center py-16 col-span-full">' +
+                '<span class="material-symbols-outlined text-text-tertiary mb-3" style="font-size:64px">search_off</span>' +
+                '<h2 class="text-lg font-semibold mb-2">No products found</h2>' +
+                '<p class="text-sm text-text-secondary mb-6">Try adjusting your filters or search terms</p>' +
+                '<button onclick="clearAllFilters()" class="btn-primary">Clear All Filters</button>' +
+            '</div>';
+
+        function init() {
+            allProducts = ProductService.getProducts ? [] : [];
+            ProductService.getProducts().then(function(products) {
+                allProducts = products;
+                parseUrlParams();
+                syncCheckboxesFromState();
+                applyFilters();
+                bindListeners();
+            });
+        }
+
+        function parseUrlParams() {
+            var catParam = getUrlParam('cat');
+            var promoParam = getUrlParam('promo');
+            var searchParam = getUrlParam('q');
+
+            if (catParam && catParam !== 'all') {
+                currentFilters.categories = [catParam];
+                updatePageTitle(catParam);
             }
-        });
+
+            if (promoParam === 'true') {
+                updatePageTitle('all');
+            }
+
+            if (searchParam) {
+                updatePageTitle('search');
+            }
+        }
+
+        function updatePageTitle(param) {
+            var title = 'All Products';
+            var breadcrumb = 'All Products';
+            if (param && CATEGORY_LABELS[param]) {
+                title = CATEGORY_LABELS[param] + ' Products';
+                breadcrumb = CATEGORY_LABELS[param];
+            } else if (param === 'all') {
+                title = 'All Products';
+                breadcrumb = 'All Products';
+            } else if (param === 'search') {
+                var q = getUrlParam('q');
+                title = 'Search: ' + q;
+                breadcrumb = 'Search';
+            }
+            var h1 = document.getElementById('pageTitle');
+            var bc = document.getElementById('breadcrumbTitle');
+            if (h1) h1.textContent = title;
+            if (bc) bc.textContent = breadcrumb;
+            document.title = title + ' - Chennai Retail';
+        }
+
+        function bindListeners() {
+            document.getElementById('sortSelect').addEventListener('change', function() {
+                currentSort = this.value;
+                currentPage = 1;
+                applyFilters();
+            });
+
+            document.querySelectorAll('aside [data-filter-category]').forEach(function(cb) {
+                cb.addEventListener('change', function() {
+                    if (this.checked) {
+                        if (currentFilters.categories.indexOf(this.value) === -1) {
+                            currentFilters.categories.push(this.value);
+                        }
+                    } else {
+                        currentFilters.categories = currentFilters.categories.filter(function(c) { return c !== this.value; }.bind(this));
+                    }
+                    currentPage = 1;
+                    applyFilters();
+                });
+            });
+
+            document.querySelectorAll('aside [data-filter-price]').forEach(function(cb) {
+                cb.addEventListener('change', function() {
+                    if (this.checked) {
+                        if (currentFilters.priceRanges.indexOf(this.value) === -1) {
+                            currentFilters.priceRanges.push(this.value);
+                        }
+                    } else {
+                        currentFilters.priceRanges = currentFilters.priceRanges.filter(function(p) { return p !== this.value; }.bind(this));
+                    }
+                    currentPage = 1;
+                    applyFilters();
+                });
+            });
+
+            document.getElementById('filterInStock').addEventListener('change', function() {
+                currentFilters.inStock = this.checked;
+                currentPage = 1;
+                applyFilters();
+            });
+        }
+
+        function syncCheckboxesFromState() {
+            document.querySelectorAll('[data-filter-category]').forEach(function(cb) {
+                cb.checked = currentFilters.categories.indexOf(cb.value) > -1;
+            });
+            document.querySelectorAll('[data-filter-price]').forEach(function(cb) {
+                cb.checked = currentFilters.priceRanges.indexOf(cb.value) > -1;
+            });
+            document.getElementById('filterInStock').checked = currentFilters.inStock;
+            document.getElementById('filterInStockMobile').checked = currentFilters.inStock;
+        }
+
+        function filterProductList(products) {
+            return products.filter(function(p) {
+                if (currentFilters.categories.length > 0 && currentFilters.categories.indexOf(p.category) === -1) return false;
+
+                if (currentFilters.priceRanges.length > 0) {
+                    var matchPrice = currentFilters.priceRanges.some(function(range) {
+                        if (range === '0-1000') return p.price < 1000;
+                        if (range === '1000-3000') return p.price >= 1000 && p.price <= 3000;
+                        if (range === '3000-5000') return p.price >= 3000 && p.price <= 5000;
+                        if (range === '5000+') return p.price > 5000;
+                        return false;
+                    });
+                    if (!matchPrice) return false;
+                }
+
+                if (currentFilters.inStock && p.inStock === false) return false;
+
+                return true;
+            });
+        }
+
+        function applyFilters() {
+            filteredProducts = filterProductList(allProducts);
+
+            ProductService.sortProducts(filteredProducts, currentSort).then(function(sorted) {
+                filteredProducts = sorted;
+                renderProducts();
+                renderActiveFilters();
+                updateProductCount();
+                renderPagination();
+                updateMobileBadge();
+                updatePageTitleFromFilters();
+            });
+        }
+
+        function updatePageTitleFromFilters() {
+            if (currentFilters.categories.length === 1) {
+                updatePageTitle(currentFilters.categories[0]);
+            } else if (currentFilters.categories.length === 0) {
+                var promoParam = getUrlParam('promo');
+                if (promoParam === 'true') {
+                    updatePageTitle('all');
+                } else {
+                    updatePageTitle(null);
+                }
+            } else {
+                document.getElementById('pageTitle').textContent = 'Filtered Products';
+                document.getElementById('breadcrumbTitle').textContent = 'Filtered';
+            }
+        }
+
+        function renderProducts() {
+            var container = document.getElementById('productGrid');
+            if (!container) return;
+
+            if (filteredProducts.length === 0) {
+                container.className = '';
+                container.innerHTML = EMPTY_STATE_HTML;
+                return;
+            }
+
+            var pageProducts = filteredProducts;
+            if (filteredProducts.length > ITEMS_PER_PAGE) {
+                var start = (currentPage - 1) * ITEMS_PER_PAGE;
+                var end = start + ITEMS_PER_PAGE;
+                pageProducts = filteredProducts.slice(start, end);
+            }
+
+            if (currentView === 'grid') {
+                container.className = 'grid grid-cols-2 lg:grid-cols-3 gap-5';
+                container.innerHTML = pageProducts.map(renderProductCardWithActions).join('');
+            } else {
+                container.className = 'grid grid-cols-1 gap-4';
+                container.innerHTML = pageProducts.map(renderListItem).join('');
+            }
+
+            if (window.wishlistStore) window.wishlistStore.updateIcons();
+        }
+
+        function renderListItem(product) {
+            return '<a href="product.html?id=' + product.id + '" class="flex gap-4 p-4 border border-border rounded-lg hover:border-primary/30 transition-colors">' +
+                '<img src="' + product.image + '" alt="' + product.name + '" class="w-24 h-24 rounded-md object-cover shrink-0" loading="lazy" width="96" height="96">' +
+                '<div class="flex-1 min-w-0">' +
+                    '<p class="text-xs text-text-tertiary mb-1">' + (product.tag || '') + '</p>' +
+                    '<h3 class="text-sm font-medium mb-1">' + product.name + '</h3>' +
+                    '<p class="text-xs text-text-secondary line-clamp-2 mb-2">' + (product.description || '') + '</p>' +
+                    '<p class="text-sm font-semibold">' + formatPrice(product.price) + '</p>' +
+                '</div>' +
+                '<div class="flex flex-col gap-2 shrink-0">' +
+                    '<button onclick="event.preventDefault(); event.stopPropagation(); cartStore.addItem(' + JSON.stringify(product).replace(/"/g, '&quot;') + ')" class="btn-primary text-xs px-3 py-1.5" aria-label="Add ' + product.name + ' to cart">Add</button>' +
+                '</div>' +
+            '</a>';
+        }
+
+        function renderActiveFilters() {
+            var container = document.getElementById('activeFilters');
+            if (!container) return;
+
+            var tags = [];
+
+            currentFilters.categories.forEach(function(cat) {
+                var label = CATEGORY_LABELS[cat] || cat.charAt(0).toUpperCase() + cat.slice(1);
+                tags.push(makeFilterTag('category', cat, label));
+            });
+
+            currentFilters.priceRanges.forEach(function(range) {
+                tags.push(makeFilterTag('price', range, PRICE_LABELS[range] || range));
+            });
+
+            if (tags.length > 0) {
+                tags.push('<button onclick="clearAllFilters()" class="text-xs text-primary font-medium hover:underline ml-1">Clear all</button>');
+            }
+
+            container.innerHTML = tags.join('');
+        }
+
+        function makeFilterTag(type, value, label) {
+            return '<span class="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">' +
+                label +
+                '<button onclick="removeFilter(\'' + type + '\',\'' + value + '\')" class="hover:text-red-700" aria-label="Remove ' + label + ' filter">' +
+                    '<span class="material-symbols-outlined" style="font-size:14px">close</span>' +
+                '</button>' +
+            '</span>';
+        }
+
+        function updateProductCount() {
+            var el = document.querySelector('[data-product-count]');
+            if (el) {
+                var total = filteredProducts.length;
+                el.textContent = 'Showing ' + total + ' product' + (total !== 1 ? 's' : '');
+            }
+        }
+
+        function renderPagination() {
+            var container = document.getElementById('pagination');
+            if (!container) return;
+
+            var totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+            if (totalPages <= 1) {
+                container.classList.add('hidden');
+                container.innerHTML = '';
+                return;
+            }
+
+            container.classList.remove('hidden');
+            var html = '';
+
+            html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium ' + (currentPage === 1 ? 'text-text-tertiary cursor-not-allowed' : 'text-text-secondary hover:bg-surface-alt transition-colors') + '" onclick="goToPage(' + (currentPage - 1) + ')" ' + (currentPage === 1 ? 'disabled' : '') + ' aria-label="Previous page">' +
+                '<span class="material-symbols-outlined" style="font-size:18px">chevron_left</span>' +
+            '</button>';
+
+            for (var i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium bg-primary text-on-primary" aria-label="Page ' + i + '" aria-current="page">' + i + '</button>';
+                } else {
+                    html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" onclick="goToPage(' + i + ')" aria-label="Page ' + i + '">' + i + '</button>';
+                }
+            }
+
+            html += '<button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium ' + (currentPage === totalPages ? 'text-text-tertiary cursor-not-allowed' : 'text-text-secondary hover:bg-surface-alt transition-colors') + '" onclick="goToPage(' + (currentPage + 1) + ')" ' + (currentPage === totalPages ? 'disabled' : '') + ' aria-label="Next page">' +
+                '<span class="material-symbols-outlined" style="font-size:18px">chevron_right</span>' +
+            '</button>';
+
+            container.innerHTML = html;
+        }
+
+        window.goToPage = function(page) {
+            var totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderProducts();
+            renderPagination();
+            document.getElementById('main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        window.removeFilter = function(type, value) {
+            if (type === 'category') {
+                currentFilters.categories = currentFilters.categories.filter(function(c) { return c !== value; });
+                document.querySelectorAll('[data-filter-category="' + value + '"]').forEach(function(cb) { cb.checked = false; });
+            } else if (type === 'price') {
+                currentFilters.priceRanges = currentFilters.priceRanges.filter(function(p) { return p !== value; });
+                document.querySelectorAll('[data-filter-price="' + value + '"]').forEach(function(cb) { cb.checked = false; });
+            }
+            currentPage = 1;
+            applyFilters();
+        };
+
+        window.clearAllFilters = function() {
+            currentFilters = { categories: [], priceRanges: [], inStock: true };
+            document.querySelectorAll('[data-filter-category], [data-filter-price]').forEach(function(cb) { cb.checked = false; });
+            document.getElementById('filterInStock').checked = true;
+            currentPage = 1;
+            applyFilters();
+        };
+
+        window.setCategoryView = function(view) {
+            currentView = view;
+            var gridBtn = document.getElementById('viewGrid');
+            var listBtn = document.getElementById('viewList');
+            if (view === 'grid') {
+                gridBtn.className = 'p-2 bg-surface-alt';
+                listBtn.className = 'p-2';
+            } else {
+                gridBtn.className = 'p-2';
+                listBtn.className = 'p-2 bg-surface-alt';
+            }
+            renderProducts();
+        };
+
+        function updateMobileBadge() {
+            var count = currentFilters.categories.length + currentFilters.priceRanges.length;
+            var badge = document.getElementById('mobileFilterBadge');
+            if (badge) {
+                if (count > 0) {
+                    badge.textContent = count;
+                    badge.classList.remove('hidden');
+                    badge.classList.add('inline-flex');
+                } else {
+                    badge.classList.add('hidden');
+                    badge.classList.remove('inline-flex');
+                }
+            }
+        }
+
+        window.openFilters = function() {
+            syncMobileCheckboxes();
+            document.getElementById('filterBackdrop').classList.add('active');
+            document.getElementById('filterDrawer').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeFilters = function() {
+            document.getElementById('filterBackdrop').classList.remove('active');
+            document.getElementById('filterDrawer').classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        function syncMobileCheckboxes() {
+            document.querySelectorAll('#filterDrawer [data-filter-category]').forEach(function(cb) {
+                cb.checked = currentFilters.categories.indexOf(cb.value) > -1;
+            });
+            document.querySelectorAll('#filterDrawer [data-filter-price]').forEach(function(cb) {
+                cb.checked = currentFilters.priceRanges.indexOf(cb.value) > -1;
+            });
+            document.getElementById('filterInStockMobile').checked = currentFilters.inStock;
+        }
+
+        window.resetMobileFilters = function() {
+            document.querySelectorAll('#filterDrawer [data-filter-category], #filterDrawer [data-filter-price]').forEach(function(cb) { cb.checked = false; });
+            document.getElementById('filterInStockMobile').checked = true;
+        };
+
+        window.applyMobileFilters = function() {
+            currentFilters.categories = [];
+            currentFilters.priceRanges = [];
+            currentFilters.inStock = document.getElementById('filterInStockMobile').checked;
+
+            document.querySelectorAll('#filterDrawer [data-filter-category]:checked').forEach(function(cb) {
+                currentFilters.categories.push(cb.value);
+            });
+            document.querySelectorAll('#filterDrawer [data-filter-price]:checked').forEach(function(cb) {
+                currentFilters.priceRanges.push(cb.value);
+            });
+
+            syncCheckboxesFromState();
+            currentPage = 1;
+            applyFilters();
+            closeFilters();
+        };
+
+        document.addEventListener('DOMContentLoaded', init);
+    })();
     </script>
 </body>
 </html>

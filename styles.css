@@ -1136,31 +1136,9 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 
 /* --------------------------------------------------
-   29. Trust Bar
+   29. Trust Bar (superseded by Section 67)
    -------------------------------------------------- */
-.trust-bar {
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--border-default);
-    padding: 10px 0;
-}
-.trust-bar-inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-}
-.trust-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--text-secondary);
-}
-.trust-item .material-symbols-outlined { font-size: 18px; color: var(--primary); }
+/* Trust bar styles consolidated in Section 67 - Premium Homepage Styles */
 
 /* --------------------------------------------------
    30. Footer (Red/Black/White)
@@ -1363,21 +1341,8 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 
 /* --------------------------------------------------
-   38. Hero Enhancements
+   38. Hero Enhancements (hero-badge consolidated in Section 67)
    -------------------------------------------------- */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-    color: var(--text-inverse);
-    padding: 6px 14px;
-    border-radius: var(--radius-pill);
-    font-size: 12px;
-    font-weight: 600;
-    animation: badgePulse 3s ease infinite;
-    margin-bottom: 16px;
-}
 @keyframes badgePulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
     50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
@@ -1697,26 +1662,8 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 
 /* --------------------------------------------------
-   47. Recently Viewed
+   47. Recently Viewed (consolidated in Section 67)
    -------------------------------------------------- */
-.recently-viewed {
-    background: var(--bg-primary);
-    border-radius: var(--radius-lg);
-    padding: 16px;
-    border: 1px solid var(--border-default);
-}
-.recently-viewed-title {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.recently-viewed-title .material-symbols-outlined {
-    font-size: 18px;
-    color: var(--primary);
-}
 
 /* --------------------------------------------------
    48. Upsell Section
@@ -2310,14 +2257,15 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--primary-light);
+    background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+    border: 1px solid #F87171;
     color: var(--primary);
     font-size: 12px;
     font-weight: 600;
     padding: 6px 14px;
     border-radius: 20px;
     margin-bottom: 20px;
-    animation: fadeInUp var(--duration-normal) var(--ease-default);
+    animation: badgePulse 3s ease infinite;
 }
 .hero-title {
     font-size: clamp(32px, 5vw, 48px);
@@ -2488,6 +2436,13 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     display: flex;
     align-items: center;
     gap: 14px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    transition: transform var(--duration-fast) var(--ease-default), box-shadow var(--duration-fast) var(--ease-default);
+}
+.trust-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 .trust-item .material-symbols-outlined {
     font-size: 28px;
@@ -3644,11 +3599,7 @@ border-left: 1px solid var(--border-default);
 /* --------------------------------------------------
    74. Category Page - Product Grid List View
    -------------------------------------------------- */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
+/* .product-grid defined in Section 67 */
 .product-grid-list {
     display: flex;
     flex-direction: column;
@@ -5162,12 +5113,6 @@ a:focus-visible {
     background: linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 50%, #F9FAFB 100%);
 }
 
-/* Hero badge enhancement */
-.hero-badge {
-    background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
-    border: 1px solid #F87171;
-}
-
 /* Hero title emotional impact */
 .hero-title {
     background: linear-gradient(135deg, var(--text-primary) 0%, #374151 100%);
@@ -5176,14 +5121,7 @@ a:focus-visible {
     background-clip: text;
 }
 
-/* Trust bar emotional connection */
-.trust-item {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.trust-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
+/* hero-badge and trust-item hover consolidated into Section 67 */
 
 /* Ch.28 - More Options Make Users Quit (Hick's Law) */
 /* Reduce option overload in filters */
@@ -5295,7 +5233,207 @@ a:focus-visible {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Reduced motion preference */
+/* ============================================================
+   Phase 2: Container Queries, @property, Fluid Grids
+   ============================================================ */
+
+/* --- @property for animatable custom properties --- */
+@property --progress {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+}
+@property --rotate {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+@property --translate-y {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0px;
+}
+
+/* --- Container queries for product cards --- */
+.product-card {
+    container-type: inline-size;
+    container-name: card;
+}
+@container card (min-width: 400px) {
+    .product-card-info {
+        padding: 18px 20px 20px;
+    }
+    .product-card-title {
+        font-size: 15px;
+    }
+    .price-current {
+        font-size: 20px;
+    }
+}
+
+/* --- Fluid grids with auto-fill/minmax --- */
+.product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.reviews-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.product-grid-4 {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* ============================================================
+   Phase 4: Glassmorphism Utility & Bento Grid
+   ============================================================ */
+
+/* --- Reusable .glass class --- */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+.glass-strong {
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(calc(var(--glass-blur) * 2));
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 2));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* --- Bento grid layout --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px;
+}
+.bento-grid .bento-wide {
+    grid-column: span 2;
+}
+.bento-grid .bento-tall {
+    grid-row: span 2;
+}
+.bento-grid .bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-grid .bento-large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}
+
+/* ============================================================
+   Phase 5: Logical Properties & Form Accent
+   ============================================================ */
+
+/* --- Logical properties for RTL readiness --- */
+.product-card-info {
+    padding-block: 14px;
+    padding-inline: 16px;
+}
+.hero-content {
+    padding-block: 20px;
+    padding-inline: 0;
+}
+.section-container {
+    padding-block: 60px;
+    padding-inline: 24px;
+}
+.footer-grid {
+    padding-block: 40px;
+    padding-inline: 16px;
+}
+.footer-bottom {
+    padding-block: 20px;
+    padding-inline: 16px;
+}
+.btn-primary,
+.btn-buy-now,
+.btn-outline {
+    padding-block: 11px;
+    padding-inline: 24px;
+}
+.category-hero-content {
+    padding-block: 40px;
+    padding-inline: 24px;
+}
+.review-card {
+    padding: 28px;
+}
+
+/* --- Accent color for form controls --- */
+:root {
+    accent-color: var(--primary);
+}
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+progress {
+    accent-color: var(--primary);
+}
+
+/* ============================================================
+   Phase 6: Performance & Animation Polish
+   ============================================================ */
+
+/* --- will-change hints for animated elements --- */
+.product-card:hover {
+    will-change: transform, box-shadow;
+}
+.product-card {
+    will-change: auto;
+}
+.scroll-progress {
+    will-change: width;
+}
+.cart-fly-clone {
+    will-change: transform, opacity;
+}
+.hero-floating-card {
+    will-change: transform;
+}
+
+/* --- @starting-style for enter animations --- */
+@starting-style {
+    [data-reveal].revealed {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    .toast-enter {
+        transform: translateX(120%);
+    }
+    .floating-notification {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* --- Calc-based stagger delays --- */
+[data-reveal-stagger].revealed > * {
+    transition-delay: calc(var(--stagger-index, 0) * 80ms);
+}
+[data-reveal-stagger].revealed > *:nth-child(1) { --stagger-index: 1; }
+[data-reveal-stagger].revealed > *:nth-child(2) { --stagger-index: 2; }
+[data-reveal-stagger].revealed > *:nth-child(3) { --stagger-index: 3; }
+[data-reveal-stagger].revealed > *:nth-child(4) { --stagger-index: 4; }
+[data-reveal-stagger].revealed > *:nth-child(5) { --stagger-index: 5; }
+[data-reveal-stagger].revealed > *:nth-child(6) { --stagger-index: 6; }
+
+/* --- Vendor prefix cleanup (standard properties only) --- */
+/* Removed: -webkit-line-clamp now standardized in all modern browsers */
+/* Removed: -ms-overflow-style (IE only) */
+
+/* --- Reduced motion preference --- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

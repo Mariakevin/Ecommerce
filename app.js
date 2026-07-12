@@ -174,11 +174,37 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+        }, { threshold: 0.01, rootMargin: '0px 0px -20px 0px' });
 
         document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach(function(el) {
             observer.observe(el);
         });
+
+        var fallbackTimer = setTimeout(function() {
+            document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach(function(el) {
+                if (!el.classList.contains('revealed')) {
+                    var rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight + 100) {
+                        el.classList.add('revealed');
+                    }
+                }
+            });
+        }, 2000);
+
+        window.addEventListener('scroll', function revealOnScroll() {
+            var unrevealed = document.querySelectorAll('[data-reveal]:not(.revealed), [data-reveal-stagger]:not(.revealed)');
+            unrevealed.forEach(function(el) {
+                var rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight + 50) {
+                    el.classList.add('revealed');
+                    observer.unobserve(el);
+                }
+            });
+            if (unrevealed.length === 0) {
+                window.removeEventListener('scroll', revealOnScroll);
+                clearTimeout(fallbackTimer);
+            }
+        }, { passive: true });
     }
 
     /* --------------------------------------------------

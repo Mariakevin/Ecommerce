@@ -75,20 +75,20 @@
                 <span class="breadcrumb-sep">/</span>
                 <span class="breadcrumb-current">Checkout</span>
             </nav>
-            <div class="flex items-center justify-center gap-0 mb-8">
-                <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold">1</span>
-                    <span class="text-sm font-medium text-primary hidden sm:inline">Shipping</span>
+            <div id="progressSteps" class="flex items-center justify-center gap-0 mb-8">
+                <div class="flex items-center gap-2" id="stepIndicator1">
+                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold" id="stepCircle1">1</span>
+                    <span class="text-sm font-medium text-primary hidden sm:inline" id="stepLabel1">Shipping</span>
                 </div>
-                <span class="w-12 h-px bg-border mx-2"></span>
-                <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center text-xs font-bold">2</span>
-                    <span class="text-sm text-text-tertiary hidden sm:inline">Payment</span>
+                <span class="w-12 h-px bg-border mx-2" id="stepLine1"></span>
+                <div class="flex items-center gap-2" id="stepIndicator2">
+                    <span class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center text-xs font-bold" id="stepCircle2">2</span>
+                    <span class="text-sm text-text-tertiary hidden sm:inline" id="stepLabel2">Payment</span>
                 </div>
-                <span class="w-12 h-px bg-border mx-2"></span>
-                <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center text-xs font-bold">3</span>
-                    <span class="text-sm text-text-tertiary hidden sm:inline">Review</span>
+                <span class="w-12 h-px bg-border mx-2" id="stepLine2"></span>
+                <div class="flex items-center gap-2" id="stepIndicator3">
+                    <span class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center text-xs font-bold" id="stepCircle3">3</span>
+                    <span class="text-sm text-text-tertiary hidden sm:inline" id="stepLabel3">Review</span>
                 </div>
             </div>
         </div>
@@ -96,70 +96,161 @@
         <div class="max-w-[1200px] mx-auto px-4 md:px-10 pb-20">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-                <!-- Shipping Form -->
+                <!-- Left Column: Step Content -->
                 <div class="lg:col-span-2" data-reveal>
-                    <h1 class="text-xl font-semibold mb-6">Shipping Details</h1>
-                    <form class="space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="form-label">First Name</label>
-                                <input type="text" class="form-input" placeholder="Priya" value="Priya">
-                            </div>
-                            <div>
-                                <label class="form-label">Last Name</label>
-                                <input type="text" class="form-input" placeholder="Sharma" value="Sharma">
-                            </div>
+
+                    <!-- Empty Cart Message -->
+                    <div id="emptyCartMessage" class="hidden">
+                        <div class="text-center py-16">
+                            <span class="material-symbols-outlined text-text-tertiary mb-3" style="font-size:64px">shopping_bag</span>
+                            <h2 class="text-lg font-semibold mb-2">Your cart is empty</h2>
+                            <p class="text-sm text-text-secondary mb-6">Add some items to your cart before checking out</p>
+                            <a href="category.html" class="btn-primary">Start Shopping</a>
                         </div>
-                        <div>
-                            <label class="form-label">Phone</label>
-                            <input type="tel" class="form-input" placeholder="+91 98765 43210" value="+91 98765 43210">
-                        </div>
-                        <div>
-                            <label class="form-label">Address</label>
-                            <input type="text" class="form-input" placeholder="123, 2nd Avenue, Anna Nagar" value="123, 2nd Avenue, Anna Nagar">
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <div>
-                                <label class="form-label">City</label>
-                                <input type="text" class="form-input" placeholder="Chennai" value="Chennai">
-                            </div>
-                            <div>
-                                <label class="form-label">Pincode</label>
-                                <input type="text" class="form-input" placeholder="600040" value="600040">
-                            </div>
-                            <div>
-                                <label class="form-label">State</label>
-                                <input type="text" class="form-input" placeholder="Tamil Nadu" value="Tamil Nadu" readonly>
-                            </div>
+                    </div>
+
+                    <!-- Step 1: Shipping -->
+                    <div id="stepShipping">
+                        <h1 class="text-xl font-semibold mb-6">Shipping Details</h1>
+
+                        <!-- Saved Addresses -->
+                        <div id="savedAddressesSection" class="hidden mb-6">
+                            <h2 class="text-sm font-semibold mb-3">Saved Addresses</h2>
+                            <div id="savedAddressesList" class="space-y-2 mb-4"></div>
+                            <button id="addNewAddressBtn" class="btn-text text-sm font-medium flex items-center gap-1">
+                                <span class="material-symbols-outlined" style="font-size:18px">add</span> Add new address
+                            </button>
                         </div>
 
-                        <!-- Delivery Options -->
-                        <div class="mt-6">
-                            <h2 class="text-sm font-semibold mb-3">Delivery Option</h2>
-                            <div class="space-y-2">
-                                <label class="flex items-center gap-3 p-4 border border-primary rounded-lg cursor-pointer bg-surface">
-                                    <input type="radio" name="delivery" value="standard" checked class="accent-primary">
-                                    <div class="flex-1">
-                                        <p class="text-sm font-medium">Standard Delivery</p>
-                                        <p class="text-xs text-text-tertiary">2-3 business days</p>
-                                    </div>
-                                    <span class="text-sm font-semibold text-green-700">Free</span>
-                                </label>
-                                <label class="flex items-center gap-3 p-4 border border-border rounded-lg cursor-pointer">
-                                    <input type="radio" name="delivery" value="express" class="accent-primary">
-                                    <div class="flex-1">
-                                        <p class="text-sm font-medium">Express Delivery</p>
-                                        <p class="text-xs text-text-tertiary">Same day (order before 2pm)</p>
-                                    </div>
-                                    <span class="text-sm font-semibold">₹149</span>
-                                </label>
+                        <form id="shippingForm" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="form-label">First Name *</label>
+                                    <input type="text" name="firstName" class="form-input" placeholder="Priya">
+                                    <p class="text-xs text-red-600 mt-1 hidden" id="errorFirstName"></p>
+                                </div>
+                                <div>
+                                    <label class="form-label">Last Name *</label>
+                                    <input type="text" name="lastName" class="form-input" placeholder="Sharma">
+                                    <p class="text-xs text-red-600 mt-1 hidden" id="errorLastName"></p>
+                                </div>
                             </div>
+                            <div>
+                                <label class="form-label">Phone *</label>
+                                <input type="tel" name="phone" class="form-input" placeholder="98765 43210">
+                                <p class="text-xs text-red-600 mt-1 hidden" id="errorPhone"></p>
+                            </div>
+                            <div>
+                                <label class="form-label">Address Line 1 *</label>
+                                <input type="text" name="address" class="form-input" placeholder="123, 2nd Avenue, Anna Nagar">
+                                <p class="text-xs text-red-600 mt-1 hidden" id="errorAddress"></p>
+                            </div>
+                            <div>
+                                <label class="form-label">Address Line 2</label>
+                                <input type="text" name="address2" class="form-input" placeholder="Apartment, suite, etc. (optional)">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="form-label">City *</label>
+                                    <input type="text" name="city" class="form-input" placeholder="Chennai">
+                                    <p class="text-xs text-red-600 mt-1 hidden" id="errorCity"></p>
+                                </div>
+                                <div>
+                                    <label class="form-label">Pincode *</label>
+                                    <input type="text" name="pincode" class="form-input" placeholder="600040" maxlength="6">
+                                    <p class="text-xs text-red-600 mt-1 hidden" id="errorPincode"></p>
+                                </div>
+                                <div>
+                                    <label class="form-label">State</label>
+                                    <input type="text" name="state" class="form-input" value="Tamil Nadu" readonly>
+                                </div>
+                            </div>
+
+                            <!-- Delivery Options -->
+                            <div class="mt-6">
+                                <h2 class="text-sm font-semibold mb-3">Delivery Option</h2>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-3 p-4 border border-primary rounded-lg cursor-pointer bg-surface transition-colors" id="deliveryStandard">
+                                        <input type="radio" name="delivery" value="standard" checked class="accent-primary">
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium">Standard Delivery</p>
+                                            <p class="text-xs text-text-tertiary">2-3 business days</p>
+                                        </div>
+                                        <span class="text-sm font-semibold text-green-700">Free</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 p-4 border border-border rounded-lg cursor-pointer hover:border-primary/30 transition-colors" id="deliveryExpress">
+                                        <input type="radio" name="delivery" value="express" class="accent-primary">
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium">Express Delivery</p>
+                                            <p class="text-xs text-text-tertiary">Same day (order before 2pm)</p>
+                                        </div>
+                                        <span class="text-sm font-semibold">₹149</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="button" id="continueToPayment" class="btn-primary w-full text-center">
+                                    Continue to Payment
+                                    <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Payment -->
+                    <div id="stepPayment" class="hidden">
+                        <button type="button" id="backToShipping" class="btn-text text-sm font-medium flex items-center gap-1 mb-4 -ml-2">
+                            <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Back to Shipping
+                        </button>
+                        <h1 class="text-xl font-semibold mb-6">Payment Method</h1>
+                        <div class="space-y-2 mb-6">
+                            <label class="flex items-center gap-3 p-4 border border-primary rounded-lg cursor-pointer bg-surface transition-colors" id="paymentCodLabel">
+                                <input type="radio" name="payment" value="cod" class="accent-primary" checked>
+                                <span class="material-symbols-outlined text-text-secondary" style="font-size:24px">payments</span>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium">Cash on Delivery</p>
+                                    <p class="text-xs text-text-tertiary">Pay when you receive</p>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 border border-border rounded-lg cursor-pointer hover:border-primary/30 transition-colors" id="paymentUpiLabel">
+                                <input type="radio" name="payment" value="upi" class="accent-primary">
+                                <span class="material-symbols-outlined text-text-secondary" style="font-size:24px">qr_code</span>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium">UPI (Google Pay, PhonePe, etc.)</p>
+                                    <p class="text-xs text-text-tertiary">Pay instantly via UPI</p>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-4 border border-border rounded-lg cursor-pointer hover:border-primary/30 transition-colors" id="paymentCardLabel">
+                                <input type="radio" name="payment" value="card" class="accent-primary">
+                                <span class="material-symbols-outlined text-text-secondary" style="font-size:24px">credit_card</span>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium">Credit / Debit Card</p>
+                                    <p class="text-xs text-text-tertiary">Visa, Mastercard, RuPay</p>
+                                </div>
+                            </label>
                         </div>
-                    </form>
+                        <div class="pt-4">
+                            <button type="button" id="continueToReview" class="btn-primary w-full text-center">
+                                Continue to Review
+                                <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Review -->
+                    <div id="stepReview" class="hidden">
+                        <button type="button" id="backToPayment" class="btn-text text-sm font-medium flex items-center gap-1 mb-4 -ml-2">
+                            <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Back to Payment
+                        </button>
+                        <h1 class="text-xl font-semibold mb-6">Review Order</h1>
+                        <div class="space-y-4" id="reviewContent"></div>
+                    </div>
+
                 </div>
 
-                <!-- Order Summary -->
-                <div class="lg:col-span-1" data-reveal>
+                <!-- Right Column: Order Summary -->
+                <div class="lg:col-span-1" data-reveal id="orderSummarySidebar">
                     <div class="border border-border rounded-lg p-6 sticky top-20">
                         <h2 class="text-lg font-semibold mb-5">Order Summary</h2>
 
@@ -172,10 +263,10 @@
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Delivery</span>
-                                <span class="font-medium text-green-700">Free</span>
+                                <span class="font-medium" id="checkoutDelivery">Free</span>
                             </div>
                             <div class="flex justify-between text-sm">
-                                <span class="text-text-secondary">Tax</span>
+                                <span class="text-text-secondary">Tax (5%)</span>
                                 <span class="font-medium" id="checkoutTax">₹0</span>
                             </div>
                         </div>
@@ -187,7 +278,11 @@
                             </div>
                         </div>
 
-                        <button data-place-order class="btn-primary w-full text-center" aria-label="Place order">Place Order</button>
+                        <div id="placeOrderWrapper">
+                            <button id="placeOrderBtn" class="btn-primary w-full text-center" disabled>
+                                Place Order
+                            </button>
+                        </div>
 
                         <div class="mt-4 pt-4 border-t border-border flex items-center justify-center gap-2">
                             <span class="material-symbols-outlined text-text-tertiary" style="font-size:16px">lock</span>
@@ -202,9 +297,47 @@
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-border hidden md:block">
-        <div class="max-w-[1200px] mx-auto px-10 py-12">
-            <div class="flex items-center justify-between">
+    <footer class="border-t border-border">
+        <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-12 md:py-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Shop</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="category.html?cat=living" class="text-sm text-text-secondary hover:text-text transition-colors">Living Room</a></li>
+                        <li><a href="category.html?cat=bedroom" class="text-sm text-text-secondary hover:text-text transition-colors">Bedroom</a></li>
+                        <li><a href="category.html?cat=kitchen" class="text-sm text-text-secondary hover:text-text transition-colors">Kitchen</a></li>
+                        <li><a href="category.html?cat=decor" class="text-sm text-text-secondary hover:text-text transition-colors">Decor</a></li>
+                        <li><a href="category.html?cat=lighting" class="text-sm text-text-secondary hover:text-text transition-colors">Lighting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Stores</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Help</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Shipping</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Connect</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Instagram</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Pinterest</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-border pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
                 <p class="text-xs text-text-tertiary">&copy; 2026 Chennai Retail. All rights reserved.</p>
                 <p class="text-xs text-text-tertiary">Serving Chennai with pride</p>
             </div>
@@ -225,36 +358,380 @@
     <script src="app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            var ADDRESS_STORAGE_KEY = 'chennai_retail_addresses';
             var cart = CartService.getCart();
-            var summaryItems = document.getElementById('checkoutItems');
-            if (summaryItems) {
-                summaryItems.innerHTML = cart.map(function(item) {
-                    return '<div class="flex gap-3"><img src="' + item.image + '" alt="' + item.name + '" class="w-14 h-14 rounded object-cover"><div class="flex-1 min-w-0"><p class="text-sm font-medium truncate">' + item.name + '</p><p class="text-xs text-text-tertiary">Qty: ' + item.qty + '</p></div><span class="text-sm font-medium">' + formatPrice(item.price * item.qty) + '</span></div>';
-                }).join('');
+
+            // --- Empty Cart Check ---
+            if (cart.length === 0) {
+                document.getElementById('emptyCartMessage').classList.remove('hidden');
+                document.getElementById('stepShipping').classList.add('hidden');
+                document.getElementById('orderSummarySidebar').classList.add('hidden');
+                return;
             }
 
-            var state = cartStore.getState();
-            document.getElementById('checkoutSubtotal').textContent = formatPrice(state.subtotal);
-            document.getElementById('checkoutTax').textContent = formatPrice(state.tax);
-            document.getElementById('checkoutTotal').textContent = formatPrice(state.total);
+            var currentStep = 1;
+            var shippingData = {};
+            var paymentMethod = 'cod';
+            var deliveryOption = 'standard';
+            var selectedSavedAddressId = null;
 
-            var placeBtn = document.querySelector('[data-place-order]');
-            if (placeBtn) {
-                placeBtn.addEventListener('click', function() {
-                    var shipping = {
-                        firstName: document.querySelector('[name="firstName"]').value,
-                        lastName: document.querySelector('[name="lastName"]').value,
-                        phone: document.querySelector('[name="phone"]').value,
-                        address: document.querySelector('[name="address"]').value,
-                        city: document.querySelector('[name="city"]').value,
-                        pincode: document.querySelector('[name="pincode"]').value
-                    };
-                    var order = OrderService.createOrder(shipping);
-                    if (order) {
-                        window.location.href = 'order-success.html?id=' + order.id;
-                    }
+            // --- Address Service (localStorage) ---
+            function getAddresses() {
+                try {
+                    return JSON.parse(localStorage.getItem(ADDRESS_STORAGE_KEY)) || [];
+                } catch (e) { return []; }
+            }
+            function saveAddresses(addresses) {
+                localStorage.setItem(ADDRESS_STORAGE_KEY, JSON.stringify(addresses));
+            }
+
+            // --- Load user data ---
+            var user = AuthService.getUser();
+            if (user) {
+                var form = document.getElementById('shippingForm');
+                if (user.firstName) form.querySelector('[name="firstName"]').value = user.firstName;
+                if (user.lastName) form.querySelector('[name="lastName"]').value = user.lastName;
+                if (user.phone) form.querySelector('[name="phone"]').value = user.phone;
+            }
+
+            // --- Load saved addresses ---
+            function loadSavedAddresses() {
+                var addresses = getAddresses();
+                var section = document.getElementById('savedAddressesSection');
+                var list = document.getElementById('savedAddressesList');
+                if (addresses.length === 0) {
+                    section.classList.add('hidden');
+                    return;
+                }
+                section.classList.remove('hidden');
+                list.innerHTML = addresses.map(function(addr) {
+                    var isDefault = addr.isDefault;
+                    return '<label class="flex items-start gap-3 p-4 border border-border rounded-lg cursor-pointer hover:border-primary/30 transition-colors" data-addr-id="' + addr.id + '">' +
+                        '<input type="radio" name="savedAddress" value="' + addr.id + '" class="accent-primary mt-1">' +
+                        '<div class="flex-1 min-w-0">' +
+                            '<div class="flex items-center gap-2 mb-1">' +
+                                '<span class="text-sm font-semibold">' + (addr.label || 'Address') + '</span>' +
+                                (isDefault ? '<span class="px-1.5 py-0.5 text-[10px] font-medium bg-primary/10 text-primary rounded">Default</span>' : '') +
+                            '</div>' +
+                            '<p class="text-sm text-text-secondary">' + (addr.line1 || '') + '</p>' +
+                            '<p class="text-sm text-text-secondary">' + (addr.city || '') + ' - ' + (addr.pincode || '') + '</p>' +
+                            '<p class="text-sm text-text-secondary">' + (addr.phone || '') + '</p>' +
+                        '</div>' +
+                    '</label>';
+                }).join('');
+
+                list.querySelectorAll('input[name="savedAddress"]').forEach(function(radio) {
+                    radio.addEventListener('change', function() {
+                        selectedSavedAddressId = this.value;
+                        var addr = addresses.find(function(a) { return a.id === selectedSavedAddressId; });
+                        if (addr) {
+                            var form = document.getElementById('shippingForm');
+                            form.querySelector('[name="firstName"]').value = addr.firstName || '';
+                            form.querySelector('[name="lastName"]').value = addr.lastName || '';
+                            form.querySelector('[name="phone"]').value = addr.phone || '';
+                            form.querySelector('[name="address"]').value = addr.line1 || '';
+                            form.querySelector('[name="address2"]').value = addr.line2 || '';
+                            form.querySelector('[name="city"]').value = addr.city || '';
+                            form.querySelector('[name="pincode"]').value = addr.pincode || '';
+                        }
+                    });
                 });
             }
+            loadSavedAddresses();
+
+            document.getElementById('addNewAddressBtn').addEventListener('click', function() {
+                selectedSavedAddressId = null;
+                var radios = document.querySelectorAll('input[name="savedAddress"]');
+                radios.forEach(function(r) { r.checked = false; });
+                var form = document.getElementById('shippingForm');
+                form.querySelector('[name="firstName"]').value = user ? (user.firstName || '') : '';
+                form.querySelector('[name="lastName"]').value = user ? (user.lastName || '') : '';
+                form.querySelector('[name="phone"]').value = user ? (user.phone || '') : '';
+                form.querySelector('[name="address"]').value = '';
+                form.querySelector('[name="address2"]').value = '';
+                form.querySelector('[name="city"]').value = '';
+                form.querySelector('[name="pincode"]').value = '';
+            });
+
+            // --- Render Order Summary ---
+            function renderOrderSummary() {
+                var summaryCart = CartService.getCart();
+                var summaryItems = document.getElementById('checkoutItems');
+                if (summaryItems) {
+                    summaryItems.innerHTML = summaryCart.map(function(item) {
+                        return '<div class="flex gap-3">' +
+                            '<img src="' + item.image + '" alt="' + item.name + '" class="w-14 h-14 rounded object-cover">' +
+                            '<div class="flex-1 min-w-0">' +
+                                '<p class="text-sm font-medium truncate">' + item.name + '</p>' +
+                                '<p class="text-xs text-text-tertiary">Qty: ' + item.qty + '</p>' +
+                            '</div>' +
+                            '<span class="text-sm font-medium">' + formatPrice(item.price * item.qty) + '</span>' +
+                        '</div>';
+                    }).join('');
+                }
+
+                var subtotal = CartService.getSubtotal();
+                var deliveryFee = deliveryOption === 'express' ? 149 : 0;
+                var tax = CartService.getTax();
+                var total = subtotal + deliveryFee + tax;
+
+                document.getElementById('checkoutSubtotal').textContent = formatPrice(subtotal);
+                document.getElementById('checkoutTax').textContent = formatPrice(tax);
+                document.getElementById('checkoutTotal').textContent = formatPrice(total);
+
+                var deliveryEl = document.getElementById('checkoutDelivery');
+                if (deliveryFee === 0) {
+                    deliveryEl.textContent = 'Free';
+                    deliveryEl.className = 'font-medium text-green-700';
+                } else {
+                    deliveryEl.textContent = formatPrice(deliveryFee);
+                    deliveryEl.className = 'font-medium';
+                }
+            }
+            renderOrderSummary();
+
+            // --- Delivery Option Change ---
+            document.querySelectorAll('input[name="delivery"]').forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    deliveryOption = this.value;
+                    // Update border styles
+                    document.getElementById('deliveryStandard').className = 'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors ' +
+                        (deliveryOption === 'standard' ? 'border-primary bg-surface' : 'border-border hover:border-primary/30');
+                    document.getElementById('deliveryExpress').className = 'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors ' +
+                        (deliveryOption === 'express' ? 'border-primary bg-surface' : 'border-border hover:border-primary/30');
+                    renderOrderSummary();
+                });
+            });
+
+            // --- Payment Method Change ---
+            document.querySelectorAll('input[name="payment"]').forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    paymentMethod = this.value;
+                    document.getElementById('paymentCodLabel').className = 'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors ' +
+                        (paymentMethod === 'cod' ? 'border-primary bg-surface' : 'border-border hover:border-primary/30');
+                    document.getElementById('paymentUpiLabel').className = 'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors ' +
+                        (paymentMethod === 'upi' ? 'border-primary bg-surface' : 'border-border hover:border-primary/30');
+                    document.getElementById('paymentCardLabel').className = 'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors ' +
+                        (paymentMethod === 'card' ? 'border-primary bg-surface' : 'border-border hover:border-primary/30');
+                });
+            });
+
+            // --- Step Navigation ---
+            function goToStep(step) {
+                currentStep = step;
+                updateProgressSteps();
+                showStepContent(step);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function updateProgressSteps() {
+                for (var i = 1; i <= 3; i++) {
+                    var circle = document.getElementById('stepCircle' + i);
+                    var label = document.getElementById('stepLabel' + i);
+                    if (i < currentStep) {
+                        // Completed
+                        circle.className = 'w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center text-xs font-bold';
+                        circle.innerHTML = '<span class="material-symbols-outlined" style="font-size:16px">check</span>';
+                        label.className = 'text-sm font-medium text-green-600 hidden sm:inline';
+                    } else if (i === currentStep) {
+                        // Current
+                        circle.className = 'w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold';
+                        circle.textContent = i;
+                        label.className = 'text-sm font-medium text-primary hidden sm:inline';
+                    } else {
+                        // Future
+                        circle.className = 'w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center text-xs font-bold';
+                        circle.textContent = i;
+                        label.className = 'text-sm text-text-tertiary hidden sm:inline';
+                    }
+                }
+                // Update lines
+                document.getElementById('stepLine1').className = 'w-12 h-px mx-2 ' + (currentStep > 1 ? 'bg-green-600' : 'bg-border');
+                document.getElementById('stepLine2').className = 'w-12 h-px mx-2 ' + (currentStep > 2 ? 'bg-green-600' : 'bg-border');
+            }
+
+            function showStepContent(step) {
+                document.getElementById('stepShipping').classList.toggle('hidden', step !== 1);
+                document.getElementById('stepPayment').classList.toggle('hidden', step !== 2);
+                document.getElementById('stepReview').classList.toggle('hidden', step !== 3);
+                document.getElementById('placeOrderBtn').disabled = step !== 3;
+            }
+
+            // --- Form Validation ---
+            function clearErrors() {
+                ['FirstName', 'LastName', 'Phone', 'Address', 'City', 'Pincode'].forEach(function(field) {
+                    var el = document.getElementById('error' + field);
+                    if (el) { el.textContent = ''; el.classList.add('hidden'); }
+                });
+            }
+
+            function showError(field, message) {
+                var el = document.getElementById('error' + field);
+                if (el) { el.textContent = message; el.classList.remove('hidden'); }
+            }
+
+            function validateShippingForm() {
+                clearErrors();
+                var form = document.getElementById('shippingForm');
+                var firstName = form.querySelector('[name="firstName"]').value.trim();
+                var lastName = form.querySelector('[name="lastName"]').value.trim();
+                var phone = form.querySelector('[name="phone"]').value.trim();
+                var address = form.querySelector('[name="address"]').value.trim();
+                var city = form.querySelector('[name="city"]').value.trim();
+                var pincode = form.querySelector('[name="pincode"]').value.trim();
+                var valid = true;
+
+                if (!firstName || firstName.length < 2) {
+                    showError('FirstName', 'First name is required (min 2 characters)');
+                    valid = false;
+                }
+                if (!lastName) {
+                    showError('LastName', 'Last name is required');
+                    valid = false;
+                }
+                if (!phone || phone.replace(/\D/g, '').length < 10) {
+                    showError('Phone', 'Valid phone number required (10+ digits)');
+                    valid = false;
+                }
+                if (!address || address.length < 5) {
+                    showError('Address', 'Address is required (min 5 characters)');
+                    valid = false;
+                }
+                if (!city) {
+                    showError('City', 'City is required');
+                    valid = false;
+                }
+                if (!pincode || !/^\d{6}$/.test(pincode)) {
+                    showError('Pincode', 'Valid 6-digit pincode required');
+                    valid = false;
+                }
+                return valid;
+            }
+
+            function collectFormData() {
+                var form = document.getElementById('shippingForm');
+                return {
+                    firstName: form.querySelector('[name="firstName"]').value.trim(),
+                    lastName: form.querySelector('[name="lastName"]').value.trim(),
+                    phone: form.querySelector('[name="phone"]').value.trim(),
+                    address: form.querySelector('[name="address"]').value.trim(),
+                    address2: form.querySelector('[name="address2"]').value.trim(),
+                    city: form.querySelector('[name="city"]').value.trim(),
+                    pincode: form.querySelector('[name="pincode"]').value.trim(),
+                    state: 'Tamil Nadu'
+                };
+            }
+
+            // --- Review Step ---
+            function renderReviewStep() {
+                var paymentLabel = paymentMethod === 'cod' ? 'Cash on Delivery' :
+                    paymentMethod === 'upi' ? 'UPI (Google Pay, PhonePe, etc.)' :
+                    'Credit / Debit Card';
+                var paymentIcon = paymentMethod === 'cod' ? 'payments' :
+                    paymentMethod === 'upi' ? 'qr_code' : 'credit_card';
+                var deliveryLabel = deliveryOption === 'express' ? 'Express Delivery (Same day)' : 'Standard Delivery (2-3 days)';
+                var deliveryFee = deliveryOption === 'express' ? 149 : 0;
+                var subtotal = CartService.getSubtotal();
+                var tax = CartService.getTax();
+                var total = subtotal + deliveryFee + tax;
+                var cartItems = CartService.getCart();
+
+                var addressLines = '';
+                if (shippingData.firstName) addressLines += '<p class="text-sm text-text-secondary">' + shippingData.firstName + ' ' + shippingData.lastName + '</p>';
+                addressLines += '<p class="text-sm text-text-secondary">' + shippingData.address + (shippingData.address2 ? ', ' + shippingData.address2 : '') + '</p>';
+                addressLines += '<p class="text-sm text-text-secondary">' + shippingData.city + ' - ' + shippingData.pincode + ', ' + shippingData.state + '</p>';
+                addressLines += '<p class="text-sm text-text-secondary">' + shippingData.phone + '</p>';
+
+                var itemsHTML = cartItems.map(function(item) {
+                    return '<div class="flex gap-3 py-2">' +
+                        '<img src="' + item.image + '" alt="' + item.name + '" class="w-12 h-12 rounded object-cover">' +
+                        '<div class="flex-1 min-w-0">' +
+                            '<p class="text-sm font-medium truncate">' + item.name + '</p>' +
+                            '<p class="text-xs text-text-tertiary">Qty: ' + item.qty + '</p>' +
+                        '</div>' +
+                        '<span class="text-sm font-medium">' + formatPrice(item.price * item.qty) + '</span>' +
+                    '</div>';
+                }).join('');
+
+                document.getElementById('reviewContent').innerHTML =
+                    '<div class="border border-border rounded-lg p-4">' +
+                        '<div class="flex items-center justify-between mb-2">' +
+                            '<h3 class="text-sm font-semibold">Shipping Address</h3>' +
+                            '<button onclick="window._goToStep(1)" class="text-xs text-primary font-medium hover:underline">Edit</button>' +
+                        '</div>' +
+                        addressLines +
+                    '</div>' +
+                    '<div class="border border-border rounded-lg p-4">' +
+                        '<div class="flex items-center justify-between mb-2">' +
+                            '<h3 class="text-sm font-semibold">Payment Method</h3>' +
+                            '<button onclick="window._goToStep(2)" class="text-xs text-primary font-medium hover:underline">Edit</button>' +
+                        '</div>' +
+                        '<div class="flex items-center gap-2">' +
+                            '<span class="material-symbols-outlined text-text-secondary" style="font-size:20px">' + paymentIcon + '</span>' +
+                            '<p class="text-sm text-text-secondary">' + paymentLabel + '</p>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="border border-border rounded-lg p-4">' +
+                        '<h3 class="text-sm font-semibold mb-2">Order Items</h3>' +
+                        itemsHTML +
+                    '</div>' +
+                    '<div class="border border-border rounded-lg p-4">' +
+                        '<h3 class="text-sm font-semibold mb-2">Delivery</h3>' +
+                        '<p class="text-sm text-text-secondary">' + deliveryLabel + '</p>' +
+                    '</div>' +
+                    '<div class="border border-border rounded-lg p-4">' +
+                        '<h3 class="text-sm font-semibold mb-3">Price Summary</h3>' +
+                        '<div class="space-y-1.5">' +
+                            '<div class="flex justify-between text-sm"><span class="text-text-secondary">Subtotal</span><span>' + formatPrice(subtotal) + '</span></div>' +
+                            '<div class="flex justify-between text-sm"><span class="text-text-secondary">Delivery</span><span>' + (deliveryFee === 0 ? 'Free' : formatPrice(deliveryFee)) + '</span></div>' +
+                            '<div class="flex justify-between text-sm"><span class="text-text-secondary">Tax (5%)</span><span>' + formatPrice(tax) + '</span></div>' +
+                            '<div class="flex justify-between text-sm font-semibold pt-2 border-t border-border"><span>Total</span><span>' + formatPrice(total) + '</span></div>' +
+                        '</div>' +
+                    '</div>';
+            }
+
+            window._goToStep = goToStep;
+
+            // --- Continue to Payment ---
+            document.getElementById('continueToPayment').addEventListener('click', function() {
+                if (validateShippingForm()) {
+                    shippingData = collectFormData();
+                    goToStep(2);
+                }
+            });
+
+            // --- Continue to Review ---
+            document.getElementById('continueToReview').addEventListener('click', function() {
+                paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+                renderReviewStep();
+                goToStep(3);
+            });
+
+            // --- Back buttons ---
+            document.getElementById('backToShipping').addEventListener('click', function() { goToStep(1); });
+            document.getElementById('backToPayment').addEventListener('click', function() { goToStep(2); });
+
+            // --- Place Order ---
+            document.getElementById('placeOrderBtn').addEventListener('click', function() {
+                var btn = this;
+                btn.disabled = true;
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin" style="font-size:18px">progress_activity</span> Processing...';
+
+                setTimeout(function() {
+                    var order = OrderService.createOrder(shippingData);
+                    if (order) {
+                        window.location.href = 'order-success.html?id=' + order.id;
+                    } else {
+                        btn.disabled = false;
+                        btn.textContent = 'Place Order';
+                        if (typeof showToast === 'function') showToast('Failed to create order. Please try again.', 'error');
+                    }
+                }, 800);
+            });
+
+            // --- Initialize ---
+            cartStore.init();
+            updateProgressSteps();
         });
     </script>
 </body>

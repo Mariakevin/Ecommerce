@@ -3,862 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Essentials | Chennai Retail</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <title>Categories - Chennai Retail</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: {
-                            DEFAULT: '#9a442d',
-                            container: '#e07a5f',
-                            fixed: '#ffdbd2',
-                            'fixed-dim': '#ffb4a1',
-                        },
-                        'on-primary': {
-                            DEFAULT: '#ffffff',
-                            container: '#5b1604',
-                        },
-                        secondary: {
-                            DEFAULT: '#436086',
-                            container: '#b3d1fd',
-                        },
-                        'on-secondary': {
-                            DEFAULT: '#ffffff',
-                            container: '#3c597f',
-                        },
-                        tertiary: {
-                            DEFAULT: '#765a28',
-                            container: '#b3915a',
-                            fixed: '#ffdeab',
-                            'fixed-dim': '#e6c185',
-                        },
-                        'on-tertiary': {
-                            DEFAULT: '#ffffff',
-                            container: '#402b00',
-                        },
-                        surface: {
-                            DEFAULT: '#faf8ff',
-                            bright: '#faf8ff',
-                            dim: '#d6d9ef',
-                            tint: '#9a442d',
-                            container: '#ebedff',
-                            'container-low': '#f3f2ff',
-                            'container-lowest': '#ffffff',
-                            'container-high': '#e4e7fe',
-                            'container-highest': '#dee1f8',
-                            variant: '#dee1f8',
-                        },
-                        'on-surface': {
-                            DEFAULT: '#171b2b',
-                            variant: '#55423e',
-                        },
-                        'on-background': '#171b2b',
-                        background: '#faf8ff',
-                        'inverse-surface': '#2c3041',
-                        'inverse-on-surface': '#eff0ff',
-                        error: {
-                            DEFAULT: '#ba1a1a',
-                            container: '#ffdad6',
-                        },
-                        outline: {
-                            DEFAULT: '#88726d',
-                            variant: '#dbc1ba',
-                        },
+                        primary: { DEFAULT: '#9a442d', light: '#e07a5f' },
+                        surface: { DEFAULT: '#ffffff', alt: '#f7f7f7' },
+                        'on-primary': '#ffffff',
+                        text: { DEFAULT: '#111111', secondary: '#666666', tertiary: '#999999' },
+                        border: { DEFAULT: '#e5e5e5', light: '#f0f0f0' },
                     },
-                    fontFamily: {
-                        display: ['Montserrat', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        xs: '0.25rem',
-                        sm: '0.5rem',
-                        md: '0.75rem',
-                        lg: '1rem',
-                        xl: '1.5rem',
-                        full: '9999px',
-                    },
-                },
-            },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    borderRadius: { sm: '4px', md: '8px', lg: '12px' },
+                }
+            }
         }
     </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col pb-24 md:pb-0">
+<body class="bg-surface text-text">
+
     <div class="scroll-progress"></div>
 
-        <!-- ============================== -->
-        <!-- 1. ANNOUNCEMENT BAR -->
-        <!-- ============================== -->
-        <div class="bg-primary text-on-primary text-center py-2 px-4 text-sm font-medium flex items-center justify-center gap-4 flex-wrap">
-            <span class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-lg">local_shipping</span>
-                Free Same-Day Delivery on orders above ₹999 in Chennai
-            </span>
-            <span class="hidden sm:inline text-on-primary/60">|</span>
-            <span class="flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-lg">storefront</span>
-                Store Pickup ready in 2 hours
-            </span>
+    <!-- Desktop Header -->
+    <header class="hidden md:flex sticky top-0 z-50 bg-white border-b border-border h-14 items-center">
+        <div class="max-w-[1200px] w-full mx-auto px-10 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-semibold tracking-tight">Chennai Retail</a>
+            <nav class="flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Home</a>
+                <a href="category.html" class="text-sm font-medium text-primary">Categories</a>
+                <a href="category.html?promo=true" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Offers</a>
+                <a href="account.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Account</a>
+            </nav>
+            <div class="flex items-center gap-5">
+                <a href="search.html" class="text-text-secondary hover:text-text transition-colors">
+                    <span class="material-symbols-outlined" style="font-size:22px">search</span>
+                </a>
+                <a href="wishlist.html" class="text-text-secondary hover:text-text transition-colors relative">
+                    <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
+                </a>
+                <a href="cart.html" class="text-text-secondary hover:text-text transition-colors relative">
+                    <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
+                    <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
+                </a>
+            </div>
         </div>
+    </header>
 
-        <!-- ============================== -->
-        <!-- 2. DESKTOP HEADER -->
-        <!-- ============================== -->
-        <header class="hidden md:flex sticky top-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
-            <div class="max-w-[1280px] w-full mx-auto px-16 flex items-center justify-between h-16">
-                <!-- Brand -->
-                <a href="index.html" class="font-display text-[26px] text-primary font-bold tracking-tight shrink-0">Chennai Retail</a>
+    <!-- Mobile Header -->
+    <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-border h-14 flex items-center px-4">
+        <a href="index.html" class="text-lg font-semibold tracking-tight shrink-0">Chennai Retail</a>
+        <div class="flex items-center gap-3 ml-auto">
+            <a href="search.html" class="text-text-secondary">
+                <span class="material-symbols-outlined" style="font-size:22px">search</span>
+            </a>
+            <a href="cart.html" class="text-text-secondary relative">
+                <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
+                <span class="cart-badge absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
+            </a>
+        </div>
+    </header>
 
-                <!-- Navigation -->
-                <nav class="flex items-center gap-8 ml-8">
-                    <a href="index.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Home</a>
-                    <div class="relative group">
-                        <button class="text-sm font-medium text-on-surface hover:text-primary flex items-center gap-1 transition-colors">
-                            Categories
-                            <span class="material-symbols-outlined text-lg transition-transform group-hover:rotate-180">expand_more</span>
-                        </button>
-                        <!-- Mega Menu Dropdown -->
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                            <div class="bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/30 p-6 grid grid-cols-3 gap-4 min-w-[540px]">
-                                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                                    <span class="material-symbols-outlined text-primary">home</span>
-                                    <div>
-                                        <p class="text-sm font-semibold text-on-surface">Home Decor</p>
-                                        <p class="text-xs text-on-surface-variant">154 items</p>
-                                    </div>
-                                </a>
-                                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                                    <span class="material-symbols-outlined text-primary">checkroom</span>
-                                    <div>
-                                        <p class="text-sm font-semibold text-on-surface">Silk Sarees</p>
-                                        <p class="text-xs text-on-surface-variant">89 items</p>
-                                    </div>
-                                </a>
-                                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                                    <span class="material-symbols-outlined text-primary">devices</span>
-                                    <div>
-                                        <p class="text-sm font-semibold text-on-surface">Electronics</p>
-                                        <p class="text-xs text-on-surface-variant">42 items</p>
-                                    </div>
-                                </a>
-                                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                                    <span class="material-symbols-outlined text-primary">light</span>
-                                    <div>
-                                        <p class="text-sm font-semibold text-on-surface">Lighting</p>
-                                        <p class="text-xs text-on-surface-variant">67 items</p>
-                                    </div>
-                                </a>
-                                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                                    <span class="material-symbols-outlined text-primary">spa</span>
-                                    <div>
-                                        <p class="text-sm font-semibold text-on-surface">Wellness</p>
-                                        <p class="text-xs text-on-surface-variant">35 items</p>
-                                    </div>
-                                </a>
-                                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                                    <span class="material-symbols-outlined text-primary">restaurant</span>
-                                    <div>
-                                        <p class="text-sm font-semibold text-on-surface">Kitchen</p>
-                                        <p class="text-xs text-on-surface-variant">78 items</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="offers.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Offers</a>
-                    <a href="stores.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Stores</a>
-                </nav>
-
-                <!-- Search Bar -->
-                <div class="flex-1 max-w-md mx-8">
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
-                        <input
-                            type="text"
-                            data-search-input
-                            placeholder="Search sarees, decor, electronics..."
-                            class="w-full pl-10 pr-4 py-2.5 bg-surface-container rounded-full text-sm text-on-surface placeholder:text-on-surface-variant/60 border border-outline-variant/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
-                        >
-                    </div>
-                </div>
-
-                <!-- Actions -->
-                <div class="flex items-center gap-5">
-                    <a href="wishlist.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Wishlist">
-                        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">favorite</span>
-                    </a>
-                    <a href="cart.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Cart">
-                        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">shopping_cart</span>
-                        <span class="cart-badge absolute -top-0.5 -right-0.5 bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
-                    </a>
-                    <a href="account.html" class="p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Account">
-                        <span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span>
-                    </a>
-                </div>
-            </div>
-        </header>
-
-        <!-- ============================== -->
-        <!-- 3. MOBILE HEADER -->
-        <!-- ============================== -->
-        <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 h-14 flex items-center px-4">
-            <a href="index.html" class="font-display text-xl text-primary font-bold tracking-tight shrink-0">Chennai Retail</a>
-            <div class="flex items-center gap-2 ml-auto">
-                <a href="search.html" class="p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Search">
-                    <span class="material-symbols-outlined text-[22px] text-on-surface-variant">search</span>
-                </a>
-                <a href="cart.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Cart">
-                    <span class="material-symbols-outlined text-[22px] text-on-surface-variant">shopping_cart</span>
-                    <span class="cart-badge absolute top-0.5 right-0.5 bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
-                </a>
-            </div>
-        </header>
+    <div class="pt-14 md:pt-0 page-transition">
 
         <!-- Breadcrumb -->
-        <div class="max-w-[1280px] mx-auto px-4 md:px-16 py-3">
+        <div class="max-w-[1200px] mx-auto px-4 md:px-10 pt-6 pb-2">
             <nav class="breadcrumb">
                 <a href="index.html">Home</a>
-                <span class="breadcrumb-sep material-symbols-outlined" style="font-size:14px">chevron_right</span>
-                <span class="breadcrumb-current">All Categories</span>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current">All Products</span>
             </nav>
         </div>
 
-    <!-- Main Content -->
-    <main class="flex-1 pt-4 md:pt-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 page-transition">
-
-            <!-- Breadcrumbs -->
-            <nav class="flex items-center gap-2 text-sm text-on-surface-variant mb-4" aria-label="Breadcrumb">
-                <a href="index.html" class="hover:text-primary transition-colors">Home</a>
-                <span class="material-symbols-outlined" style="font-size:16px">chevron_right</span>
-                <span class="text-on-surface font-medium">Home Essentials</span>
-            </nav>
-
-            <!-- Page Title -->
-            <div class="mb-6" data-reveal>
-                <h1 class="font-display text-2xl md:text-3xl font-bold text-on-surface">Home Essentials</h1>
-                <p class="text-on-surface-variant mt-1">Elevate your living space with our premium selection.</p>
+        <!-- Page Header -->
+        <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-6" data-reveal>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl font-semibold mb-1">All Products</h1>
+                    <p class="text-sm text-text-secondary">Showing 24 products</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <!-- Mobile filter button -->
+                    <button onclick="openFilters()" class="md:hidden btn-outline text-sm px-4 py-2">
+                        <span class="material-symbols-outlined" style="font-size:18px">filter_list</span>
+                        Filters
+                    </button>
+                    <!-- Sort -->
+                    <select class="form-input text-sm py-2 w-44">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest</option>
+                    </select>
+                    <!-- View Toggle -->
+                    <div class="hidden md:flex items-center border border-border rounded-md overflow-hidden">
+                        <button id="viewGrid" onclick="setProductView('grid')" class="p-2 bg-surface-alt">
+                            <span class="material-symbols-outlined" style="font-size:18px">grid_view</span>
+                        </button>
+                        <button id="viewList" onclick="setProductView('list')" class="p-2">
+                            <span class="material-symbols-outlined" style="font-size:18px">view_list</span>
+                        </button>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <!-- Active Filter Chips -->
-            <div class="flex flex-wrap items-center gap-2 mb-4" id="activeFilters">
-                <span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wide">Active:</span>
-                <button class="filter-chip active" onclick="this.remove()">
-                    Color: Red
-                    <span class="material-symbols-outlined" style="font-size:16px">close</span>
-                </button>
-                <button class="filter-chip active" onclick="this.remove()">
-                    Material: Pure Silk
-                    <span class="material-symbols-outlined" style="font-size:16px">close</span>
-                </button>
-            </div>
+        <div class="max-w-[1200px] mx-auto px-4 md:px-10 pb-20 flex gap-8">
 
-            <!-- Layout: Sidebar + Products -->
-            <div class="flex gap-8">
-
-                <!-- Filter Sidebar (Desktop) -->
-                <aside class="hidden lg:block w-64 flex-shrink-0">
-                    <div class="sticky top-24 space-y-6">
-                        <!-- Filters Header -->
-                        <div class="flex items-center justify-between">
-                            <h2 class="font-display font-semibold text-lg text-on-surface">Filters</h2>
-                            <button class="text-sm text-primary hover:text-on-primary-container font-medium transition-colors">Clear All</button>
-                        </div>
-
-                        <!-- Categories -->
-                        <div class="border-b border-surface-variant pb-4">
-                            <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Categories</h3>
-                            <div class="space-y-2">
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary" checked>
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Bedding</span>
-                                    <span class="text-xs text-on-surface-variant ml-auto">(42)</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Bath</span>
-                                    <span class="text-xs text-on-surface-variant ml-auto">(28)</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Decor</span>
-                                    <span class="text-xs text-on-surface-variant ml-auto">(65)</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Lighting</span>
-                                    <span class="text-xs text-on-surface-variant ml-auto">(19)</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Price Range -->
-                        <div class="border-b border-surface-variant pb-4">
-                            <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Price Range</h3>
-                            <div class="flex items-center gap-3">
-                                <div class="flex-1">
-                                    <label class="text-xs text-on-surface-variant">Min</label>
-                                    <input type="number" placeholder="0" min="0" class="w-full mt-1 px-3 py-2 text-sm bg-surface-container-low border border-outline-variant rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/10 outline-none transition-all form-input">
-                                </div>
-                                <span class="text-on-surface-variant mt-5">-</span>
-                                <div class="flex-1">
-                                    <label class="text-xs text-on-surface-variant">Max</label>
-                                    <input type="number" placeholder="10,000" min="0" class="w-full mt-1 px-3 py-2 text-sm bg-surface-container-low border border-outline-variant rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/10 outline-none transition-all form-input">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Rating -->
-                        <div class="border-b border-surface-variant pb-4">
-                            <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Rating</h3>
-                            <div class="space-y-2">
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="radio" name="rating" class="w-4 h-4 border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                    </div>
-                                    <span class="text-xs text-on-surface-variant">& Up</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="radio" name="rating" class="w-4 h-4 border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-outline-variant empty" style="font-size:16px">star</span>
-                                    </div>
-                                    <span class="text-xs text-on-surface-variant">& Up</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="radio" name="rating" class="w-4 h-4 border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-outline-variant empty" style="font-size:16px">star</span>
-                                        <span class="material-symbols-outlined text-outline-variant empty" style="font-size:16px">star</span>
-                                    </div>
-                                    <span class="text-xs text-on-surface-variant">& Up</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Brand -->
-                        <div class="border-b border-surface-variant pb-4">
-                            <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Brand</h3>
-                            <div class="space-y-2">
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Nalli Silks</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Kumaran Silks</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Pothys</span>
-                                </label>
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                                    <span class="text-sm text-on-surface-variant group-hover:text-on-surface transition-colors">RmKV</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Availability -->
-                        <div>
-                            <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Availability</h3>
-                            <label class="flex items-center justify-between cursor-pointer">
-                                <span class="text-sm text-on-surface-variant">In Stock Only</span>
-                                <div class="relative">
-                                    <input type="checkbox" class="sr-only peer" checked>
-                                    <div class="w-10 h-5 bg-outline-variant rounded-full peer-checked:bg-primary transition-colors"></div>
-                                    <div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5 shadow-sm"></div>
-                                </div>
+            <!-- Desktop Sidebar Filters -->
+            <aside class="hidden md:block w-56 shrink-0">
+                <div class="sticky top-20 space-y-6">
+                    <!-- Category -->
+                    <div>
+                        <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Category</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> Living Room
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> Bedroom
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> Kitchen
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> Decor
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> Lighting
                             </label>
                         </div>
                     </div>
-                </aside>
-
-                <!-- Products Column -->
-                <div class="flex-1 min-w-0">
-
-                    <!-- Top Actions Bar -->
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-surface-variant">
-                        <p class="text-sm text-on-surface-variant">Showing <span class="font-semibold text-on-surface">1-12</span> of <span class="font-semibold text-on-surface">154</span> results</p>
-                        <div class="flex items-center gap-3 w-full sm:w-auto">
-                            <!-- Mobile Filter Button -->
-                            <button onclick="openFilters()" class="lg:hidden flex items-center gap-2 px-4 py-2 text-sm font-medium bg-surface-container-low border border-outline-variant rounded-full hover:bg-surface-container transition-all">
-                                <span class="material-symbols-outlined" style="font-size:18px">tune</span>
-                                Filters
-                            </button>
-                            <!-- Search within category -->
-                            <div class="relative flex-1 sm:flex-initial">
-                                <input type="text" placeholder="Search in category..." class="w-full sm:w-48 pl-9 pr-3 py-2 text-sm bg-surface-container-low border border-outline-variant rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/10 outline-none transition-all form-input">
-                                <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size:18px">search</span>
-                            </div>
-                            <!-- Sort -->
-                            <select class="px-3 py-2 text-sm bg-surface-container-low border border-outline-variant rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/10 outline-none transition-all form-input appearance-none cursor-pointer pr-8" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%2388726d'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 10px center;">
-                                <option>Recommended</option>
-                                <option>Newest Arrivals</option>
-                                <option>Price: Low to High</option>
-                                <option>Price: High to Low</option>
-                            </select>
-                            <!-- View Toggle -->
-                            <div class="flex items-center border border-outline-variant rounded-lg overflow-hidden">
-                                <button id="viewGrid" onclick="setProductView('grid')" class="p-2 bg-primary text-on-primary transition-colors" data-tooltip="Grid View">
-                                    <span class="material-symbols-outlined" style="font-size:18px">grid_view</span>
-                                </button>
-                                <button id="viewList" onclick="setProductView('list')" class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors" data-tooltip="List View">
-                                    <span class="material-symbols-outlined" style="font-size:18px">view_list</span>
-                                </button>
-                            </div>
+                    <!-- Price -->
+                    <div>
+                        <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Price</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> Under ₹1,000
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> ₹1,000 - ₹3,000
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> ₹3,000 - ₹5,000
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer">
+                                <input type="checkbox" class="accent-primary"> Above ₹5,000
+                            </label>
                         </div>
                     </div>
-
-                    <!-- Product Grid -->
-                    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
-
-                        <!-- Product Card 1: Minimalist Ceramic Table Lamp -->
-                        <a href="product.html" class="group bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-hover block">
-                            <div class="relative">
-                                <div class="img-zoom aspect-square bg-surface-container">
-                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Minimalist Ceramic Table Lamp" class="w-full h-full object-cover" loading="lazy">
-                                </div>
-                                <!-- Badge: 15% Off -->
-                                <span class="absolute top-3 left-3 badge badge-primary">15% Off</span>
-                                <!-- Wishlist -->
-                                <button onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('p1', 'Minimalist Ceramic Table Lamp')" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-ambient hover:scale-110 transition-transform" data-product-id="p1">
-                                    <span class="material-symbols-outlined" style="font-size:20px">favorite</span>
-                                </button>
-                            </div>
-                            <div class="p-4">
-                                <p class="text-xs font-semibold text-primary uppercase tracking-wide mb-1">Aura Lighting</p>
-                                <h3 class="font-display font-semibold text-sm text-on-surface line-clamp-2 mb-2 group-hover:text-primary transition-colors">Minimalist Ceramic Table Lamp</h3>
-                                <!-- Rating -->
-                                <div class="flex items-center gap-1 mb-2">
-                                    <div class="star-rating">
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                    </div>
-                                    <span class="text-xs text-on-surface-variant">4.8</span>
-                                </div>
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="font-display font-bold text-lg text-on-surface">₹3,499</span>
-                                    <span class="text-sm text-on-surface-variant line-through">₹4,116</span>
-                                </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p1', name:'Minimalist Ceramic Table Lamp', price:3499})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </a>
-
-                        <!-- Product Card 2: Organic Cotton Waffle Throw -->
-                        <a href="product.html" class="group bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-hover block">
-                            <div class="relative">
-                                <div class="img-zoom aspect-square bg-surface-container">
-                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-sZOpWeX3BclIawRJCqkLursgoR9FMf0L9ijnaPcERKzMmVf7cjwI-kKzX1SgSf6w6EZU34Y4-ghy7AtijnqbXWCpKB4ghVjnL6V1Ozbtemdcc9vO7Y1HrwtDHolyPMjhSO7VuVK4IkQOVGWKimm2irihTXZi9SYoeBkxszDzEUxX_2ncjG7c_a00bL8w-_P2lWMPyaPxvXX72Np5IOpoman8DWjUTGUK9Cmk-xFSeCGv-T_cdMxgA3ohrUpf_1xye29gxi7bypE" alt="Organic Cotton Waffle Throw" class="w-full h-full object-cover" loading="lazy">
-                                </div>
-                                <!-- Wishlist -->
-                                <button onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('p2', 'Organic Cotton Waffle Throw')" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-ambient hover:scale-110 transition-transform" data-product-id="p2">
-                                    <span class="material-symbols-outlined" style="font-size:20px">favorite</span>
-                                </button>
-                            </div>
-                            <div class="p-4">
-                                <p class="text-xs font-semibold text-secondary uppercase tracking-wide mb-1">Nest Comforts</p>
-                                <h3 class="font-display font-semibold text-sm text-on-surface line-clamp-2 mb-2 group-hover:text-primary transition-colors">Organic Cotton Waffle Throw</h3>
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="font-display font-bold text-lg text-on-surface">₹1,899</span>
-                                </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation();" class="w-full py-2.5 bg-surface-container border border-outline-variant text-on-surface text-sm font-semibold rounded-lg hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined" style="font-size:18px">visibility</span>
-                                    View Options
-                                </button>
-                            </div>
-                        </a>
-
-                        <!-- Product Card 3: Matte Stone Planter Set -->
-                        <a href="product.html" class="group bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-hover block">
-                            <div class="relative">
-                                <div class="img-zoom aspect-square bg-surface-container">
-                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ" alt="Matte Stone Planter Set" class="w-full h-full object-cover" loading="lazy">
-                                </div>
-                                <!-- Badge: New -->
-                                <span class="absolute top-3 left-3 badge badge-success">New</span>
-                                <!-- Wishlist -->
-                                <button onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('p3', 'Matte Stone Planter Set')" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-ambient hover:scale-110 transition-transform" data-product-id="p3">
-                                    <span class="material-symbols-outlined" style="font-size:20px">favorite</span>
-                                </button>
-                            </div>
-                            <div class="p-4">
-                                <p class="text-xs font-semibold text-tertiary uppercase tracking-wide mb-1">Earth Elements</p>
-                                <h3 class="font-display font-semibold text-sm text-on-surface line-clamp-2 mb-2 group-hover:text-primary transition-colors">Matte Stone Planter Set</h3>
-                                <!-- Rating -->
-                                <div class="flex items-center gap-1 mb-2">
-                                    <div class="star-rating">
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                        <span class="material-symbols-outlined fill">star</span>
-                                    </div>
-                                    <span class="text-xs text-on-surface-variant">5.0</span>
-                                </div>
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="font-display font-bold text-lg text-on-surface">₹2,250</span>
-                                </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p3', name:'Matte Stone Planter Set', price:2250})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </a>
-
-                        <!-- Product Card 4: Artisan Ceramic Mug -->
-                        <a href="product.html" class="group bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-hover block">
-                            <div class="relative">
-                                <div class="img-zoom aspect-square bg-surface-container">
-                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTk0hPmjVW8J7L7FV8DWpSsp27oiEz1czxc5sAlwfFbebKX-HipToPvPRpWOnJIFiSWrpT6rNnDQWvy7uUcuFHqWkmV5zkvEwVttbo2heunbqYdUIE6-za4ELy911lC0JYmoyqjU9J2FH8KGiRV3_xxyW4GQQhvGjLXcEwHTVkBCSGCmNfMtyXedXjN2ekJHmobJau3YXpTqVsHiAjLjjDHvE83sEv3PcyD-PPSg1Fh0IiWFxcKuVBLlr0UfpusqlM34WnKaPeHSA" alt="Artisan Ceramic Mug" class="w-full h-full object-cover" loading="lazy">
-                                </div>
-                                <!-- Wishlist -->
-                                <button onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('p4', 'Artisan Ceramic Mug')" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-ambient hover:scale-110 transition-transform" data-product-id="p4">
-                                    <span class="material-symbols-outlined" style="font-size:20px">favorite</span>
-                                </button>
-                            </div>
-                            <div class="p-4">
-                                <p class="text-xs font-semibold text-secondary uppercase tracking-wide mb-1">Home Goods</p>
-                                <h3 class="font-display font-semibold text-sm text-on-surface line-clamp-2 mb-2 group-hover:text-primary transition-colors">Artisan Ceramic Mug</h3>
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="font-display font-bold text-lg text-on-surface">₹600</span>
-                                </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p4', name:'Artisan Ceramic Mug', price:600})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </a>
-
-                        <!-- Product Card 5: Brass Desk Lamp -->
-                        <a href="product.html" class="group bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-hover block">
-                            <div class="relative">
-                                <div class="img-zoom aspect-square bg-surface-container">
-                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAasbBGFOgu-h00wV3Q2IJI0g2sj1dPDRV05xws16W_r5BrABtz96jRkGHdiocblqgil47WGxoOfDUl3L4eCIIKCgzRqG8SSSlmgOm8AvRcTStS6ZKK2pAgq_7PLyA6n6hcNgKNBc4y6jtWrPciOpb66O6lD6qdWeXnQpuoJqsXmqJoefxSC_ymq8KMFBoD8hmJwEa-8kE4IkJ48OOz8KnQQ40w9XPmFIy7ew262KVY9S-X4fhMT9yYGaJ4nbK--BCodGz1EQ4EbA" alt="Brass Desk Lamp" class="w-full h-full object-cover" loading="lazy">
-                                </div>
-                                <!-- Wishlist -->
-                                <button onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('p5', 'Brass Desk Lamp')" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-ambient hover:scale-110 transition-transform" data-product-id="p5">
-                                    <span class="material-symbols-outlined" style="font-size:20px">favorite</span>
-                                </button>
-                            </div>
-                            <div class="p-4">
-                                <p class="text-xs font-semibold text-tertiary uppercase tracking-wide mb-1">Lighting</p>
-                                <h3 class="font-display font-semibold text-sm text-on-surface line-clamp-2 mb-2 group-hover:text-primary transition-colors">Brass Desk Lamp</h3>
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="font-display font-bold text-lg text-on-surface">₹4,200</span>
-                                </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p5', name:'Brass Desk Lamp', price:4200})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </a>
-
-                        <!-- Product Card 6: Hand-woven Cotton Throw -->
-                        <a href="product.html" class="group bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden card-hover block">
-                            <div class="relative">
-                                <div class="img-zoom aspect-square bg-surface-container">
-                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Hand-woven Cotton Throw" class="w-full h-full object-cover" loading="lazy">
-                                </div>
-                                <!-- Wishlist -->
-                                <button onclick="event.preventDefault(); event.stopPropagation(); toggleWishlist('p6', 'Hand-woven Cotton Throw')" class="wishlist-btn absolute top-3 right-3 w-9 h-9 bg-surface-container-lowest/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-ambient hover:scale-110 transition-transform" data-product-id="p6">
-                                    <span class="material-symbols-outlined" style="font-size:20px">favorite</span>
-                                </button>
-                            </div>
-                            <div class="p-4">
-                                <p class="text-xs font-semibold text-secondary uppercase tracking-wide mb-1">Textiles</p>
-                                <h3 class="font-display font-semibold text-sm text-on-surface line-clamp-2 mb-2 group-hover:text-primary transition-colors">Hand-woven Cotton Throw</h3>
-                                <div class="flex items-center gap-2 mb-3">
-                                    <span class="font-display font-bold text-lg text-on-surface">₹3,450</span>
-                                </div>
-                                <button onclick="event.preventDefault(); event.stopPropagation(); addToCart({id:'p6', name:'Hand-woven Cotton Throw', price:3450})" class="btn-press btn-ripple w-full py-2.5 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined" style="font-size:18px">add_shopping_cart</span>
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </a>
-
+                    <!-- Availability -->
+                    <div>
+                        <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Availability</h3>
+                        <label class="flex items-center gap-2 text-sm cursor-pointer">
+                            <input type="checkbox" class="accent-primary" checked> In Stock
+                        </label>
                     </div>
+                </div>
+            </aside>
 
-                    <!-- Pagination -->
-                    <nav class="flex items-center justify-center gap-2 mt-10 mb-8" aria-label="Pagination">
-                        <a href="#" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
-                            <span class="material-symbols-outlined" style="font-size:18px">chevron_left</span>
-                            Previous
-                        </a>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center text-sm font-semibold bg-primary text-on-primary rounded-lg shadow-glow">1</a>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center text-sm font-medium text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">2</a>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center text-sm font-medium text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">3</a>
-                        <span class="w-10 h-10 flex items-center justify-center text-sm text-on-surface-variant">...</span>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center text-sm font-medium text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">12</a>
-                        <a href="#" class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-on-surface border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
-                            Next
-                            <span class="material-symbols-outlined" style="font-size:18px">chevron_right</span>
-                        </a>
-                    </nav>
+            <!-- Product Grid -->
+            <div class="flex-1">
+                <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-3 gap-5" data-reveal-stagger>
 
+                    <a href="product.html?id=p1" class="product-card group block">
+                        <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7" alt="Handwoven Cotton Throw" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        </div>
+                        <h3 class="text-sm font-medium mb-1">Handwoven Cotton Throw</h3>
+                        <p class="text-sm font-semibold">₹3,450</p>
+                    </a>
+
+                    <a href="product.html?id=p2" class="product-card group block">
+                        <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ" alt="Ceramic Table Lamp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        </div>
+                        <h3 class="text-sm font-medium mb-1">Ceramic Table Lamp</h3>
+                        <p class="text-sm font-semibold">₹3,499</p>
+                    </a>
+
+                    <a href="product.html?id=p3" class="product-card group block">
+                        <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU" alt="Stone Planter Set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        </div>
+                        <h3 class="text-sm font-medium mb-1">Stone Planter Set</h3>
+                        <p class="text-sm font-semibold">₹2,250</p>
+                    </a>
+
+                    <a href="product.html?id=p4" class="product-card group block">
+                        <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ" alt="Brass Wall Clock" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        </div>
+                        <h3 class="text-sm font-medium mb-1">Brass Wall Clock</h3>
+                        <p class="text-sm font-semibold">₹4,200</p>
+                    </a>
+
+                    <a href="product.html?id=p5" class="product-card group block">
+                        <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr3K0r1Q7pT0v3x8z9y2w4u6t8o0i2u4y6w8e0r2t4y6u8i0o2p4s6d8f0g2h4j6k8l0z2x4c6v8b0n2m4" alt="Linen Cushion Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        </div>
+                        <h3 class="text-sm font-medium mb-1">Linen Cushion Cover</h3>
+                        <p class="text-sm font-semibold">₹890</p>
+                    </a>
+
+                    <a href="product.html?id=p6" class="product-card group block">
+                        <div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuEf5K2r3Q9pT1v5x0z1y4w6u8t0o2i4u6y8w0e2r4t6y8u0i2o4p6s8d0f2g4h6j8k0l2z4x6c8v0b2n4m6" alt="Walnut Wood Tray" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        </div>
+                        <h3 class="text-sm font-medium mb-1">Walnut Wood Tray</h3>
+                        <p class="text-sm font-semibold">₹1,850</p>
+                    </a>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex items-center justify-center gap-2 mt-10">
+                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium bg-primary text-on-primary">1</button>
+                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors">2</button>
+                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors">3</button>
+                    <span class="text-text-tertiary px-1">...</span>
+                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors">8</button>
                 </div>
             </div>
         </div>
-    </main>
+
+    </div>
 
     <!-- Mobile Filter Drawer -->
-    <div id="filterDrawer" class="filter-drawer">
-        <div class="p-5">
-            <!-- Drawer Header -->
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="font-display font-semibold text-lg text-on-surface">Filters</h2>
-                <button onclick="closeFilters()" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
-                    <span class="material-symbols-outlined" style="font-size:24px">close</span>
-                </button>
-            </div>
-
-            <div class="space-y-6">
-                <!-- Categories -->
-                <div class="border-b border-surface-variant pb-4">
-                    <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Categories</h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary" checked>
-                            <span class="text-sm text-on-surface-variant">Bedding</span>
-                            <span class="text-xs text-on-surface-variant ml-auto">(42)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <span class="text-sm text-on-surface-variant">Bath</span>
-                            <span class="text-xs text-on-surface-variant ml-auto">(28)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <span class="text-sm text-on-surface-variant">Decor</span>
-                            <span class="text-xs text-on-surface-variant ml-auto">(65)</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <span class="text-sm text-on-surface-variant">Lighting</span>
-                            <span class="text-xs text-on-surface-variant ml-auto">(19)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Price Range -->
-                <div class="border-b border-surface-variant pb-4">
-                    <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Price Range</h3>
-                    <div class="flex items-center gap-3">
-                        <div class="flex-1">
-                            <label class="text-xs text-on-surface-variant">Min</label>
-                            <input type="number" placeholder="0" min="0" class="w-full mt-1 px-3 py-2.5 text-sm bg-surface-container-low border border-outline-variant rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/10 outline-none transition-all form-input">
-                        </div>
-                        <span class="text-on-surface-variant mt-5">-</span>
-                        <div class="flex-1">
-                            <label class="text-xs text-on-surface-variant">Max</label>
-                            <input type="number" placeholder="10,000" min="0" class="w-full mt-1 px-3 py-2.5 text-sm bg-surface-container-low border border-outline-variant rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/10 outline-none transition-all form-input">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rating -->
-                <div class="border-b border-surface-variant pb-4">
-                    <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Rating</h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="radio" name="rating-mobile" class="w-4 h-4 border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <div class="flex items-center gap-1">
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                            </div>
-                            <span class="text-xs text-on-surface-variant">& Up</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="radio" name="rating-mobile" class="w-4 h-4 border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <div class="flex items-center gap-1">
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-outline-variant empty" style="font-size:16px">star</span>
-                            </div>
-                            <span class="text-xs text-on-surface-variant">& Up</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="radio" name="rating-mobile" class="w-4 h-4 border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <div class="flex items-center gap-1">
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-outline-variant empty" style="font-size:16px">star</span>
-                                <span class="material-symbols-outlined text-outline-variant empty" style="font-size:16px">star</span>
-                            </div>
-                            <span class="text-xs text-on-surface-variant">& Up</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Brand -->
-                <div class="border-b border-surface-variant pb-4">
-                    <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Brand</h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <span class="text-sm text-on-surface-variant">Nalli Silks</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <span class="text-sm text-on-surface-variant">Kumaran Silks</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <span class="text-sm text-on-surface-variant">Pothys</span>
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input type="checkbox" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-secondary accent-primary">
-                            <span class="text-sm text-on-surface-variant">RmKV</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Availability -->
-                <div>
-                    <h3 class="font-display font-semibold text-sm text-on-surface mb-3">Availability</h3>
-                    <label class="flex items-center justify-between cursor-pointer">
-                        <span class="text-sm text-on-surface-variant">In Stock Only</span>
-                        <div class="relative">
-                            <input type="checkbox" class="sr-only peer" checked>
-                            <div class="w-10 h-5 bg-outline-variant rounded-full peer-checked:bg-primary transition-colors"></div>
-                            <div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5 shadow-sm"></div>
-                        </div>
-                    </label>
+    <div id="filterBackdrop" class="filter-backdrop" onclick="closeFilters()"></div>
+    <div id="filterDrawer" class="filter-drawer p-5">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold">Filters</h2>
+            <button onclick="closeFilters()" class="text-text-secondary">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="space-y-6">
+            <div>
+                <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Category</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Living Room</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Bedroom</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Kitchen</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Decor</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Lighting</label>
                 </div>
             </div>
-
-            <!-- Apply Button -->
-            <div class="mt-8 sticky bottom-0 bg-surface-container-lowest pt-4 border-t border-surface-variant">
-                <button onclick="closeFilters()" class="w-full py-3 bg-primary text-on-primary text-sm font-semibold rounded-lg hover:bg-on-primary-container transition-colors">
-                    Apply Filters
-                </button>
+            <div>
+                <h3 class="text-xs font-semibold tracking-wide uppercase text-text-tertiary mb-3">Price</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Under ₹1,000</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> ₹1,000 - ₹3,000</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> ₹3,000 - ₹5,000</label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" class="accent-primary"> Above ₹5,000</label>
+                </div>
             </div>
+            <button class="btn-primary w-full" onclick="closeFilters()">Apply Filters</button>
         </div>
     </div>
 
-    <!-- Filter Backdrop -->
-    <div id="filterBackdrop" class="backdrop" onclick="closeFilters()"></div>
-
-        <!-- ============================== -->
-        <!-- 13. FOOTER -->
-        <!-- ============================== -->
-        <footer class="hidden md:block bg-inverse-surface text-inverse-on-surface">
-            <div class="max-w-[1280px] mx-auto px-16 py-16">
-                <div class="grid grid-cols-4 gap-12">
-                    <!-- Brand -->
-                    <div class="col-span-1">
-                        <a href="index.html" class="font-display text-2xl font-bold text-inverse-primary mb-4 block">Chennai Retail</a>
-                        <p class="text-inverse-on-surface/70 text-sm leading-relaxed mb-6">Expert and premium, yet deeply rooted in the local landscape. Serving Chennai with pride since 2020.</p>
-                        <div class="inline-flex items-center gap-2 bg-inverse-on-surface/10 px-4 py-2 rounded-full">
-                            <span class="relative flex h-2.5 w-2.5">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                            </span>
-                            <span class="text-sm font-medium text-inverse-on-surface">Live in Chennai</span>
-                        </div>
-                    </div>
-                    <!-- Company -->
-                    <div>
-                        <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Company</h4>
-                        <ul class="space-y-3">
-                            <li><a href="about.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">About Us</a></li>
-                            <li><a href="stores.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Store Locations</a></li>
-                            <li><a href="careers.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Careers</a></li>
-                        </ul>
-                    </div>
-                    <!-- Help -->
-                    <div>
-                        <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Help</h4>
-                        <ul class="space-y-3">
-                            <li><a href="support.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Customer Support</a></li>
-                            <li><a href="privacy.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Privacy Policy</a></li>
-                            <li><a href="terms.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                    <!-- Connect -->
-                    <div>
-                        <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Connect</h4>
-                        <ul class="space-y-3">
-                            <li><a href="#newsletter" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Newsletter</a></li>
-                            <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Instagram</a></li>
-                            <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">WhatsApp</a></li>
-                        </ul>
-                    </div>
+    <!-- Footer -->
+    <footer class="border-t border-border hidden md:block">
+        <div class="max-w-[1200px] mx-auto px-10 py-12">
+            <div class="grid grid-cols-4 gap-8 mb-10">
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Shop</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="category.html?cat=living" class="text-sm text-text-secondary hover:text-text transition-colors">Living Room</a></li>
+                        <li><a href="category.html?cat=bedroom" class="text-sm text-text-secondary hover:text-text transition-colors">Bedroom</a></li>
+                        <li><a href="category.html?cat=kitchen" class="text-sm text-text-secondary hover:text-text transition-colors">Kitchen</a></li>
+                        <li><a href="category.html?cat=decor" class="text-sm text-text-secondary hover:text-text transition-colors">Decor</a></li>
+                    </ul>
                 </div>
-                <!-- Bottom Bar -->
-                <div class="border-t border-inverse-on-surface/10 mt-12 pt-8 flex items-center justify-between">
-                    <p class="text-inverse-on-surface/50 text-sm">&copy; 2024 Chennai Retail. Serving Chennai with Pride.</p>
-                    <div class="flex items-center gap-1 text-sm">
-                        <span class="text-inverse-on-surface font-medium cursor-pointer">EN</span>
-                        <span class="text-inverse-on-surface/30">|</span>
-                        <span class="text-inverse-on-surface/50 cursor-pointer hover:text-inverse-on-surface transition-colors">தமிழ்</span>
-                    </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Stores</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Help</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Shipping</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Connect</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Instagram</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Pinterest</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">WhatsApp</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+            <div class="border-t border-border pt-6 flex items-center justify-between">
+                <p class="text-xs text-text-tertiary">&copy; 2026 Chennai Retail. All rights reserved.</p>
+                <p class="text-xs text-text-tertiary">Serving Chennai with pride</p>
+            </div>
+        </div>
+    </footer>
 
-    <!-- ============================== -->
-    <!-- 14. MOBILE BOTTOM NAV -->
-    <!-- ============================== -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest border-t border-outline-variant/30 safe-area-bottom">
-        <div class="grid grid-cols-5 h-16">
-            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[22px]">home</span>
+    <!-- Mobile Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border safe-area-bottom">
+        <div class="grid grid-cols-4 h-14">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
+                <span class="material-symbols-outlined" style="font-size:22px">home</span>
                 <span class="text-[10px] font-medium">Home</span>
             </a>
-            <a href="category.html" class="flex flex-col items-center justify-center gap-1 text-primary">
-                <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">category</span>
-                <span class="text-[10px] font-semibold">Categories</span>
+            <a href="category.html" class="flex flex-col items-center justify-center gap-0.5 text-primary">
+                <span class="material-symbols-outlined" style="font-size:22px">grid_view</span>
+                <span class="text-[10px] font-medium">Categories</span>
             </a>
-            <a href="search.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[22px]">search</span>
-                <span class="text-[10px] font-medium">Search</span>
-            </a>
-            <a href="cart.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors relative">
-                <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
-                <span class="cart-badge absolute top-1.5 right-1/4 bg-primary text-on-primary text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+            <a href="cart.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary relative">
+                <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
+                <span class="cart-badge absolute top-1.5 right-1/4 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
                 <span class="text-[10px] font-medium">Cart</span>
             </a>
-            <a href="account.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[22px]">person</span>
-                <span class="text-[10px] font-medium">Profile</span>
+            <a href="account.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
+                <span class="material-symbols-outlined" style="font-size:22px">person</span>
+                <span class="text-[10px] font-medium">Account</span>
             </a>
         </div>
     </nav>
-
-    <!-- Toast Container -->
-    <div id="toast-container"></div>
 
     <script src="app.js"></script>
 </body>

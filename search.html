@@ -1,547 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search – Chennai Retail</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            background: '#fffbf7',
-            'on-background': '#1a1512',
-            surface: '#ffffff',
-            'surface-dim': '#f5f0eb',
-            'surface-container': '#faf6f1',
-            'surface-container-high': '#f0ece7',
-            primary: '#b85c1e',
-            'on-primary': '#ffffff',
-            'primary-container': '#ffe0c8',
-            'on-primary-container': '#412a0a',
-            secondary: '#7a6652',
-            'on-secondary': '#ffffff',
-            'secondary-container': '#f4dfc3',
-            'tertiary': '#5f6135',
-            'tertiary-container': '#e3e5b0',
-            outline: '#a69482',
-            'outline-variant': '#dbc7b5',
-            error: '#ba1a1a',
-            'error-container': '#ffdad6',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Montserrat', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Chennai Retail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#9a442d', light: '#e07a5f' },
+                        surface: { DEFAULT: '#ffffff', alt: '#f7f7f7' },
+                        'on-primary': '#ffffff',
+                        text: { DEFAULT: '#111111', secondary: '#666666', tertiary: '#999999' },
+                        border: { DEFAULT: '#e5e5e5', light: '#f0f0f0' },
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    borderRadius: { sm: '4px', md: '8px', lg: '12px' },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-background text-on-background antialiased selection:bg-primary-container min-h-screen flex flex-col pb-24 md:pb-0">
+<body class="bg-surface font-sans text-text">
+    <div class="scroll-progress fixed top-0 left-0 h-0.5 bg-primary z-[60] w-0 transition-all duration-150"></div>
 
-  <div class="scroll-progress"></div>
-
-  <!-- ============================== -->
-  <!-- 1. ANNOUNCEMENT BAR -->
-  <!-- ============================== -->
-  <div class="bg-primary text-on-primary text-center py-2 px-4 text-sm font-medium flex items-center justify-center gap-4 flex-wrap">
-      <span class="flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-lg">local_shipping</span>
-          Free Same-Day Delivery on orders above ₹999 in Chennai
-      </span>
-      <span class="hidden sm:inline text-on-primary/60">|</span>
-      <span class="flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-lg">storefront</span>
-          Store Pickup ready in 2 hours
-      </span>
-  </div>
-
-  <!-- ============================== -->
-  <!-- 2. DESKTOP HEADER -->
-  <!-- ============================== -->
-  <header class="hidden md:flex sticky top-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
-      <div class="max-w-[1280px] w-full mx-auto px-16 flex items-center justify-between h-16">
-          <!-- Brand -->
-          <a href="index.html" class="font-display text-[26px] text-primary font-bold tracking-tight shrink-0">Chennai Retail</a>
-
-          <!-- Navigation -->
-          <nav class="flex items-center gap-8 ml-8">
-              <a href="index.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Home</a>
-              <div class="relative group">
-                  <button class="text-sm font-medium text-on-surface hover:text-primary flex items-center gap-1 transition-colors">
-                      Categories
-                      <span class="material-symbols-outlined text-lg transition-transform group-hover:rotate-180">expand_more</span>
-                  </button>
-                  <!-- Mega Menu Dropdown -->
-                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div class="bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/30 p-6 grid grid-cols-3 gap-4 min-w-[540px]">
-                          <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                              <span class="material-symbols-outlined text-primary">home</span>
-                              <div>
-                                  <p class="text-sm font-semibold text-on-surface">Home Decor</p>
-                                  <p class="text-xs text-on-surface-variant">154 items</p>
-                              </div>
-                          </a>
-                          <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                              <span class="material-symbols-outlined text-primary">checkroom</span>
-                              <div>
-                                  <p class="text-sm font-semibold text-on-surface">Silk Sarees</p>
-                                  <p class="text-xs text-on-surface-variant">89 items</p>
-                              </div>
-                          </a>
-                          <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                              <span class="material-symbols-outlined text-primary">devices</span>
-                              <div>
-                                  <p class="text-sm font-semibold text-on-surface">Electronics</p>
-                                  <p class="text-xs text-on-surface-variant">42 items</p>
-                              </div>
-                          </a>
-                          <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                              <span class="material-symbols-outlined text-primary">light</span>
-                              <div>
-                                  <p class="text-sm font-semibold text-on-surface">Lighting</p>
-                                  <p class="text-xs text-on-surface-variant">67 items</p>
-                              </div>
-                          </a>
-                          <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                              <span class="material-symbols-outlined text-primary">spa</span>
-                              <div>
-                                  <p class="text-sm font-semibold text-on-surface">Wellness</p>
-                                  <p class="text-xs text-on-surface-variant">35 items</p>
-                              </div>
-                          </a>
-                          <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
-                              <span class="material-symbols-outlined text-primary">restaurant</span>
-                              <div>
-                                  <p class="text-sm font-semibold text-on-surface">Kitchen</p>
-                                  <p class="text-xs text-on-surface-variant">78 items</p>
-                              </div>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-              <a href="offers.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Offers</a>
-              <a href="stores.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Stores</a>
-          </nav>
-
-          <!-- Search Bar -->
-          <div class="flex-1 max-w-md mx-8">
-              <div class="relative">
-                  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
-                  <input
-                      type="text"
-                      data-search-input
-                      placeholder="Search sarees, decor, electronics..."
-                      class="w-full pl-10 pr-4 py-2.5 bg-surface-container rounded-full text-sm text-on-surface placeholder:text-on-surface-variant/60 border border-outline-variant/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
-                  >
-              </div>
-          </div>
-
-          <!-- Actions -->
-          <div class="flex items-center gap-5">
-              <a href="wishlist.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Wishlist">
-                  <span class="material-symbols-outlined text-[22px] text-on-surface-variant">favorite</span>
-              </a>
-              <a href="cart.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Cart">
-                  <span class="material-symbols-outlined text-[22px] text-on-surface-variant">shopping_cart</span>
-                  <span class="cart-badge absolute -top-0.5 -right-0.5 bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
-              </a>
-              <a href="account.html" class="p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Account">
-                  <span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span>
-              </a>
-          </div>
-      </div>
-  </header>
-
-  <!-- ============================== -->
-  <!-- 3. MOBILE HEADER -->
-  <!-- ============================== -->
-  <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 h-14 flex items-center px-4">
-      <a href="index.html" class="font-display text-xl text-primary font-bold tracking-tight shrink-0">Chennai Retail</a>
-      <div class="flex items-center gap-2 ml-auto">
-          <a href="search.html" class="p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Search">
-              <span class="material-symbols-outlined text-[22px] text-on-surface-variant">search</span>
-          </a>
-          <a href="cart.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Cart">
-              <span class="material-symbols-outlined text-[22px] text-on-surface-variant">shopping_cart</span>
-              <span class="cart-badge absolute top-0.5 right-0.5 bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
-          </a>
-      </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="flex-1 page-transition">
-
-    <!-- Search Input Section -->
-    <section class="max-w-3xl mx-auto px-4 relative z-40 pt-[80px] md:pt-[120px]">
-      <div class="relative">
-        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-background/40 text-2xl pointer-events-none">search</span>
-        <input
-          type="text"
-          value="Silk"
-          class="w-full h-14 pl-14 pr-14 rounded-2xl bg-surface border border-outline-variant text-on-background text-base placeholder:text-on-background/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary shadow-sm transition-all"
-          placeholder="Search sarees, stores, collections…"
-        />
-        <button class="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-surface-dim transition-colors">
-          <span class="material-symbols-outlined text-on-background/50 text-xl">close</span>
-        </button>
-      </div>
-
-      <!-- Instant Suggestions Dropdown -->
-      <div data-reveal class="absolute left-0 right-0 top-full mt-2 bg-surface/85 backdrop-blur-xl rounded-3xl border border-outline-variant/50 shadow-2xl overflow-hidden">
-        <div class="grid md:grid-cols-2 gap-0 md:gap-6 p-6">
-          <!-- Left Column: Instant Suggestions -->
-          <div>
-            <h3 class="text-xs font-semibold uppercase tracking-wider text-on-background/40 mb-4 font-display">Instant Suggestions</h3>
-            <ul class="space-y-1">
-              <li>
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary-container/50 transition-colors group">
-                  <span class="material-symbols-outlined text-on-background/30 text-lg group-hover:text-primary transition-colors">arrow_outward</span>
-                  <span class="text-sm font-medium text-on-background">Kanchipuram Silk Sarees</span>
+    <!-- Desktop Header -->
+    <header class="hidden md:flex sticky top-0 z-50 bg-white border-b border-border h-14 items-center">
+        <div class="max-w-[1200px] w-full mx-auto px-10 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-semibold tracking-tight">Chennai Retail</a>
+            <nav class="flex items-center gap-8">
+                <a href="index.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Home</a>
+                <a href="category.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Categories</a>
+                <a href="category.html?promo=true" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Offers</a>
+                <a href="account.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Account</a>
+            </nav>
+            <div class="flex items-center gap-5">
+                <a href="search.html" class="text-primary">
+                    <span class="material-symbols-outlined" style="font-size:22px">search</span>
                 </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary-container/50 transition-colors group">
-                  <span class="material-symbols-outlined text-on-background/30 text-lg group-hover:text-primary transition-colors">arrow_outward</span>
-                  <span class="text-sm font-medium text-on-background">Soft Silk Sarees</span>
+                <a href="wishlist.html" class="text-text-secondary hover:text-text transition-colors relative">
+                    <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
                 </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-primary-container/50 transition-colors group">
-                  <span class="material-symbols-outlined text-on-background/30 text-lg group-hover:text-primary transition-colors">arrow_outward</span>
-                  <span class="text-sm font-medium text-on-background">Art Silk Kurtas</span>
+                <a href="cart.html" class="text-text-secondary hover:text-text transition-colors relative">
+                    <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
+                    <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
                 </a>
-              </li>
-              <li class="pt-1">
-                <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-xl text-primary text-sm font-semibold hover:bg-primary-container/30 transition-colors">
-                  <span class="material-symbols-outlined text-sm">collection</span>
-                  View all in Silk Collection
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Right Column: Trending & Popular -->
-          <div class="space-y-6 mt-6 md:mt-0">
-            <!-- Trending Searches -->
-            <div>
-              <h3 class="text-xs font-semibold uppercase tracking-wider text-on-background/40 mb-3 font-display">Trending Searches</h3>
-              <div class="flex flex-wrap gap-2">
-                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-primary-container/60 transition-colors">
-                  <span class="material-symbols-outlined text-xs text-primary">trending_up</span>
-                  Gold Jewellery
-                </a>
-                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-primary-container/60 transition-colors">
-                  <span class="material-symbols-outlined text-xs text-primary">trending_up</span>
-                  Filter Coffee
-                </a>
-                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-primary-container/60 transition-colors">
-                  <span class="material-symbols-outlined text-xs text-primary">trending_up</span>
-                  Brass Lamps
-                </a>
-              </div>
             </div>
-
-            <!-- Popular in Chennai -->
-            <div>
-              <h3 class="text-xs font-semibold uppercase tracking-wider text-on-background/40 mb-3 font-display">Popular in Chennai</h3>
-              <div class="flex flex-wrap gap-2">
-                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/40 text-sm font-medium text-on-primary-container hover:bg-primary-container/70 transition-colors">
-                  <span class="material-symbols-outlined text-xs">location_on</span>
-                  T. Nagar Exclusives
-                </a>
-                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/40 text-sm font-medium text-on-primary-container hover:bg-primary-container/70 transition-colors">
-                  <span class="material-symbols-outlined text-xs">location_on</span>
-                  Mylapore Crafts
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
+    </header>
 
-        <!-- Featured Match -->
-        <div class="border-t border-outline-variant/40 p-4">
-          <a href="#" class="flex items-center gap-4 p-3 rounded-2xl hover:bg-primary-container/30 transition-colors group">
-            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-dim border border-outline-variant/40">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhyfaD7yW6M68BqGPYP7cJ37KWi55-f8X_pUBGbaYCcccR-kerx8PVMVp7zzC4n2qzA-UsYdfPU867Fggl10Ns45HYCKaKSzbdbjaJn-KVV_z8oKYLrncPNM2Etq8aktxRPrTJooXe7gmAFAeuVpmiUJlEBM3hIjKEsgx-wj7133nVgmM-0kjMryPFPIPBzTp0X991RP7PGEQeS2q4P5WHvkeiaYKUQrXE97xWqxJWxhV3vVCkOBrixdPNCeRWKfNK37MzD3LTWM"
-                alt="Bridal Maroon Kanchipuram Silk"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="flex-1 min-w-0">
-              <p class="text-[10px] font-semibold uppercase tracking-wider text-primary mb-0.5 font-display">Featured Match</p>
-              <p class="text-sm font-semibold text-on-background truncate">Bridal Maroon Kanchipuram Silk</p>
-              <p class="text-xs text-on-background/50 mt-0.5">Nalli Silks · ₹32,000</p>
-            </div>
-            <span class="material-symbols-outlined text-on-background/20 group-hover:text-primary transition-colors">chevron_right</span>
-          </a>
+    <!-- Mobile Header -->
+    <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-border h-14 flex items-center px-4">
+        <a href="index.html" class="text-lg font-semibold tracking-tight shrink-0">Chennai Retail</a>
+        <div class="flex items-center gap-3 ml-auto">
+            <a href="search.html" class="text-primary">
+                <span class="material-symbols-outlined" style="font-size:22px">search</span>
+            </a>
+            <a href="cart.html" class="text-text-secondary relative">
+                <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
+                <span class="cart-badge absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
+            </a>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- Filters & Meta -->
-    <section class="mt-12 mb-8 px-4">
-      <div class="max-w-7xl mx-auto">
-        <h1 class="font-display font-700 text-2xl md:text-3xl text-on-background mb-1">
-          Showing results for <span class="text-primary">"Silk"</span>
-        </h1>
-        <p class="text-sm text-on-background/50 mb-6">42 items</p>
+    <div class="page-transition pt-14 md:pt-0">
+        <main class="max-w-[1200px] mx-auto px-4 md:px-10 py-6 md:py-10">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb flex items-center gap-2 text-xs text-text-tertiary mb-6">
+                <a href="index.html" class="hover:text-text transition-colors">Home</a>
+                <span>/</span>
+                <span class="text-text">Search</span>
+            </nav>
 
-        <!-- Filter Chips -->
-        <div class="flex flex-wrap items-center gap-2">
-          <button class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant bg-surface text-sm font-medium text-on-background hover:bg-surface-dim transition-colors">
-            <span class="material-symbols-outlined text-lg">tune</span>
-            Filters
-            <span class="bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">3</span>
-          </button>
+            <!-- Search Input -->
+            <div class="relative mb-8">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary" style="font-size:22px">search</span>
+                    <input data-search-input type="text" placeholder="Search for furniture, decor, and more..." class="w-full pl-11 pr-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:border-primary transition-colors">
+                </div>
+                <div data-search-dropdown class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-border rounded-lg shadow-lg z-40 overflow-hidden">
+                    <div class="p-3 border-b border-border-light">
+                        <p class="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-2">Trending</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Cotton Throw</span>
+                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Table Lamp</span>
+                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Wall Art</span>
+                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Planter</span>
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <p class="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-2">Products</p>
+                        <div class="space-y-1">
+                            <a data-search-item href="#" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt transition-colors">
+                                <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">inventory_2</span>
+                                <span class="text-sm">Handwoven Cotton Throw</span>
+                            </a>
+                            <a data-search-item href="#" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt transition-colors">
+                                <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">inventory_2</span>
+                                <span class="text-sm">Ceramic Table Lamp</span>
+                            </a>
+                            <a data-search-item href="#" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt transition-colors">
+                                <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">inventory_2</span>
+                                <span class="text-sm">Stone Planter Set</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-          <div class="relative">
-            <button class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-dim text-sm font-medium text-on-background hover:bg-surface-container-high transition-colors">
-              Price: Low to High
-              <span class="material-symbols-outlined text-lg">expand_more</span>
-            </button>
-          </div>
+            <!-- Popular Categories -->
+            <div class="mb-8">
+                <h2 class="text-sm font-semibold mb-4">Popular Categories</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <a href="category.html?cat=living" class="flex items-center gap-3 p-4 border border-border rounded-lg hover:border-primary/30 hover:bg-primary/5 transition-all">
+                        <span class="material-symbols-outlined text-primary" style="font-size:24px">chair</span>
+                        <span class="text-sm font-medium">Living Room</span>
+                    </a>
+                    <a href="category.html?cat=bedroom" class="flex items-center gap-3 p-4 border border-border rounded-lg hover:border-primary/30 hover:bg-primary/5 transition-all">
+                        <span class="material-symbols-outlined text-primary" style="font-size:24px">bed</span>
+                        <span class="text-sm font-medium">Bedroom</span>
+                    </a>
+                    <a href="category.html?cat=kitchen" class="flex items-center gap-3 p-4 border border-border rounded-lg hover:border-primary/30 hover:bg-primary/5 transition-all">
+                        <span class="material-symbols-outlined text-primary" style="font-size:24px">kitchen</span>
+                        <span class="text-sm font-medium">Kitchen</span>
+                    </a>
+                    <a href="category.html?cat=decor" class="flex items-center gap-3 p-4 border border-border rounded-lg hover:border-primary/30 hover:bg-primary/5 transition-all">
+                        <span class="material-symbols-outlined text-primary" style="font-size:24px">vignette</span>
+                        <span class="text-sm font-medium">Decor</span>
+                    </a>
+                </div>
+            </div>
 
-          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-error-container text-error text-sm font-medium">
-            Red
-            <span class="material-symbols-outlined text-sm cursor-pointer hover:opacity-70">close</span>
-          </button>
+            <!-- Search Results Empty State -->
+            <div class="text-center py-16">
+                <span class="material-symbols-outlined text-text-tertiary mb-4 block" style="font-size:64px">search</span>
+                <p class="text-text-secondary mb-1">Start typing to search</p>
+                <p class="text-xs text-text-tertiary">Find furniture, decor, and more from our collection</p>
+            </div>
+        </main>
+    </div>
 
-          <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container text-on-primary-container text-sm font-medium">
-            Pure Silk
-            <span class="material-symbols-outlined text-sm cursor-pointer hover:opacity-70">close</span>
-          </button>
-
-          <button class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface text-sm font-medium text-on-background border border-outline-variant hover:bg-surface-dim transition-colors">
-            <span class="material-symbols-outlined text-primary text-lg">fiber_new</span>
-            New Arrivals
-          </button>
+    <!-- Desktop Footer -->
+    <footer class="border-t border-border hidden md:block">
+        <div class="max-w-[1200px] mx-auto px-10 py-12">
+            <div class="grid grid-cols-4 gap-8 mb-10">
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Shop</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="category.html?cat=living" class="text-sm text-text-secondary hover:text-text transition-colors">Living Room</a></li>
+                        <li><a href="category.html?cat=bedroom" class="text-sm text-text-secondary hover:text-text transition-colors">Bedroom</a></li>
+                        <li><a href="category.html?cat=kitchen" class="text-sm text-text-secondary hover:text-text transition-colors">Kitchen</a></li>
+                        <li><a href="category.html?cat=decor" class="text-sm text-text-secondary hover:text-text transition-colors">Decor</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Stores</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Help</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Shipping</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold mb-4">Connect</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Instagram</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">Pinterest</a></li>
+                        <li><a href="#" class="text-sm text-text-secondary hover:text-text transition-colors">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-border pt-6 flex items-center justify-between">
+                <p class="text-xs text-text-tertiary">&copy; 2026 Chennai Retail. All rights reserved.</p>
+                <p class="text-xs text-text-tertiary">Serving Chennai with pride</p>
+            </div>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <!-- Results Grid -->
-    <section class="px-4">
-      <div data-reveal-stagger class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+    <!-- Mobile Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border safe-area-bottom">
+        <div class="grid grid-cols-4 h-14">
+            <a href="index.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
+                <span class="material-symbols-outlined" style="font-size:22px">home</span>
+                <span class="text-[10px] font-medium">Home</span>
+            </a>
+            <a href="category.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
+                <span class="material-symbols-outlined" style="font-size:22px">grid_view</span>
+                <span class="text-[10px] font-medium">Categories</span>
+            </a>
+            <a href="cart.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary relative">
+                <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
+                <span class="cart-badge absolute top-1.5 right-1/4 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
+                <span class="text-[10px] font-medium">Cart</span>
+            </a>
+            <a href="account.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
+                <span class="material-symbols-outlined" style="font-size:22px">person</span>
+                <span class="text-[10px] font-medium">Account</span>
+            </a>
+        </div>
+    </nav>
 
-        <!-- Product Card 1: Magenta Soft Silk -->
-        <article class="group cursor-pointer">
-          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhyfaD7yW6M68BqGPYP7cJ37KWi55-f8X_pUBGbaYCcccR-kerx8PVMVp7zzC4n2qzA-UsYdfPU867Fggl10Ns45HYCKaKSzbdbjaJn-KVV_z8oKYLrncPNM2Etq8aktxRPrTJooXe7gmAFAeuVpmiUJlEBM3hIjKEsgx-wj7133nVgmM-0kjMryPFPIPBzTp0X991RP7PGEQeS2q4P5WHvkeiaYKUQrXE97xWqxJWxhV3vVCkOBrixdPNCeRWKfNK37MzD3LTWM"
-              alt="Magenta Soft Silk Saree with Gold Zari"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <!-- Badge -->
-            <span class="absolute top-3 left-3 bg-primary text-on-primary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">New</span>
-            <!-- Wishlist -->
-            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
-              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
-            </button>
-            <!-- Store Icon -->
-            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
-              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
-              <span class="text-xs font-medium text-on-background">Nalli Silks</span>
-            </div>
-          </div>
-          <div class="mt-3 px-1">
-            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Magenta Soft Silk Saree with Gold Zari</h3>
-            <div class="flex items-baseline gap-2 mt-1">
-              <span class="text-base font-bold text-on-background">₹8,999</span>
-              <span class="text-xs text-on-background/40 line-through">₹11,500</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product Card 2: Forest Green Kanchipuram -->
-        <article class="group cursor-pointer">
-          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKY1zxVrfigjlGUdG3hWxnPjMn7wpKO5cR1YPmDdvpmOErnzmQSXABUt_YYqGIfV9ECsL-gWhMyGxnf4f6_Bgv_A2f6TUx2urRV4vLwwXPqhz9j-pZFiU-h-NQxl68ZSGKb5_963vpE1eUDISXbKKsnga7G4HgX-m1sXHXnam5vNWo7mkXS-_8VuKBsItD3vaVpyipNqLMxDMV4s7J0EOq-4i0611I7U4TBC8x62V0f-kMDBHmD6qsbZeCBuvzWc9EnkkeA_MHzY"
-              alt="Forest Green Pure Kanchipuram"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <!-- Wishlist -->
-            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
-              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
-            </button>
-            <!-- Store Icon -->
-            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
-              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
-              <span class="text-xs font-medium text-on-background">Kumaran Silks</span>
-            </div>
-          </div>
-          <div class="mt-3 px-1">
-            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Forest Green Pure Kanchipuram</h3>
-            <div class="flex items-baseline gap-2 mt-1">
-              <span class="text-base font-bold text-on-background">₹24,500</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product Card 3: Yellow Art Silk Kurta Set -->
-        <article class="group cursor-pointer">
-          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-NeKy7odUzGQd3T31TsINI-5cxEm78Lvl-CfBJITtYhIC4wuT8hXdpLYSnPng4e6bnW84yGSOAkNmvKtpoT_M2IJJ8b5TUBqqubPPHjzqRaTcwDN8aBtsXalfUI4yBQ2xRXMs8D-j5lWZygi8rHojEPem2r9eCozl2ZKEZ9h2aWCeJUAfmytRGuAFhfrSpH-ZCdeTxGjaAk1gz0mmw4sTnOUEmpu327Ksd6t2RDEqojGN6GMWM2oOeHJB5ZftJtbQpEPIAVLrBoU"
-              alt="Yellow Art Silk Kurta Set"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <!-- Badge -->
-            <span class="absolute top-3 left-3 bg-tertiary-container text-tertiary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">-20%</span>
-            <!-- Wishlist -->
-            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
-              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
-            </button>
-            <!-- Store Icon -->
-            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
-              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
-              <span class="text-xs font-medium text-on-background">Pothys</span>
-            </div>
-          </div>
-          <div class="mt-3 px-1">
-            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Yellow Art Silk Kurta Set</h3>
-            <div class="flex items-baseline gap-2 mt-1">
-              <span class="text-base font-bold text-on-background">₹3,199</span>
-              <span class="text-xs text-on-background/40 line-through">₹3,999</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product Card 4: Pastel Peach Silk Cotton -->
-        <article class="group cursor-pointer">
-          <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-black/5 bg-surface-dim">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQk8dNj1oQUsS4JYOWr_9Dx6n1qsIU7JcxYp-AVBSKxhrJthPYFlERTRLkV8kuLjCTIdoWRQmMu4Yc9DBoZbTbwoBhxkWV7SH8LZ4qfUhlvs5QWrm4sSDdKu0--VnVosptDs5WQrYufPu3HAlvqdQxeAECraGJzbWWG6ndgyDTPEAJEpP58-2Siqga24kYpPKNPQTkGeNUV1C354xIJYHXbnkE9kDroAFw9RlijIH0Sq_u4XX18n4uGECrPLsHi6njiKyeeFEiNLE"
-              alt="Pastel Peach Silk Cotton Blend"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <!-- Wishlist -->
-            <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center hover:bg-surface transition-colors opacity-0 group-hover:opacity-100">
-              <span class="material-symbols-outlined text-on-background/60 text-lg">favorite_border</span>
-            </button>
-            <!-- Store Icon -->
-            <div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur-sm rounded-full px-3 py-1.5">
-              <span class="material-symbols-outlined text-primary text-sm">storefront</span>
-              <span class="text-xs font-medium text-on-background">RmKV</span>
-            </div>
-          </div>
-          <div class="mt-3 px-1">
-            <h3 class="text-sm font-semibold text-on-background leading-snug line-clamp-2">Pastel Peach Silk Cotton Blend</h3>
-            <div class="flex items-baseline gap-2 mt-1">
-              <span class="text-base font-bold text-on-background">₹4,250</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Load More -->
-    <section class="mt-16 text-center px-4">
-      <button class="inline-flex items-center gap-2 px-8 py-3 rounded-full border-2 border-outline-variant text-on-background font-semibold text-sm hover:bg-surface-dim hover:border-primary transition-all">
-        Load More Results
-        <span class="material-symbols-outlined text-lg">expand_more</span>
-      </button>
-    </section>
-
-  </main>
-
-  <!-- ============================== -->
-  <!-- 13. FOOTER -->
-  <!-- ============================== -->
-  <footer class="hidden md:block bg-inverse-surface text-inverse-on-surface">
-      <div class="max-w-[1280px] mx-auto px-16 py-16">
-          <div class="grid grid-cols-4 gap-12">
-              <!-- Brand -->
-              <div class="col-span-1">
-                  <a href="index.html" class="font-display text-2xl font-bold text-inverse-primary mb-4 block">Chennai Retail</a>
-                  <p class="text-inverse-on-surface/70 text-sm leading-relaxed mb-6">Expert and premium, yet deeply rooted in the local landscape. Serving Chennai with pride since 2020.</p>
-                  <div class="inline-flex items-center gap-2 bg-inverse-on-surface/10 px-4 py-2 rounded-full">
-                      <span class="relative flex h-2.5 w-2.5">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                      </span>
-                      <span class="text-sm font-medium text-inverse-on-surface">Live in Chennai</span>
-                  </div>
-              </div>
-              <!-- Company -->
-              <div>
-                  <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Company</h4>
-                  <ul class="space-y-3">
-                      <li><a href="about.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">About Us</a></li>
-                      <li><a href="stores.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Store Locations</a></li>
-                      <li><a href="careers.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Careers</a></li>
-                  </ul>
-              </div>
-              <!-- Help -->
-              <div>
-                  <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Help</h4>
-                  <ul class="space-y-3">
-                      <li><a href="support.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Customer Support</a></li>
-                      <li><a href="privacy.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Privacy Policy</a></li>
-                      <li><a href="terms.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Terms of Service</a></li>
-                  </ul>
-              </div>
-              <!-- Connect -->
-              <div>
-                  <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Connect</h4>
-                  <ul class="space-y-3">
-                      <li><a href="#newsletter" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Newsletter</a></li>
-                      <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Instagram</a></li>
-                      <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">WhatsApp</a></li>
-                  </ul>
-              </div>
-          </div>
-          <!-- Bottom Bar -->
-          <div class="border-t border-inverse-on-surface/10 mt-12 pt-8 flex items-center justify-between">
-              <p class="text-inverse-on-surface/50 text-sm">&copy; 2024 Chennai Retail. Serving Chennai with Pride.</p>
-              <div class="flex items-center gap-1 text-sm">
-                  <span class="text-inverse-on-surface font-medium cursor-pointer">EN</span>
-                  <span class="text-inverse-on-surface/30">|</span>
-                  <span class="text-inverse-on-surface/50 cursor-pointer hover:text-inverse-on-surface transition-colors">தமிழ்</span>
-              </div>
-          </div>
-      </div>
-  </footer>
-
-  <!-- ============================== -->
-  <!-- 14. MOBILE BOTTOM NAV -->
-  <!-- ============================== -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest border-t border-outline-variant/30 safe-area-bottom">
-      <div class="grid grid-cols-5 h-16">
-          <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
-              <span class="material-symbols-outlined text-[22px]">home</span>
-              <span class="text-[10px] font-medium">Home</span>
-          </a>
-          <a href="category.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
-              <span class="material-symbols-outlined text-[22px]">category</span>
-              <span class="text-[10px] font-medium">Categories</span>
-          </a>
-          <a href="search.html" class="flex flex-col items-center justify-center gap-1 text-primary">
-              <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">search</span>
-              <span class="text-[10px] font-semibold">Search</span>
-          </a>
-          <a href="cart.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors relative">
-              <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
-              <span class="cart-badge absolute top-1.5 right-1/4 bg-primary text-on-primary text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
-              <span class="text-[10px] font-medium">Cart</span>
-          </a>
-          <a href="account.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
-              <span class="material-symbols-outlined text-[22px]">person</span>
-              <span class="text-[10px] font-medium">Profile</span>
-          </a>
-      </div>
-  </nav>
-
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

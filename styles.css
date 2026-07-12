@@ -7,8 +7,8 @@
    1. CSS Custom Properties
    -------------------------------------------------- */
 :root {
-    --primary: #9a442d;
-    --primary-light: #e07a5f;
+    --primary: #dc2626;
+    --primary-light: #fecaca;
     --on-primary: #ffffff;
     --surface: #ffffff;
     --surface-alt: #f7f7f7;
@@ -325,7 +325,7 @@ img:not([data-src]) {
     cursor: pointer;
 }
 .btn-primary:hover {
-    background: #7a3520;
+    background: #b91c1c;
 }
 .btn-primary:active {
     transform: scale(0.98);

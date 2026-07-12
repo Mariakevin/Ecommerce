@@ -264,40 +264,34 @@
                     <p id="productCategory" class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-2"></p>
                     <h1 id="productTitle" class="product-detail-title mb-2"></h1>
 
-                    <!-- Rating Stars -->
-                    <div class="flex items-center gap-2 mb-4">
+                    <!-- Rating & Social Proof - Consolidated -->
+                    <div class="flex items-center gap-3 mb-4 py-2 px-3 bg-surface-alt rounded-lg">
                         <div class="flex items-center gap-0.5">
-                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
-                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
-                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
-                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star</span>
-                            <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star_half</span>
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:16px">star</span>
+                            <span class="text-sm font-semibold">4.5</span>
                         </div>
-                        <span class="text-sm text-text-secondary">4.5 (12 reviews)</span>
                         <span class="text-xs text-text-tertiary">•</span>
-                        <span class="text-xs text-primary font-medium">142 bought in last 30 days</span>
+                        <span class="text-xs text-text-secondary">12 reviews</span>
+                        <span class="text-xs text-text-tertiary">•</span>
+                        <span class="text-xs text-primary font-medium">142 bought</span>
                     </div>
 
-                    <!-- Urgency Banner -->
-                    <div class="urgency-banner">
-                        <span class="urgency-icon">🔥</span>
-                        <div class="urgency-text">
-                            <strong>Limited Time Offer!</strong>
-                            <span>Sale ends in <span id="productCountdown">02:34:15</span></span>
+                    <!-- Price + Urgency - Combined for immediate value -->
+                    <div class="flex items-end justify-between mb-3">
+                        <p id="productPrice" class="product-detail-price"></p>
+                        <div class="flex items-center gap-1.5 text-xs text-primary font-medium">
+                            <span class="material-symbols-outlined" style="font-size:14px">schedule</span>
+                            Ends in <span id="productCountdown" class="font-bold">02:34:15</span>
                         </div>
                     </div>
 
-                    <p id="productPrice" class="product-detail-price mb-3"></p>
-
-                    <!-- Stock Status -->
-                    <div class="flex items-center gap-3 mb-6">
+                    <!-- Stock Status - Simplified -->
+                    <div class="flex items-center gap-2 mb-4">
                         <span id="stockBadge" class="stock-badge-in">In Stock</span>
                         <span id="stockLow" class="stock-low hidden">Only few left!</span>
-                        <span class="text-xs text-text-tertiary">•</span>
-                        <span class="text-xs text-text-tertiary">5 people have this in their cart</span>
                     </div>
 
-                    <p id="productDesc" class="text-sm text-text-secondary leading-relaxed mb-6"></p>
+                    <p id="productDesc" class="text-sm text-text-secondary leading-relaxed mb-5 line-clamp-3"></p>
 
                     <!-- Variant Selector -->
                     <div class="variant-section" id="variantSection">
@@ -336,122 +330,76 @@
                         </div>
                     </div>
 
-                    <!-- Delivery Estimate with Pincode -->
-                    <div class="delivery-checker">
-                        <div class="delivery-checker-header">
-                            <span class="material-symbols-outlined">local_shipping</span>
-                            <span class="delivery-checker-title">Delivery Options</span>
+                    <!-- Delivery - Simplified with key info only -->
+                    <div class="delivery-checker mb-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary" style="font-size:18px">local_shipping</span>
+                                <span class="text-sm font-semibold">Free Delivery</span>
+                            </div>
+                            <span class="text-xs text-primary font-medium">Tomorrow</span>
                         </div>
                         <div class="pincode-input-row">
-                            <input type="text" id="pincodeInput" class="pincode-input" placeholder="Enter pincode" maxlength="6" inputmode="numeric">
+                            <input type="text" id="pincodeInput" class="pincode-input" placeholder="Check pincode" maxlength="6" inputmode="numeric">
                             <button id="checkPincode" class="pincode-check-btn">Check</button>
                         </div>
-                        <div id="deliveryResults" class="delivery-results">
+                        <div id="deliveryResults" class="delivery-results hidden">
                             <div class="delivery-option">
                                 <div class="delivery-option-icon express">
-                                    <span class="material-symbols-outlined" style="font-size:20px">bolt</span>
+                                    <span class="material-symbols-outlined" style="font-size:18px">bolt</span>
                                 </div>
                                 <div class="delivery-option-info">
-                                    <p class="delivery-option-title">Express Delivery</p>
-                                    <p class="delivery-option-desc">Get it by <strong>Tomorrow, 10AM - 2PM</strong></p>
+                                    <p class="delivery-option-title">Express</p>
+                                    <p class="delivery-option-desc">Tomorrow 10AM-2PM</p>
                                 </div>
                                 <span class="delivery-option-badge free">FREE</span>
                             </div>
                             <div class="delivery-option">
                                 <div class="delivery-option-icon standard">
-                                    <span class="material-symbols-outlined" style="font-size:20px">local_shipping</span>
+                                    <span class="material-symbols-outlined" style="font-size:18px">local_shipping</span>
                                 </div>
                                 <div class="delivery-option-info">
-                                    <p class="delivery-option-title">Standard Delivery</p>
-                                    <p class="delivery-option-desc">Get it by <strong>Jul 15 - Jul 16</strong></p>
+                                    <p class="delivery-option-title">Standard</p>
+                                    <p class="delivery-option-desc">Jul 15-16</p>
                                 </div>
                                 <span class="delivery-option-badge free">FREE</span>
                             </div>
-                            <div class="delivery-option">
-                                <div class="delivery-option-icon pickup">
-                                    <span class="material-symbols-outlined" style="font-size:20px">storefront</span>
-                                </div>
-                                <div class="delivery-option-info">
-                                    <p class="delivery-option-title">Store Pickup</p>
-                                    <p class="delivery-option-desc">Ready in <strong>2 hours</strong> at T. Nagar store</p>
-                                </div>
-                                <span class="delivery-option-badge">FREE</span>
-                            </div>
                         </div>
-                        <p class="delivery-order-within">Order within <span class="text-primary font-semibold" id="deliveryCountdown">2h 34m</span> for same-day delivery</p>
                     </div>
 
-                    <!-- Quantity -->
-                    <div class="mb-5">
-                        <p class="text-sm font-medium mb-2">Quantity</p>
-                        <div class="qty-stepper">
+                    <!-- Quantity + Actions - Combined for simplicity -->
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="qty-stepper flex-shrink-0">
                             <button data-action="dec">−</button>
                             <input type="number" value="1" min="1" max="10" aria-label="Quantity">
                             <button data-action="inc">+</button>
                         </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="flex gap-3 mb-6">
                         <button data-main-add-cart class="btn-primary flex-1">
-                            <span class="material-symbols-outlined" style="font-size:20px">shopping_bag</span>
+                            <span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>
                             Add to Cart
                         </button>
-                        <button class="wishlist-btn btn-outline px-4" aria-label="Add to wishlist">
-                            <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
-                        </button>
-                        <button id="shareBtn" class="btn-outline px-4" aria-label="Share product">
-                            <span class="material-symbols-outlined" style="font-size:20px">share</span>
+                        <button class="wishlist-btn btn-outline px-3" aria-label="Add to wishlist">
+                            <span class="material-symbols-outlined" style="font-size:20px">favorite</span>
                         </button>
                     </div>
 
-                    <!-- Trust Badges -->
-                    <div class="trust-badges-grid">
-                        <div class="trust-badge-premium">
-                            <span class="material-symbols-outlined">verified</span>
-                            <div>
-                                <p class="trust-badge-title">Genuine Product</p>
-                                <p class="trust-badge-desc">100% authentic</p>
-                            </div>
+                    <!-- Trust - Condensed single line -->
+                    <div class="flex items-center justify-between py-3 px-4 bg-surface-alt rounded-lg mb-4">
+                        <div class="flex items-center gap-1.5 text-xs text-text-secondary">
+                            <span class="material-symbols-outlined text-green-600" style="font-size:14px">verified</span>
+                            Genuine
                         </div>
-                        <div class="trust-badge-premium">
-                            <span class="material-symbols-outlined">lock</span>
-                            <div>
-                                <p class="trust-badge-title">Secure Payment</p>
-                                <p class="trust-badge-desc">SSL encrypted</p>
-                            </div>
+                        <div class="flex items-center gap-1.5 text-xs text-text-secondary">
+                            <span class="material-symbols-outlined text-green-600" style="font-size:14px">replay</span>
+                            7-Day Return
                         </div>
-                        <div class="trust-badge-premium">
-                            <span class="material-symbols-outlined">local_shipping</span>
-                            <div>
-                                <p class="trust-badge-title">Free Delivery</p>
-                                <p class="trust-badge-desc">On orders over ₹999</p>
-                            </div>
+                        <div class="flex items-center gap-1.5 text-xs text-text-secondary">
+                            <span class="material-symbols-outlined text-green-600" style="font-size:14px">lock</span>
+                            Secure
                         </div>
-                        <div class="trust-badge-premium">
-                            <span class="material-symbols-outlined">replay</span>
-                            <div>
-                                <p class="trust-badge-title">7-Day Returns</p>
-                                <p class="trust-badge-desc">Hassle-free</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Guarantee Badges -->
-                    <div class="guarantee-strip">
-                        <div class="guarantee-item">
-                            <span class="material-symbols-outlined">workspace_premium</span>
-                            <span>1 Year Warranty</span>
-                        </div>
-                        <div class="guarantee-divider"></div>
-                        <div class="guarantee-item">
-                            <span class="material-symbols-outlined">support_agent</span>
-                            <span>24/7 Support</span>
-                        </div>
-                        <div class="guarantee-divider"></div>
-                        <div class="guarantee-item">
-                            <span class="material-symbols-outlined">payments</span>
-                            <span>EMI Available</span>
+                        <div class="flex items-center gap-1.5 text-xs text-text-secondary">
+                            <span class="material-symbols-outlined text-green-600" style="font-size:14px">workspace_premium</span>
+                            1yr Warranty
                         </div>
                     </div>
 

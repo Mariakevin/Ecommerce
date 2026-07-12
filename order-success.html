@@ -98,49 +98,63 @@
     <div class="page-transition">
     <div id="main-content" tabindex="-1" class="min-h-screen flex items-center justify-center px-4 py-12">
         <div id="orderContent" class="max-w-md w-full text-center">
-            <!-- Success Icon -->
-            <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 success-icon">
-                <span class="material-symbols-outlined text-primary" style="font-size:40px">check_circle</span>
+            <!-- Success Icon - Enhanced celebration -->
+            <div class="relative mb-6">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mx-auto success-icon shadow-lg shadow-green-500/30">
+                    <span class="material-symbols-outlined text-white" style="font-size:48px">check_circle</span>
+                </div>
+                <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold animate-bounce">
+                    🎉
+                </div>
             </div>
 
-            <h1 class="text-2xl font-semibold mb-2">Order Placed!</h1>
-            <p class="text-text-secondary text-sm mb-2">Thank you for shopping with us</p>
+            <h1 class="text-3xl font-bold mb-2 bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Order Placed!</h1>
+            <p class="text-text-secondary text-sm mb-1">Thank you for shopping with us</p>
+            <p class="text-xs text-primary font-medium mb-6">You'll receive same-day delivery tomorrow</p>
 
             <!-- Email Confirmation -->
-            <p class="text-xs text-text-tertiary mb-6">
-                <span class="material-symbols-outlined align-middle mr-1" style="font-size:14px">email</span>
-                A confirmation email has been sent to <span id="userEmail">your email</span>
+            <p class="text-xs text-text-tertiary mb-6 flex items-center justify-center gap-1">
+                <span class="material-symbols-outlined" style="font-size:14px">email</span>
+                Confirmation sent to <span id="userEmail" class="font-medium text-text-secondary">your email</span>
             </p>
 
-            <!-- Order Details Card -->
-            <div class="border border-border rounded-lg p-5 mb-6 text-left">
+            <!-- Order Details Card - Cleaner layout -->
+            <div class="border border-border rounded-xl p-5 mb-5 text-left bg-white shadow-sm">
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <span id="orderNumber" class="text-sm font-semibold">#CR-2026-1234</span>
+                        <span id="orderNumber" class="text-sm font-bold">#CR-2026-1234</span>
                         <p id="orderDate" class="text-xs text-text-tertiary mt-0.5">12 July 2026</p>
                         <p id="orderItems" class="text-xs text-text-tertiary"></p>
                     </div>
-                    <span class="px-2 py-0.5 text-xs font-medium rounded-full bg-green-50 text-green-700">Confirmed</span>
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 bg-green-50 rounded-full">
+                        <span class="material-symbols-outlined text-green-600" style="font-size:14px">check_circle</span>
+                        <span class="text-xs font-semibold text-green-700">Confirmed</span>
+                    </div>
                 </div>
 
                 <!-- Items -->
                 <div id="orderItemsList" class="border-t border-border-light pt-4 space-y-3 mb-4"></div>
 
-                <!-- Shipping -->
-                <div class="border-t border-border-light pt-4 mb-4">
-                    <p class="text-xs font-semibold text-text-tertiary uppercase mb-2">Shipping Address</p>
-                    <div id="shippingAddress"></div>
-                </div>
-
-                <!-- Delivery -->
-                <div class="border-t border-border-light pt-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-primary" style="font-size:18px">local_shipping</span>
-                        <span id="orderDelivery" class="text-sm font-medium">Estimated: 15 July 2026</span>
+                <!-- Delivery Highlight - Peak-end rule: emphasize the positive outcome -->
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-green-600" style="font-size:20px">local_shipping</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-green-800">Express Delivery</p>
+                            <p id="orderDelivery" class="text-xs text-green-600">Estimated: 15 July 2026</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Price Breakdown -->
+                <!-- Shipping -->
+                <div class="mb-4">
+                    <p class="text-xs font-semibold text-text-tertiary uppercase mb-2">Shipping Address</p>
+                    <div id="shippingAddress" class="text-sm text-text-secondary"></div>
+                </div>
+
+                <!-- Price Breakdown - Simplified -->
                 <div class="border-t border-border-light pt-4 space-y-2">
                     <div class="flex justify-between text-sm">
                         <span class="text-text-secondary">Subtotal</span>
@@ -148,60 +162,60 @@
                     </div>
                     <div class="flex justify-between text-sm">
                         <span class="text-text-secondary">Delivery</span>
-                        <span id="summaryDelivery" class="font-medium">Free</span>
+                        <span id="summaryDelivery" class="font-medium text-green-600">Free</span>
                     </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-text-secondary">Tax</span>
-                        <span id="summaryTax" class="font-medium">₹0</span>
-                    </div>
-                    <div class="flex justify-between font-semibold pt-2 border-t border-border-light">
-                        <span>Total</span>
-                        <span id="summaryTotal">₹0</span>
+                    <div class="flex justify-between font-bold pt-2 border-t border-border-light text-lg">
+                        <span>Total Paid</span>
+                        <span id="summaryTotal" class="text-primary">₹0</span>
                     </div>
                 </div>
 
                 <!-- Payment Method -->
-                <div class="border-t border-border-light pt-4">
-                    <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">payments</span>
-                        <span id="paymentMethod" class="text-sm text-text-secondary">Cash on Delivery</span>
-                    </div>
+                <div class="flex items-center gap-2 mt-4 pt-4 border-t border-border-light">
+                    <span class="material-symbols-outlined text-text-tertiary" style="font-size:16px">payments</span>
+                    <span id="paymentMethod" class="text-xs text-text-secondary">Cash on Delivery</span>
                 </div>
             </div>
 
-            <!-- What's Next -->
-            <div class="border border-border rounded-lg p-5 mb-6 text-left">
-                <h2 class="text-sm font-semibold mb-4">What's Next</h2>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
-                            <span class="material-symbols-outlined" style="font-size:14px">check</span>
+            <!-- What's Next - Progress visualization -->
+            <div class="border border-border rounded-xl p-5 mb-5 text-left bg-white shadow-sm">
+                <h2 class="text-sm font-bold mb-4 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary" style="font-size:18px">timeline</span>
+                    What's Next
+                </h2>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined" style="font-size:16px">check</span>
                         </div>
-                        <div>
-                            <p class="text-sm font-medium">Order Confirmed</p>
-                            <p class="text-xs text-text-tertiary">We've received your order</p>
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold text-green-700">Order Confirmed</p>
+                            <p class="text-xs text-text-tertiary">Just now</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
+                    <div class="ml-4 border-l-2 border-dashed border-border h-4"></div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
                             <span class="text-xs font-bold">2</span>
                         </div>
                         <div>
                             <p class="text-sm font-medium text-text-secondary">Processing</p>
-                            <p class="text-xs text-text-tertiary">We're preparing your items</p>
+                            <p class="text-xs text-text-tertiary">Preparing your items</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
+                    <div class="ml-4 border-l-2 border-dashed border-border h-4"></div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
                             <span class="text-xs font-bold">3</span>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-text-secondary">Shipped</p>
-                            <p class="text-xs text-text-tertiary">On its way to you</p>
+                            <p class="text-sm font-medium text-text-secondary">Out for Delivery</p>
+                            <p class="text-xs text-text-tertiary">Tomorrow morning</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <div class="w-6 h-6 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
+                    <div class="ml-4 border-l-2 border-dashed border-border h-4"></div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center shrink-0">
                             <span class="text-xs font-bold">4</span>
                         </div>
                         <div>
@@ -212,10 +226,16 @@
                 </div>
             </div>
 
-            <!-- Actions -->
+            <!-- Actions - Primary CTA emphasized -->
             <div class="flex flex-col sm:flex-row gap-3 mb-3 no-print">
-                <a href="category.html" class="btn-primary flex-1 text-center">Continue Shopping</a>
-                <a href="account.html" class="btn-outline flex-1 text-center">Track Order</a>
+                <a href="category.html" class="btn-primary flex-1 text-center py-3">
+                    <span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>
+                    Continue Shopping
+                </a>
+                <a href="account.html" class="btn-outline flex-1 text-center py-3">
+                    <span class="material-symbols-outlined" style="font-size:18px">receipt_long</span>
+                    Track Order
+                </a>
             </div>
             <div class="flex flex-col sm:flex-row gap-3 no-print">
                 <button id="shareOrderBtn" class="btn-outline flex-1">

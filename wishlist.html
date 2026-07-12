@@ -59,7 +59,22 @@
 <body class="bg-background text-on-background font-body antialiased min-h-screen flex flex-col pb-24 md:pb-0">
 
     <!-- ============================== -->
-    <!-- DESKTOP HEADER -->
+    <!-- 1. ANNOUNCEMENT BAR -->
+    <!-- ============================== -->
+    <div class="bg-primary text-on-primary text-center py-2 px-4 text-sm font-medium flex items-center justify-center gap-4 flex-wrap">
+        <span class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-lg">local_shipping</span>
+            Free Same-Day Delivery on orders above ₹999 in Chennai
+        </span>
+        <span class="hidden sm:inline text-on-primary/60">|</span>
+        <span class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-lg">storefront</span>
+            Store Pickup ready in 2 hours
+        </span>
+    </div>
+
+    <!-- ============================== -->
+    <!-- 2. DESKTOP HEADER -->
     <!-- ============================== -->
     <header class="hidden md:flex sticky top-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
         <div class="max-w-[1280px] w-full mx-auto px-16 flex items-center justify-between h-16">
@@ -124,7 +139,12 @@
             <div class="flex-1 max-w-md mx-8">
                 <div class="relative">
                     <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
-                    <input type="text" placeholder="Search sarees, decor, electronics..." class="w-full pl-10 pr-4 py-2.5 bg-surface-container rounded-full text-sm text-on-surface placeholder:text-on-surface-variant/60 border border-outline-variant/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all">
+                    <input
+                        type="text"
+                        data-search-input
+                        placeholder="Search sarees, decor, electronics..."
+                        class="w-full pl-10 pr-4 py-2.5 bg-surface-container rounded-full text-sm text-on-surface placeholder:text-on-surface-variant/60 border border-outline-variant/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
+                    >
                 </div>
             </div>
             <div class="flex items-center gap-5">
@@ -321,7 +341,7 @@
     <!-- ============================== -->
     <!-- FOOTER -->
     <!-- ============================== -->
-    <footer class="hidden md:block bg-inverse-surface text-inverse-on-surface mt-auto">
+    <footer class="hidden md:block bg-inverse-surface text-inverse-on-surface">
         <div class="max-w-[1280px] mx-auto px-16 py-16">
             <div class="grid grid-cols-4 gap-12">
                 <div class="col-span-1">
@@ -354,7 +374,7 @@
                 <div>
                     <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Connect</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Newsletter</a></li>
+                        <li><a href="#newsletter" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Newsletter</a></li>
                         <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Instagram</a></li>
                         <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">WhatsApp</a></li>
                     </ul>
@@ -376,9 +396,9 @@
     <!-- ============================== -->
     <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest border-t border-outline-variant/30 safe-area-bottom">
         <div class="grid grid-cols-5 h-16">
-            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined text-[22px]">home</span>
-                <span class="text-[10px] font-medium">Home</span>
+            <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-primary">
+                <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">home</span>
+                <span class="text-[10px] font-semibold">Home</span>
             </a>
             <a href="category.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
                 <span class="material-symbols-outlined text-[22px]">category</span>
@@ -393,9 +413,9 @@
                 <span class="cart-badge absolute top-1.5 right-1/4 bg-primary text-on-primary text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
                 <span class="text-[10px] font-medium">Cart</span>
             </a>
-            <a href="account.html" class="flex flex-col items-center justify-center gap-1 text-primary">
-                <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">person</span>
-                <span class="text-[10px] font-semibold">Profile</span>
+            <a href="account.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined text-[22px]">person</span>
+                <span class="text-[10px] font-medium">Profile</span>
             </a>
         </div>
     </nav>

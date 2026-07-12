@@ -4,107 +4,198 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Account - Chennai Retail</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Tailwind Config -->
   <script>
     tailwind.config = {
+      darkMode: "class",
       theme: {
         extend: {
-          colors: {
-            'primary': '#6750A4',
-            'on-primary': '#FFFFFF',
-            'primary-container': '#EADDFF',
-            'on-primary-container': '#21005D',
-            'secondary': '#625B71',
-            'on-secondary': '#FFFFFF',
-            'secondary-container': '#E8DEF8',
-            'on-secondary-container': '#1D192B',
-            'tertiary': '#7D5260',
-            'on-tertiary': '#FFFFFF',
-            'tertiary-container': '#FFD8E4',
-            'on-tertiary-container': '#31111D',
-            'background': '#FEF7FF',
-            'on-background': '#1D1B20',
-            'surface': '#FEF7FF',
-            'on-surface': '#1D1B20',
-            'surface-variant': '#E7E0EC',
-            'on-surface-variant': '#49454F',
-            'outline': '#79747E',
-            'outline-variant': '#CAC4D0',
-            'surface-container': '#F3EDF7',
-            'surface-container-low': '#F7F2FA',
-            'surface-container-high': '#ECE6F0',
-            'surface-container-highest': '#E6E0E9',
-            'error': '#B3261E',
-            'on-error': '#FFFFFF',
-            'error-container': '#F9DEDC',
+          "colors": {
+            "on-primary-fixed": "#3c0800", "on-background": "#171b2b", "surface": "#faf8ff",
+            "primary-fixed": "#ffdbd2", "on-error": "#ffffff", "surface-variant": "#dee1f8",
+            "inverse-surface": "#2c3041", "tertiary-fixed-dim": "#e6c185",
+            "surface-container-high": "#e4e7fe", "tertiary-fixed": "#ffdeab",
+            "background": "#faf8ff", "outline-variant": "#dbc1ba",
+            "on-secondary": "#ffffff", "secondary-container": "#b3d1fd",
+            "tertiary-container": "#b3915a", "on-primary-fixed-variant": "#7c2e19",
+            "inverse-primary": "#ffb4a1", "secondary": "#436086",
+            "on-surface-variant": "#55423e", "surface-container": "#ebedff",
+            "tertiary": "#765a28", "surface-container-low": "#f3f2ff",
+            "outline": "#88726d", "surface-tint": "#9a442d", "error": "#ba1a1a",
+            "on-tertiary": "#ffffff", "secondary-fixed-dim": "#abc8f4",
+            "on-primary-container": "#5b1604", "on-secondary-container": "#3c597f",
+            "on-secondary-fixed-variant": "#2a486d", "on-primary": "#ffffff",
+            "primary": "#9a442d", "on-secondary-fixed": "#001c39",
+            "on-tertiary-fixed": "#271900", "on-tertiary-container": "#402b00",
+            "primary-container": "#e07a5f", "surface-container-highest": "#dee1f8",
+            "secondary-fixed": "#d3e3ff", "on-error-container": "#93000a",
+            "inverse-on-surface": "#eff0ff", "surface-dim": "#d6d9ef",
+            "error-container": "#ffdad6", "surface-container-lowest": "#ffffff",
+            "on-surface": "#171b2b", "surface-bright": "#faf8ff",
+            "primary-fixed-dim": "#ffb4a1", "on-tertiary-fixed-variant": "#5c4212"
           },
-          fontFamily: {
-            'heading': ['Montserrat', 'sans-serif'],
-            'body': ['Inter', 'sans-serif'],
-          },
-          spacing: {
-            'gutter': '24px',
-          },
-          borderRadius: {
-            'xs': '4px',
-            'sm': '8px',
-            'md': '12px',
-            'lg': '16px',
-            'xl': '28px',
-          },
-        },
-      },
+          "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          "spacing": { "margin-mobile": "16px", "container-max": "1280px", "base": "8px", "gutter": "24px", "margin-desktop": "64px", "section-gap": "80px" },
+          "fontFamily": { "display": ["Montserrat"], "body": ["Inter"] },
+          "fontSize": {
+            "display-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "display-lg": ["48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "label-sm": ["13px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+          }
+        }
+      }
     }
   </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-background text-on-background font-body min-h-screen flex flex-col">
+<body class="bg-background text-on-background font-body antialiased overflow-x-hidden min-h-screen pb-24 md:pb-0">
 
-  <!-- Desktop Header -->
-  <header class="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30">
-    <div class="w-full max-w-7xl mx-auto px-16 h-[100px] flex items-center justify-between">
-      <a href="index.html" class="font-heading font-bold text-2xl text-primary">Chennai Retail</a>
-      <nav class="flex items-center gap-8">
-        <a href="index.html" class="font-medium text-on-surface/70 hover:text-primary transition-colors">Home</a>
-        <a href="shop.html" class="font-medium text-on-surface/70 hover:text-primary transition-colors">Shop</a>
-        <a href="categories.html" class="font-medium text-on-surface/70 hover:text-primary transition-colors">Categories</a>
-        <a href="about.html" class="font-medium text-on-surface/70 hover:text-primary transition-colors">About</a>
-        <a href="contact.html" class="font-medium text-on-surface/70 hover:text-primary transition-colors">Contact</a>
-      </nav>
-      <div class="flex items-center gap-4">
-        <button class="p-2 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Search">
-          <span class="material-symbols-outlined text-on-surface">search</span>
-        </button>
-        <a href="account.html" class="p-2 rounded-full bg-primary-container text-on-primary-container" aria-label="Account">
-          <span class="material-symbols-outlined text-xl">person</span>
+  <!-- Main wrapper for mobile header offset -->
+  <div class="pt-14 md:pt-0">
+
+    <!-- ============================== -->
+    <!-- 1. ANNOUNCEMENT BAR -->
+    <!-- ============================== -->
+    <div class="bg-primary text-on-primary text-center py-2 px-4 text-sm font-medium flex items-center justify-center gap-4 flex-wrap">
+      <span class="flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-lg">local_shipping</span>
+        Free Same-Day Delivery on orders above ₹999 in Chennai
+      </span>
+      <span class="hidden sm:inline text-on-primary/60">|</span>
+      <span class="flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-lg">storefront</span>
+        Store Pickup ready in 2 hours
+      </span>
+    </div>
+
+    <!-- ============================== -->
+    <!-- 2. DESKTOP HEADER -->
+    <!-- ============================== -->
+    <header class="hidden md:flex sticky top-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
+      <div class="max-w-[1280px] w-full mx-auto px-16 flex items-center justify-between h-16">
+        <!-- Brand -->
+        <a href="index.html" class="font-display text-[26px] text-primary font-bold tracking-tight shrink-0">Chennai Retail</a>
+
+        <!-- Navigation -->
+        <nav class="flex items-center gap-8 ml-8">
+          <a href="index.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Home</a>
+          <div class="relative group">
+            <button class="text-sm font-medium text-on-surface hover:text-primary flex items-center gap-1 transition-colors">
+              Categories
+              <span class="material-symbols-outlined text-lg transition-transform group-hover:rotate-180">expand_more</span>
+            </button>
+            <!-- Mega Menu Dropdown -->
+            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div class="bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant/30 p-6 grid grid-cols-3 gap-4 min-w-[540px]">
+                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-primary">home</span>
+                  <div>
+                    <p class="text-sm font-semibold text-on-surface">Home Decor</p>
+                    <p class="text-xs text-on-surface-variant">154 items</p>
+                  </div>
+                </a>
+                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-primary">checkroom</span>
+                  <div>
+                    <p class="text-sm font-semibold text-on-surface">Silk Sarees</p>
+                    <p class="text-xs text-on-surface-variant">89 items</p>
+                  </div>
+                </a>
+                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-primary">devices</span>
+                  <div>
+                    <p class="text-sm font-semibold text-on-surface">Electronics</p>
+                    <p class="text-xs text-on-surface-variant">42 items</p>
+                  </div>
+                </a>
+                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-primary">light</span>
+                  <div>
+                    <p class="text-sm font-semibold text-on-surface">Lighting</p>
+                    <p class="text-xs text-on-surface-variant">67 items</p>
+                  </div>
+                </a>
+                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-primary">spa</span>
+                  <div>
+                    <p class="text-sm font-semibold text-on-surface">Wellness</p>
+                    <p class="text-xs text-on-surface-variant">35 items</p>
+                  </div>
+                </a>
+                <a href="category.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-primary">restaurant</span>
+                  <div>
+                    <p class="text-sm font-semibold text-on-surface">Kitchen</p>
+                    <p class="text-xs text-on-surface-variant">78 items</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="offers.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Offers</a>
+          <a href="stores.html" class="text-sm font-medium text-on-surface hover:text-primary transition-colors">Stores</a>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="flex-1 max-w-md mx-8">
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+            <input
+              type="text"
+              data-search-input
+              placeholder="Search sarees, decor, electronics..."
+              class="w-full pl-10 pr-4 py-2.5 bg-surface-container rounded-full text-sm text-on-surface placeholder:text-on-surface-variant/60 border border-outline-variant/40 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all"
+            >
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-5">
+          <a href="wishlist.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Wishlist">
+            <span class="material-symbols-outlined text-[22px] text-on-surface-variant">favorite</span>
+          </a>
+          <a href="cart.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Cart">
+            <span class="material-symbols-outlined text-[22px] text-on-surface-variant">shopping_cart</span>
+            <span class="cart-badge absolute -top-0.5 -right-0.5 bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+          </a>
+          <a href="account.html" class="p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Account">
+            <span class="material-symbols-outlined text-[22px] text-on-surface-variant">person</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================== -->
+    <!-- 3. MOBILE HEADER -->
+    <!-- ============================== -->
+    <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 h-14 flex items-center px-4">
+      <a href="index.html" class="font-display text-xl text-primary font-bold tracking-tight shrink-0">Chennai Retail</a>
+      <div class="flex items-center gap-2 ml-auto">
+        <a href="search.html" class="p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Search">
+          <span class="material-symbols-outlined text-[22px] text-on-surface-variant">search</span>
         </a>
-        <a href="cart.html" class="p-2 rounded-full hover:bg-surface-container-high transition-colors relative" aria-label="Cart">
-          <span class="material-symbols-outlined text-on-surface">shopping_cart</span>
-          <span class="absolute -top-1 -right-1 bg-primary text-on-primary text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">3</span>
+        <a href="cart.html" class="relative p-2 hover:bg-surface-container rounded-full transition-colors" aria-label="Cart">
+          <span class="material-symbols-outlined text-[22px] text-on-surface-variant">shopping_cart</span>
+          <span class="cart-badge absolute top-0.5 right-0.5 bg-primary text-on-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
         </a>
       </div>
-    </div>
-  </header>
-
-  <!-- Mobile Header -->
-  <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30">
-    <div class="px-4 h-[64px] flex items-center justify-between">
-      <a href="index.html" class="font-heading font-bold text-xl text-primary">Chennai Retail</a>
-      <div class="flex items-center gap-2">
-        <a href="account.html" class="p-2 rounded-full bg-primary-container text-on-primary-container" aria-label="Account">
-          <span class="material-symbols-outlined text-xl">person</span>
-        </a>
-        <a href="cart.html" class="p-2 rounded-full hover:bg-surface-container-high transition-colors relative" aria-label="Cart">
-          <span class="material-symbols-outlined text-on-surface">shopping_cart</span>
-          <span class="absolute -top-1 -right-1 bg-primary text-on-primary text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">3</span>
-        </a>
-      </div>
-    </div>
-  </header>
+    </header>
 
   <!-- Main Content -->
   <main class="flex-1 pt-[100px] md:pt-[100px] pb-20 px-4 md:px-16">
@@ -234,71 +325,89 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-surface-container py-16 px-4 md:px-16 mt-auto">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div>
-          <h3 class="font-heading font-bold text-xl text-primary mb-4">Chennai Retail</h3>
-          <p class="text-on-surface/70 text-sm leading-relaxed">Curating the finest artisanal and handcrafted products from skilled makers across India.</p>
+  <!-- ============================== -->
+  <!-- 13. FOOTER -->
+  <!-- ============================== -->
+  <footer class="hidden md:block bg-inverse-surface text-inverse-on-surface">
+    <div class="max-w-[1280px] mx-auto px-16 py-16">
+      <div class="grid grid-cols-4 gap-12">
+        <!-- Brand -->
+        <div class="col-span-1">
+          <a href="index.html" class="font-display text-2xl font-bold text-inverse-primary mb-4 block">Chennai Retail</a>
+          <p class="text-inverse-on-surface/70 text-sm leading-relaxed mb-6">Expert and premium, yet deeply rooted in the local landscape. Serving Chennai with pride since 2020.</p>
+          <div class="inline-flex items-center gap-2 bg-inverse-on-surface/10 px-4 py-2 rounded-full">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+            </span>
+            <span class="text-sm font-medium text-inverse-on-surface">Live in Chennai</span>
+          </div>
         </div>
+        <!-- Company -->
         <div>
-          <h4 class="font-heading font-semibold text-on-surface mb-4">Shop</h4>
-          <ul class="space-y-2 text-sm text-on-surface/70">
-            <li><a href="shop.html" class="hover:text-primary transition-colors">All Products</a></li>
-            <li><a href="categories.html" class="hover:text-primary transition-colors">Categories</a></li>
-            <li><a href="shop.html" class="hover:text-primary transition-colors">New Arrivals</a></li>
-            <li><a href="shop.html" class="hover:text-primary transition-colors">Best Sellers</a></li>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Company</h4>
+          <ul class="space-y-3">
+            <li><a href="about.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">About Us</a></li>
+            <li><a href="stores.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Store Locations</a></li>
+            <li><a href="careers.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Careers</a></li>
           </ul>
         </div>
+        <!-- Help -->
         <div>
-          <h4 class="font-heading font-semibold text-on-surface mb-4">Support</h4>
-          <ul class="space-y-2 text-sm text-on-surface/70">
-            <li><a href="contact.html" class="hover:text-primary transition-colors">Contact Us</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">FAQs</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Shipping Info</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Returns</a></li>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Help</h4>
+          <ul class="space-y-3">
+            <li><a href="support.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Customer Support</a></li>
+            <li><a href="privacy.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Privacy Policy</a></li>
+            <li><a href="terms.html" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Terms of Service</a></li>
           </ul>
         </div>
+        <!-- Connect -->
         <div>
-          <h4 class="font-heading font-semibold text-on-surface mb-4">Connect</h4>
-          <ul class="space-y-2 text-sm text-on-surface/70">
-            <li><a href="#" class="hover:text-primary transition-colors">Instagram</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Twitter</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Facebook</a></li>
-            <li><a href="#" class="hover:text-primary transition-colors">Pinterest</a></li>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-inverse-on-surface/50 mb-4">Connect</h4>
+          <ul class="space-y-3">
+            <li><a href="#newsletter" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Newsletter</a></li>
+            <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">Instagram</a></li>
+            <li><a href="#" class="text-inverse-on-surface/80 text-sm hover:text-inverse-primary transition-colors">WhatsApp</a></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-outline-variant/30 mt-12 pt-8 text-center text-sm text-on-surface/50">
-        &copy; 2026 Chennai Retail. All rights reserved.
+      <!-- Bottom Bar -->
+      <div class="border-t border-inverse-on-surface/10 mt-12 pt-8 flex items-center justify-between">
+        <p class="text-inverse-on-surface/50 text-sm">&copy; 2024 Chennai Retail. Serving Chennai with Pride.</p>
+        <div class="flex items-center gap-1 text-sm">
+          <span class="text-inverse-on-surface font-medium cursor-pointer">EN</span>
+          <span class="text-inverse-on-surface/30">|</span>
+          <span class="text-inverse-on-surface/50 cursor-pointer hover:text-inverse-on-surface transition-colors">தமிழ்</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Mobile Bottom Navigation -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-t border-outline-variant/30">
-    <div class="flex items-center justify-around h-16">
-      <a href="index.html" class="flex flex-col items-center gap-1 text-on-surface/60 hover:text-primary transition-colors">
-        <span class="material-symbols-outlined text-2xl">home</span>
+  <!-- ============================== -->
+  <!-- 14. MOBILE BOTTOM NAV -->
+  <!-- ============================== -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest border-t border-outline-variant/30 safe-area-bottom">
+    <div class="grid grid-cols-5 h-16">
+      <a href="index.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">home</span>
         <span class="text-[10px] font-medium">Home</span>
       </a>
-      <a href="shop.html" class="flex flex-col items-center gap-1 text-on-surface/60 hover:text-primary transition-colors">
-        <span class="material-symbols-outlined text-2xl">storefront</span>
-        <span class="text-[10px] font-medium">Shop</span>
-      </a>
-      <a href="categories.html" class="flex flex-col items-center gap-1 text-on-surface/60 hover:text-primary transition-colors">
-        <span class="material-symbols-outlined text-2xl">category</span>
+      <a href="category.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">category</span>
         <span class="text-[10px] font-medium">Categories</span>
       </a>
-      <a href="cart.html" class="flex flex-col items-center gap-1 text-on-surface/60 hover:text-primary transition-colors relative">
-        <span class="material-symbols-outlined text-2xl">shopping_cart</span>
-        <span class="text-[10px] font-medium">Cart</span>
-        <span class="absolute -top-1 right-0 bg-primary text-on-primary text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-medium">3</span>
+      <a href="search.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[22px]">search</span>
+        <span class="text-[10px] font-medium">Search</span>
       </a>
-      <a href="account.html" class="flex flex-col items-center gap-1 text-primary">
-        <span class="material-symbols-outlined text-2xl">person</span>
-        <span class="text-[10px] font-medium">Profile</span>
+      <a href="cart.html" class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors relative">
+        <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+        <span class="cart-badge absolute top-1.5 right-1/4 bg-primary text-on-primary text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+        <span class="text-[10px] font-medium">Cart</span>
+      </a>
+      <a href="account.html" class="flex flex-col items-center justify-center gap-1 text-primary">
+        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">person</span>
+        <span class="text-[10px] font-semibold">Profile</span>
       </a>
     </div>
   </nav>

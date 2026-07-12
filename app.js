@@ -162,9 +162,11 @@
     };
 
     /* --------------------------------------------------
-       8. Scroll Reveal
+       8. Scroll Reveal (Enhanced)
        -------------------------------------------------- */
     function initScrollReveal() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
@@ -178,6 +180,18 @@
             observer.observe(el);
         });
     }
+
+    /* --------------------------------------------------
+       8b. Cart Badge Bounce
+       -------------------------------------------------- */
+    window.bounceCartBadge = function() {
+        document.querySelectorAll('.cart-badge').forEach(function(badge) {
+            badge.classList.remove('bounce');
+            void badge.offsetWidth;
+            badge.classList.add('bounce');
+            setTimeout(function() { badge.classList.remove('bounce'); }, 400);
+        });
+    };
 
     /* --------------------------------------------------
        9. Scroll Progress
@@ -213,7 +227,10 @@
         clone.style.setProperty('--fly-x-end', (cartRect.left - imgRect.left) + 'px');
         clone.style.setProperty('--fly-y-end', (cartRect.top - imgRect.top) + 'px');
         document.body.appendChild(clone);
-        setTimeout(function() { clone.remove(); }, 750);
+        setTimeout(function() {
+            clone.remove();
+            if (window.bounceCartBadge) window.bounceCartBadge();
+        }, 750);
     };
 
     /* --------------------------------------------------
@@ -286,6 +303,16 @@
             var dropdown = input.closest('.relative');
             if (dropdown) dropdown = dropdown.querySelector('[data-search-dropdown]');
             if (dropdown) initSearch(input, dropdown);
+        });
+
+        // Initialize image lazy load
+        document.querySelectorAll('img[data-src]').forEach(function(img) {
+            if (img.complete) {
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', function() { img.classList.add('loaded'); });
+                img.addEventListener('error', function() { img.classList.add('loaded'); });
+            }
         });
     });
 

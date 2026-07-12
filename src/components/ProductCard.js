@@ -3,7 +3,7 @@
 function renderProductCard(product) {
     return '<a href="product.html?id=' + product.id + '" class="product-card group block">' +
         '<div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">' +
-            '<img src="' + product.image + '" alt="' + product.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">' +
+            '<img src="' + product.image + '" alt="' + product.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="400" height="400">' +
         '</div>' +
         '<h3 class="text-sm font-medium mb-1">' + product.name + '</h3>' +
         '<p class="text-sm font-semibold">' + formatPrice(product.price) + '</p>' +
@@ -14,7 +14,7 @@ function renderProductCardWithActions(product) {
     return '<div class="product-card group block" data-product-id="' + product.id + '">' +
         '<a href="product.html?id=' + product.id + '">' +
             '<div class="aspect-square bg-surface-alt rounded-lg overflow-hidden mb-3 relative">' +
-                '<img src="' + product.image + '" alt="' + product.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">' +
+                '<img src="' + product.image + '" alt="' + product.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" width="400" height="400">' +
             '</div>' +
         '</a>' +
         '<div class="flex items-start justify-between">' +
@@ -23,10 +23,10 @@ function renderProductCardWithActions(product) {
                 '<p class="text-sm font-semibold">' + formatPrice(product.price) + '</p>' +
             '</div>' +
             '<div class="flex items-center gap-1 ml-2 shrink-0">' +
-                '<button onclick="event.stopPropagation(); wishlistStore.toggle(\'' + product.id + '\',\'' + product.name.replace(/'/g, "\\'") + '\'); wishlistBurst(this)" class="wishlist-btn p-1.5 rounded-full hover:bg-surface-alt transition-colors" data-product-id="' + product.id + '">' +
+                '<button onclick="event.stopPropagation(); wishlistStore.toggle(\'' + product.id + '\',\'' + product.name.replace(/'/g, "\\'") + '\'); wishlistBurst(this)" class="wishlist-btn p-1.5 rounded-full hover:bg-surface-alt transition-colors" data-product-id="' + product.id + '" aria-label="Add ' + product.name + ' to wishlist">' +
                     '<span class="material-symbols-outlined" style="font-size:18px">favorite</span>' +
                 '</button>' +
-                '<button onclick="event.stopPropagation(); cartStore.addItem(' + JSON.stringify(product).replace(/"/g, '&quot;') + '); flyToCart(this.closest(\'.product-card\').querySelector(\'img\'))" class="p-1.5 rounded-full hover:bg-surface-alt transition-colors">' +
+                '<button onclick="event.stopPropagation(); cartStore.addItem(' + JSON.stringify(product).replace(/"/g, '&quot;') + '); flyToCart(this.closest(\'.product-card\').querySelector(\'img\'))" class="p-1.5 rounded-full hover:bg-surface-alt transition-colors" aria-label="Add ' + product.name + ' to cart">' +
                     '<span class="material-symbols-outlined" style="font-size:18px">shopping_bag</span>' +
                 '</button>' +
             '</div>' +

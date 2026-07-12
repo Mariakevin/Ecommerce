@@ -7,7 +7,7 @@
         "tag": "Living Room",
         "description": "Crafted by artisans in Chettinad, this cotton throw brings warmth and texture to any space. Made from 100% organic cotton with a subtle herringbone weave.",
         "image": "images/product-throw.jpg",
-        "images": ["images/product-throw.jpg"],
+        "images": ["images/product-throw.jpg", "images/product-throw-detail.png"],
         "specs": {
             "Material": "100% Organic Cotton",
             "Size": "150cm x 200cm",
@@ -25,7 +25,7 @@
         "tag": "Lighting",
         "description": "A minimalist ceramic lamp with a warm, diffused glow. Hand-thrown on the potter's wheel in Mahabalipuram.",
         "image": "images/product-lamp.jpg",
-        "images": ["images/product-lamp.jpg"],
+        "images": ["images/product-lamp.jpg", "images/product-lamp-lifestyle.png"],
         "specs": {
             "Material": "Ceramic",
             "Height": "35cm",
@@ -43,7 +43,7 @@
         "tag": "Decor",
         "description": "A set of three hand-carved stone planters in graduating sizes. Perfect for indoor succulents or small ferns.",
         "image": "images/product-planter.jpg",
-        "images": ["images/product-planter.jpg"],
+        "images": ["images/product-planter.jpg", "images/product-planter-lifestyle.png"],
         "specs": {
             "Material": "Natural Stone",
             "Sizes": "Small (10cm), Medium (15cm), Large (20cm)",
@@ -61,7 +61,7 @@
         "tag": "Decor",
         "description": "A hand-forged brass clock with a clean, modern face. Each piece has unique patina from the artisan's hammer.",
         "image": "images/product-clock.jpg",
-        "images": ["images/product-clock.jpg"],
+        "images": ["images/product-clock.jpg", "images/product-clock-lifestyle.png"],
         "specs": {
             "Material": "Hand-forged Brass",
             "Diameter": "30cm",
@@ -79,7 +79,7 @@
         "tag": "Living Room",
         "description": "Stonewashed linen cushion cover with a hidden zipper. Gets softer with every wash.",
         "image": "images/product-cushion.jpg",
-        "images": ["images/product-cushion.jpg"],
+        "images": ["images/product-cushion.jpg", "images/product-cushion-lifestyle.png"],
         "specs": {
             "Material": "100% Linen",
             "Size": "45cm x 45cm",
@@ -97,7 +97,7 @@
         "tag": "Kitchen",
         "description": "A solid walnut serving tray with carved handles. Food-safe oil finish.",
         "image": "images/product-tray.jpg",
-        "images": ["images/product-tray.jpg"],
+        "images": ["images/product-tray.jpg", "images/product-tray-lifestyle.png"],
         "specs": {
             "Material": "Solid Walnut Wood",
             "Size": "40cm x 25cm x 3cm",

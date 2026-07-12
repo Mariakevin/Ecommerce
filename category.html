@@ -30,26 +30,28 @@
 </head>
 <body class="bg-surface text-text">
 
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
+
     <div class="scroll-progress"></div>
 
     <!-- Desktop Header -->
     <header class="hidden md:flex sticky top-0 z-50 bg-white border-b border-border h-14 items-center">
         <div class="max-w-[1200px] w-full mx-auto px-10 flex items-center justify-between">
             <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-8"></a>
-            <nav class="flex items-center gap-8">
+            <nav class="flex items-center gap-8" aria-label="Main navigation">
                 <a href="index.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Home</a>
                 <a href="category.html" class="text-sm font-medium text-primary">Categories</a>
                 <a href="category.html?promo=true" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Offers</a>
                 <a href="account.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Account</a>
             </nav>
             <div class="flex items-center gap-5">
-                <a href="search.html" class="text-text-secondary hover:text-text transition-colors">
+                <a href="search.html" class="text-text-secondary hover:text-text transition-colors" aria-label="Search">
                     <span class="material-symbols-outlined" style="font-size:22px">search</span>
                 </a>
-                <a href="wishlist.html" class="text-text-secondary hover:text-text transition-colors relative">
+                <a href="wishlist.html" class="text-text-secondary hover:text-text transition-colors relative" aria-label="Wishlist">
                     <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
                 </a>
-                <a href="cart.html" class="text-text-secondary hover:text-text transition-colors relative">
+                <a href="cart.html" class="text-text-secondary hover:text-text transition-colors relative" aria-label="Cart">
                     <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
                     <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
                 </a>
@@ -61,10 +63,10 @@
     <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-border h-14 flex items-center px-4">
         <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-8 shrink-0"></a>
         <div class="flex items-center gap-3 ml-auto">
-            <a href="search.html" class="text-text-secondary">
+            <a href="search.html" class="text-text-secondary" aria-label="Search">
                 <span class="material-symbols-outlined" style="font-size:22px">search</span>
             </a>
-            <a href="cart.html" class="text-text-secondary relative">
+            <a href="cart.html" class="text-text-secondary relative" aria-label="Cart">
                 <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
                 <span class="cart-badge absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
             </a>
@@ -75,7 +77,7 @@
 
         <!-- Breadcrumb -->
         <div class="max-w-[1200px] mx-auto px-4 md:px-10 pt-6 pb-2">
-            <nav class="breadcrumb">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
                 <a href="index.html">Home</a>
                 <span class="breadcrumb-sep">/</span>
                 <span class="breadcrumb-current">All Products</span>
@@ -83,7 +85,7 @@
         </div>
 
         <!-- Page Header -->
-        <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-6" data-reveal>
+        <div id="main-content" tabindex="-1" class="max-w-[1200px] mx-auto px-4 md:px-10 py-6" data-reveal>
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                     <h1 class="text-2xl font-semibold mb-1">All Products</h1>
@@ -91,12 +93,12 @@
                 </div>
                 <div class="flex items-center gap-3">
                     <!-- Mobile filter button -->
-                    <button onclick="openFilters()" class="md:hidden btn-outline text-sm px-4 py-2">
+                    <button onclick="openFilters()" class="md:hidden btn-outline text-sm px-4 py-2" aria-label="Open filters">
                         <span class="material-symbols-outlined" style="font-size:18px">filter_list</span>
                         Filters
                     </button>
                     <!-- Sort -->
-                    <select class="form-input text-sm py-2 w-44">
+                    <select class="form-input text-sm py-2 w-44" aria-label="Sort products">
                         <option>Featured</option>
                         <option>Price: Low to High</option>
                         <option>Price: High to Low</option>
@@ -104,10 +106,10 @@
                     </select>
                     <!-- View Toggle -->
                     <div class="hidden md:flex items-center border border-border rounded-md overflow-hidden">
-                        <button id="viewGrid" onclick="setProductView('grid')" class="p-2 bg-surface-alt">
+                        <button id="viewGrid" onclick="setProductView('grid')" class="p-2 bg-surface-alt" aria-label="Grid view">
                             <span class="material-symbols-outlined" style="font-size:18px">grid_view</span>
                         </button>
-                        <button id="viewList" onclick="setProductView('list')" class="p-2">
+                        <button id="viewList" onclick="setProductView('list')" class="p-2" aria-label="List view">
                             <span class="material-symbols-outlined" style="font-size:18px">view_list</span>
                         </button>
                     </div>
@@ -175,11 +177,11 @@
 
                 <!-- Pagination -->
                 <div class="flex items-center justify-center gap-2 mt-10">
-                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium bg-primary text-on-primary">1</button>
-                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors">2</button>
-                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors">3</button>
-                    <span class="text-text-tertiary px-1">...</span>
-                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors">8</button>
+                        <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium bg-primary text-on-primary" aria-label="Page 1" aria-current="page">1</button>
+                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" aria-label="Page 2">2</button>
+                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" aria-label="Page 3">3</button>
+                    <span class="text-text-tertiary px-1" aria-hidden="true">...</span>
+                    <button class="w-9 h-9 flex items-center justify-center rounded-md text-sm font-medium text-text-secondary hover:bg-surface-alt transition-colors" aria-label="Page 8">8</button>
                 </div>
             </div>
         </div>
@@ -191,7 +193,7 @@
     <div id="filterDrawer" class="filter-drawer p-5">
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-lg font-semibold">Filters</h2>
-            <button onclick="closeFilters()" class="text-text-secondary">
+            <button onclick="closeFilters()" class="text-text-secondary" aria-label="Close filters">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>
@@ -266,7 +268,7 @@
     </footer>
 
     <!-- Mobile Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border safe-area-bottom">
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border safe-area-bottom" aria-label="Mobile navigation">
         <div class="grid grid-cols-4 h-14">
             <a href="index.html" class="flex flex-col items-center justify-center gap-0.5 text-text-secondary">
                 <span class="material-symbols-outlined" style="font-size:22px">home</span>

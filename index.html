@@ -30,6 +30,8 @@
 </head>
 <body class="bg-surface text-text">
 
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
+
     <!-- Scroll Progress -->
     <div class="scroll-progress"></div>
 
@@ -37,20 +39,20 @@
     <header class="hidden md:flex sticky top-0 z-50 bg-white border-b border-border h-14 items-center">
         <div class="max-w-[1200px] w-full mx-auto px-10 flex items-center justify-between">
             <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-8"></a>
-            <nav class="flex items-center gap-8">
+            <nav class="flex items-center gap-8" aria-label="Main navigation">
                 <a href="index.html" class="text-sm font-medium text-primary">Home</a>
                 <a href="category.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Categories</a>
                 <a href="category.html?promo=true" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Offers</a>
                 <a href="account.html" class="text-sm font-medium text-text-secondary hover:text-text transition-colors">Account</a>
             </nav>
             <div class="flex items-center gap-5">
-                <a href="search.html" class="text-text-secondary hover:text-text transition-colors">
+                <a href="search.html" class="text-text-secondary hover:text-text transition-colors" aria-label="Search">
                     <span class="material-symbols-outlined" style="font-size:22px">search</span>
                 </a>
-                <a href="wishlist.html" class="text-text-secondary hover:text-text transition-colors relative">
+                <a href="wishlist.html" class="text-text-secondary hover:text-text transition-colors relative" aria-label="Wishlist">
                     <span class="material-symbols-outlined" style="font-size:22px">favorite</span>
                 </a>
-                <a href="cart.html" class="text-text-secondary hover:text-text transition-colors relative">
+                <a href="cart.html" class="text-text-secondary hover:text-text transition-colors relative" aria-label="Cart">
                     <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
                     <span class="cart-badge absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
                 </a>
@@ -62,10 +64,10 @@
     <header class="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-border h-14 flex items-center px-4">
         <a href="index.html"><img src="images/logo.png" alt="Chennai Retail" class="h-8 shrink-0"></a>
         <div class="flex items-center gap-3 ml-auto">
-            <a href="search.html" class="text-text-secondary">
+            <a href="search.html" class="text-text-secondary" aria-label="Search">
                 <span class="material-symbols-outlined" style="font-size:22px">search</span>
             </a>
-            <a href="cart.html" class="text-text-secondary relative">
+            <a href="cart.html" class="text-text-secondary relative" aria-label="Cart">
                 <span class="material-symbols-outlined" style="font-size:22px">shopping_bag</span>
                 <span class="cart-badge absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full items-center justify-center hidden" style="font-size:10px">0</span>
             </a>
@@ -76,7 +78,7 @@
     <div class="pt-14 md:pt-0 page-transition">
 
         <!-- Hero -->
-        <section class="max-w-[1200px] mx-auto px-4 md:px-10 py-16 md:py-24" data-reveal>
+        <section id="main-content" tabindex="-1" class="max-w-[1200px] mx-auto px-4 md:px-10 py-16 md:py-24" data-reveal>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 <div>
                     <p class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-4">Chennai's Home & Living Store</p>
@@ -88,7 +90,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="images/hero-living-room.jpg" alt="Modern living room" class="w-full rounded-lg object-cover aspect-[4/3]">
+                    <img src="images/hero-living-room.jpg" alt="Modern living room" class="w-full rounded-lg object-cover aspect-[4/3]" loading="eager" width="600" height="450">
                 </div>
             </div>
         </section>
@@ -158,7 +160,7 @@
                 <h2 class="text-xl font-semibold mb-2">Stay in the loop</h2>
                 <p class="text-sm text-text-secondary mb-6">New arrivals, exclusive offers, and design inspiration.</p>
                 <form onsubmit="event.preventDefault(); showToast('Subscribed! Welcome aboard.')" class="flex gap-2">
-                    <input type="email" placeholder="Your email" required class="form-input flex-1">
+                    <input type="email" placeholder="Your email" required class="form-input flex-1" aria-label="Email address">
                     <button type="submit" class="btn-primary px-6">Subscribe</button>
                 </form>
             </div>
@@ -215,7 +217,7 @@
     </footer>
 
     <!-- Mobile Bottom Nav -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border safe-area-bottom">
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-border safe-area-bottom" aria-label="Mobile navigation">
         <div class="grid grid-cols-4 h-14">
             <a href="index.html" class="flex flex-col items-center justify-center gap-0.5 text-primary">
                 <span class="material-symbols-outlined" style="font-size:22px">home</span>

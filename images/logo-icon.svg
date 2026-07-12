@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
+  <!-- Red square background -->
+  <rect x="0" y="0" width="50" height="50" rx="8" fill="#DC2626"/>
+  
+  <!-- Shopping bag body -->
+  <path d="M15 20 L35 20 L33 40 L17 40 Z" fill="white" opacity="0.95"/>
+  
+  <!-- Bag handle -->
+  <path d="M20 20 C20 14 22 11 25 11 C28 11 30 14 30 20" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Home roof accent -->
+  <path d="M12 20 L25 12 L38 20" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

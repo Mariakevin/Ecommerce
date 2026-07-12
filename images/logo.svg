@@ -1,15 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-  <defs>
-    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#DC2626"/>
-      <stop offset="100%" style="stop-color:#B91C1C"/>
-    </linearGradient>
-  </defs>
-  <!-- Red square with rounded corners -->
-  <rect x="2" y="2" width="56" height="56" rx="10" fill="url(#redGrad)"/>
-  <!-- CR monogram -->
-  <text x="30" y="40" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="white" text-anchor="middle" letter-spacing="-1">CR</text>
-  <!-- Brand name -->
-  <text x="68" y="26" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#111111" letter-spacing="-0.5">CHENNAI</text>
-  <text x="68" y="46" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="400" fill="#6B7280" letter-spacing="2">RETAIL</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- Icon: Shopping bag with home roof -->
+  <g>
+    <!-- Red square background -->
+    <rect x="0" y="5" width="50" height="50" rx="8" fill="#DC2626"/>
+    
+    <!-- Shopping bag body -->
+    <path d="M15 22 L35 22 L33 42 L17 42 Z" fill="white" opacity="0.95"/>
+    
+    <!-- Bag handle -->
+    <path d="M20 22 C20 16 22 13 25 13 C28 13 30 16 30 22" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- Home roof accent on top of bag -->
+    <path d="M12 22 L25 14 L38 22" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Text: CHENNAI RETAIL -->
+  <text x="60" y="28" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="16" fill="#111111" letter-spacing="0.5">CHENNAI</text>
+  <text x="60" y="46" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="12" fill="#6B7280" letter-spacing="2">RETAIL</text>
+  
+  <!-- Small red accent line -->
+  <line x1="60" y1="32" x2="105" y2="32" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/>
 </svg>

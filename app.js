@@ -286,7 +286,218 @@
     });
 
     /* --------------------------------------------------
-       14. Init on DOM Ready
+       14. Scroll to Top Button
+       -------------------------------------------------- */
+    function initScrollToTop() {
+        var btn = document.getElementById('scrollToTop');
+        if (!btn) return;
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    /* --------------------------------------------------
+       15. Live Viewers Counter
+       -------------------------------------------------- */
+    function initLiveViewers() {
+        var el = document.getElementById('liveViewers');
+        if (!el) return;
+
+        setInterval(function() {
+            var current = parseInt(el.textContent) || 47;
+            var change = Math.floor(Math.random() * 7) - 3;
+            var newVal = Math.max(20, Math.min(80, current + change));
+            el.textContent = newVal;
+        }, 4000);
+    }
+
+    /* --------------------------------------------------
+       16. Floating Social Proof Notification
+       -------------------------------------------------- */
+    function initFloatingNotification() {
+        var notification = document.getElementById('floatingNotification');
+        if (!notification) return;
+
+        var names = ['Priya', 'Rahul', 'Kavitha', 'Madhavan', 'Sneha', 'Arun', 'Deepa', 'Vikram'];
+        var locations = ['T. Nagar', 'Anna Nagar', 'Adyar', 'Velachery', 'Mylapore'];
+        var products = ['Elegant Table Lamp', 'Minimalist Coffee Table', 'Modern Wall Art', 'Ceramic Vase Set', 'Designer Throw Pillow'];
+
+        function showNotification() {
+            var name = names[Math.floor(Math.random() * names.length)];
+            var loc = locations[Math.floor(Math.random() * locations.length)];
+            var product = products[Math.floor(Math.random() * products.length)];
+
+            notification.querySelector('.name').textContent = name + ' from ' + loc;
+            notification.querySelector('.action').textContent = 'just purchased ' + product;
+            notification.style.display = 'flex';
+            notification.style.animation = 'none';
+            void notification.offsetWidth;
+            notification.style.animation = 'slideInLeft 0.4s ease both';
+
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        // Show first notification after 8 seconds
+        setTimeout(showNotification, 8000);
+
+        // Then every 15 seconds
+        setInterval(showNotification, 15000);
+    }
+
+    /* --------------------------------------------------
+       17. Orders Counter Animation
+       -------------------------------------------------- */
+    function initOrdersCounter() {
+        var el = document.getElementById('ordersCounter');
+        if (!el) return;
+
+        var target = 1247;
+        var current = 0;
+        var increment = Math.ceil(target / 60);
+        var timer = setInterval(function() {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            el.textContent = current.toLocaleString();
+        }, 30);
+    }
+
+    /* --------------------------------------------------
+       18. Recently Viewed (LocalStorage)
+       -------------------------------------------------- */
+    function initRecentlyViewed() {
+        var section = document.getElementById('recentlyViewedSection');
+        var container = document.getElementById('recentlyViewedItems');
+        if (!section || !container) return;
+
+        var viewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+        if (viewed.length === 0) {
+            section.classList.add('hidden');
+            return;
+        }
+
+        // Show max 4 items
+        var items = viewed.slice(0, 4);
+        container.innerHTML = items.map(function(item) {
+            return '<a href="product.html?id=' + item.id + '" class="block p-2 bg-white rounded-lg border border-border hover:shadow-md transition-shadow">' +
+                '<img src="' + item.image + '" alt="' + item.name + '" class="w-full aspect-square object-contain rounded-md mb-2">' +
+                '<p class="text-xs font-medium text-gray-800 truncate">' + item.name + '</p>' +
+                '<p class="text-xs font-semibold text-primary">' + (item.price ? '₹' + item.price : '') + '</p>' +
+            '</a>';
+        }).join('');
+
+        section.classList.remove('hidden');
+    }
+
+    function trackRecentlyViewed(product) {
+        if (!product || !product.id) return;
+        var viewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+        
+        // Remove if already exists
+        viewed = viewed.filter(function(item) { return item.id !== product.id; });
+        
+        // Add to beginning
+        viewed.unshift({
+            id: product.id,
+            name: product.name,
+            image: product.image,
+            price: product.price
+        });
+        
+        // Keep max 8 items
+        viewed = viewed.slice(0, 8);
+        
+        localStorage.setItem('recentlyViewed', JSON.stringify(viewed));
+    }
+    window.trackRecentlyViewed = trackRecentlyViewed;
+
+    /* --------------------------------------------------
+       19. Button Hover Micro-interactions
+       -------------------------------------------------- */
+    function initButtonEffects() {
+        document.querySelectorAll('.btn-primary, .btn-buy-now, .btn-add-cart').forEach(function(btn) {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mousedown', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            btn.addEventListener('mouseup', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+        });
+    }
+
+    /* --------------------------------------------------
+       20. Form Validation Feedback
+       -------------------------------------------------- */
+    function initFormValidation() {
+        document.querySelectorAll('.form-input[required]').forEach(function(input) {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() === '') {
+                    this.classList.add('invalid');
+                    this.classList.remove('valid');
+                } else {
+                    this.classList.remove('invalid');
+                    this.classList.add('valid');
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.classList.contains('invalid') && this.value.trim() !== '') {
+                    this.classList.remove('invalid');
+                    this.classList.add('valid');
+                }
+            });
+        });
+
+        // Email validation
+        document.querySelectorAll('input[type="email"]').forEach(function(input) {
+            input.addEventListener('blur', function() {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (this.value && !emailRegex.test(this.value)) {
+                    this.classList.add('invalid');
+                    this.classList.remove('valid');
+                }
+            });
+        });
+    }
+
+    /* --------------------------------------------------
+       21. Parallax Effect (Hero)
+       -------------------------------------------------- */
+    function initParallax() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        
+        var heroImg = document.querySelector('.parallax-hero img');
+        if (!heroImg) return;
+
+        window.addEventListener('scroll', function() {
+            var scrolled = window.scrollY;
+            if (scrolled < 600) {
+                heroImg.style.transform = 'translateY(' + (scrolled * 0.15) + 'px)';
+            }
+        }, { passive: true });
+    }
+
+    /* --------------------------------------------------
+       22. Init on DOM Ready
        -------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize stores
@@ -298,6 +509,14 @@
         initScrollProgress();
         initStickyHeader();
         initStickyAddToCart();
+        initScrollToTop();
+        initLiveViewers();
+        initFloatingNotification();
+        initOrdersCounter();
+        initRecentlyViewed();
+        initButtonEffects();
+        initFormValidation();
+        initParallax();
 
         // Initialize galleries
         document.querySelectorAll('[data-gallery]').forEach(function(g) { initGallery(g); });

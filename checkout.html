@@ -84,20 +84,45 @@
                 <span class="breadcrumb-sep">/</span>
                 <span class="breadcrumb-current">Checkout</span>
             </nav>
-            <div id="progressSteps" class="flex items-center justify-center gap-0 mb-8">
-                <div class="flex items-center gap-2" id="stepIndicator1">
-                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold" id="stepCircle1">1</span>
-                    <span class="text-sm font-medium text-primary hidden sm:inline" id="stepLabel1">Shipping</span>
+            
+            <!-- Enhanced Progress Bar -->
+            <div class="checkout-progress mb-8">
+                <div class="step active" id="stepIndicator1">
+                    <span class="step-num" id="stepCircle1">1</span>
+                    <span class="step-label" id="stepLabel1">Shipping</span>
                 </div>
-                <span class="w-12 h-px bg-border mx-2" id="stepLine1"></span>
-                <div class="flex items-center gap-2" id="stepIndicator2">
-                    <span class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center text-xs font-bold" id="stepCircle2">2</span>
-                    <span class="text-sm text-text-tertiary hidden sm:inline" id="stepLabel2">Payment</span>
+                <div class="step" id="stepIndicator2">
+                    <span class="step-num" id="stepCircle2">2</span>
+                    <span class="step-label" id="stepLabel2">Payment</span>
                 </div>
-                <span class="w-12 h-px bg-border mx-2" id="stepLine2"></span>
-                <div class="flex items-center gap-2" id="stepIndicator3">
-                    <span class="w-8 h-8 rounded-full bg-border text-text-tertiary flex items-center justify-center text-xs font-bold" id="stepCircle3">3</span>
-                    <span class="text-sm text-text-tertiary hidden sm:inline" id="stepLabel3">Review</span>
+                <div class="step" id="stepIndicator3">
+                    <span class="step-num" id="stepCircle3">3</span>
+                    <span class="step-label" id="stepLabel3">Review</span>
+                </div>
+            </div>
+
+            <!-- Guest Checkout Banner -->
+            <div class="guest-checkout-banner">
+                <span class="material-symbols-outlined">person_add</span>
+                <div class="text">
+                    <strong>Guest Checkout Available</strong>
+                    <span>No account needed! Complete your purchase as a guest.</span>
+                </div>
+            </div>
+
+            <!-- Secure Checkout Badge -->
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <div class="trust-badge">
+                    <span class="material-symbols-outlined">lock</span>
+                    256-bit SSL Encrypted
+                </div>
+                <div class="trust-badge">
+                    <span class="material-symbols-outlined">verified</span>
+                    Secure Payment
+                </div>
+                <div class="trust-badge">
+                    <span class="material-symbols-outlined">shield</span>
+                    PCI Compliant
                 </div>
             </div>
         </div>
@@ -265,6 +290,12 @@
 
                         <div id="checkoutItems" class="space-y-3 mb-5"></div>
 
+                        <!-- Savings Callout -->
+                        <div class="savings-callout mb-5" id="checkoutSavings" style="display:none">
+                            <span class="material-symbols-outlined">savings</span>
+                            <span id="checkoutSavingsText">You're saving ₹0 on this order!</span>
+                        </div>
+
                         <div class="border-t border-border pt-4 space-y-2 mb-5">
                             <div class="flex justify-between text-sm">
                                 <span class="text-text-secondary">Subtotal</span>
@@ -287,10 +318,46 @@
                             </div>
                         </div>
 
+                        <!-- Express Checkout -->
+                        <div class="mb-5">
+                            <p class="text-xs font-medium text-text-secondary mb-2 text-center">Express Checkout</p>
+                            <div class="express-checkout">
+                                <button class="express-btn gpay">
+                                    <span>G</span> Pay
+                                </button>
+                                <button class="express-btn phonepe">
+                                    <span>PhonePe</span>
+                                </button>
+                                <button class="express-btn paytm">
+                                    <span>Paytm</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-border pt-4 mb-4">
+                            <p class="text-xs text-center text-text-secondary mb-3">Or pay with card</p>
+                        </div>
+
                         <div id="placeOrderWrapper">
                             <button id="placeOrderBtn" class="btn-primary w-full text-center" disabled>
                                 Place Order
                             </button>
+                        </div>
+
+                        <!-- Trust Checkout -->
+                        <div class="trust-checkout mt-4">
+                            <div class="trust-checkout-item">
+                                <span class="material-symbols-outlined">lock</span>
+                                Secure
+                            </div>
+                            <div class="trust-checkout-item">
+                                <span class="material-symbols-outlined">verified</span>
+                                Genuine
+                            </div>
+                            <div class="trust-checkout-item">
+                                <span class="material-symbols-outlined">replay</span>
+                                Returns
+                            </div>
                         </div>
 
                         <div class="mt-4 pt-4 border-t border-border flex items-center justify-center gap-2">

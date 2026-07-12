@@ -103,8 +103,11 @@
 
                 <!-- Gallery -->
                 <div data-gallery>
-                    <div class="gallery-main aspect-square bg-surface-alt rounded-lg overflow-hidden mb-4 cursor-zoom-in">
+                    <div class="gallery-main aspect-square bg-surface-alt rounded-lg overflow-hidden mb-4 cursor-zoom-in zoom-container relative">
                         <img src="" alt="" class="w-full h-full object-cover transition-transform duration-300" loading="eager" width="600" height="600">
+                        <div class="live-badge">
+                            <span id="productViewers">12</span> people viewing
+                        </div>
                     </div>
                     <div id="galleryThumbs" class="flex gap-2"></div>
                 </div>
@@ -124,17 +127,39 @@
                             <span class="material-symbols-outlined text-amber-400" style="font-size:18px">star_half</span>
                         </div>
                         <span class="text-sm text-text-secondary">4.5 (12 reviews)</span>
+                        <span class="text-xs text-text-tertiary">•</span>
+                        <span class="text-xs text-primary font-medium">142 bought in last 30 days</span>
+                    </div>
+
+                    <!-- Urgency Banner -->
+                    <div class="urgency-banner">
+                        <span class="urgency-icon">🔥</span>
+                        <div class="urgency-text">
+                            <strong>Limited Time Offer!</strong>
+                            <span>Sale ends in <span id="productCountdown">02:34:15</span></span>
+                        </div>
                     </div>
 
                     <p id="productPrice" class="text-2xl font-semibold mb-3"></p>
 
                     <!-- Stock Status -->
-                    <div class="flex items-center gap-2 mb-6">
+                    <div class="flex items-center gap-3 mb-6">
                         <span id="stockBadge" class="px-2 py-0.5 text-xs font-medium rounded-full bg-green-50 text-green-700">In Stock</span>
-                        <span class="text-xs text-text-tertiary">Usually ships within 24 hours</span>
+                        <span id="stockLow" class="stock-low hidden">Only few left!</span>
+                        <span class="text-xs text-text-tertiary">•</span>
+                        <span class="text-xs text-text-tertiary">5 people have this in their cart</span>
                     </div>
 
                     <p id="productDesc" class="text-sm text-text-secondary leading-relaxed mb-8"></p>
+
+                    <!-- Delivery Estimate -->
+                    <div class="delivery-estimate">
+                        <span class="material-symbols-outlined">local_shipping</span>
+                        <div class="text">
+                            <strong>Get it by Tomorrow, 10AM - 2PM</strong>
+                            <span>Order within <span class="text-primary font-semibold" id="deliveryCountdown">2h 34m</span> for same-day delivery</span>
+                        </div>
+                    </div>
 
                     <!-- Quantity -->
                     <div class="mb-6">
@@ -160,6 +185,22 @@
                         </button>
                     </div>
 
+                    <!-- Trust Badges -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="trust-badge">
+                            <span class="material-symbols-outlined">verified</span>
+                            Genuine Product
+                        </div>
+                        <div class="trust-badge">
+                            <span class="material-symbols-outlined">lock</span>
+                            Secure Payment
+                        </div>
+                        <div class="trust-badge">
+                            <span class="material-symbols-outlined">local_shipping</span>
+                            Free Delivery
+                        </div>
+                    </div>
+
                     <!-- Details -->
                     <div class="border-t border-border pt-6 space-y-4">
                         <div class="flex items-start gap-3">
@@ -181,6 +222,27 @@
                             <div>
                                 <p class="text-sm font-medium">Easy returns</p>
                                 <p class="text-xs text-text-tertiary">7-day return policy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Proof -->
+                    <div class="border-t border-border mt-6 pt-6">
+                        <h3 class="text-sm font-semibold mb-3">Customer Reviews</h3>
+                        <div class="space-y-3">
+                            <div class="review-highlight">
+                                <div class="avatar">P</div>
+                                <div>
+                                    <div class="text">"Excellent quality! Exactly as shown in the pictures. Fast delivery too."</div>
+                                    <div class="meta">Priya S. • Verified Purchase ✓ • 2 days ago</div>
+                                </div>
+                            </div>
+                            <div class="review-highlight">
+                                <div class="avatar">A</div>
+                                <div>
+                                    <div class="text">"Great value for money. The material quality is premium."</div>
+                                    <div class="meta">Arjun M. • Verified Purchase ✓ • 1 week ago</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -215,6 +277,17 @@
                 </div>
             </div>
         </div>
+
+        <!-- Upsell Section -->
+        <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-8" data-reveal>
+            <div class="upsell-section">
+                <div class="upsell-title">
+                    <span class="material-symbols-outlined">shopping_basket</span>
+                    Frequently Bought Together
+                </div>
+                <div id="upsellProducts" class="grid grid-cols-1 md:grid-cols-3 gap-3"></div>
+            </div>
+        </section>
 
         <!-- Related Products -->
         <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-16 border-t border-border" data-reveal>
@@ -332,6 +405,54 @@
             document.getElementById('productNotFound').classList.remove('hidden');
         }
 
+        // Countdown Timer
+        function startCountdown(elementId, hours) {
+            var totalSeconds = hours * 3600;
+            var el = document.getElementById(elementId);
+            if (!el) return;
+            
+            function update() {
+                var h = Math.floor(totalSeconds / 3600);
+                var m = Math.floor((totalSeconds % 3600) / 60);
+                var s = totalSeconds % 60;
+                el.textContent = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+                if (totalSeconds > 0) {
+                    totalSeconds--;
+                    setTimeout(update, 1000);
+                }
+            }
+            update();
+        }
+
+        // Delivery Countdown
+        function startDeliveryCountdown() {
+            var el = document.getElementById('deliveryCountdown');
+            if (!el) return;
+            var now = new Date();
+            var cutoff = new Date();
+            cutoff.setHours(14, 0, 0, 0); // 2PM cutoff
+            if (now > cutoff) {
+                el.textContent = 'Tomorrow for same-day';
+                return;
+            }
+            var diff = cutoff - now;
+            var h = Math.floor(diff / 3600000);
+            var m = Math.floor((diff % 3600000) / 60000);
+            el.textContent = h + 'h ' + m + 'm';
+        }
+
+        // Simulate live viewers
+        function simulateViewers() {
+            var el = document.getElementById('productViewers');
+            if (!el) return;
+            setInterval(function() {
+                var current = parseInt(el.textContent) || 12;
+                var change = Math.floor(Math.random() * 5) - 2;
+                var newVal = Math.max(5, Math.min(30, current + change));
+                el.textContent = newVal;
+            }, 3000);
+        }
+
         document.addEventListener('DOMContentLoaded', async function() {
             var id = getUrlParam('id');
             if (!id) { showNotFound(); return; }
@@ -359,11 +480,18 @@
 
             // Stock status
             var stockBadge = document.getElementById('stockBadge');
+            var stockLow = document.getElementById('stockLow');
             if (product.inStock === false) {
                 stockBadge.textContent = 'Out of Stock';
                 stockBadge.className = 'px-2 py-0.5 text-xs font-medium rounded-full bg-red-50 text-red-700';
                 document.querySelector('[data-main-add-cart]').disabled = true;
                 document.querySelector('[data-main-add-cart]').classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                var stock = product.stock || Math.floor(Math.random() * 15) + 5;
+                if (stock <= 5) {
+                    stockLow.classList.remove('hidden');
+                    stockLow.textContent = 'Only ' + stock + ' left!';
+                }
             }
 
             // Gallery
@@ -391,6 +519,22 @@
                 }).join('');
             }
 
+            // Upsell products
+            var allProducts = await ProductService.getProducts();
+            var upsell = allProducts.filter(function(p) { return p.id !== product.id; }).slice(0, 3);
+            var upsellContainer = document.getElementById('upsellProducts');
+            if (upsellContainer) {
+                upsellContainer.innerHTML = upsell.map(function(p) {
+                    return '<div class="upsell-item" onclick="window.location.href=\'product.html?id=' + p.id + '\'">' +
+                        '<img src="' + p.image + '" alt="' + p.name + '">' +
+                        '<div class="info">' +
+                            '<p class="name">' + p.name + '</p>' +
+                            '<p class="price">' + formatPrice(p.price) + '</p>' +
+                        '</div>' +
+                    '</div>';
+                }).join('');
+            }
+
             // Quantity stepper (handled by app.js delegated handler)
 
             // Add to Cart
@@ -399,6 +543,15 @@
                 cartStore.addItem(product, qty);
                 showToast(product.name + ' added to cart');
                 flyToCart(document.querySelector('.gallery-main img'));
+                
+                // Button success animation
+                var btn = this;
+                btn.innerHTML = '<span class="material-symbols-outlined" style="font-size:20px">check_circle</span> Added!';
+                btn.classList.add('btn-loading');
+                setTimeout(function() {
+                    btn.innerHTML = '<span class="material-symbols-outlined" style="font-size:20px">shopping_bag</span> Add to Cart';
+                    btn.classList.remove('btn-loading');
+                }, 1500);
             });
 
             // Wishlist
@@ -448,8 +601,12 @@
                 wishlistStore.toggle(product.id, product.name);
             });
 
+            // Start countdowns
+            startCountdown('productCountdown', 2.5);
+            startDeliveryCountdown();
+            simulateViewers();
+
             // Related products
-            var allProducts = await ProductService.getProducts();
             var related = allProducts.filter(function(p) { return p.id !== product.id; }).slice(0, 4);
             document.getElementById('relatedProducts').innerHTML = related.map(renderProductCardWithActions).join('');
             wishlistStore.updateIcons();

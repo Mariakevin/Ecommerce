@@ -949,3 +949,977 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; color: var(--black)
    36. Safe Area (Mobile)
    -------------------------------------------------- */
 .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
+
+/* --------------------------------------------------
+   37. Social Proof Ticker
+   -------------------------------------------------- */
+.social-proof-bar {
+    background: var(--black);
+    color: var(--white);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 0;
+    font-size: 12px;
+}
+.social-proof-inner {
+    display: flex;
+    animation: tickerScroll 30s linear infinite;
+    gap: 48px;
+    padding-left: 100%;
+}
+.social-proof-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.social-proof-item .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+}
+.social-proof-item .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: pulse-dot 2s ease infinite;
+}
+@keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* --------------------------------------------------
+   38. Hero Enhancements
+   -------------------------------------------------- */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, var(--primary), #B91C1C);
+    color: var(--white);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    animation: badgePulse 3s ease infinite;
+    margin-bottom: 16px;
+}
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+}
+.hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+    font-size: 12px;
+    animation: fadeInUp 0.5s ease both;
+}
+.hero-stat:nth-child(2) { animation-delay: 0.1s; }
+.hero-stat:nth-child(3) { animation-delay: 0.2s; }
+.hero-stat .material-symbols-outlined {
+    font-size: 16px;
+    color: var(--success);
+}
+.hero-checklist {
+    list-style: none;
+    margin: 16px 0;
+}
+.hero-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--gray-600);
+    margin-bottom: 8px;
+}
+.hero-checklist li::before {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--success);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* --------------------------------------------------
+   39. Live Viewers Badge
+   -------------------------------------------------- */
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 11px;
+    font-weight: 500;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+.live-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #EF4444;
+    animation: pulse-dot 1.5s ease infinite;
+}
+
+/* --------------------------------------------------
+   40. Urgency Elements
+   -------------------------------------------------- */
+.urgency-banner {
+    background: linear-gradient(90deg, #FEF3C7, #FDE68A);
+    border: 1px solid #F59E0B;
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.urgency-icon {
+    font-size: 20px;
+    animation: urgencyShake 0.5s ease infinite;
+}
+@keyframes urgencyShake {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+.urgency-text {
+    flex: 1;
+}
+.urgency-text strong {
+    display: block;
+    font-size: 13px;
+    color: #92400E;
+}
+.urgency-text span {
+    font-size: 12px;
+    color: #B45309;
+}
+.urgency-countdown {
+    display: flex;
+    gap: 4px;
+}
+.urgency-countdown span {
+    background: var(--black);
+    color: var(--white);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------
+   41. Stock Level Indicator
+   -------------------------------------------------- */
+.stock-low {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #DC2626;
+    font-size: 12px;
+    font-weight: 600;
+}
+.stock-low::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #DC2626;
+    animation: pulse-dot 1s ease infinite;
+}
+
+/* --------------------------------------------------
+   42. Trust Bar Enhanced
+   -------------------------------------------------- */
+.trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray-600);
+    transition: all var(--transition);
+}
+.trust-badge:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+.trust-badge .material-symbols-outlined {
+    font-size: 16px;
+    color: var(--success);
+}
+
+/* --------------------------------------------------
+   43. Enhanced Product Card
+   -------------------------------------------------- */
+.product-card .quick-view {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    color: var(--white);
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+}
+.product-card:hover .quick-view {
+    transform: translateY(0);
+}
+.product-card .stock-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    z-index: 2;
+}
+.product-card .just-sold {
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    background: var(--success);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    z-index: 2;
+    animation: fadeInUp 0.3s ease both;
+}
+
+/* --------------------------------------------------
+   44. Free Delivery Progress Bar
+   -------------------------------------------------- */
+.delivery-progress {
+    background: var(--gray-200);
+    border-radius: var(--radius-pill);
+    height: 6px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+.delivery-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), #EF4444);
+    border-radius: var(--radius-pill);
+    transition: width 0.5s ease;
+}
+.delivery-progress-text {
+    font-size: 12px;
+    color: var(--gray-600);
+}
+.delivery-progress-text strong {
+    color: var(--primary);
+}
+
+/* --------------------------------------------------
+   45. Countdown Timer
+   -------------------------------------------------- */
+.countdown-timer {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.countdown-value {
+    background: var(--black);
+    color: var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.countdown-label {
+    font-size: 9px;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+.countdown-sep {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-400);
+    margin-bottom: 12px;
+}
+
+/* --------------------------------------------------
+   46. Review Highlights
+   -------------------------------------------------- */
+.review-highlight {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--primary);
+    margin-bottom: 8px;
+}
+.review-highlight .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+.review-highlight .text {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.4;
+}
+.review-highlight .meta {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 4px;
+}
+
+/* --------------------------------------------------
+   47. Recently Viewed
+   -------------------------------------------------- */
+.recently-viewed {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    border: 1px solid var(--gray-200);
+}
+.recently-viewed-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.recently-viewed-title .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--primary);
+}
+
+/* --------------------------------------------------
+   48. Upsell Section
+   -------------------------------------------------- */
+.upsell-section {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    border: 1px dashed var(--gray-300);
+    margin-top: 24px;
+}
+.upsell-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.upsell-title .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--primary);
+}
+.upsell-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.upsell-item:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+.upsell-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+.upsell-item .info {
+    flex: 1;
+    min-width: 0;
+}
+.upsell-item .name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.upsell-item .price {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* --------------------------------------------------
+   49. Express Checkout
+   -------------------------------------------------- */
+.express-checkout {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+}
+.express-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--gray-300);
+    background: var(--white);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.express-btn:hover {
+    border-color: var(--black);
+    background: var(--gray-50);
+}
+.express-btn.gpay {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+.express-btn.gpay:hover {
+    background: #333;
+}
+.express-btn.phonepe {
+    background: #5F259F;
+    color: #fff;
+    border-color: #5F259F;
+}
+.express-btn.phonepe:hover {
+    background: #7B3BC2;
+}
+.express-btn.paytm {
+    background: #00BAF2;
+    color: #fff;
+    border-color: #00BAF2;
+}
+.express-btn.paytm:hover {
+    background: #33C7F5;
+}
+
+/* --------------------------------------------------
+   50. Savings Callout
+   -------------------------------------------------- */
+.savings-callout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+}
+.savings-callout .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--success);
+}
+.savings-callout span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #065F46;
+}
+
+/* --------------------------------------------------
+   51. Delivery Estimate
+   -------------------------------------------------- */
+.delivery-estimate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+}
+.delivery-estimate .material-symbols-outlined {
+    font-size: 24px;
+    color: var(--primary);
+}
+.delivery-estimate .text {
+    font-size: 13px;
+    color: var(--gray-700);
+}
+.delivery-estimate .text strong {
+    display: block;
+    font-size: 14px;
+    color: var(--black);
+}
+
+/* --------------------------------------------------
+   52. Trust Checkout Section
+   -------------------------------------------------- */
+.trust-checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px;
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    margin-top: 16px;
+}
+.trust-checkout-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--gray-500);
+}
+.trust-checkout-item .material-symbols-outlined {
+    font-size: 16px;
+    color: var(--success);
+}
+
+/* --------------------------------------------------
+   53. Guest Checkout Banner
+   -------------------------------------------------- */
+.guest-checkout-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+}
+.guest-checkout-banner .material-symbols-outlined {
+    font-size: 24px;
+    color: #2563EB;
+}
+.guest-checkout-banner .text {
+    flex: 1;
+}
+.guest-checkout-banner .text strong {
+    display: block;
+    font-size: 14px;
+    color: #1E40AF;
+}
+.guest-checkout-banner .text span {
+    font-size: 12px;
+    color: #3B82F6;
+}
+
+/* --------------------------------------------------
+   54. Checkout Progress Enhanced
+   -------------------------------------------------- */
+.checkout-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    position: relative;
+}
+.checkout-progress::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: var(--gray-200);
+}
+.checkout-progress .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 1;
+}
+.checkout-progress .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gray-200);
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.checkout-progress .step.active .step-num {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+}
+.checkout-progress .step.completed .step-num {
+    background: var(--success);
+    color: var(--white);
+}
+.checkout-progress .step-label {
+    font-size: 11px;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+.checkout-progress .step.active .step-label {
+    color: var(--primary);
+}
+
+/* --------------------------------------------------
+   55. Scroll to Top Button
+   -------------------------------------------------- */
+.scroll-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 90;
+}
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.scroll-to-top:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------
+   56. Image Zoom (Product Page)
+   -------------------------------------------------- */
+.zoom-container {
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+.zoom-container:hover img {
+    transform: scale(1.5);
+}
+.zoom-container img {
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+
+/* --------------------------------------------------
+   57. Floating Notification
+   -------------------------------------------------- */
+.floating-notification {
+    position: fixed;
+    bottom: 130px;
+    left: 20px;
+    right: 20px;
+    max-width: 360px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-200);
+    z-index: 95;
+    animation: slideInLeft 0.4s ease both;
+}
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-100%); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.floating-notification .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.floating-notification .info {
+    flex: 1;
+    min-width: 0;
+}
+.floating-notification .name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+}
+.floating-notification .action {
+    font-size: 11px;
+    color: var(--gray-500);
+}
+.floating-notification .close {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--gray-400);
+    transition: all var(--transition);
+}
+.floating-notification .close:hover {
+    background: var(--gray-100);
+    color: var(--black);
+}
+
+/* --------------------------------------------------
+   58. Button Loading State
+   -------------------------------------------------- */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: btnSpin 0.6s linear infinite;
+}
+@keyframes btnSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------
+   59. Success Animation
+   -------------------------------------------------- */
+.success-checkmark {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: successPop 0.4s ease;
+}
+@keyframes successPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* --------------------------------------------------
+   60. Inline Form Validation
+   -------------------------------------------------- */
+.form-input.valid {
+    border-color: var(--success);
+}
+.form-input.valid::after {
+    content: '✓';
+    position: absolute;
+    right: 12px;
+    color: var(--success);
+}
+.form-input.invalid {
+    border-color: var(--error);
+}
+.form-error {
+    font-size: 11px;
+    color: var(--error);
+    margin-top: 4px;
+    display: none;
+}
+.form-input.invalid + .form-error {
+    display: block;
+    animation: fadeInUp 0.2s ease;
+}
+
+/* --------------------------------------------------
+   61. Parallax Hero
+   -------------------------------------------------- */
+.parallax-hero {
+    position: relative;
+    overflow: hidden;
+}
+.parallax-hero img {
+    transition: transform 0.1s ease-out;
+}
+
+/* --------------------------------------------------
+   62. Mobile Swipe Hint
+   -------------------------------------------------- */
+.swipe-hint {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    font-size: 12px;
+    color: var(--gray-500);
+    animation: swipeHint 2s ease infinite;
+}
+@media (max-width: 768px) {
+    .swipe-hint { display: flex; }
+}
+@keyframes swipeHint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+/* --------------------------------------------------
+   63. Number Counter Animation
+   -------------------------------------------------- */
+.counter-animate {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* --------------------------------------------------
+   64. Wishlist Share
+   -------------------------------------------------- */
+.wishlist-share {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+.wishlist-share-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.wishlist-share-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* --------------------------------------------------
+   65. Enhanced Category Cards
+   -------------------------------------------------- */
+.category-card-enhanced {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4/3;
+}
+.category-card-enhanced img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.category-card-enhanced:hover img {
+    transform: scale(1.1);
+}
+.category-card-enhanced .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+}
+.category-card-enhanced .count {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+}
+.category-card-enhanced .name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+}
+
+/* --------------------------------------------------
+   66. Reduced Motion Additions
+   -------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .social-proof-inner { animation: none; }
+    .hero-badge { animation: none; }
+    .urgency-icon { animation: none; }
+    .floating-notification { animation: none; }
+    .scroll-to-top { transition: none; }
+}

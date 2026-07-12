@@ -77,20 +77,98 @@
     <!-- Main Content -->
     <div class="page-transition">
 
+        <!-- Social Proof Ticker -->
+        <div class="social-proof-bar">
+            <div class="social-proof-inner" id="socialProofTicker">
+                <div class="social-proof-item">
+                    <div class="dot"></div>
+                    <div class="avatar">P</div>
+                    <span><strong>Priya</strong> from T. Nagar just purchased <strong>Elegant Table Lamp</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">R</div>
+                    <span><strong>Rahul</strong> from Anna Nagar just purchased <strong>Minimalist Coffee Table</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">K</div>
+                    <span><strong>Kavitha</strong> from Adyar just purchased <strong>Modern Wall Art</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">M</div>
+                    <span><strong>Madhavan</strong> from Velachery just purchased <strong>Designer Throw Pillow</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">S</div>
+                    <span><strong>Sneha</strong> from Mylapore just purchased <strong>Ceramic Vase Set</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="dot"></div>
+                    <div class="avatar">P</div>
+                    <span><strong>Priya</strong> from T. Nagar just purchased <strong>Elegant Table Lamp</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">R</div>
+                    <span><strong>Rahul</strong> from Anna Nagar just purchased <strong>Minimalist Coffee Table</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">K</div>
+                    <span><strong>Kavitha</strong> from Adyar just purchased <strong>Modern Wall Art</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">M</div>
+                    <span><strong>Madhavan</strong> from Velachery just purchased <strong>Designer Throw Pillow</strong></span>
+                </div>
+                <div class="social-proof-item">
+                    <div class="avatar">S</div>
+                    <span><strong>Sneha</strong> from Mylapore just purchased <strong>Ceramic Vase Set</strong></span>
+                </div>
+            </div>
+        </div>
+
         <!-- Hero -->
         <section id="main-content" tabindex="-1" class="px-4 md:px-10 py-16 md:py-24" data-reveal>
             <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 <div>
-                    <p class="text-xs font-semibold tracking-widest text-text-tertiary uppercase mb-4">Chennai's Home & Living Store</p>
+                    <div class="hero-badge">
+                        <span class="material-symbols-outlined" style="font-size:14px">local_fire_department</span>
+                        Trending in Chennai
+                    </div>
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5">Curated pieces for modern living</h1>
-                    <p class="text-text-secondary text-base md:text-lg mb-8 max-w-md">Handpicked furniture, decor, and lifestyle essentials. Free same-day delivery across Chennai.</p>
-                    <div class="flex items-center gap-3">
+                    <p class="text-text-secondary text-base md:text-lg mb-4 max-w-md">Handpicked furniture, decor, and lifestyle essentials. Free same-day delivery across Chennai.</p>
+                    
+                    <ul class="hero-checklist">
+                        <li>Free same-day delivery in Chennai</li>
+                        <li>7-day easy returns, no questions asked</li>
+                        <li>100% authentic & quality assured products</li>
+                    </ul>
+
+                    <div class="flex items-center gap-3 mb-8">
                         <a href="category.html" class="btn-primary">Shop Collection</a>
-                        <a href="category.html?cat=featured" class="btn-outline">New Arrivals</a>
+                        <a href="category.html?cat=featured" class="btn-outline">New Arrivals →</a>
+                    </div>
+
+                    <div class="flex items-center gap-6">
+                        <div class="hero-stat">
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                            <div>
+                                <p class="font-semibold text-black" id="ordersCounter">1,247</p>
+                                <p class="text-xs text-text-tertiary">Orders this month</p>
+                            </div>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="material-symbols-outlined">star</span>
+                            <div>
+                                <p class="font-semibold text-black">4.8★</p>
+                                <p class="text-xs text-text-tertiary">From 847 reviews</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="relative">
                     <img src="images/hero-living-room.jpg" alt="Modern living room" class="w-full rounded-lg object-cover aspect-[4/3]" loading="eager" width="600" height="450">
+                    <div class="live-badge">
+                        <span id="liveViewers">47</span> people viewing now
+                    </div>
                 </div>
             </div>
         </section>
@@ -133,22 +211,30 @@
 
         <!-- Category Quick Links -->
         <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-20" data-reveal>
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-xl font-semibold">Shop by Category</h2>
+                <a href="category.html" class="text-sm font-medium text-primary hover:underline">View all →</a>
+            </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="category.html?cat=living" class="group block p-6 bg-surface-alt rounded-lg hover:bg-gray-100 transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-3 block">sofa</span>
+                <a href="category.html?cat=living" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">sofa</span>
                     <span class="text-sm font-medium">Living Room</span>
+                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">24 products</span>
                 </a>
-                <a href="category.html?cat=bedroom" class="group block p-6 bg-surface-alt rounded-lg hover:bg-gray-100 transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-3 block">bed</span>
+                <a href="category.html?cat=bedroom" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">bed</span>
                     <span class="text-sm font-medium">Bedroom</span>
+                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">18 products</span>
                 </a>
-                <a href="category.html?cat=kitchen" class="group block p-6 bg-surface-alt rounded-lg hover:bg-gray-100 transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-3 block">kitchen</span>
+                <a href="category.html?cat=kitchen" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">kitchen</span>
                     <span class="text-sm font-medium">Kitchen</span>
+                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">15 products</span>
                 </a>
-                <a href="category.html?cat=decor" class="group block p-6 bg-surface-alt rounded-lg hover:bg-gray-100 transition-colors">
-                    <span class="material-symbols-outlined text-3xl text-primary mb-3 block">palette</span>
+                <a href="category.html?cat=decor" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
+                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">palette</span>
                     <span class="text-sm font-medium">Decor</span>
+                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">31 products</span>
                 </a>
             </div>
         </section>
@@ -221,9 +307,16 @@
 
     <!-- Customer Reviews -->
     <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-10">
-        <h2 class="text-lg font-semibold mb-6">What Our Customers Say</h2>
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold">What Our Customers Say</h2>
+            <div class="flex items-center gap-2">
+                <span class="text-sm text-text-secondary">Overall:</span>
+                <span class="text-sm font-semibold">4.8★</span>
+                <span class="text-xs text-text-tertiary">(847 reviews)</span>
+            </div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="border border-border rounded-lg p-5">
+            <div class="border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
                 <div class="flex items-center gap-1 mb-3 text-primary">
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
@@ -231,18 +324,18 @@
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                 </div>
-                <p class="text-sm text-text-secondary mb-4">"Absolutely love the quality of the furniture. The delivery was fast and the customer service was excellent!"</p>
+                <p class="text-sm text-text-secondary mb-4">"Absolutely love the quality of the furniture. The delivery was fast and the customer service was excellent! Will definitely order again."</p>
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                         <span class="text-sm font-semibold text-primary">P</span>
                     </div>
                     <div>
                         <p class="text-sm font-medium">Priya S.</p>
-                        <p class="text-xs text-text-tertiary">Chennai</p>
+                        <p class="text-xs text-text-tertiary">Chennai • Verified Purchase ✓</p>
                     </div>
                 </div>
             </div>
-            <div class="border border-border rounded-lg p-5">
+            <div class="border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
                 <div class="flex items-center gap-1 mb-3 text-primary">
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
@@ -250,18 +343,18 @@
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                 </div>
-                <p class="text-sm text-text-secondary mb-4">"Great collection at reasonable prices. The modern minimalist style is exactly what I was looking for."</p>
+                <p class="text-sm text-text-secondary mb-4">"Great collection at reasonable prices. The modern minimalist style is exactly what I was looking for. Same-day delivery was a bonus!"</p>
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                         <span class="text-sm font-semibold text-primary">A</span>
                     </div>
                     <div>
                         <p class="text-sm font-medium">Arjun M.</p>
-                        <p class="text-xs text-text-tertiary">Bangalore</p>
+                        <p class="text-xs text-text-tertiary">Bangalore • Verified Purchase ✓</p>
                     </div>
                 </div>
             </div>
-            <div class="border border-border rounded-lg p-5">
+            <div class="border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
                 <div class="flex items-center gap-1 mb-3 text-primary">
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
@@ -269,17 +362,28 @@
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                     <span class="material-symbols-outlined" style="font-size:16px">star</span>
                 </div>
-                <p class="text-sm text-text-secondary mb-4">"Beautiful decor items that transformed my living room. Will definitely shop again!"</p>
+                <p class="text-sm text-text-secondary mb-4">"Beautiful decor items that transformed my living room. The quality exceeded my expectations. Will definitely shop again!"</p>
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                         <span class="text-sm font-semibold text-primary">K</span>
                     </div>
                     <div>
                         <p class="text-sm font-medium">Kavitha R.</p>
-                        <p class="text-xs text-text-tertiary">Mumbai</p>
+                        <p class="text-xs text-text-tertiary">Mumbai • Verified Purchase ✓</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed (Dynamic) -->
+    <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-10 hidden" id="recentlyViewedSection" data-reveal>
+        <div class="recently-viewed">
+            <div class="recently-viewed-title">
+                <span class="material-symbols-outlined">history</span>
+                Your Recently Viewed
+            </div>
+            <div id="recentlyViewedItems" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
         </div>
     </section>
 
@@ -355,6 +459,23 @@
             </a>
         </div>
     </nav>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <!-- Floating Social Proof Notification -->
+    <div class="floating-notification" id="floatingNotification" style="display:none">
+        <img src="images/category-decor.jpg" alt="" class="avatar">
+        <div class="info">
+            <p class="name">Priya from T. Nagar</p>
+            <p class="action">just purchased Elegant Table Lamp</p>
+        </div>
+        <span class="close" onclick="this.parentElement.style.display='none'">
+            <span class="material-symbols-outlined" style="font-size:16px">close</span>
+        </span>
+    </div>
 
     <script src="src/utils/format.js"></script>
     <script src="src/utils/constants.js"></script>

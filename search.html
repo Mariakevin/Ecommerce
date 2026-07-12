@@ -89,7 +89,7 @@
                         <span class="material-symbols-outlined" style="font-size:20px">close</span>
                     </button>
                 </div>
-                <div data-search-dropdown class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-border rounded-lg shadow-lg z-40 overflow-hidden">
+                <div data-search-dropdown class="absolute top-full left-0 right-0 mt-2 bg-white border border-border rounded-lg shadow-lg z-40 overflow-hidden">
                     <!-- Recent Searches -->
                     <div id="recentSearches" class="p-3 border-b border-border-light hidden">
                         <div class="flex items-center justify-between mb-2">
@@ -149,6 +149,19 @@
     <!-- Desktop Footer -->
     <footer class="border-t border-border hidden md:block">
         <div class="max-w-[1200px] mx-auto px-10 py-12">
+            <!-- Newsletter -->
+            <div class="bg-surface-alt rounded-lg p-6 mb-8">
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="flex-1">
+                        <h3 class="text-sm font-semibold mb-1">Stay in the loop</h3>
+                        <p class="text-xs text-text-secondary">Get new arrivals, design tips, and exclusive offers delivered to your inbox.</p>
+                    </div>
+                    <div class="flex w-full md:w-auto">
+                        <input type="email" placeholder="Your email address" class="flex-1 md:w-64 px-4 py-2 border border-border rounded-l-lg text-sm focus:outline-none focus:border-primary">
+                        <button onclick="if(this.previousElementSibling.value){showToast('Thanks for subscribing!');this.previousElementSibling.value=''}" class="px-6 py-2 bg-primary text-on-primary rounded-r-lg text-sm font-medium hover:bg-red-700 transition-colors">Subscribe</button>
+                    </div>
+                </div>
+            </div>
             <div class="grid grid-cols-4 gap-8 mb-10">
                 <div>
                     <h3 class="text-sm font-semibold mb-4">Shop</h3>
@@ -255,11 +268,11 @@
         }
 
         function hideDropdown() {
-            document.querySelector('[data-search-dropdown]').classList.add('hidden');
+            document.querySelector('[data-search-dropdown]').classList.remove('active');
         }
 
         function showDropdown() {
-            document.querySelector('[data-search-dropdown]').classList.remove('hidden');
+            document.querySelector('[data-search-dropdown]').classList.add('active');
         }
 
         function searchFor(query) {

@@ -12,10 +12,11 @@ const OrderService = {
         }
     },
 
-    createOrder(shippingDetails) {
+    createOrder(shippingDetails, paymentMethod, deliveryOption) {
         const cart = window.CartService.getCart();
         if (cart.length === 0) return null;
 
+        const deliveryDays = deliveryOption === 'express' ? 1 : 3;
         const order = {
             id: 'CR-2026-' + Math.floor(1000 + Math.random() * 9000),
             items: [...cart],
@@ -24,9 +25,11 @@ const OrderService = {
             deliveryFee: window.CartService.getDeliveryFee(),
             total: window.CartService.getGrandTotal(),
             shipping: shippingDetails,
+            paymentMethod: paymentMethod || 'cod',
+            deliveryOption: deliveryOption || 'standard',
             status: 'processing',
             createdAt: new Date().toISOString(),
-            estimatedDelivery: new Date(Date.now() + 3 * 86400000).toLocaleDateString('en-IN', {
+            estimatedDelivery: new Date(Date.now() + deliveryDays * 86400000).toLocaleDateString('en-IN', {
                 day: 'numeric', month: 'long', year: 'numeric'
             })
         };

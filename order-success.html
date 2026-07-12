@@ -163,7 +163,7 @@
                 <div class="border-t border-border-light pt-4">
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">payments</span>
-                        <span class="text-sm text-text-secondary">Cash on Delivery</span>
+                        <span id="paymentMethod" class="text-sm text-text-secondary">Cash on Delivery</span>
                     </div>
                 </div>
             </div>
@@ -233,6 +233,19 @@
     <!-- Desktop Footer -->
     <footer class="border-t border-border hidden md:block">
         <div class="max-w-[1200px] mx-auto px-10 py-12">
+            <!-- Newsletter -->
+            <div class="bg-surface-alt rounded-lg p-6 mb-8">
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="flex-1">
+                        <h3 class="text-sm font-semibold mb-1">Stay in the loop</h3>
+                        <p class="text-xs text-text-secondary">Get new arrivals, design tips, and exclusive offers delivered to your inbox.</p>
+                    </div>
+                    <div class="flex w-full md:w-auto">
+                        <input type="email" placeholder="Your email address" class="flex-1 md:w-64 px-4 py-2 border border-border rounded-l-lg text-sm focus:outline-none focus:border-primary">
+                        <button onclick="if(this.previousElementSibling.value){showToast('Thanks for subscribing!');this.previousElementSibling.value=''}" class="px-6 py-2 bg-primary text-on-primary rounded-r-lg text-sm font-medium hover:bg-red-700 transition-colors">Subscribe</button>
+                    </div>
+                </div>
+            </div>
             <div class="grid grid-cols-4 gap-8 mb-10">
                 <div>
                     <h3 class="text-sm font-semibold mb-4">Shop</h3>
@@ -330,6 +343,10 @@
             document.getElementById('orderDate').textContent = formatDate(order.createdAt);
             document.getElementById('orderItems').textContent = order.items.length + ' item' + (order.items.length !== 1 ? 's' : '');
             document.getElementById('orderDelivery').textContent = 'Estimated: ' + order.estimatedDelivery;
+
+            // Payment method
+            var paymentLabels = { cod: 'Cash on Delivery', upi: 'UPI', card: 'Credit/Debit Card', netbanking: 'Net Banking' };
+            document.getElementById('paymentMethod').textContent = paymentLabels[order.paymentMethod] || 'Cash on Delivery';
 
             // Shipping address
             var addr = order.shipping;

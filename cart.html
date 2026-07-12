@@ -91,7 +91,7 @@
                     <h1 class="text-2xl font-semibold">Your Cart</h1>
                     <p class="text-sm text-text-secondary mt-1" id="cartCount">0 items</p>
                 </div>
-                <button id="clearCartBtn" class="text-sm text-text-tertiary hover:text-red-600 transition-colors hidden" style="display:none">Clear Cart</button>
+                <button id="clearCartBtn" class="text-sm text-text-tertiary hover:text-red-600 transition-colors hidden">Clear Cart</button>
             </div>
         </div>
 
@@ -178,6 +178,19 @@
     <!-- Footer -->
     <footer class="border-t border-border hidden md:block">
         <div class="max-w-[1200px] mx-auto px-10 py-12">
+            <!-- Newsletter -->
+            <div class="bg-surface-alt rounded-lg p-6 mb-8">
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="flex-1">
+                        <h3 class="text-sm font-semibold mb-1">Stay in the loop</h3>
+                        <p class="text-xs text-text-secondary">Get new arrivals, design tips, and exclusive offers delivered to your inbox.</p>
+                    </div>
+                    <div class="flex w-full md:w-auto">
+                        <input type="email" placeholder="Your email address" class="flex-1 md:w-64 px-4 py-2 border border-border rounded-l-lg text-sm focus:outline-none focus:border-primary">
+                        <button onclick="if(this.previousElementSibling.value){showToast('Thanks for subscribing!');this.previousElementSibling.value=''}" class="px-6 py-2 bg-primary text-on-primary rounded-r-lg text-sm font-medium hover:bg-red-700 transition-colors">Subscribe</button>
+                    </div>
+                </div>
+            </div>
             <div class="grid grid-cols-4 gap-8 mb-10">
                 <div>
                     <h3 class="text-sm font-semibold mb-4">Shop</h3>
@@ -355,19 +368,7 @@
                 return cartItemHTML(item);
             }).join('');
 
-            // Qty stepper buttons
-            container.querySelectorAll('.qty-stepper button').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var input = this.parentElement.querySelector('input');
-                    var id = input.dataset.id;
-                    var val = parseInt(input.value);
-                    if (this.dataset.action === 'inc') {
-                        cartStore.updateQty(id, val + 1);
-                    } else if (this.dataset.action === 'dec' && val > 1) {
-                        cartStore.updateQty(id, val - 1);
-                    }
-                });
-            });
+            // Qty stepper buttons (handled by app.js delegated handler)
 
             // Qty input direct change
             container.querySelectorAll('.qty-stepper input').forEach(function(input) {

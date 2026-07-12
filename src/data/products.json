@@ -6,11 +6,8 @@
         "category": "living",
         "tag": "Living Room",
         "description": "Crafted by artisans in Chettinad, this cotton throw brings warmth and texture to any space. Made from 100% organic cotton with a subtle herringbone weave.",
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7",
-        "images": [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuB4fRy2Efzah1A5xhjCnKVX4eHT2Tf0nN4QaY0C5f3r4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU"
-        ],
+        "image": "images/product-throw.jpg",
+        "images": ["images/product-throw.jpg"],
         "specs": {
             "Material": "100% Organic Cotton",
             "Size": "150cm x 200cm",
@@ -27,10 +24,8 @@
         "category": "lighting",
         "tag": "Lighting",
         "description": "A minimalist ceramic lamp with a warm, diffused glow. Hand-thrown on the potter's wheel in Mahabalipuram.",
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ",
-        "images": [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBA0o_g5f4rIbBO3ZYG7VpLndQsQ_UatviCKnmymyIXj-z8nGsylcc3HRxNy6bhxPBBSsWPFmcXZ9DHH5klxTSxPeapovgPG8e8K-yfRN6fL47aIxCkAPfNU0b_c3gwqjZ-IV9kXCgXlhChy0zBF3da_jQk0x3KHtWQYfSD9A4rztdD2pU7M6WF6MD95rylfKgBV1pWaYtdh9ggorNgtzDD1GSq1R6sbW4uVCBk-xpuXPfka6qiI1lSMdrT_FZWu7dbjTKb9NtlaEQ"
-        ],
+        "image": "images/product-lamp.jpg",
+        "images": ["images/product-lamp.jpg"],
         "specs": {
             "Material": "Ceramic",
             "Height": "35cm",
@@ -47,10 +42,8 @@
         "category": "decor",
         "tag": "Decor",
         "description": "A set of three hand-carved stone planters in graduating sizes. Perfect for indoor succulents or small ferns.",
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU",
-        "images": [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuAOf9vBFFQCknkyH03JTpv9zWKQJbAJgoC_zsgO_t4v99uHRwn_f43g5FwKwQIEj1zsIzeSoRNE3bCit-i9PLGtyDDTfRIQg6vemojvrhaVQXrmv3BW8iNwMR9quSmtucwVNeC1f3VeLSiZqfVyTJczL88SdoBRMXhHv44jCVWeDN4Ds2sE28eS5CrLeFRUrDuXoe-Avn9zqXVk4j03n-2j_eAzNbU9274N4NkNYK1eC0JAMXP1cvJyEaZk0J53v5Ujbposv7bUMmU"
-        ],
+        "image": "images/product-planter.jpg",
+        "images": ["images/product-planter.jpg"],
         "specs": {
             "Material": "Natural Stone",
             "Sizes": "Small (10cm), Medium (15cm), Large (20cm)",
@@ -67,10 +60,8 @@
         "category": "decor",
         "tag": "Decor",
         "description": "A hand-forged brass clock with a clean, modern face. Each piece has unique patina from the artisan's hammer.",
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ",
-        "images": [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBOIpsc9GYCFd-wE2VbXpQAOIQs8Ljv18cKr06h3ExdoeNDoTSLDPnd1E8o_baT2jcaF6M78nmHXCCtNp3pslH4-9UrumFHKYgfyH1wlRuEzmGu51UwKQWDAN_o-cYTeHg8HPldOEKq62ZXKxsIv1N4dZoYvBJOKJi0Yfzz9OIjTUkRnCNlxtAgnDc9yJfT-gjvqZuXwV4NorHYb2t91iGUnH51C8yG37CfawDx4Vl6Ym9Pukh1kTmRWxh0G1UMmCWDvg8Ref0abZQ"
-        ],
+        "image": "images/product-clock.jpg",
+        "images": ["images/product-clock.jpg"],
         "specs": {
             "Material": "Hand-forged Brass",
             "Diameter": "30cm",
@@ -87,10 +78,8 @@
         "category": "living",
         "tag": "Living Room",
         "description": "Stonewashed linen cushion cover with a hidden zipper. Gets softer with every wash.",
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDr3K0r1Q7pT0v3x8z9y2w4u6t8o0i2u4y6w8e0r2t4y6u8i0o2p4s6d8f0g2h4j6k8l0z2x4c6v8b0n2m4",
-        "images": [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuDr3K0r1Q7pT0v3x8z9y2w4u6t8o0i2u4y6w8e0r2t4y6u8i0o2p4s6d8f0g2h4j6k8l0z2x4c6v8b0n2m4"
-        ],
+        "image": "images/product-cushion.jpg",
+        "images": ["images/product-cushion.jpg"],
         "specs": {
             "Material": "100% Linen",
             "Size": "45cm x 45cm",
@@ -107,10 +96,8 @@
         "category": "kitchen",
         "tag": "Kitchen",
         "description": "A solid walnut serving tray with carved handles. Food-safe oil finish.",
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuEf5K2r3Q9pT1v5x0z1y4w6u8t0o2i4u6y8w0e2r4t6y8u0i2o4p6s8d0f2g4h6j8k0l2z4x6c8v0b2n4m6",
-        "images": [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuEf5K2r3Q9pT1v5x0z1y4w6u8t0o2i4u6y8w0e2r4t6y8u0i2o4p6s8d0f2g4h6j8k0l2z4x6c8v0b2n4m6"
-        ],
+        "image": "images/product-tray.jpg",
+        "images": ["images/product-tray.jpg"],
         "specs": {
             "Material": "Solid Walnut Wood",
             "Size": "40cm x 25cm x 3cm",

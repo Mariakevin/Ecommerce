@@ -110,7 +110,6 @@
                 <button onclick="var q=document.getElementById('headerSearchInput').value.trim(); if(q) window.location.href='category.html?q='+encodeURIComponent(q)" aria-label="Search">
                     <span class="material-symbols-outlined" style="font-size:22px">search</span>
                 </button>
-                <!-- Search Suggestions -->
                 <div class="search-suggestions" id="searchSuggestions">
                     <div class="suggestion-group">
                         <p class="suggestion-label">Popular Searches</p>
@@ -206,269 +205,373 @@
             </div>
         </div>
 
-        <!-- Hero -->
-        <section id="main-content" tabindex="-1" class="px-4 md:px-10 py-16 md:py-24" data-reveal>
-            <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                <div>
+        <!-- Hero Section - Full Width Split -->
+        <section id="main-content" tabindex="-1" class="hero-section" data-reveal>
+            <div class="hero-grid">
+                <!-- Left: Content -->
+                <div class="hero-content">
                     <div class="hero-badge">
                         <span class="material-symbols-outlined" style="font-size:14px">local_fire_department</span>
                         Trending in Chennai
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5">Curated pieces for modern living</h1>
-                    <p class="text-text-secondary text-base md:text-lg mb-4 max-w-md">Handpicked furniture, decor, and lifestyle essentials. Free same-day delivery across Chennai.</p>
+                    <h1 class="hero-title">Curated pieces for <span class="text-primary">modern living</span></h1>
+                    <p class="hero-subtitle">Handpicked furniture, decor, and lifestyle essentials. Free same-day delivery across Chennai.</p>
                     
                     <ul class="hero-checklist">
-                        <li>Free same-day delivery in Chennai</li>
-                        <li>7-day easy returns, no questions asked</li>
-                        <li>100% authentic & quality assured products</li>
+                        <li>
+                            <span class="material-symbols-outlined" style="font-size:18px">check_circle</span>
+                            Free same-day delivery in Chennai
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined" style="font-size:18px">check_circle</span>
+                            7-day easy returns, no questions asked
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined" style="font-size:18px">check_circle</span>
+                            100% authentic & quality assured products
+                        </li>
                     </ul>
 
-                    <div class="flex items-center gap-3 mb-8">
-                        <a href="category.html" class="btn-primary">Shop Collection</a>
-                        <a href="category.html?cat=featured" class="btn-outline">New Arrivals →</a>
+                    <div class="hero-ctas">
+                        <a href="category.html" class="btn-primary btn-lg">
+                            <span class="material-symbols-outlined" style="font-size:20px">shopping_bag</span>
+                            Shop Collection
+                        </a>
+                        <a href="category.html?cat=featured" class="btn-outline btn-lg">
+                            New Arrivals
+                            <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
+                        </a>
                     </div>
 
-                    <div class="flex items-center gap-6">
+                    <div class="hero-stats">
                         <div class="hero-stat">
-                            <span class="material-symbols-outlined">shopping_bag</span>
+                            <span class="material-symbols-outlined" style="font-size:28px">shopping_bag</span>
                             <div>
-                                <p class="font-semibold text-black" id="ordersCounter">1,247</p>
-                                <p class="text-xs text-text-tertiary">Orders this month</p>
+                                <p class="hero-stat-value" id="ordersCounter">1,247</p>
+                                <p class="hero-stat-label">Orders this month</p>
                             </div>
                         </div>
+                        <div class="hero-stat-divider"></div>
                         <div class="hero-stat">
-                            <span class="material-symbols-outlined">star</span>
+                            <span class="material-symbols-outlined" style="font-size:28px">star</span>
                             <div>
-                                <p class="font-semibold text-black">4.8★</p>
-                                <p class="text-xs text-text-tertiary">From 847 reviews</p>
+                                <p class="hero-stat-value">4.8★</p>
+                                <p class="hero-stat-label">From 847 reviews</p>
+                            </div>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat">
+                            <span class="material-symbols-outlined" style="font-size:28px">groups</span>
+                            <div>
+                                <p class="hero-stat-value">10K+</p>
+                                <p class="hero-stat-label">Happy customers</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <img src="images/hero-living-room.jpg" alt="Modern living room" class="w-full rounded-lg object-cover aspect-[4/3]" loading="eager" width="600" height="450">
+                <!-- Right: Image -->
+                <div class="hero-image-wrapper">
+                    <img src="images/hero-living-room.jpg" alt="Modern living room" class="hero-image" loading="eager" width="600" height="600">
                     <div class="live-badge">
+                        <span class="live-dot"></span>
                         <span id="liveViewers">47</span> people viewing now
+                    </div>
+                    <!-- Floating Product Card -->
+                    <div class="hero-floating-card">
+                        <img src="images/category-decor.jpg" alt="Trending product" class="hero-floating-img">
+                        <div class="hero-floating-info">
+                            <p class="hero-floating-name">Minimalist Coffee Table</p>
+                            <p class="hero-floating-price">₹4,999</p>
+                            <div class="hero-floating-rating">
+                                <span class="material-symbols-outlined" style="font-size:12px;color:#FBBF24">star</span>
+                                <span>4.8 (124)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust Signals -->
-        <div class="border-y border-border bg-surface-alt">
-            <div class="max-w-[1600px] mx-auto px-4 md:px-10 py-4">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary" style="font-size:24px">local_shipping</span>
-                        <div>
-                            <p class="text-sm font-medium">Free Shipping</p>
-                            <p class="text-xs text-text-tertiary">On orders above ₹999</p>
-                        </div>
+        <!-- Trust Bar -->
+        <div class="trust-bar">
+            <div class="trust-bar-inner">
+                <div class="trust-item">
+                    <span class="material-symbols-outlined">local_shipping</span>
+                    <div>
+                        <p class="trust-title">Free Shipping</p>
+                        <p class="trust-desc">On orders above ₹999</p>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary" style="font-size:24px">replay</span>
-                        <div>
-                            <p class="text-sm font-medium">Easy Returns</p>
-                            <p class="text-xs text-text-tertiary">7-day return policy</p>
-                        </div>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined">replay</span>
+                    <div>
+                        <p class="trust-title">Easy Returns</p>
+                        <p class="trust-desc">7-day return policy</p>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary" style="font-size:24px">lock</span>
-                        <div>
-                            <p class="text-sm font-medium">Secure Payment</p>
-                            <p class="text-xs text-text-tertiary">100% secure checkout</p>
-                        </div>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined">lock</span>
+                    <div>
+                        <p class="trust-title">Secure Payment</p>
+                        <p class="trust-desc">100% secure checkout</p>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary" style="font-size:24px">headset</span>
-                        <div>
-                            <p class="text-sm font-medium">24/7 Support</p>
-                            <p class="text-xs text-text-tertiary">Call us anytime</p>
-                        </div>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined">headset</span>
+                    <div>
+                        <p class="trust-title">24/7 Support</p>
+                        <p class="trust-desc">Call us anytime</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Category Quick Links -->
-        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-20" data-reveal>
-            <div class="flex items-center justify-between mb-8">
-                <h2 class="text-xl font-semibold">Shop by Category</h2>
-                <a href="category.html" class="text-sm font-medium text-primary hover:underline">View all →</a>
+        <!-- Countdown Timer / Limited Offer -->
+        <section class="countdown-section" data-reveal>
+            <div class="countdown-inner">
+                <div class="countdown-content">
+                    <span class="countdown-badge">LIMITED TIME OFFER</span>
+                    <h2 class="countdown-title">Summer Sale Ends In</h2>
+                    <p class="countdown-subtitle">Get up to 50% off on selected items. Don't miss out!</p>
+                </div>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-box">
+                        <span class="countdown-value" id="countdownHours">08</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <span class="countdown-separator">:</span>
+                    <div class="countdown-box">
+                        <span class="countdown-value" id="countdownMinutes">45</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <span class="countdown-separator">:</span>
+                    <div class="countdown-box">
+                        <span class="countdown-value" id="countdownSeconds">30</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+                <a href="offer.html" class="btn-primary btn-lg countdown-cta">
+                    Shop the Sale
+                    <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
+                </a>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="category.html?cat=living" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
-                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">sofa</span>
-                    <span class="text-sm font-medium">Living Room</span>
-                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">24 products</span>
+        </section>
+
+        <!-- Category Showcase -->
+        <section class="section-container" data-reveal>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Shop by Category</h2>
+                    <p class="section-subtitle">Explore our curated collections for every room</p>
+                </div>
+                <a href="category.html" class="section-link">View all <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
+            </div>
+            <div class="category-grid">
+                <a href="category.html?cat=living" class="category-card">
+                    <img src="images/hero-living-room.jpg" alt="Living Room" class="category-card-img">
+                    <div class="category-card-overlay">
+                        <h3 class="category-card-title">Living Room</h3>
+                        <p class="category-card-count">24 products</p>
+                        <span class="category-card-cta">Shop Now →</span>
+                    </div>
                 </a>
-                <a href="category.html?cat=bedroom" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
-                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">bed</span>
-                    <span class="text-sm font-medium">Bedroom</span>
-                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">18 products</span>
+                <a href="category.html?cat=bedroom" class="category-card">
+                    <img src="images/hero-bedroom.jpg" alt="Bedroom" class="category-card-img">
+                    <div class="category-card-overlay">
+                        <h3 class="category-card-title">Bedroom</h3>
+                        <p class="category-card-count">18 products</p>
+                        <span class="category-card-cta">Shop Now →</span>
+                    </div>
                 </a>
-                <a href="category.html?cat=kitchen" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
-                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">kitchen</span>
-                    <span class="text-sm font-medium">Kitchen</span>
-                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">15 products</span>
+                <a href="category.html?cat=kitchen" class="category-card">
+                    <img src="images/hero-kitchen.jpg" alt="Kitchen" class="category-card-img">
+                    <div class="category-card-overlay">
+                        <h3 class="category-card-title">Kitchen</h3>
+                        <p class="category-card-count">15 products</p>
+                        <span class="category-card-cta">Shop Now →</span>
+                    </div>
                 </a>
-                <a href="category.html?cat=decor" class="group block p-6 bg-surface-alt rounded-lg hover:bg-primary hover:text-white transition-all duration-300">
-                    <span class="material-symbols-outlined text-3xl text-primary group-hover:text-white mb-3 block transition-colors">palette</span>
-                    <span class="text-sm font-medium">Decor</span>
-                    <span class="block text-xs text-text-tertiary group-hover:text-white/70 mt-1 transition-colors">31 products</span>
+                <a href="category.html?cat=decor" class="category-card">
+                    <img src="images/category-decor.jpg" alt="Decor" class="category-card-img">
+                    <div class="category-card-overlay">
+                        <h3 class="category-card-title">Decor</h3>
+                        <p class="category-card-count">31 products</p>
+                        <span class="category-card-cta">Shop Now →</span>
+                    </div>
                 </a>
             </div>
         </section>
 
         <!-- Featured Products -->
-        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-20" data-reveal>
-            <div class="flex items-center justify-between mb-8">
-                <h2 class="text-xl font-semibold">Featured Products</h2>
-                <a href="category.html" class="text-sm font-medium text-primary hover:underline">View all</a>
+        <section class="section-container" data-reveal>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Handpicked by our design experts</p>
+                </div>
+                <a href="category.html" class="section-link">View all <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
             </div>
-            <div id="featuredProducts" class="grid grid-cols-2 lg:grid-cols-4 gap-5" data-reveal-stagger></div>
+            <div id="featuredProducts" class="product-grid" data-reveal-stagger></div>
         </section>
 
-        <!-- Value Props -->
-        <section class="border-y border-border bg-surface-alt" data-reveal>
-            <div class="max-w-[1600px] mx-auto px-4 md:px-10 py-12">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="text-center">
-                        <span class="material-symbols-outlined text-2xl text-primary mb-2 block mx-auto">local_shipping</span>
-                        <p class="text-xs font-medium">Free Delivery</p>
-                        <p class="text-xs text-text-tertiary mt-1">On orders above ₹999</p>
+        <!-- Why Choose Us -->
+        <section class="why-section" data-reveal>
+            <div class="why-inner">
+                <div class="why-content">
+                    <span class="why-badge">WHY CHENNAI RETAIL</span>
+                    <h2 class="why-title">We're not just a store, we're a <span class="text-primary">lifestyle partner</span></h2>
+                    <p class="why-text">Founded in Chennai, we understand the modern Indian home. Every piece in our collection is curated to bring style, comfort, and quality to your space.</p>
+                    
+                    <div class="why-features">
+                        <div class="why-feature">
+                            <div class="why-feature-icon">
+                                <span class="material-symbols-outlined">design_services</span>
+                            </div>
+                            <div>
+                                <h4 class="why-feature-title">Expert Curation</h4>
+                                <p class="why-feature-text">Every product is hand-selected by our design team</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-feature-icon">
+                                <span class="material-symbols-outlined">local_shipping</span>
+                            </div>
+                            <div>
+                                <h4 class="why-feature-title">Same-Day Delivery</h4>
+                                <p class="why-feature-text">Order before 2 PM, get it delivered today</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-feature-icon">
+                                <span class="material-symbols-outlined">support_agent</span>
+                            </div>
+                            <div>
+                                <h4 class="why-feature-title">Personal Styling</h4>
+                                <p class="why-feature-text">Free consultation with our home decor experts</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-center">
-                        <span class="material-symbols-outlined text-2xl text-primary mb-2 block mx-auto">storefront</span>
-                        <p class="text-xs font-medium">Store Pickup</p>
-                        <p class="text-xs text-text-tertiary mt-1">Ready in 2 hours</p>
-                    </div>
-                    <div class="text-center">
-                        <span class="material-symbols-outlined text-2xl text-primary mb-2 block mx-auto">verified</span>
-                        <p class="text-xs font-medium">Quality Assured</p>
-                        <p class="text-xs text-text-tertiary mt-1">Curated products</p>
-                    </div>
-                    <div class="text-center">
-                        <span class="material-symbols-outlined text-2xl text-primary mb-2 block mx-auto">support_agent</span>
-                        <p class="text-xs font-medium">Support</p>
-                        <p class="text-xs text-text-tertiary mt-1">Mon-Sat 10am-8pm</p>
-                    </div>
+                    
+                    <a href="category.html" class="btn-primary btn-lg">Explore Our Collection</a>
+                </div>
+                <div class="why-images">
+                    <img src="images/lifestyle-interior.jpg" alt="Modern interior" class="why-img-main">
+                    <img src="images/category-lighting.jpg" alt="Lighting" class="why-img-accent">
                 </div>
             </div>
         </section>
 
         <!-- Lifestyle Banner -->
-        <section class="max-w-[1600px] mx-auto px-4 md:px-10 pb-16" data-reveal>
-            <div class="relative rounded-xl overflow-hidden group">
-                <img src="images/lifestyle-interior.jpg" alt="Modern interior styling" class="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="1200" height="320">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center">
-                    <div class="p-8 md:p-12">
-                        <p class="text-xs font-semibold tracking-widest text-white/80 uppercase mb-2">New Collection</p>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Style Your Space</h2>
-                        <p class="text-sm text-white/80 mb-5 max-w-sm">Transform your home with our curated collection of modern furniture and decor.</p>
-                        <a href="category.html" class="btn-primary px-6 py-2.5 text-sm">Explore Now</a>
+        <section class="section-container" data-reveal>
+            <div class="lifestyle-banner">
+                <img src="images/lifestyle-interior.jpg" alt="Modern interior styling" class="lifestyle-banner-img">
+                <div class="lifestyle-banner-overlay">
+                    <p class="lifestyle-banner-badge">NEW COLLECTION</p>
+                    <h2 class="lifestyle-banner-title">Style Your Space</h2>
+                    <p class="lifestyle-banner-text">Transform your home with our curated collection of modern furniture and decor.</p>
+                    <a href="category.html" class="btn-primary">Explore Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews -->
+        <section class="section-container" data-reveal>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">What Our Customers Say</h2>
+                    <p class="section-subtitle">Trusted by 10,000+ happy customers</p>
+                </div>
+                <div class="rating-summary">
+                    <span class="rating-value">4.8</span>
+                    <span class="material-symbols-outlined" style="font-size:20px;color:#FBBF24">star</span>
+                    <span class="rating-count">(847 reviews)</span>
+                </div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="review-text">"Absolutely love the quality of the furniture. The delivery was fast and the customer service was excellent! Will definitely order again."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">P</div>
+                        <div>
+                            <p class="review-name">Priya S.</p>
+                            <p class="review-location">Chennai • Verified Purchase ✓</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card featured">
+                    <div class="review-badge">TOP REVIEWER</div>
+                    <div class="review-stars">
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="review-text">"Great collection at reasonable prices. The modern minimalist style is exactly what I was looking for. Same-day delivery was a bonus!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">A</div>
+                        <div>
+                            <p class="review-name">Arjun M.</p>
+                            <p class="review-location">Bangalore • Verified Purchase ✓</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <p class="review-text">"Beautiful decor items that transformed my living room. The quality exceeded my expectations. Will definitely shop again!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">K</div>
+                        <div>
+                            <p class="review-name">Kavitha R.</p>
+                            <p class="review-location">Mumbai • Verified Purchase ✓</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Newsletter -->
-        <section id="newsletter" class="max-w-[1600px] mx-auto px-4 md:px-10 py-16" data-reveal>
-            <div class="max-w-md mx-auto text-center">
-                <h2 class="text-xl font-semibold mb-2">Stay in the loop</h2>
-                <p class="text-sm text-text-secondary mb-6">New arrivals, exclusive offers, and design inspiration.</p>
-                <form onsubmit="event.preventDefault(); showToast('Subscribed! Welcome aboard.')" class="flex gap-2">
-                    <input type="email" placeholder="Your email" required class="form-input flex-1" aria-label="Email address">
-                    <button type="submit" class="btn-primary px-6">Subscribe</button>
-                </form>
+        <section class="newsletter-section" data-reveal>
+            <div class="newsletter-inner">
+                <div class="newsletter-content">
+                    <h2 class="newsletter-title">Stay in the loop</h2>
+                    <p class="newsletter-subtitle">New arrivals, exclusive offers, and design inspiration delivered to your inbox.</p>
+                    <form onsubmit="event.preventDefault(); showToast('Subscribed! Welcome aboard.')" class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required class="newsletter-input" aria-label="Email address">
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                    <p class="newsletter-note">Join 5,000+ subscribers. No spam, unsubscribe anytime.</p>
+                </div>
             </div>
         </section>
 
     </div>
 
-    <!-- Customer Reviews -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-10">
-        <div class="flex items-center justify-between mb-6">
-            <h2 class="text-lg font-semibold">What Our Customers Say</h2>
-            <div class="flex items-center gap-2">
-                <span class="text-sm text-text-secondary">Overall:</span>
-                <span class="text-sm font-semibold">4.8★</span>
-                <span class="text-xs text-text-tertiary">(847 reviews)</span>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-1 mb-3 text-primary">
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                </div>
-                <p class="text-sm text-text-secondary mb-4">"Absolutely love the quality of the furniture. The delivery was fast and the customer service was excellent! Will definitely order again."</p>
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                        <span class="text-sm font-semibold text-primary">P</span>
-                    </div>
-                    <div>
-                        <p class="text-sm font-medium">Priya S.</p>
-                        <p class="text-xs text-text-tertiary">Chennai • Verified Purchase ✓</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-1 mb-3 text-primary">
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                </div>
-                <p class="text-sm text-text-secondary mb-4">"Great collection at reasonable prices. The modern minimalist style is exactly what I was looking for. Same-day delivery was a bonus!"</p>
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                        <span class="text-sm font-semibold text-primary">A</span>
-                    </div>
-                    <div>
-                        <p class="text-sm font-medium">Arjun M.</p>
-                        <p class="text-xs text-text-tertiary">Bangalore • Verified Purchase ✓</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-1 mb-3 text-primary">
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                    <span class="material-symbols-outlined" style="font-size:16px">star</span>
-                </div>
-                <p class="text-sm text-text-secondary mb-4">"Beautiful decor items that transformed my living room. The quality exceeded my expectations. Will definitely shop again!"</p>
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                        <span class="text-sm font-semibold text-primary">K</span>
-                    </div>
-                    <div>
-                        <p class="text-sm font-medium">Kavitha R.</p>
-                        <p class="text-xs text-text-tertiary">Mumbai • Verified Purchase ✓</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Recently Viewed (Dynamic) -->
-    <section class="max-w-[1600px] mx-auto px-4 md:px-10 py-10 hidden" id="recentlyViewedSection" data-reveal>
+    <section class="section-container hidden" id="recentlyViewedSection" data-reveal>
         <div class="recently-viewed">
             <div class="recently-viewed-title">
                 <span class="material-symbols-outlined">history</span>
                 Your Recently Viewed
             </div>
-            <div id="recentlyViewedItems" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+            <div id="recentlyViewedItems" class="product-grid-4"></div>
         </div>
     </section>
 
-    <!-- Footer (Amazon-style dark) -->
+    <!-- Footer -->
     <div class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</div>
     <footer class="site-footer">
         <div class="footer-grid">
@@ -514,7 +617,7 @@
         </div>
     </footer>
 
-    <!-- Mobile Bottom Nav (Flipkart-style 5 tabs) -->
+    <!-- Mobile Bottom Nav -->
     <nav class="bottom-nav" aria-label="Mobile navigation">
         <div class="grid">
             <a href="index.html" class="active">
@@ -571,7 +674,39 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
+        // Countdown Timer
+        function initCountdown() {
+            var endDate = new Date();
+            endDate.setHours(endDate.getHours() + 8);
+            endDate.setMinutes(endDate.getMinutes() + 45);
+            
+            function update() {
+                var now = new Date();
+                var diff = endDate - now;
+                
+                if (diff <= 0) {
+                    endDate = new Date();
+                    endDate.setHours(endDate.getHours() + 8);
+                    endDate.setMinutes(endDate.getMinutes() + 45);
+                    diff = endDate - now;
+                }
+                
+                var hours = Math.floor(diff / (1000 * 60 * 60));
+                var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('countdownHours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('countdownMinutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('countdownSeconds').textContent = String(seconds).padStart(2, '0');
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
+        
         document.addEventListener('DOMContentLoaded', async function() {
+            initCountdown();
+            
             var container = document.getElementById('featuredProducts');
             if (container) {
                 container.innerHTML = '<div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-img"></div>';

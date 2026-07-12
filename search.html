@@ -84,40 +84,35 @@
             <div class="relative mb-8">
                 <div class="relative">
                     <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-tertiary" style="font-size:22px">search</span>
-                    <input data-search-input type="text" placeholder="Search for furniture, decor, and more..." class="w-full pl-11 pr-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:border-primary transition-colors" aria-label="Search products">
+                    <input data-search-input type="text" placeholder="Search for furniture, decor, and more..." class="w-full pl-11 pr-10 py-3 border border-border rounded-lg text-sm focus:outline-none focus:border-primary transition-colors" aria-label="Search products" autocomplete="off">
+                    <button id="clearSearch" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-text-tertiary hover:text-text transition-colors" aria-label="Clear search">
+                        <span class="material-symbols-outlined" style="font-size:20px">close</span>
+                    </button>
                 </div>
                 <div data-search-dropdown class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-border rounded-lg shadow-lg z-40 overflow-hidden">
-                    <div class="p-3 border-b border-border-light">
-                        <p class="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-2">Trending</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Cotton Throw</span>
-                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Table Lamp</span>
-                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Wall Art</span>
-                            <span data-search-item class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">Planter</span>
+                    <!-- Recent Searches -->
+                    <div id="recentSearches" class="p-3 border-b border-border-light hidden">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-xs font-medium text-text-tertiary uppercase tracking-wider">Recent</p>
+                            <button onclick="clearRecentSearches()" class="text-xs text-primary hover:underline">Clear</button>
                         </div>
+                        <div id="recentList" class="space-y-1"></div>
                     </div>
-                    <div class="p-3">
+                    <!-- Trending -->
+                    <div id="trendingSection" class="p-3 border-b border-border-light">
+                        <p class="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-2">Trending</p>
+                        <div id="trendingList" class="flex flex-wrap gap-2"></div>
+                    </div>
+                    <!-- Product Suggestions -->
+                    <div id="suggestionsSection" class="p-3 hidden">
                         <p class="text-xs font-medium text-text-tertiary uppercase tracking-wider mb-2">Products</p>
-                        <div class="space-y-1">
-                            <a data-search-item href="#" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt transition-colors">
-                                <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">inventory_2</span>
-                                <span class="text-sm">Handwoven Cotton Throw</span>
-                            </a>
-                            <a data-search-item href="#" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt transition-colors">
-                                <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">inventory_2</span>
-                                <span class="text-sm">Ceramic Table Lamp</span>
-                            </a>
-                            <a data-search-item href="#" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt transition-colors">
-                                <span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">inventory_2</span>
-                                <span class="text-sm">Stone Planter Set</span>
-                            </a>
-                        </div>
+                        <div id="suggestionsList" class="space-y-1"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Popular Categories -->
-            <div class="mb-8">
+            <div id="popularCategories" class="mb-8">
                 <h2 class="text-sm font-semibold mb-4">Popular Categories</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <a href="category.html?cat=living" class="flex items-center gap-3 p-4 border border-border rounded-lg hover:border-primary/30 hover:bg-primary/5 transition-all">
@@ -138,6 +133,9 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Result Count -->
+            <p id="resultCount" class="text-sm text-text-secondary mb-4"></p>
 
             <!-- Search Results -->
             <div id="searchResults" class="text-center py-16">
@@ -230,23 +228,195 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        var RECENT_KEY = 'chennai_retail_recent_searches';
+
+        function getRecentSearches() {
+            try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; } catch(e) { return []; }
+        }
+
+        function addRecentSearch(query) {
+            var recent = getRecentSearches().filter(function(r) { return r !== query; });
+            recent.unshift(query);
+            if (recent.length > 5) recent = recent.slice(0, 5);
+            localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
+        }
+
+        function clearRecentSearches() {
+            localStorage.removeItem(RECENT_KEY);
+            updateRecentUI();
+        }
+
+        var emptyStateHTML = '<div class="text-center py-16"><span class="material-symbols-outlined text-text-tertiary mb-4 block" style="font-size:64px">search</span><p class="text-text-secondary mb-1">Start typing to search</p><p class="text-xs text-text-tertiary">Find furniture, decor, and more from our collection</p></div>';
+
+        function noResultsHTML(query) {
+            return '<div class="text-center py-16"><span class="material-symbols-outlined text-text-tertiary mb-3" style="font-size:64px">search_off</span><h2 class="text-lg font-semibold mb-2">No results for "' + query + '"</h2><p class="text-sm text-text-secondary mb-6">Try different keywords or browse our categories</p><div class="flex flex-wrap justify-center gap-2"><a href="category.html?cat=living" class="px-4 py-2 bg-surface-alt rounded-full text-sm hover:bg-border-light transition-colors">Living Room</a><a href="category.html?cat=decor" class="px-4 py-2 bg-surface-alt rounded-full text-sm hover:bg-border-light transition-colors">Decor</a><a href="category.html?cat=kitchen" class="px-4 py-2 bg-surface-alt rounded-full text-sm hover:bg-border-light transition-colors">Kitchen</a></div></div>';
+        }
+
+        function hideDropdown() {
+            document.querySelector('[data-search-dropdown]').classList.add('hidden');
+        }
+
+        function showDropdown() {
+            document.querySelector('[data-search-dropdown]').classList.remove('hidden');
+        }
+
+        function searchFor(query) {
+            document.querySelector('[data-search-input]').value = query;
+            document.getElementById('clearSearch').classList.remove('hidden');
+            performSearch(query);
+            hideDropdown();
+        }
+
+        function updateRecentUI() {
+            var recent = getRecentSearches();
+            var section = document.getElementById('recentSearches');
+            var list = document.getElementById('recentList');
+            if (recent.length > 0) {
+                section.classList.remove('hidden');
+                list.innerHTML = recent.map(function(r) {
+                    var escaped = r.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    return '<a onclick="searchFor(\'' + escaped + '\')" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt cursor-pointer transition-colors">' +
+                        '<span class="material-symbols-outlined text-text-tertiary" style="font-size:18px">history</span>' +
+                        '<span class="text-sm text-text-secondary">' + r + '</span>' +
+                    '</a>';
+                }).join('');
+            } else {
+                section.classList.add('hidden');
+            }
+        }
+
+        function renderTrending(featured) {
+            document.getElementById('trendingList').innerHTML = featured.slice(0, 4).map(function(p) {
+                var escaped = p.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                return '<span onclick="searchFor(\'' + escaped + '\')" class="px-3 py-1.5 bg-surface-alt rounded-full text-xs text-text-secondary hover:text-text hover:bg-border-light cursor-pointer transition-colors">' + p.name + '</span>';
+            }).join('');
+        }
+
+        function updateDropdown(query, featured) {
+            updateRecentUI();
+            renderTrending(featured);
+
+            ProductService.searchProducts(query).then(function(products) {
+                var section = document.getElementById('suggestionsSection');
+                var list = document.getElementById('suggestionsList');
+                if (products.length > 0) {
+                    section.classList.remove('hidden');
+                    list.innerHTML = products.slice(0, 5).map(function(p) {
+                        return '<a href="product.html?id=' + p.id + '" class="flex items-center gap-3 p-2 rounded-md hover:bg-surface-alt transition-colors">' +
+                            '<img src="' + p.image + '" alt="' + p.name + '" class="w-10 h-10 rounded object-cover" width="40" height="40">' +
+                            '<div class="flex-1 min-w-0">' +
+                                '<p class="text-sm font-medium truncate">' + p.name + '</p>' +
+                                '<p class="text-xs text-text-tertiary">' + formatPrice(p.price) + '</p>' +
+                            '</div>' +
+                        '</a>';
+                    }).join('');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+
+            showDropdown();
+        }
+
+        async function performSearch(query) {
+            addRecentSearch(query);
+            var products = await ProductService.searchProducts(query);
+            var container = document.getElementById('searchResults');
+            var countEl = document.getElementById('resultCount');
+            var categoriesEl = document.getElementById('popularCategories');
+
+            if (products.length === 0) {
+                container.innerHTML = noResultsHTML(query);
+                if (countEl) countEl.textContent = '';
+                if (categoriesEl) categoriesEl.style.display = '';
+            } else {
+                if (countEl) {
+                    var label = products.length + ' result' + (products.length !== 1 ? 's' : '');
+                    countEl.textContent = label + ' for "' + query + '"';
+                }
+                if (categoriesEl) categoriesEl.style.display = 'none';
+                container.innerHTML = '<div class="grid grid-cols-2 lg:grid-cols-3 gap-5">' + products.map(renderProductCardWithActions).join('</div>');
+                wishlistStore.updateIcons();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
             var input = document.querySelector('[data-search-input]');
             var resultsContainer = document.getElementById('searchResults');
+            var debounceTimer;
+            var featured = [];
+
             if (!input || !resultsContainer) return;
 
-            input.addEventListener('input', async function() {
+            input.focus();
+
+            try {
+                featured = await ProductService.getFeaturedProducts();
+            } catch(e) { featured = []; }
+            renderTrending(featured);
+
+            var qParam = new URLSearchParams(window.location.search).get('q');
+            if (qParam) {
+                input.value = qParam;
+                document.getElementById('clearSearch').classList.remove('hidden');
+                performSearch(qParam);
+            }
+
+            updateRecentUI();
+
+            input.addEventListener('input', function() {
                 var query = this.value.trim();
-                if (query.length < 2) {
-                    resultsContainer.innerHTML = '<p class="text-text-secondary text-center py-8">Type to search products</p>';
-                    return;
-                }
-                var products = await ProductService.searchProducts(query);
-                if (products.length === 0) {
-                    resultsContainer.innerHTML = '<p class="text-text-secondary text-center py-8">No products found</p>';
+                document.getElementById('clearSearch').classList.toggle('hidden', !query);
+
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(function() {
+                    if (query.length >= 2) {
+                        updateDropdown(query, featured);
+                    } else {
+                        hideDropdown();
+                    }
+                }, 300);
+            });
+
+            input.addEventListener('focus', function() {
+                var query = this.value.trim();
+                if (query.length >= 2) {
+                    updateDropdown(query, featured);
                 } else {
-                    resultsContainer.innerHTML = products.map(renderProductCard).join('');
+                    showDropdown();
+                    updateRecentUI();
+                    renderTrending(featured);
                 }
+            });
+
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    var query = this.value.trim();
+                    if (query) {
+                        performSearch(query);
+                        hideDropdown();
+                    }
+                }
+                if (e.key === 'Escape') {
+                    hideDropdown();
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('[data-search-input]') && !e.target.closest('[data-search-dropdown]') && !e.target.closest('#clearSearch')) {
+                    hideDropdown();
+                }
+            });
+
+            document.getElementById('clearSearch').addEventListener('click', function() {
+                input.value = '';
+                this.classList.add('hidden');
+                resultsContainer.innerHTML = emptyStateHTML;
+                document.getElementById('resultCount').textContent = '';
+                document.getElementById('popularCategories').style.display = '';
+                hideDropdown();
+                input.focus();
             });
         });
     </script>

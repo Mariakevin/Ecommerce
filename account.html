@@ -30,7 +30,7 @@
 </head>
 <body class="bg-[#eaeded] font-sans text-text">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
-    <div class="scroll-progress fixed top-0 left-0 h-0.5 bg-primary z-[60] w-0 transition-all duration-150"></div>
+    <div class="scroll-progress"></div>
 
     <!-- Desktop Header -->
     <header class="site-header hidden md:block">
@@ -565,8 +565,9 @@
                 };
 
                 if (data.isDefault) {
-                    AddressService.get().forEach(function(a) { a.isDefault = false; });
-                    AddressService.save(AddressService.get());
+                    var list = AddressService.get();
+                    list.forEach(function(a) { a.isDefault = false; });
+                    AddressService.save(list);
                 }
 
                 if (editId) {

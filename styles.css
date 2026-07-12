@@ -710,6 +710,19 @@ h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; color: var(--text);
    -------------------------------------------------- */
 @keyframes heartBurst { 0% { transform: scale(1); } 50% { transform: scale(1.25); } 100% { transform: scale(1); } }
 .wishlist-burst { animation: heartBurst 0.3s ease; }
+@keyframes heartParticle {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+}
+.wishlist-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    pointer-events: none;
+    animation: heartParticle 0.5s ease-out forwards;
+}
 
 /* --------------------------------------------------
    25. Cart Badge Bounce

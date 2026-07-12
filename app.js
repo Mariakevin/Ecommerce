@@ -129,14 +129,18 @@
        6. Sticky Header
        -------------------------------------------------- */
     function initStickyHeader() {
-        var header = document.querySelector('header');
-        if (!header) return;
+        var headers = document.querySelectorAll('header');
+        if (!headers.length) return;
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 10) {
-                header.classList.add('shadow-sm');
-            } else {
-                header.classList.remove('shadow-sm');
-            }
+            headers.forEach(function(header) {
+                if (header.offsetParent !== null) {
+                    if (window.scrollY > 10) {
+                        header.classList.add('shadow-sm');
+                    } else {
+                        header.classList.remove('shadow-sm');
+                    }
+                }
+            });
         }, { passive: true });
     }
 

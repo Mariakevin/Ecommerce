@@ -328,23 +328,6 @@
     <script src="src/components/ProductCard.js"></script>
     <script src="app.js"></script>
     <script>
-        function initGallery(container) {
-            var mainImg = container.querySelector('.gallery-main img');
-            var thumbs = container.querySelectorAll('.gallery-thumb');
-            thumbs.forEach(function(thumb) {
-                thumb.addEventListener('click', function() {
-                    thumbs.forEach(function(t) {
-                        t.classList.remove('active', 'border-primary');
-                        t.classList.add('border-transparent', 'opacity-60');
-                    });
-                    this.classList.add('active', 'border-primary');
-                    this.classList.remove('border-transparent', 'opacity-60');
-                    this.style.opacity = '1';
-                    mainImg.src = this.querySelector('img').src;
-                });
-            });
-        }
-
         function showNotFound() {
             document.getElementById('productDetail').classList.add('hidden');
             document.getElementById('productNotFound').classList.remove('hidden');
@@ -432,8 +415,11 @@
                 if (navigator.share) {
                     navigator.share({ title: product.name, text: product.description, url: window.location.href });
                 } else {
-                    navigator.clipboard.writeText(window.location.href);
-                    showToast('Link copied to clipboard');
+                    navigator.clipboard.writeText(window.location.href).then(function() {
+                        showToast('Link copied to clipboard');
+                    }).catch(function() {
+                        showToast('Could not copy link');
+                    });
                 }
             });
 

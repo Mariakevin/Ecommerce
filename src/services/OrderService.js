@@ -17,13 +17,18 @@ const OrderService = {
         if (cart.length === 0) return null;
 
         const deliveryDays = deliveryOption === 'express' ? 1 : 3;
+        const expressFee = deliveryOption === 'express' ? 149 : 0;
+        const subtotal = window.CartService.getSubtotal();
+        const tax = window.CartService.getTax();
+        const deliveryFee = subtotal >= 999 ? expressFee : (expressFee || 99);
+        const total = subtotal + tax + deliveryFee;
         const order = {
             id: 'CR-2026-' + Math.floor(1000 + Math.random() * 9000),
             items: [...cart],
-            subtotal: window.CartService.getSubtotal(),
-            tax: window.CartService.getTax(),
-            deliveryFee: window.CartService.getDeliveryFee(),
-            total: window.CartService.getGrandTotal(),
+            subtotal: subtotal,
+            tax: tax,
+            deliveryFee: deliveryFee,
+            total: total,
             shipping: shippingDetails,
             paymentMethod: paymentMethod || 'cod',
             deliveryOption: deliveryOption || 'standard',

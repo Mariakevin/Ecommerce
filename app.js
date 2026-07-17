@@ -570,4 +570,23 @@
         });
     });
 
+    // === SERVICE WORKER REGISTRATION ===
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', async () => {
+            try {
+                const registration = await navigator.serviceWorker.register('/sw.js');
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'activated') {
+                            console.log('App updated! Refresh for latest version.');
+                        }
+                    });
+                });
+            } catch (error) {
+                console.log('SW registration failed:', error);
+            }
+        });
+    }
+
 })();

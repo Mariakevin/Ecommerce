@@ -1268,6 +1268,7 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
     body { animation: none; }
     .product-card:hover { transform: none; }
@@ -1279,7 +1280,19 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 /* --------------------------------------------------
    35. Accessibility
    -------------------------------------------------- */
-*:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+/* Enhanced focus-visible indicators */
+*:focus-visible {
+    outline: 3px solid var(--primary, #DC2626);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    .product-card { border: 1px solid CanvasText; }
+    .btn-primary { border: 2px solid ButtonText; }
+}
+
 .sr-only {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
@@ -2230,6 +2243,20 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     .urgency-icon { animation: none; }
     .floating-notification { animation: none; }
     .scroll-to-top { transition: none; }
+}
+
+/* --------------------------------------------------
+   67b. Performance: CSS Containment
+   -------------------------------------------------- */
+.product-card {
+    contain: layout style paint;
+}
+
+.mega-menu-content,
+.footer,
+.countdown-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
 }
 
 /* --------------------------------------------------
@@ -5440,4 +5467,170 @@ progress {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* ============================================================
+   Mobile UX Improvements
+   ============================================================ */
+
+/* --- 79. Mobile Bottom Navigation (New) --- */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-default);
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+@media (max-width: 768px) {
+    .mobile-bottom-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+.mobile-bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 12px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    min-width: 56px;
+    -webkit-tap-highlight-color: transparent;
+}
+.mobile-bottom-nav a .material-symbols-outlined {
+    font-size: 24px;
+    transition: color 0.2s ease;
+}
+.mobile-bottom-nav a.active {
+    color: var(--primary);
+}
+.mobile-bottom-nav a.active .material-symbols-outlined {
+    color: var(--primary);
+}
+.mobile-bottom-nav a:active {
+    opacity: 0.7;
+}
+
+/* --- 80. Touch Target Sizes --- */
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-outline,
+    .btn-buy-now {
+        min-height: 48px;
+        padding: 12px 24px;
+    }
+    .filter-chip {
+        min-height: 44px;
+        padding: 10px 16px;
+    }
+    .mobile-bottom-nav a {
+        min-height: 48px;
+        min-width: 56px;
+    }
+    .product-card .wishlist-btn {
+        width: 44px;
+        height: 44px;
+    }
+    .scroll-to-top {
+        width: 48px;
+        height: 48px;
+    }
+    .category-toolbar-btn {
+        min-height: 44px;
+        padding: 10px 16px;
+    }
+    .pagination-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* --- 81. Safe Area Insets (iOS Notch Support) --- */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .mobile-bottom-nav {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    .footer {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+    .scroll-to-top {
+        bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+    .floating-notification {
+        bottom: calc(130px + env(safe-area-inset-bottom));
+    }
+}
+
+/* --- 82. Bottom Sheet Filters (Mobile) --- */
+@media (max-width: 768px) {
+    .filter-drawer {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        max-height: 85vh;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        transform: translateY(100%);
+    }
+    .filter-drawer.active {
+        transform: translateY(0);
+    }
+    .filter-drawer-handle {
+        width: 40px;
+        height: 4px;
+        background: var(--border-default);
+        border-radius: 2px;
+        margin: 12px auto 0;
+    }
+}
+
+/* --- 83. Touch Manipulation & Optimization --- */
+@media (max-width: 768px) {
+    * {
+        touch-action: manipulation;
+    }
+    .product-card {
+        touch-action: pan-y;
+    }
+    .filter-chips-scroll {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    a, button {
+        -webkit-touch-callout: none;
+    }
+    input, textarea, select {
+        font-size: 16px !important;
+    }
+}
+
+/* === CART RECOVERY STYLES === */
+@media (max-width: 768px) {
+  #cartRecoveryModal > div {
+    padding: 16px;
+    align-items: flex-end;
+  }
+  
+  #cartRecoveryModal > div > div {
+    border-radius: 16px 16px 0 0;
+  }
+  
+  #cartMiniReminder {
+    left: 16px;
+    right: 16px;
+    bottom: 80px !important;
+  }
 }

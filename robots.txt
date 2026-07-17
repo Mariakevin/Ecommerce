@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /cart.html
+Disallow: /checkout.html
+Disallow: /order-success.html
+Disallow: /account.html
+Disallow: /wishlist.html
+
+Sitemap: https://chennairetail.in/sitemap.xml

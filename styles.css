@@ -1,5 +1,5 @@
 /* ============================================================
-   Chennai Retail - Red/Black/White Design System
+   Chennai Retail - Red/Stone Warm Design System
    Bold, high-contrast, conversion-focused
    ============================================================ */
 
@@ -19,43 +19,43 @@
     --primary-dark: #991B1B;
 
     /* Legacy palette (kept for backward compat) */
-    --black: #111111;
-    --black-light: #1F1F1F;
-    --white: #FFFFFF;
+    --black: #292524;
+    --black-light: #44403C;
+    --white: #FFFBF5;
 
-    /* Gray Scale */
-    --gray-50: #F9FAFB;
-    --gray-100: #F3F4F6;
-    --gray-200: #E5E7EB;
-    --gray-300: #D1D5DB;
-    --gray-400: #9CA3AF;
-    --gray-500: #6B7280;
-    --gray-600: #4B5563;
-    --gray-700: #374151;
-    --gray-800: #1F2937;
-    --gray-900: #111827;
+    /* Gray Scale — Warm Stone Tones */
+    --gray-50: #FAF9F7;
+    --gray-100: #F5F0EB;
+    --gray-200: #E7E0D8;
+    --gray-300: #D6CBC0;
+    --gray-400: #A89585;
+    --gray-500: #78716C;
+    --gray-600: #57534E;
+    --gray-700: #44403C;
+    --gray-800: #292524;
+    --gray-900: #1C1917;
 
     /* Semantic Colors */
     --success: #16A34A;
     --warning: #F59E0B;
     --error: #DC2626;
 
-    /* Semantic Background Tokens */
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F3F4F6;
-    --bg-tertiary: #F9FAFB;
-    --bg-elevated: #FFFFFF;
-    --bg-surface: #FFFFFF;
+    /* Semantic Background Tokens — Warm Off-Whites */
+    --bg-primary: #FFFBF5;
+    --bg-secondary: #F5F0EB;
+    --bg-tertiary: #FAF9F7;
+    --bg-elevated: #FFFBF5;
+    --bg-surface: #FFFBF5;
 
-    /* Semantic Text Tokens */
-    --text-primary: #111111;
-    --text-secondary: #4B5563;
-    --text-tertiary: #9CA3AF;
-    --text-inverse: #FFFFFF;
+    /* Semantic Text Tokens — Warm Darks */
+    --text-primary: #292524;
+    --text-secondary: #57534E;
+    --text-tertiary: #A89585;
+    --text-inverse: #FFFBF5;
 
-    /* Semantic Border Tokens */
-    --border-default: #E5E7EB;
-    --border-light: #F3F4F6;
+    /* Semantic Border Tokens — Warm Borders */
+    --border-default: #E7E0D8;
+    --border-light: #F5F0EB;
     --border-focus: #DC2626;
 
     /* Border Radius */
@@ -65,12 +65,12 @@
     --radius-xl: 16px;
     --radius-pill: 999px;
 
-    /* Shadows */
-    --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    /* Shadows — Warmer tone */
+    --shadow-xs: 0 1px 2px rgba(41,37,36,0.05);
+    --shadow-sm: 0 1px 3px rgba(41,37,36,0.1), 0 1px 2px rgba(41,37,36,0.06);
+    --shadow-md: 0 4px 6px -1px rgba(41,37,36,0.1), 0 2px 4px -1px rgba(41,37,36,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(41,37,36,0.1), 0 4px 6px -2px rgba(41,37,36,0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(41,37,36,0.1), 0 10px 10px -5px rgba(41,37,36,0.04);
 
     /* Transition System */
     --duration-instant: 100ms;
@@ -83,11 +83,11 @@
     --transition: var(--duration-fast) var(--ease-default);
 
     /* Glassmorphism Tokens */
-    --glass-bg: rgba(255, 255, 255, 0.6);
-    --glass-bg-strong: rgba(255, 255, 255, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-bg: rgba(255, 251, 245, 0.6);
+    --glass-bg-strong: rgba(255, 251, 245, 0.8);
+    --glass-border: rgba(255, 251, 245, 0.2);
     --glass-blur: 12px;
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --glass-shadow: 0 8px 32px rgba(41, 37, 36, 0.08);
 
     /* Container */
     --container-max: min(1600px, 100% - 48px);
@@ -104,34 +104,34 @@
         --primary-light: #3B1111;
         --primary-dark: #FCA5A5;
 
-        /* Gray scale inverted */
-        --gray-50: #1A1A1A;
-        --gray-100: #111111;
-        --gray-200: #1F2937;
-        --gray-300: #374151;
-        --gray-400: #4B5563;
-        --gray-500: #6B7280;
-        --gray-600: #9CA3AF;
-        --gray-700: #D1D5DB;
-        --gray-800: #E5E7EB;
-        --gray-900: #F3F4F6;
+        /* Gray scale — Warm Dark */
+        --gray-50: #1C1917;
+        --gray-100: #292524;
+        --gray-200: #44403C;
+        --gray-300: #57534E;
+        --gray-400: #78716C;
+        --gray-500: #A89585;
+        --gray-600: #D6CBC0;
+        --gray-700: #E7E0D8;
+        --gray-800: #F5F0EB;
+        --gray-900: #FAF9F7;
 
-        /* Semantic Background Tokens */
-        --bg-primary: #0F0F0F;
-        --bg-secondary: #1A1A1A;
-        --bg-tertiary: #141414;
-        --bg-elevated: #1A1A1A;
-        --bg-surface: #1F1F1F;
+        /* Semantic Background Tokens — Warm Dark */
+        --bg-primary: #1C1917;
+        --bg-secondary: #292524;
+        --bg-tertiary: #1C1917;
+        --bg-elevated: #292524;
+        --bg-surface: #292524;
 
-        /* Semantic Text Tokens */
-        --text-primary: #F3F4F6;
-        --text-secondary: #9CA3AF;
-        --text-tertiary: #6B7280;
-        --text-inverse: #111111;
+        /* Semantic Text Tokens — Warm Light */
+        --text-primary: #FAF9F7;
+        --text-secondary: #A89585;
+        --text-tertiary: #78716C;
+        --text-inverse: #292524;
 
         /* Semantic Border Tokens */
-        --border-default: #2D2D2D;
-        --border-light: #1F1F1F;
+        --border-default: #44403C;
+        --border-light: #292524;
         --border-focus: #EF4444;
 
         /* Shadows reduced for dark mode */
@@ -141,10 +141,10 @@
         --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -2px rgba(0,0,0,0.2);
         --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.3);
 
-        /* Glassmorphism dark */
-        --glass-bg: rgba(26, 26, 26, 0.7);
-        --glass-bg-strong: rgba(26, 26, 26, 0.85);
-        --glass-border: rgba(255, 255, 255, 0.08);
+        /* Glassmorphism dark — warm tinted */
+        --glass-bg: rgba(28, 25, 23, 0.7);
+        --glass-bg-strong: rgba(28, 25, 23, 0.85);
+        --glass-border: rgba(255, 251, 245, 0.08);
         --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 }

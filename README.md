@@ -9,7 +9,7 @@
 ### Premium eCommerce Web Application
 
 A bold, conversion-focused eCommerce experience built with Headless Commerce architecture,
-red/black/white color palette, and modern 2026 CSS design patterns.
+Red/Stone Warm design system, PWA capabilities, and modern 2026 CSS design patterns.
 
 <br>
 
@@ -53,6 +53,10 @@ red/black/white color palette, and modern 2026 CSS design patterns.
 | **Icons** | Material Symbols Outlined |
 | **Fonts** | Inter (300–700) |
 | **Architecture** | Headless Commerce (Service Layer + Reactive Store + Event Bus) |
+| **PWA** | Service Worker + Web App Manifest |
+| **Analytics** | GA4 Ecommerce + Consent Mode V2 |
+| **SEO** | JSON-LD Structured Data + Open Graph |
+| **Security** | CSP + HSTS + .htaccess Headers |
 | **Images** | Stock photography (Pexels/Unsplash) |
 
 </div>
@@ -117,6 +121,135 @@ red/black/white color palette, and modern 2026 CSS design patterns.
 
 </div>
 
+<br>
+
+### Accessibility (WCAG 2.2)
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **Skip-to-Content** | Skip navigation link for keyboard users |
+| **ARIA Live Regions** | Screen reader announcements for dynamic content |
+| **Focus-Visible** | 3px outline indicators for keyboard navigation |
+| **High Contrast** | Forced-colors (Windows High Contrast) support |
+| **Reduced Motion** | `prefers-reduced-motion` media query support |
+| **Touch Targets** | 44px minimum for all interactive elements |
+| **Form Labels** | Proper `aria-describedby` associations |
+
+</div>
+
+<br>
+
+### Performance & Core Web Vitals
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **Resource Hints** | Preconnect, dns-prefetch, preload for critical assets |
+| **Critical CSS** | Inlined above-the-fold rendering styles |
+| **CSS Containment** | `contain: layout style paint` for isolation |
+| **Content Visibility** | `content-visibility: auto` for below-fold sections |
+| **Lazy Loading** | `loading="lazy"` + `fetchpriority` + `decoding="async"` |
+| **Font Display** | `swap` strategy to prevent CLS |
+
+</div>
+
+<br>
+
+### SEO & Structured Data
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **JSON-LD** | Organization, BreadcrumbList, Product schemas |
+| **Open Graph** | Social sharing cards on all pages |
+| **Twitter Cards** | Twitter/X optimized meta tags |
+| **Canonical URLs** | Duplicate content prevention |
+| **Dynamic Titles** | Per-page `<title>` tags |
+
+</div>
+
+<br>
+
+### Mobile UX
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **Bottom Navigation** | Thumb-zone reachable mobile nav |
+| **Touch Targets** | 44px+ for all interactive elements |
+| **Bottom-Sheet Filters** | Mobile-native filter pattern |
+| **Safe Area Insets** | iPhone notch handling |
+| **Touch Action** | `manipulation` for tap optimization |
+
+</div>
+
+<br>
+
+### Progressive Web App (PWA)
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **Service Worker** | Cache-first / stale-while-revalidate strategies |
+| **Web App Manifest** | "Add to Home Screen" capability |
+| **Offline Fallback** | Branded offline page when network unavailable |
+
+</div>
+
+<br>
+
+### Analytics & Privacy
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **GA4 Tracking** | Ecommerce events: view_item, add_to_cart, begin_checkout, purchase |
+| **Consent Mode V2** | GDPR compliance with user consent |
+| **Cookie Consent** | Banner with accept/decline options |
+
+</div>
+
+<br>
+
+### Cart Abandonment Recovery
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **Exit-Intent** | Desktop + mobile detection triggers recovery modal |
+| **Inactivity Detection** | 5-minute timeout triggers reminder |
+| **Auto-Save Cart** | localStorage persistence with 7-day TTL |
+| **Recovery Modal** | Coupon offer (COMEBACK10) to complete purchase |
+
+</div>
+
+<br>
+
+### Security
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **Content Security Policy** | XSS prevention via CSP headers |
+| **X-Frame-Options** | Clickjacking protection |
+| **X-Content-Type-Options** | MIME sniffing prevention |
+| **HSTS** | HTTP Strict Transport Security |
+| **Referrer-Policy** | Controls referrer information leakage |
+| **Permissions-Policy** | Restricts browser feature access |
+| **GZIP Compression** | Server-side asset compression |
+| **Browser Caching** | Optimized cache-control headers |
+
+</div>
+
 ---
 
 <br>
@@ -154,14 +287,16 @@ red/black/white color palette, and modern 2026 CSS design patterns.
 
 <br>
 
-### Color Palette
+### Color Palette (Red/Stone Warm)
 
 <div align="center">
 
 <img src="https://img.shields.io/badge/Primary-DC2626?style=for-the-badge&color=DC2626" alt="Primary">
 <img src="https://img.shields.io/badge/Primary_Hover-B91C1C?style=for-the-badge&color=B91C1C" alt="Primary Hover">
-<img src="https://img.shields.io/badge/Black-111111?style=for-the-badge&color=111111" alt="Black">
-<img src="https://img.shields.io/badge/White-FFFFFF?style=for-the-badge&color=FFFFFF&labelColor=999999" alt="White">
+<img src="https://img.shields.io/badge/Warm_Ivory-FFFBF5?style=for-the-badge&color=FFFBF5&labelColor=999999" alt="Warm Ivory">
+<img src="https://img.shields.io/badge/Warm_Charcoal-292524?style=for-the-badge&color=292524" alt="Warm Charcoal">
+<img src="https://img.shields.io/badge/Stone_400-A8A29E?style=for-the-badge&color=A8A29E" alt="Stone 400">
+<img src="https://img.shields.io/badge/Stone_200-E7E5E4?style=for-the-badge&color=E7E5E4&labelColor=999999" alt="Stone 200">
 
 </div>
 
@@ -175,10 +310,20 @@ red/black/white color palette, and modern 2026 CSS design patterns.
   --primary: #DC2626;
   --primary-hover: #B91C1C;
 
+  /* Warm Palette */
+  --warm-ivory: #FFFBF5;
+  --warm-charcoal: #292524;
+  --stone-100: #F5F5F4;
+  --stone-200: #E7E5E4;
+  --stone-400: #A8A29E;
+  --stone-600: #57534E;
+
   /* Semantic */
-  --bg-primary: #FFFFFF;
-  --text-primary: #111111;
-  --border-default: #E5E7EB;
+  --bg-primary: #FFFBF5;
+  --bg-surface: #FFFFFF;
+  --text-primary: #292524;
+  --text-secondary: #57534E;
+  --border-default: #E7E5E4;
 
   /* Transitions */
   --duration-fast: 150ms;
@@ -186,8 +331,21 @@ red/black/white color palette, and modern 2026 CSS design patterns.
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-bg: rgba(255, 251, 245, 0.6);
   --glass-blur: 12px;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Z-Index */
+  --z-header: 100;
+  --z-modal: 200;
+  --z-toast: 300;
 }
 ```
 
@@ -209,14 +367,22 @@ Ecommerce/
 ├── account.html
 ├── offer.html
 ├── 404.html
-├── styles.css              # 5,200+ line design system
-├── app.js                  # UI layer, scroll reveal, micro-interactions
+├── offline.html             # PWA offline fallback page
+├── styles.css               # 5,636+ line design system
+├── app.js                   # 592+ lines — UI layer, scroll reveal, micro-interactions
+├── analytics.js             # GA4 ecommerce tracking + GDPR consent
+├── cart-recovery.js         # Cart abandonment recovery system
+├── sw.js                    # Service Worker (PWA offline support)
+├── manifest.json            # PWA Web App Manifest
+├── sitemap.xml              # SEO sitemap
+├── robots.txt               # Crawler directives
+├── .htaccess                # Security headers + GZIP + caching
 ├── favicon.svg
 ├── logo.svg
-├── images/                 # Stock photos, product images
+├── images/                  # Stock photos, product images
 └── src/
     ├── components/
-    │   └── ProductCard.js  # Reusable card with quick view
+    │   └── ProductCard.js   # Reusable card with quick view
     ├── services/
     │   ├── AuthService.js
     │   ├── CartService.js

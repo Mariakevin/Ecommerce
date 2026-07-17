@@ -9,7 +9,7 @@
 ### Premium eCommerce Web Application
 
 A bold, conversion-focused eCommerce experience built with Headless Commerce architecture,
-Red/Stone Warm design system, PWA capabilities, and modern 2026 CSS design patterns.
+Hallmark editorial design system (OKLCH colors, Fraunces + Newsreader serifs), PWA capabilities, and modern 2026 CSS design patterns.
 
 <br>
 
@@ -23,6 +23,9 @@ Red/Stone Warm design system, PWA capabilities, and modern 2026 CSS design patte
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
 <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+<img src="https://img.shields.io/badge/OKLCH-Color_System-F97316?style=for-the-badge&logo=css3&logoColor=white" alt="OKLCH">
+<img src="https://img.shields.io/badge/Fraunces-Display_Serif-6D28D9?style=for-the-badge&logo=googlefonts&logoColor=white" alt="Fraunces">
+<img src="https://img.shields.io/badge/Newsreader-Body_Serif-059669?style=for-the-badge&logo=googlefonts&logoColor=white" alt="Newsreader">
 
 </div>
 
@@ -51,7 +54,7 @@ Red/Stone Warm design system, PWA capabilities, and modern 2026 CSS design patte
 | **Markup** | Semantic HTML5 |
 | **Styling** | Custom CSS Design System + Tailwind CSS CDN |
 | **Icons** | Material Symbols Outlined |
-| **Fonts** | Inter (300–700) |
+| **Fonts** | Fraunces (display) + Newsreader (body) — editorial serif free row |
 | **Architecture** | Headless Commerce (Service Layer + Reactive Store + Event Bus) |
 | **PWA** | Service Worker + Web App Manifest |
 | **Analytics** | GA4 Ecommerce + Consent Mode V2 |
@@ -93,12 +96,12 @@ Red/Stone Warm design system, PWA capabilities, and modern 2026 CSS design patte
 
 | Feature | Description |
 |:-------:|:------------|
-| **Dark Mode** | Full `prefers-color-scheme` support with semantic tokens |
-| **Fluid Typography** | `clamp()` for responsive text sizing |
-| **Multi-Speed Transitions** | Instant, fast, normal, slow with spring easing |
+| **OKLCH Colors** | Perceptual color space, warm stone palette, dark mode |
+| **Editorial Typography** | Fraunces display + Newsreader body — editorial free row |
+| **Bento Grid** | Asymmetric modular blocks for category showcase |
+| **Stagger Reveal** | Page-load orchestration via `--i` custom property |
 | **Glassmorphism** | Reusable `.glass` and `.glass-strong` utility classes |
 | **Container Queries** | Responsive product cards via `container-type: inline-size` |
-| **Bento Grid** | Flexible layout system with span utilities |
 
 </div>
 
@@ -285,9 +288,29 @@ Red/Stone Warm design system, PWA capabilities, and modern 2026 CSS design patte
 
 ## Design System
 
+### Hallmark Design System
+
+<div align="center">
+
+| Feature | Description |
+|:-------:|:------------|
+| **Macrostructure** | Bento Grid — asymmetric modular blocks for category showcase |
+| **Genre** | Editorial — roman serif display + workhorse serif body |
+| **Typography** | Fraunces (display) + Newsreader (body) — editorial free row |
+| **Color System** | OKLCH perceptual color space, warm stone palette |
+| **Motion** | Three easing tokens + three duration buckets, stagger reveal |
+| **Spacing** | 4pt base, 10-step scale (2px → 144px) |
+| **Z-Index** | 6-level named scale (base → tooltip) |
+
+</div>
+
 <br>
 
-### Color Palette (Red/Stone Warm)
+
+
+<br>
+
+### Color Palette (OKLCH Warm Stone)
 
 <div align="center">
 
@@ -306,46 +329,44 @@ Red/Stone Warm design system, PWA capabilities, and modern 2026 CSS design patte
 
 ```css
 :root {
-  /* Brand */
-  --primary: #DC2626;
-  --primary-hover: #B91C1C;
+  /* Hallmark OKLCH Tokens */
+  --surface-0: oklch(98% 0.008 80);     /* warm cream */
+  --surface-1: oklch(95% 0.012 70);     /* warm gray 50 */
+  --surface-2: oklch(91% 0.015 70);     /* warm gray 100 */
+  --surface-3: oklch(86% 0.018 68);     /* warm gray 200 */
 
-  /* Warm Palette */
-  --warm-ivory: #FFFBF5;
-  --warm-charcoal: #292524;
-  --stone-100: #F5F5F4;
-  --stone-200: #E7E5E4;
-  --stone-400: #A8A29E;
-  --stone-600: #57534E;
+  --text-0: oklch(27% 0.012 60);        /* warm charcoal */
+  --text-1: oklch(45% 0.02 62);         /* warm mid-gray */
+  --text-2: oklch(58% 0.02 65);         /* warm light gray */
 
-  /* Semantic */
-  --bg-primary: #FFFBF5;
-  --bg-surface: #FFFFFF;
-  --text-primary: #292524;
-  --text-secondary: #57534E;
-  --border-default: #E7E5E4;
+  --accent: oklch(55% 0.22 25);         /* brand red */
+  --accent-hover: oklch(48% 0.22 25);   /* brand red hover */
 
-  /* Transitions */
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Typography — Editorial Free Row */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Newsreader', Georgia, serif;
 
-  /* Glass */
-  --glass-bg: rgba(255, 251, 245, 0.6);
-  --glass-blur: 12px;
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
 
-  /* Spacing (4px base) */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-  --space-8: 32px;
+  /* Spacing (4pt base) */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
 
   /* Z-Index */
-  --z-header: 100;
-  --z-modal: 200;
-  --z-toast: 300;
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 400;
+  --z-toast: 500;
 }
 ```
 
@@ -368,7 +389,8 @@ Ecommerce/
 ├── offer.html
 ├── 404.html
 ├── offline.html             # PWA offline fallback page
-├── styles.css               # 5,636+ line design system
+├── hallmark-tokens.css      # Hallmark OKLCH design tokens (colors, type, motion)
+├── styles.css               # 6,034 lines — component styles + Hallmark layout
 ├── app.js                   # 592+ lines — UI layer, scroll reveal, micro-interactions
 ├── analytics.js             # GA4 ecommerce tracking + GDPR consent
 ├── cart-recovery.js         # Cart abandonment recovery system

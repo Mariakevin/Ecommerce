@@ -10,11 +10,11 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <style>
       /* Critical above-the-fold styles */
-      .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: #DC2626; z-index: 9999; transition: width 0.1s; }
-      .promo-banner { background: #111; color: white; text-align: center; padding: 8px 16px; font-size: 14px; }
+      .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent, #DC2626); z-index: var(--z-toast, 500); transition: width 0.1s; }
+      .promo-banner { background: var(--text-0, #292524); color: var(--surface-0, #FFFBF5); text-align: center; padding: 8px 16px; font-size: 14px; }
       .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -28,11 +28,12 @@
                         text: { DEFAULT: '#111111', secondary: '#4B5563', tertiary: '#9CA3AF' },
                         border: { DEFAULT: '#E5E7EB', light: '#F3F4F6' },
                     },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { sans: ['Newsreader', 'Georgia', 'serif'], display: ['Fraunces', 'Georgia', 'serif'] },
                 }
             }
         }
     </script>
+    <link rel="stylesheet" href="hallmark-tokens.css">
     <link rel="stylesheet" href="styles.css">
 
     <!-- PWA Manifest -->
@@ -107,7 +108,7 @@
     }
     </script>
 </head>
-<body class="bg-[#F3F4F6] text-[#111111]">
+<body>
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
 
@@ -290,7 +291,7 @@
         </div>
 
         <!-- Hero Section - Full Width Split - Affective Primacy Enhanced -->
-        <section id="main-content" tabindex="-1" class="hero-section" data-reveal>
+        <section id="main-content" tabindex="-1" class="hero-section" data-reveal style="--i: 0">
             <div class="hero-grid">
                 <!-- Left: Content - Emotional First Impression -->
                 <div class="hero-content">
@@ -298,7 +299,7 @@
                         <span class="material-symbols-outlined" style="font-size:14px">local_fire_department</span>
                         Trending in Chennai
                     </div>
-                    <h1 class="hero-title">Transform your space <span class="text-primary">today</span></h1>
+                    <h1 class="hero-title">Transform your space today</h1>
                     <p class="hero-subtitle">Handpicked furniture that makes your house feel like home. Get it delivered today.</p>
                     
                     <!-- Immediate Value - Present Bias -->
@@ -365,7 +366,7 @@
         </section>
 
         <!-- Trust Bar - Immediate Value (Present Bias) -->
-        <div class="trust-bar">
+        <div class="trust-bar" style="--i: 1">
             <div class="trust-bar-inner">
                 <div class="trust-item">
                     <span class="material-symbols-outlined text-primary">bolt</span>
@@ -399,7 +400,7 @@
         </div>
 
         <!-- Countdown Timer / Limited Offer -->
-        <section class="countdown-section" data-reveal>
+        <section class="countdown-section" data-reveal style="--i: 2">
             <div class="countdown-inner">
                 <div class="countdown-content">
                     <span class="countdown-badge">LIMITED TIME OFFER</span>
@@ -430,7 +431,7 @@
         </section>
 
         <!-- Category Showcase -->
-        <section class="section-container" data-reveal>
+        <section class="section-container" data-reveal style="--i: 3">
             <div class="section-header">
                 <div>
                     <h2 class="section-title">Shop by Category</h2>
@@ -438,7 +439,7 @@
                 </div>
                 <a href="category.html" class="section-link">View all <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
             </div>
-            <div class="category-grid">
+            <div class="bento-grid">
                 <a href="category.html?cat=living" class="category-card">
                     <img src="images/hero-living-room.jpg" alt="Living Room" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
                     <div class="category-card-overlay">
@@ -475,7 +476,7 @@
         </section>
 
         <!-- Featured Products -->
-        <section class="section-container" data-reveal>
+        <section class="section-container" data-reveal style="--i: 4">
             <div class="section-header">
                 <div>
                     <h2 class="section-title">Featured Products</h2>
@@ -487,11 +488,11 @@
         </section>
 
         <!-- Why Choose Us -->
-        <section class="why-section" data-reveal>
+        <section class="why-section" data-reveal style="--i: 5">
             <div class="why-inner">
                 <div class="why-content">
                     <span class="why-badge">WHY CHENNAI RETAIL</span>
-                    <h2 class="why-title">We're not just a store, we're a <span class="text-primary">lifestyle partner</span></h2>
+                    <h2 class="why-title">We're not just a store, we're a lifestyle partner</h2>
                     <p class="why-text">Founded in Chennai, we understand the modern Indian home. Every piece in our collection is curated to bring style, comfort, and quality to your space.</p>
                     
                     <div class="why-features">
@@ -534,11 +535,11 @@
         </section>
 
         <!-- Artisan Spotlight - Unique Feature -->
-        <section class="artisan-section" data-reveal>
+        <section class="artisan-section" data-reveal style="--i: 6">
             <div class="artisan-inner">
                 <div class="artisan-content">
                     <span class="artisan-badge">MEET THE MAKERS</span>
-                    <h2 class="artisan-title">Handcrafted by <span class="text-primary">Chennai Artisans</span></h2>
+                    <h2 class="artisan-title">Handcrafted by Chennai Artisans</h2>
                     <p class="artisan-text">Every piece in our collection tells a story. Meet the skilled craftspeople who bring these designs to life.</p>
                     
                     <div class="artisan-featured">
@@ -571,11 +572,11 @@
         </section>
 
         <!-- Style Quiz - Unique Feature -->
-        <section class="quiz-section" data-reveal>
+        <section class="quiz-section" data-reveal style="--i: 7">
             <div class="quiz-inner">
                 <div class="quiz-content">
                     <span class="quiz-badge">FIND YOUR STYLE</span>
-                    <h2 class="quiz-title">Not sure what you like? <span class="text-primary">Take our 30-second quiz</span></h2>
+                    <h2 class="quiz-title">Not sure what you like? Take our 30-second quiz</h2>
                     <p class="quiz-text">Answer 5 quick questions and we'll recommend the perfect pieces for your space.</p>
                     
                     <div class="quiz-preview">
@@ -610,10 +611,10 @@
         </section>
 
         <!-- Sustainability Counter - Unique Feature -->
-        <section class="eco-section" data-reveal>
+        <section class="eco-section" data-reveal style="--i: 8">
             <div class="eco-inner">
                 <div class="eco-content">
-                    <span class="eco-badge">🌿 ECO COMMITMENT</span>
+                    <span class="eco-badge">ECO COMMITMENT</span>
                     <h2 class="eco-title">Shopping that <span class="text-primary">protects the planet</span></h2>
                 </div>
                 <div class="eco-stats">
@@ -642,7 +643,7 @@
         </section>
 
         <!-- Lifestyle Banner -->
-        <section class="section-container" data-reveal>
+        <section class="section-container" data-reveal style="--i: 9">
             <div class="lifestyle-banner">
                 <img src="images/lifestyle-interior.jpg" alt="Modern interior styling" class="lifestyle-banner-img" loading="lazy" decoding="async" width="1200" height="600">
                 <div class="lifestyle-banner-overlay">
@@ -655,7 +656,7 @@
         </section>
 
         <!-- Customer Reviews -->
-        <section class="section-container" data-reveal>
+        <section class="section-container" data-reveal style="--i: 10">
             <div class="section-header">
                 <div>
                     <h2 class="section-title">What Our Customers Say</h2>
@@ -724,7 +725,7 @@
         </section>
 
         <!-- Newsletter -->
-        <section class="newsletter-section" data-reveal>
+        <section class="newsletter-section" data-reveal style="--i: 11">
             <div class="newsletter-inner">
                 <div class="newsletter-content">
                     <h2 class="newsletter-title">Stay in the loop</h2>

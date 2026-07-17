@@ -5634,3 +5634,401 @@ progress {
     bottom: 80px !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════
+   HALLMARK DESIGN SYSTEM — Bento Grid + Editorial
+   Applied to index.html homepage
+   ═══════════════════════════════════════════════════ */
+
+/* ── Global overflow clip (Hallmark: prevents horizontal scroll from clipped-edge elements) ── */
+html, body { overflow-x: clip; }
+
+/* ── Bento Grid — Category Showcase ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 280px 280px;
+  gap: var(--space-md, 16px);
+}
+
+/* Asymmetric: first and last items span 2 columns */
+.bento-grid .category-card:nth-child(1) {
+  grid-column: span 2;
+}
+
+.bento-grid .category-card:nth-child(4) {
+  grid-column: span 2;
+}
+
+.bento-grid .category-card {
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  position: relative;
+}
+
+.bento-grid .category-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-short, 220ms) var(--ease-out);
+}
+
+.bento-grid .category-card:hover .category-card-img {
+  transform: scale(1.03);
+}
+
+/* Mobile: 2-column grid */
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 200px 200px;
+  }
+  .bento-grid .category-card:nth-child(1),
+  .bento-grid .category-card:nth-child(4) {
+    grid-column: span 1;
+  }
+}
+
+/* Small mobile: single column */
+@media (max-width: 480px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 180px);
+  }
+}
+
+/* ── Editorial Section Heads ── */
+.bento-grid ~ .section-header .section-title,
+.section-header .section-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight, -0.02em);
+  line-height: var(--leading-tight, 1.15);
+}
+
+.section-header .section-subtitle {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  color: var(--text-2, #7A6B5D);
+  font-size: var(--text-base, 1rem);
+  line-height: var(--leading-normal, 1.5);
+  margin-top: var(--space-2xs, 4px);
+}
+
+/* ── Newspaper Masthead Nav — Desktop ── */
+.site-header .header-inner {
+  border-bottom: 2px solid var(--text-0, #292524);
+}
+
+.site-header .header-logo img {
+  filter: grayscale(0.2);
+}
+
+.site-header .nav-link {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-sm, 0.875rem);
+  letter-spacing: var(--tracking-wide, 0.05em);
+  text-transform: uppercase;
+  font-weight: var(--weight-medium, 500);
+}
+
+.site-header .header-search input {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  border: 1px solid var(--border-0, #D6CBC0);
+  border-radius: var(--radius-sm, 4px);
+}
+
+.site-header .header-search input:focus {
+  border-color: var(--text-0, #292524);
+}
+
+/* ── Mast-headed Footer ── */
+.site-footer {
+  border-top: 2px solid var(--text-0, #292524);
+  padding-top: var(--space-xl, 40px);
+}
+
+.site-footer h3 {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide, 0.05em);
+  text-transform: uppercase;
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--text-1, #5C4F44);
+  margin-bottom: var(--space-md, 16px);
+}
+
+.site-footer a {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-2, #7A6B5D);
+  transition: color var(--dur-micro, 120ms) var(--ease-out);
+}
+
+.site-footer a:hover {
+  color: var(--text-0, #292524);
+}
+
+.footer-bottom {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--text-3, #A89585);
+  letter-spacing: var(--tracking-wide, 0.05em);
+  text-transform: uppercase;
+}
+
+/* ── Page-Load Stagger Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: reveal var(--dur-long, 420ms) var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes reveal {
+  to { opacity: 1; transform: none; }
+}
+
+/* ── Hero Typography — Editorial ── */
+.hero-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight, -0.02em);
+  line-height: var(--leading-tight, 1.15);
+  color: var(--text-0, #292524);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  color: var(--text-1, #5C4F44);
+  line-height: var(--leading-relaxed, 1.65);
+}
+
+/* ── Editorial CTA — Outlined Chip (Hallmark C1) ── */
+.hero-ctas .btn-outline,
+.btn-outline {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-sm, 0.875rem);
+  letter-spacing: var(--tracking-wide, 0.05em);
+  text-transform: uppercase;
+  border: 1px solid var(--text-0, #292524);
+  color: var(--text-0, #292524);
+  background: transparent;
+  padding: var(--space-xs, 8px) var(--space-lg, 24px);
+  border-radius: var(--radius-sm, 4px);
+  transition: background var(--dur-micro, 120ms) var(--ease-out),
+              color var(--dur-micro, 120ms) var(--ease-out);
+}
+
+.hero-ctas .btn-outline:hover,
+.btn-outline:hover {
+  background: var(--text-0, #292524);
+  color: var(--surface-0, #FFFBF5);
+}
+
+/* ── Primary CTA — Editorial ── */
+.hero-ctas .btn-primary,
+.btn-primary {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-sm, 0.875rem);
+  letter-spacing: var(--tracking-wide, 0.05em);
+  text-transform: uppercase;
+}
+
+/* ── Trust Bar — Editorial Rhythm ── */
+.trust-bar {
+  border-top: 1px solid var(--border-0, #D6CBC0);
+  border-bottom: 1px solid var(--border-0, #D6CBC0);
+}
+
+.trust-item {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+}
+
+.trust-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  font-size: var(--text-sm, 0.875rem);
+}
+
+.trust-desc {
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--text-2, #7A6B5D);
+}
+
+/* ── Countdown Section — Editorial ── */
+.countdown-badge,
+.why-badge,
+.artisan-badge,
+.quiz-badge,
+.eco-badge {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: var(--tracking-wider, 0.1em);
+  text-transform: uppercase;
+  color: var(--text-2, #7A6B5D);
+}
+
+.countdown-title,
+.why-title,
+.artisan-title,
+.quiz-title,
+.eco-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight, -0.02em);
+  line-height: var(--leading-tight, 1.15);
+  color: var(--text-0, #292524);
+}
+
+/* ── Why Section — Asymmetric Layout ── */
+.why-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-2xl, 64px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .why-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.why-feature-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  font-size: var(--text-base, 1rem);
+}
+
+.why-feature-text {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  color: var(--text-1, #5C4F44);
+}
+
+/* ── Artisan Section — Asymmetric ── */
+.artisan-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-2xl, 64px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .artisan-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.artisan-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight, -0.02em);
+  line-height: var(--leading-tight, 1.15);
+}
+
+.artisan-text {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  color: var(--text-1, #5C4F44);
+  line-height: var(--leading-relaxed, 1.65);
+}
+
+.artisan-quote {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-style: italic;
+  color: var(--text-1, #5C4F44);
+}
+
+/* ── Quiz Section — Editorial ── */
+.quiz-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl, 64px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .quiz-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quiz-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight, -0.02em);
+  line-height: var(--leading-tight, 1.15);
+}
+
+.quiz-text {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  color: var(--text-1, #5C4F44);
+  line-height: var(--leading-relaxed, 1.65);
+}
+
+.quiz-option {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+}
+
+/* ── Eco Section — Stats ── */
+.eco-inner {
+  text-align: left;
+}
+
+.eco-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight, -0.02em);
+  line-height: var(--leading-tight, 1.15);
+}
+
+.eco-stat-value {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 600;
+}
+
+.eco-stat-label {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+}
+
+/* ── Reviews — Editorial Typography ── */
+.review-text {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  line-height: var(--leading-relaxed, 1.65);
+  color: var(--text-1, #5C4F44);
+}
+
+.review-name {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+}
+
+/* ── Newsletter — Editorial ── */
+.newsletter-title {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight, -0.02em);
+}
+
+.newsletter-subtitle {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  color: var(--text-1, #5C4F44);
+}
+
+.newsletter-input {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: reveal-reduced 150ms linear forwards;
+  }
+  
+  @keyframes reveal-reduced {
+    to { opacity: 1; transform: none; }
+  }
+  
+  .bento-grid .category-card-img {
+    transition: none;
+  }
+}

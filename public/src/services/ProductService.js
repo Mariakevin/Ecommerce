@@ -7,7 +7,7 @@ const ProductService = {
 
     async _loadProducts() {
         if (this._products) return this._products;
-        const response = await fetch('../src/data/products.json');
+        const response = await fetch('src/data/products.json');
         this._products = await response.json();
         return this._products;
     },

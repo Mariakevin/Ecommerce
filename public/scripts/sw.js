@@ -1,20 +1,19 @@
 // === SERVICE WORKER: Chennai Retail ===
 const CACHE_NAME = 'chennai-retail-v1';
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/styles/tokens.css',
-  '/styles/base.css',
-  '/styles/components.css',
-  '/scripts/app.js',
-  '/manifest.json',
-  '/images/branding/logo.svg',
-  '/images/branding/favicon.svg',
-  '/offline.html',
-  '/styles/utilities.css',
-  '/scripts/analytics.js',
-  '/scripts/cart-recovery.js',
-  '/src/data/products.json'
+  'index.html',
+  'styles/tokens.css',
+  'styles/base.css',
+  'styles/components.css',
+  'styles/utilities.css',
+  'scripts/app.js',
+  'scripts/analytics.js',
+  'scripts/cart-recovery.js',
+  'manifest.json',
+  'images/branding/logo.svg',
+  'images/branding/favicon.svg',
+  'offline.html',
+  'src/data/products.json'
 ];
 
 // Install: Pre-cache critical assets
@@ -73,7 +72,7 @@ self.addEventListener('fetch', (event) => {
               cache.put(request, response.clone());
             }
             return response;
-          }).catch(() => cached || caches.match('/offline.html'));
+          }).catch(() => cached || caches.match('offline.html'));
           return cached || fetchPromise;
         })
       )

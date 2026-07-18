@@ -32,7 +32,8 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/components.css">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -142,7 +143,7 @@
     <!-- Desktop Header -->
     <header class="site-header hidden md:block">
         <div class="header-inner">
-            <a href="index.html" class="header-logo"><img src="images/logo.svg" alt="Chennai Retail" class="h-8"></a>
+            <a href="index.html" class="header-logo"><img src="images/branding/logo.svg" alt="Chennai Retail" class="h-8"></a>
             <nav class="flex items-center gap-5 text-[13px]" aria-label="Main navigation">
                 <a href="index.html" class="hover:text-[#DC2626] transition-colors">Home</a>
                 <a href="category.html" class="hover:text-[#DC2626] transition-colors">Categories</a>
@@ -171,7 +172,7 @@
 
     <!-- Mobile Header -->
     <header class="mobile-header">
-        <a href="index.html"><img src="images/logo.svg" alt="Chennai Retail" class="h-7 shrink-0"></a>
+        <a href="index.html"><img src="images/branding/logo.svg" alt="Chennai Retail" class="h-7 shrink-0"></a>
         <input type="text" class="mobile-search" placeholder="Search products..." id="mobileSearchInput" aria-label="Search products"
             onkeydown="if(event.key==='Enter'){var q=this.value.trim();if(q)location.href='category.html?q='+encodeURIComponent(q)}">
         <a href="cart.html" class="text-white relative" aria-label="Cart">
@@ -420,7 +421,7 @@
     <script src="src/store/wishlistStore.js"></script>
     <script src="src/components/Toast.js"></script>
     <script src="src/components/ProductCard.js"></script>
-    <script src="app.js"></script>
+    <script src="../scripts/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var orderId = getUrlParam('id');
@@ -537,7 +538,7 @@
         </a>
     </nav>
 
-    <script src="analytics.js"></script>
+    <script src="../scripts/analytics.js"></script>
     <script>
       if (typeof trackPageView === 'function') {
         trackPageView(document.title);
@@ -545,6 +546,6 @@
     </script>
 
     <!-- Cart Abandonment Recovery -->
-    <script src="cart-recovery.js"></script>
+    <script src="../scripts/cart-recovery.js"></script>
 </body>
 </html>

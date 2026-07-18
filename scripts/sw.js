@@ -3,12 +3,13 @@ const CACHE_NAME = 'chennai-retail-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/hallmark-tokens.css',
-  '/styles.css',
-  '/app.js',
+  '/styles/tokens.css',
+  '/styles/base.css',
+  '/styles/components.css',
+  '/scripts/app.js',
   '/manifest.json',
-  '/images/logo.svg',
-  '/images/favicon.svg',
+  '/images/branding/logo.svg',
+  '/images/branding/favicon.svg',
   '/offline.html'
 ];
 

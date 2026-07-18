@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories - Chennai Retail</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="images/branding/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
@@ -33,7 +33,8 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/components.css">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -133,7 +134,7 @@
     <header class="site-header hidden md:block" id="desktopHeader">
         <div class="header-inner">
             <a href="index.html" class="header-logo">
-                <img src="images/logo.svg" alt="Chennai Retail" class="h-8 header-logo-img">
+                <img src="images/branding/logo.svg" alt="Chennai Retail" class="h-8 header-logo-img">
             </a>
             
             <!-- Mega Menu Navigation -->
@@ -175,7 +176,7 @@
                                 <a href="category.html?cat=decor" class="mega-link">Rugs</a>
                             </div>
                             <div class="mega-featured">
-                                <img src="images/hero-living-room.jpg" alt="Featured collection" class="mega-featured-img">
+                                <img src="images/heroes/hero-living-room.jpg" alt="Featured collection" class="mega-featured-img">
                                 <p class="mega-featured-text">New Summer Collection</p>
                                 <a href="category.html" class="mega-featured-link">Shop Now →</a>
                             </div>
@@ -231,7 +232,7 @@
 
     <!-- Mobile Header -->
     <header class="mobile-header">
-        <a href="index.html"><img src="images/logo.svg" alt="Chennai Retail" class="h-7 shrink-0"></a>
+        <a href="index.html"><img src="images/branding/logo.svg" alt="Chennai Retail" class="h-7 shrink-0"></a>
         <input type="text" class="mobile-search" placeholder="Search products..." id="mobileSearchInput" aria-label="Search products"
             onkeydown="if(event.key==='Enter'){var q=this.value.trim();if(q)location.href='category.html?q='+encodeURIComponent(q)}">
         <a href="cart.html" class="text-white relative" aria-label="Cart">
@@ -245,7 +246,7 @@
         <!-- Hero Banner -->
         <div id="main-content" tabindex="-1" class="category-hero" data-reveal>
             <div class="category-hero-bg">
-                <img src="images/hero-living-room.jpg" alt="" class="category-hero-img" id="heroImage">
+                <img src="images/heroes/hero-living-room.jpg" alt="" class="category-hero-img" id="heroImage">
                 <div class="category-hero-overlay"></div>
             </div>
             <div class="category-hero-content">
@@ -354,7 +355,7 @@
         <div class="max-w-[1600px] mx-auto px-4 md:px-10 py-4">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="categoryQuickLinks">
                 <a href="category.html?cat=living" class="category-link-card group">
-                    <img src="images/hero-living-room.jpg" alt="Living Room" class="category-link-img" loading="lazy" width="400" height="267">
+                    <img src="images/heroes/hero-living-room.jpg" alt="Living Room" class="category-link-img" loading="lazy" width="400" height="267">
                     <div class="category-link-overlay"></div>
                     <div class="category-link-content">
                         <span class="category-link-label">Living Room</span>
@@ -362,7 +363,7 @@
                     </div>
                 </a>
                 <a href="category.html?cat=bedroom" class="category-link-card group">
-                    <img src="images/hero-bedroom.jpg" alt="Bedroom" class="category-link-img" loading="lazy" width="400" height="267">
+                    <img src="images/heroes/hero-bedroom.jpg" alt="Bedroom" class="category-link-img" loading="lazy" width="400" height="267">
                     <div class="category-link-overlay"></div>
                     <div class="category-link-content">
                         <span class="category-link-label">Bedroom</span>
@@ -370,7 +371,7 @@
                     </div>
                 </a>
                 <a href="category.html?cat=kitchen" class="category-link-card group">
-                    <img src="images/hero-kitchen.jpg" alt="Kitchen" class="category-link-img" loading="lazy" width="400" height="267">
+                    <img src="images/heroes/hero-kitchen.jpg" alt="Kitchen" class="category-link-img" loading="lazy" width="400" height="267">
                     <div class="category-link-overlay"></div>
                     <div class="category-link-content">
                         <span class="category-link-label">Kitchen</span>
@@ -660,7 +661,7 @@
     <script src="src/store/wishlistStore.js"></script>
     <script src="src/components/Toast.js"></script>
     <script src="src/components/ProductCard.js"></script>
-    <script src="app.js"></script>
+    <script src="../scripts/app.js"></script>
     <script>
     (function() {
         'use strict';
@@ -687,11 +688,11 @@
         };
 
         var CATEGORY_HERO_IMAGES = {
-            living: 'images/hero-living-room.jpg',
-            bedroom: 'images/hero-bedroom.jpg',
-            kitchen: 'images/hero-kitchen.jpg',
-            decor: 'images/hero-living-room.jpg',
-            lighting: 'images/hero-bedroom.jpg'
+            living: 'images/heroes/hero-living-room.jpg',
+            bedroom: 'images/heroes/hero-bedroom.jpg',
+            kitchen: 'images/heroes/hero-kitchen.jpg',
+            decor: 'images/heroes/hero-living-room.jpg',
+            lighting: 'images/heroes/hero-bedroom.jpg'
         };
 
         var PRICE_LABELS = {
@@ -1139,7 +1140,7 @@
         </a>
     </nav>
 
-    <script src="analytics.js"></script>
+    <script src="../scripts/analytics.js"></script>
     <script>
       if (typeof trackPageView === 'function') {
         trackPageView(document.title);
@@ -1147,6 +1148,6 @@
     </script>
 
     <!-- Cart Abandonment Recovery -->
-    <script src="cart-recovery.js"></script>
+    <script src="../scripts/cart-recovery.js"></script>
 </body>
 </html>

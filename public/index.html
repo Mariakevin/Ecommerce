@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chennai Retail - Home</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="images/branding/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
@@ -33,8 +33,9 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
             }
         }
     </script>
-    <link rel="stylesheet" href="hallmark-tokens.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/components.css">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -133,7 +134,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
     <header class="site-header hidden md:block" id="desktopHeader">
         <div class="header-inner">
             <a href="index.html" class="header-logo">
-                <img src="images/logo.svg" alt="Chennai Retail" class="h-8 header-logo-img">
+                <img src="images/branding/logo.svg" alt="Chennai Retail" class="h-8 header-logo-img">
             </a>
             
             <!-- Mega Menu Navigation -->
@@ -175,7 +176,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                                 <a href="category.html?cat=decor" class="mega-link">Rugs</a>
                             </div>
                             <div class="mega-featured">
-                                <img src="images/hero-living-room.jpg" alt="Featured collection" class="mega-featured-img">
+                                <img src="images/heroes/hero-living-room.jpg" alt="Featured collection" class="mega-featured-img">
                                 <p class="mega-featured-text">New Summer Collection</p>
                                 <a href="category.html" class="mega-featured-link">Shop Now →</a>
                             </div>
@@ -230,7 +231,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
 
     <!-- Mobile Header -->
     <header class="mobile-header">
-        <a href="index.html"><img src="images/logo.svg" alt="Chennai Retail" class="h-7 shrink-0"></a>
+        <a href="index.html"><img src="images/branding/logo.svg" alt="Chennai Retail" class="h-7 shrink-0"></a>
         <input type="text" class="mobile-search" placeholder="Search products..." id="mobileSearchInput" aria-label="Search products"
             onkeydown="if(event.key==='Enter'){var q=this.value.trim();if(q)location.href='category.html?q='+encodeURIComponent(q)}">
         <a href="cart.html" class="text-white relative" aria-label="Cart">
@@ -344,14 +345,14 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                 </div>
                 <!-- Right: Image -->
                 <div class="hero-image-wrapper">
-                    <img src="images/hero-living-room.jpg" alt="Modern living room" class="hero-image" loading="eager" fetchpriority="high" decoding="async" width="600" height="600">
+                    <img src="images/heroes/hero-living-room.jpg" alt="Modern living room" class="hero-image" loading="eager" fetchpriority="high" decoding="async" width="600" height="600">
                     <div class="live-badge">
                         <span class="live-dot"></span>
                         <span id="liveViewers">47</span> people viewing now
                     </div>
                     <!-- Floating Product Card - Emotional Appeal -->
                     <div class="hero-floating-card">
-                        <img src="images/category-decor.jpg" alt="Trending product" class="hero-floating-img" loading="lazy" decoding="async" width="60" height="60">
+                        <img src="images/categories/category-decor.jpg" alt="Trending product" class="hero-floating-img" loading="lazy" decoding="async" width="60" height="60">
                         <div class="hero-floating-info">
                             <p class="hero-floating-name">Minimalist Coffee Table</p>
                             <p class="hero-floating-price">₹4,999</p>
@@ -441,7 +442,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
             </div>
             <div class="bento-grid">
                 <a href="category.html?cat=living" class="category-card">
-                    <img src="images/hero-living-room.jpg" alt="Living Room" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
+                    <img src="images/heroes/hero-living-room.jpg" alt="Living Room" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
                     <div class="category-card-overlay">
                         <h3 class="category-card-title">Living Room</h3>
                         <p class="category-card-count">24 products</p>
@@ -449,7 +450,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                     </div>
                 </a>
                 <a href="category.html?cat=bedroom" class="category-card">
-                    <img src="images/hero-bedroom.jpg" alt="Bedroom" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
+                    <img src="images/heroes/hero-bedroom.jpg" alt="Bedroom" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
                     <div class="category-card-overlay">
                         <h3 class="category-card-title">Bedroom</h3>
                         <p class="category-card-count">18 products</p>
@@ -457,7 +458,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                     </div>
                 </a>
                 <a href="category.html?cat=kitchen" class="category-card">
-                    <img src="images/hero-kitchen.jpg" alt="Kitchen" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
+                    <img src="images/heroes/hero-kitchen.jpg" alt="Kitchen" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
                     <div class="category-card-overlay">
                         <h3 class="category-card-title">Kitchen</h3>
                         <p class="category-card-count">15 products</p>
@@ -465,7 +466,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                     </div>
                 </a>
                 <a href="category.html?cat=decor" class="category-card">
-                    <img src="images/category-decor.jpg" alt="Decor" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
+                    <img src="images/categories/category-decor.jpg" alt="Decor" class="category-card-img" loading="lazy" decoding="async" width="400" height="400">
                     <div class="category-card-overlay">
                         <h3 class="category-card-title">Decor</h3>
                         <p class="category-card-count">31 products</p>
@@ -528,8 +529,8 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                     <a href="category.html" class="btn-primary btn-lg">Explore Our Collection</a>
                 </div>
                 <div class="why-images">
-                    <img src="images/lifestyle-interior.jpg" alt="Modern interior" class="why-img-main" loading="lazy" decoding="async" width="600" height="400">
-                    <img src="images/category-lighting.jpg" alt="Lighting" class="why-img-accent" loading="lazy" decoding="async" width="600" height="400">
+                    <img src="images/lifestyle/lifestyle-interior.jpg" alt="Modern interior" class="why-img-main" loading="lazy" decoding="async" width="600" height="400">
+                    <img src="images/categories/category-lighting.jpg" alt="Lighting" class="why-img-accent" loading="lazy" decoding="async" width="600" height="400">
                 </div>
             </div>
         </section>
@@ -556,7 +557,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                     <a href="#" class="btn-outline">Watch Their Story <span class="material-symbols-outlined" style="font-size:18px">play_circle</span></a>
                 </div>
                 <div class="artisan-image">
-                    <img src="images/product-sideboard.jpg" alt="Artisan at work" class="artisan-img" loading="lazy" decoding="async" width="600" height="400">
+                    <img src="images/products/product-sideboard.jpg" alt="Artisan at work" class="artisan-img" loading="lazy" decoding="async" width="600" height="400">
                     <div class="artisan-stats">
                         <div class="artisan-stat">
                             <span class="artisan-stat-value">50+</span>
@@ -598,13 +599,13 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
                 </div>
                 <div class="quiz-visual">
                     <div class="quiz-card quiz-card-1">
-                        <img src="images/product-chair.jpg" alt="Style option" loading="lazy" decoding="async" width="400" height="400">
+                        <img src="images/products/product-chair.jpg" alt="Style option" loading="lazy" decoding="async" width="400" height="400">
                     </div>
                     <div class="quiz-card quiz-card-2">
-                        <img src="images/product-armchair.jpg" alt="Style option" loading="lazy" decoding="async" width="400" height="400">
+                        <img src="images/products/product-armchair.jpg" alt="Style option" loading="lazy" decoding="async" width="400" height="400">
                     </div>
                     <div class="quiz-card quiz-card-3">
-                        <img src="images/product-plant.jpg" alt="Style option" loading="lazy" decoding="async" width="400" height="400">
+                        <img src="images/products/product-plant.jpg" alt="Style option" loading="lazy" decoding="async" width="400" height="400">
                     </div>
                 </div>
             </div>
@@ -645,7 +646,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
         <!-- Lifestyle Banner -->
         <section class="section-container" data-reveal style="--i: 9">
             <div class="lifestyle-banner">
-                <img src="images/lifestyle-interior.jpg" alt="Modern interior styling" class="lifestyle-banner-img" loading="lazy" decoding="async" width="1200" height="600">
+                <img src="images/lifestyle/lifestyle-interior.jpg" alt="Modern interior styling" class="lifestyle-banner-img" loading="lazy" decoding="async" width="1200" height="600">
                 <div class="lifestyle-banner-overlay">
                     <p class="lifestyle-banner-badge">NEW COLLECTION</p>
                     <h2 class="lifestyle-banner-title">Style Your Space</h2>
@@ -832,7 +833,7 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
 
     <!-- Floating Social Proof Notification -->
     <div class="floating-notification" id="floatingNotification" style="display:none">
-        <img src="images/category-decor.jpg" alt="" class="avatar">
+        <img src="images/categories/category-decor.jpg" alt="" class="avatar">
         <div class="info">
             <p class="name">Priya from T. Nagar</p>
             <p class="action">just purchased Elegant Table Lamp</p>
@@ -853,8 +854,8 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
     <script src="src/store/wishlistStore.js"></script>
     <script src="src/components/Toast.js"></script>
     <script src="src/components/ProductCard.js"></script>
-    <script src="app.js"></script>
-    <script src="analytics.js"></script>
+    <script src="../scripts/app.js"></script>
+    <script src="../scripts/analytics.js"></script>
     <script>
         // Countdown Timer
         function initCountdown() {
@@ -933,6 +934,6 @@ border: { DEFAULT: '#E7E0D8', light: '#F5F0EB' },
     </script>
 
     <!-- Cart Abandonment Recovery -->
-    <script src="cart-recovery.js"></script>
+    <script src="../scripts/cart-recovery.js"></script>
 </body>
 </html>

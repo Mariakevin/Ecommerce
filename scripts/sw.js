@@ -10,7 +10,11 @@ const STATIC_ASSETS = [
   '/manifest.json',
   '/images/branding/logo.svg',
   '/images/branding/favicon.svg',
-  '/offline.html'
+  '/offline.html',
+  '/styles/utilities.css',
+  '/scripts/analytics.js',
+  '/scripts/cart-recovery.js',
+  '/src/data/products.json'
 ];
 
 // Install: Pre-cache critical assets

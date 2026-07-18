@@ -3,6 +3,8 @@
    Premium home decor · Warm stone palette · Editorial serif type
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
+@layer tokens {
+
 /* ── Hallmark Color Tokens ── */
 /* Anchor hue: 65 (warm stone) */
 /* All colors in OKLCH for perceptual uniformity */
@@ -154,3 +156,5 @@
     --border-1: oklch(38% 0.018 58);
   }
 }
+
+} /* end @layer tokens */

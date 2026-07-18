@@ -1,0 +1,556 @@
+- generic [active] [ref=f5e1]:
+  - link "Skip to content" [ref=f5e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=f5e4]:
+    - generic [ref=f5e5]: local_offer
+    - generic [ref=f5e6]:
+      - text: Summer Sale! Use code
+      - strong [ref=f5e7]: SUMMER25
+      - text: for 25% off on all orders
+    - button "Close promotion" [ref=f5e8] [cursor=pointer]:
+      - generic [ref=f5e9]: close
+  - banner [ref=f5e10]:
+    - generic [ref=f5e11]:
+      - link [ref=f5e12] [cursor=pointer]:
+        - /url: index.html
+        - img "Chennai Retail" [ref=f5e13]
+      - navigation "Main navigation" [ref=f5e14]:
+        - link "Home" [ref=f5e15] [cursor=pointer]:
+          - /url: index.html
+        - link "Categories expand_more" [ref=f5e17] [cursor=pointer]:
+          - /url: category.html
+          - text: Categories
+          - generic [ref=f5e18]: expand_more
+        - link "Deals HOT" [ref=f5e19] [cursor=pointer]:
+          - /url: offer.html
+          - text: Deals
+          - generic [ref=f5e20]: HOT
+        - link "Account" [ref=f5e21] [cursor=pointer]:
+          - /url: account.html
+      - generic [ref=f5e22]:
+        - textbox "Search products" [ref=f5e23]:
+          - /placeholder: Search products...
+        - button "Search" [ref=f5e24] [cursor=pointer]:
+          - generic [ref=f5e25]: search
+      - generic [ref=f5e26]:
+        - link "Wishlist" [ref=f5e27] [cursor=pointer]:
+          - /url: wishlist.html
+          - generic [ref=f5e28]: favorite
+        - link "Cart" [ref=f5e30] [cursor=pointer]:
+          - /url: cart.html
+          - generic [ref=f5e31]: shopping_bag
+  - generic [ref=f5e33]:
+    - generic [ref=f5e35]:
+      - generic [ref=f5e36]:
+        - generic [ref=f5e38]: P
+        - generic [ref=f5e39]:
+          - strong [ref=f5e40]: Priya
+          - text: from T. Nagar just purchased
+          - strong [ref=f5e41]: Elegant Table Lamp
+      - generic [ref=f5e42]:
+        - generic [ref=f5e43]: R
+        - generic [ref=f5e44]:
+          - strong [ref=f5e45]: Rahul
+          - text: from Anna Nagar just purchased
+          - strong [ref=f5e46]: Minimalist Coffee Table
+      - generic [ref=f5e47]:
+        - generic [ref=f5e48]: K
+        - generic [ref=f5e49]:
+          - strong [ref=f5e50]: Kavitha
+          - text: from Adyar just purchased
+          - strong [ref=f5e51]: Modern Wall Art
+      - generic [ref=f5e52]:
+        - generic [ref=f5e53]: M
+        - generic [ref=f5e54]:
+          - strong [ref=f5e55]: Madhavan
+          - text: from Velachery just purchased
+          - strong [ref=f5e56]: Designer Throw Pillow
+      - generic [ref=f5e57]:
+        - generic [ref=f5e58]: S
+        - generic [ref=f5e59]:
+          - strong [ref=f5e60]: Sneha
+          - text: from Mylapore just purchased
+          - strong [ref=f5e61]: Ceramic Vase Set
+      - generic [ref=f5e62]:
+        - generic [ref=f5e64]: P
+        - generic [ref=f5e65]:
+          - strong [ref=f5e66]: Priya
+          - text: from T. Nagar just purchased
+          - strong [ref=f5e67]: Elegant Table Lamp
+      - generic [ref=f5e68]:
+        - generic [ref=f5e69]: R
+        - generic [ref=f5e70]:
+          - strong [ref=f5e71]: Rahul
+          - text: from Anna Nagar just purchased
+          - strong [ref=f5e72]: Minimalist Coffee Table
+      - generic [ref=f5e73]:
+        - generic [ref=f5e74]: K
+        - generic [ref=f5e75]:
+          - strong [ref=f5e76]: Kavitha
+          - text: from Adyar just purchased
+          - strong [ref=f5e77]: Modern Wall Art
+      - generic [ref=f5e78]:
+        - generic [ref=f5e79]: M
+        - generic [ref=f5e80]:
+          - strong [ref=f5e81]: Madhavan
+          - text: from Velachery just purchased
+          - strong [ref=f5e82]: Designer Throw Pillow
+      - generic [ref=f5e83]:
+        - generic [ref=f5e84]: S
+        - generic [ref=f5e85]:
+          - strong [ref=f5e86]: Sneha
+          - text: from Mylapore just purchased
+          - strong [ref=f5e87]: Ceramic Vase Set
+    - generic [ref=f5e89]:
+      - generic [ref=f5e90]:
+        - generic [ref=f5e91]:
+          - generic [ref=f5e92]: local_fire_department
+          - text: Trending in Chennai
+        - heading "Curated pieces for modern living" [level=1] [ref=f5e93]
+        - paragraph [ref=f5e94]: Handpicked furniture, decor, and lifestyle essentials. Free same-day delivery across Chennai.
+        - list [ref=f5e95]:
+          - listitem [ref=f5e96]:
+            - text: ✓
+            - generic [ref=f5e97]: check_circle
+            - text: Free same-day delivery in Chennai
+          - listitem [ref=f5e98]:
+            - text: ✓
+            - generic [ref=f5e99]: check_circle
+            - text: 7-day easy returns, no questions asked
+          - listitem [ref=f5e100]:
+            - text: ✓
+            - generic [ref=f5e101]: check_circle
+            - text: 100% authentic & quality assured products
+        - generic [ref=f5e102]:
+          - link "shopping_bag Shop Collection" [ref=f5e103] [cursor=pointer]:
+            - /url: category.html
+            - generic [ref=f5e104]: shopping_bag
+            - text: Shop Collection
+          - link "New Arrivals arrow_forward" [ref=f5e105] [cursor=pointer]:
+            - /url: category.html?cat=featured
+            - text: New Arrivals
+            - generic [ref=f5e106]: arrow_forward
+        - generic [ref=f5e107]:
+          - generic [ref=f5e108]:
+            - generic [ref=f5e109]: shopping_bag
+            - generic [ref=f5e110]:
+              - paragraph [ref=f5e111]: "42"
+              - paragraph [ref=f5e112]: Orders this month
+          - generic [ref=f5e114]:
+            - generic [ref=f5e115]: star
+            - generic [ref=f5e116]:
+              - paragraph [ref=f5e117]: 4.8★
+              - paragraph [ref=f5e118]: From 847 reviews
+          - generic [ref=f5e120]:
+            - generic [ref=f5e121]: groups
+            - generic [ref=f5e122]:
+              - paragraph [ref=f5e123]: 10K+
+              - paragraph [ref=f5e124]: Happy customers
+      - generic [ref=f5e125]:
+        - img "Modern living room" [ref=f5e126]
+        - generic [ref=f5e127]:
+          - generic [ref=f5e129]: "47"
+          - text: people viewing now
+        - generic [ref=f5e130]:
+          - img "Trending product" [ref=f5e131]
+          - generic [ref=f5e132]:
+            - paragraph [ref=f5e133]: Minimalist Coffee Table
+            - paragraph [ref=f5e134]: ₹4,999
+            - generic [ref=f5e135]:
+              - generic [ref=f5e136]: star
+              - generic [ref=f5e137]: 4.8 (124)
+    - generic [ref=f5e139]:
+      - generic [ref=f5e140]:
+        - generic [ref=f5e141]: local_shipping
+        - generic [ref=f5e142]:
+          - paragraph [ref=f5e143]: Free Shipping
+          - paragraph [ref=f5e144]: On orders above ₹999
+      - generic [ref=f5e145]:
+        - generic [ref=f5e146]: replay
+        - generic [ref=f5e147]:
+          - paragraph [ref=f5e148]: Easy Returns
+          - paragraph [ref=f5e149]: 7-day return policy
+      - generic [ref=f5e150]:
+        - generic [ref=f5e151]: lock
+        - generic [ref=f5e152]:
+          - paragraph [ref=f5e153]: Secure Payment
+          - paragraph [ref=f5e154]: 100% secure checkout
+      - generic [ref=f5e155]:
+        - generic [ref=f5e156]: headset
+        - generic [ref=f5e157]:
+          - paragraph [ref=f5e158]: 24/7 Support
+          - paragraph [ref=f5e159]: Call us anytime
+    - generic [ref=f5e161]:
+      - generic [ref=f5e162]:
+        - generic [ref=f5e163]: LIMITED TIME OFFER
+        - heading "Summer Sale Ends In" [level=2] [ref=f5e164]
+        - paragraph [ref=f5e165]: Get up to 50% off on selected items. Don't miss out!
+      - generic [ref=f5e166]:
+        - generic [ref=f5e167]:
+          - generic [ref=f5e168]: "08"
+          - generic [ref=f5e169]: Hours
+        - generic [ref=f5e170]: ":"
+        - generic [ref=f5e171]:
+          - generic [ref=f5e172]: "44"
+          - generic [ref=f5e173]: Minutes
+        - generic [ref=f5e174]: ":"
+        - generic [ref=f5e175]:
+          - generic [ref=f5e176]: "59"
+          - generic [ref=f5e177]: Seconds
+      - link "Shop the Sale arrow_forward" [ref=f5e178] [cursor=pointer]:
+        - /url: offer.html
+        - text: Shop the Sale
+        - generic [ref=f5e179]: arrow_forward
+    - generic [ref=f5e180]:
+      - generic [ref=f5e181]:
+        - generic [ref=f5e182]:
+          - heading "Shop by Category" [level=2] [ref=f5e183]
+          - paragraph [ref=f5e184]: Explore our curated collections for every room
+        - link "View all arrow_forward" [ref=f5e185] [cursor=pointer]:
+          - /url: category.html
+          - text: View all
+          - generic [ref=f5e186]: arrow_forward
+      - generic [ref=f5e187]:
+        - link "Living Room Living Room 24 products Shop Now →" [ref=f5e188] [cursor=pointer]:
+          - /url: category.html?cat=living
+          - img "Living Room" [ref=f5e189]
+          - generic [ref=f5e190]:
+            - heading "Living Room" [level=3] [ref=f5e191]
+            - paragraph [ref=f5e192]: 24 products
+            - generic [ref=f5e193]: Shop Now →
+        - link "Bedroom Bedroom 18 products Shop Now →" [ref=f5e194] [cursor=pointer]:
+          - /url: category.html?cat=bedroom
+          - img "Bedroom" [ref=f5e195]
+          - generic [ref=f5e196]:
+            - heading "Bedroom" [level=3] [ref=f5e197]
+            - paragraph [ref=f5e198]: 18 products
+            - generic [ref=f5e199]: Shop Now →
+        - link "Kitchen Kitchen 15 products Shop Now →" [ref=f5e200] [cursor=pointer]:
+          - /url: category.html?cat=kitchen
+          - img "Kitchen" [ref=f5e201]
+          - generic [ref=f5e202]:
+            - heading "Kitchen" [level=3] [ref=f5e203]
+            - paragraph [ref=f5e204]: 15 products
+            - generic [ref=f5e205]: Shop Now →
+        - link "Decor Decor 31 products Shop Now →" [ref=f5e206] [cursor=pointer]:
+          - /url: category.html?cat=decor
+          - img "Decor" [ref=f5e207]
+          - generic [ref=f5e208]:
+            - heading "Decor" [level=3] [ref=f5e209]
+            - paragraph [ref=f5e210]: 31 products
+            - generic [ref=f5e211]: Shop Now →
+    - generic [ref=f5e212]:
+      - generic [ref=f5e213]:
+        - generic [ref=f5e214]:
+          - heading "Featured Products" [level=2] [ref=f5e215]
+          - paragraph [ref=f5e216]: Handpicked by our design experts
+        - link "View all arrow_forward" [ref=f5e217] [cursor=pointer]:
+          - /url: category.html
+          - text: View all
+          - generic [ref=f5e218]: arrow_forward
+      - generic [ref=f5e219]:
+        - link "-29% Minimalist Red Chair visibility Quick View Minimalist Red Chair 4.5 star (338) 7 viewing ₹4,999 ₹6,999 29% off check_circle Chennai Store local_shipping Free Delivery" [ref=f5e220] [cursor=pointer]:
+          - /url: product.html?id=p1
+          - generic [ref=f5e221]:
+            - generic [ref=f5e222]: "-29%"
+            - img "Minimalist Red Chair" [ref=f5e223]
+            - generic [ref=f5e224]:
+              - generic [ref=f5e225]: visibility
+              - text: Quick View
+          - generic [ref=f5e226]:
+            - paragraph [ref=f5e227]: Minimalist Red Chair
+            - generic [ref=f5e228]:
+              - generic [ref=f5e229]:
+                - text: "4.5"
+                - generic [ref=f5e230]: star
+              - generic [ref=f5e231]: (338)
+              - generic [ref=f5e232]: 7 viewing
+            - generic [ref=f5e233]:
+              - generic [ref=f5e234]: ₹4,999
+              - generic [ref=f5e235]: ₹6,999
+              - generic [ref=f5e236]: 29% off
+            - generic [ref=f5e237]:
+              - generic [ref=f5e238]:
+                - generic [ref=f5e239]: check_circle
+                - text: Chennai Store
+              - generic [ref=f5e240]:
+                - generic [ref=f5e241]: local_shipping
+                - text: Free Delivery
+        - link "-25% Only 5 left! ✓ Just sold Gray Fabric Armchair visibility Quick View Gray Fabric Armchair 4.7 star (333) 29 viewing ₹8,999 ₹11,999 25% off check_circle Chennai Store local_shipping Free Delivery" [ref=f5e242] [cursor=pointer]:
+          - /url: product.html?id=p2
+          - generic [ref=f5e243]:
+            - generic [ref=f5e244]: "-25%"
+            - generic [ref=f5e245]: Only 5 left!
+            - generic [ref=f5e246]: ✓ Just sold
+            - img "Gray Fabric Armchair" [ref=f5e247]
+            - generic [ref=f5e248]:
+              - generic [ref=f5e249]: visibility
+              - text: Quick View
+          - generic [ref=f5e250]:
+            - paragraph [ref=f5e251]: Gray Fabric Armchair
+            - generic [ref=f5e252]:
+              - generic [ref=f5e253]:
+                - text: "4.7"
+                - generic [ref=f5e254]: star
+              - generic [ref=f5e255]: (333)
+              - generic [ref=f5e256]: 29 viewing
+            - generic [ref=f5e257]:
+              - generic [ref=f5e258]: ₹8,999
+              - generic [ref=f5e259]: ₹11,999
+              - generic [ref=f5e260]: 25% off
+            - generic [ref=f5e261]:
+              - generic [ref=f5e262]:
+                - generic [ref=f5e263]: check_circle
+                - text: Chennai Store
+              - generic [ref=f5e264]:
+                - generic [ref=f5e265]: local_shipping
+                - text: Free Delivery
+        - link "-20% Only 3 left! Modern Wooden Sideboard visibility Quick View Modern Wooden Sideboard 4.4 star (136) 8 viewing ₹15,999 ₹19,999 20% off check_circle Chennai Store local_shipping Free Delivery" [ref=f5e266] [cursor=pointer]:
+          - /url: product.html?id=p3
+          - generic [ref=f5e267]:
+            - generic [ref=f5e268]: "-20%"
+            - generic [ref=f5e269]: Only 3 left!
+            - img "Modern Wooden Sideboard" [ref=f5e270]
+            - generic [ref=f5e271]:
+              - generic [ref=f5e272]: visibility
+              - text: Quick View
+          - generic [ref=f5e273]:
+            - paragraph [ref=f5e274]: Modern Wooden Sideboard
+            - generic [ref=f5e275]:
+              - generic [ref=f5e276]:
+                - text: "4.4"
+                - generic [ref=f5e277]: star
+              - generic [ref=f5e278]: (136)
+              - generic [ref=f5e279]: 8 viewing
+            - generic [ref=f5e280]:
+              - generic [ref=f5e281]: ₹15,999
+              - generic [ref=f5e282]: ₹19,999
+              - generic [ref=f5e283]: 20% off
+            - generic [ref=f5e284]:
+              - generic [ref=f5e285]:
+                - generic [ref=f5e286]: check_circle
+                - text: Chennai Store
+              - generic [ref=f5e287]:
+                - generic [ref=f5e288]: local_shipping
+                - text: Free Delivery
+    - generic [ref=f5e290]:
+      - generic [ref=f5e291]:
+        - generic [ref=f5e292]: WHY CHENNAI RETAIL
+        - heading "We're not just a store, we're a lifestyle partner" [level=2] [ref=f5e293]
+        - paragraph [ref=f5e294]: Founded in Chennai, we understand the modern Indian home. Every piece in our collection is curated to bring style, comfort, and quality to your space.
+        - generic [ref=f5e295]:
+          - generic [ref=f5e296]:
+            - generic [ref=f5e297]: design_services
+            - generic [ref=f5e299]:
+              - heading "Expert Curation" [level=4] [ref=f5e300]
+              - paragraph [ref=f5e301]: Every product is hand-selected by our design team
+          - generic [ref=f5e302]:
+            - generic [ref=f5e303]: local_shipping
+            - generic [ref=f5e305]:
+              - heading "Same-Day Delivery" [level=4] [ref=f5e306]
+              - paragraph [ref=f5e307]: Order before 2 PM, get it delivered today
+          - generic [ref=f5e308]:
+            - generic [ref=f5e309]: support_agent
+            - generic [ref=f5e311]:
+              - heading "Personal Styling" [level=4] [ref=f5e312]
+              - paragraph [ref=f5e313]: Free consultation with our home decor experts
+        - link "Explore Our Collection" [ref=f5e314] [cursor=pointer]:
+          - /url: category.html
+      - generic [ref=f5e315]:
+        - img "Modern interior" [ref=f5e316]
+        - img "Lighting" [ref=f5e317]
+    - generic [ref=f5e319]:
+      - generic [ref=f5e320]:
+        - generic [ref=f5e321]: MEET THE MAKERS
+        - heading "Handcrafted by Chennai Artisans" [level=2] [ref=f5e322]
+        - paragraph [ref=f5e323]: Every piece in our collection tells a story. Meet the skilled craftspeople who bring these designs to life.
+        - generic [ref=f5e324]:
+          - generic [ref=f5e325]: RK
+          - generic [ref=f5e327]:
+            - heading "Ravi Kumar" [level=4] [ref=f5e328]
+            - paragraph [ref=f5e329]: Master Woodworker • 25 years experience
+            - paragraph [ref=f5e330]: "\"Every grain of wood has a story. I just help it tell that story.\""
+        - link "Watch Their Story play_circle" [ref=f5e331] [cursor=pointer]:
+          - /url: "#"
+          - text: Watch Their Story
+          - generic [ref=f5e332]: play_circle
+      - generic [ref=f5e333]:
+        - img "Artisan at work" [ref=f5e334]
+        - generic [ref=f5e335]:
+          - generic [ref=f5e336]:
+            - generic [ref=f5e337]: 50+
+            - generic [ref=f5e338]: Local Artisans
+          - generic [ref=f5e339]:
+            - generic [ref=f5e340]: 500+
+            - generic [ref=f5e341]: Products Crafted
+    - generic [ref=f5e343]:
+      - generic [ref=f5e344]:
+        - generic [ref=f5e345]: FIND YOUR STYLE
+        - heading "Not sure what you like? Take our 30-second quiz" [level=2] [ref=f5e346]
+        - paragraph [ref=f5e347]: Answer 5 quick questions and we'll recommend the perfect pieces for your space.
+        - generic [ref=f5e348]:
+          - generic [ref=f5e349]:
+            - generic [ref=f5e350]: Q1
+            - generic [ref=f5e351]: What's your vibe?
+          - generic [ref=f5e352]:
+            - button "Modern Minimalist" [ref=f5e353] [cursor=pointer]
+            - button "Cozy Traditional" [ref=f5e354] [cursor=pointer]
+            - button "Bold Eclectic" [ref=f5e355] [cursor=pointer]
+        - button "Start Style Quiz arrow_forward" [ref=f5e356] [cursor=pointer]:
+          - text: Start Style Quiz
+          - generic [ref=f5e357]: arrow_forward
+      - generic [ref=f5e358]:
+        - img "Style option" [ref=f5e360]
+        - img "Style option" [ref=f5e362]
+        - img "Style option" [ref=f5e364]
+    - generic [ref=f5e366]:
+      - generic [ref=f5e367]:
+        - generic [ref=f5e368]: 🌿 ECO COMMITMENT
+        - heading "Shopping that protects the planet" [level=2] [ref=f5e369]
+      - generic [ref=f5e370]:
+        - generic [ref=f5e371]:
+          - generic [ref=f5e372]: eco
+          - generic [ref=f5e373]: 2,847
+          - generic [ref=f5e374]: Trees Planted
+        - generic [ref=f5e375]:
+          - generic [ref=f5e376]: recycling
+          - generic [ref=f5e377]: 15 Tons
+          - generic [ref=f5e378]: Plastic Recycled
+        - generic [ref=f5e379]:
+          - generic [ref=f5e380]: local_shipping
+          - generic [ref=f5e381]: Carbon Neutral
+          - generic [ref=f5e382]: Delivery Since 2024
+        - generic [ref=f5e383]:
+          - generic [ref=f5e384]: groups
+          - generic [ref=f5e385]: 500+
+          - generic [ref=f5e386]: Families Supported
+    - generic [ref=f5e388]:
+      - img "Modern interior styling" [ref=f5e389]
+      - generic [ref=f5e390]:
+        - paragraph [ref=f5e391]: NEW COLLECTION
+        - heading "Style Your Space" [level=2] [ref=f5e392]
+        - paragraph [ref=f5e393]: Transform your home with our curated collection of modern furniture and decor.
+        - link "Explore Now" [ref=f5e394] [cursor=pointer]:
+          - /url: category.html
+    - generic [ref=f5e395]:
+      - generic [ref=f5e396]:
+        - generic [ref=f5e397]:
+          - heading "What Our Customers Say" [level=2] [ref=f5e398]
+          - paragraph [ref=f5e399]: Trusted by 10,000+ happy customers
+        - generic [ref=f5e400]:
+          - generic [ref=f5e401]: "4.8"
+          - generic [ref=f5e402]: star
+          - generic [ref=f5e403]: (847 reviews)
+      - generic [ref=f5e404]:
+        - generic [ref=f5e405]:
+          - generic [ref=f5e406]:
+            - generic [ref=f5e407]: star
+            - generic [ref=f5e408]: star
+            - generic [ref=f5e409]: star
+            - generic [ref=f5e410]: star
+            - generic [ref=f5e411]: star
+          - paragraph [ref=f5e412]: "\"Absolutely love the quality of the furniture. The delivery was fast and the customer service was excellent! Will definitely order again.\""
+          - generic [ref=f5e413]:
+            - generic [ref=f5e414]: P
+            - generic [ref=f5e415]:
+              - paragraph [ref=f5e416]: Priya S.
+              - paragraph [ref=f5e417]: Chennai • Verified Purchase ✓
+        - generic [ref=f5e418]:
+          - generic [ref=f5e419]: TOP REVIEWER
+          - generic [ref=f5e420]:
+            - generic [ref=f5e421]: star
+            - generic [ref=f5e422]: star
+            - generic [ref=f5e423]: star
+            - generic [ref=f5e424]: star
+            - generic [ref=f5e425]: star
+          - paragraph [ref=f5e426]: "\"Great collection at reasonable prices. The modern minimalist style is exactly what I was looking for. Same-day delivery was a bonus!\""
+          - generic [ref=f5e427]:
+            - generic [ref=f5e428]: A
+            - generic [ref=f5e429]:
+              - paragraph [ref=f5e430]: Arjun M.
+              - paragraph [ref=f5e431]: Bangalore • Verified Purchase ✓
+        - generic [ref=f5e432]:
+          - generic [ref=f5e433]:
+            - generic [ref=f5e434]: star
+            - generic [ref=f5e435]: star
+            - generic [ref=f5e436]: star
+            - generic [ref=f5e437]: star
+            - generic [ref=f5e438]: star
+          - paragraph [ref=f5e439]: "\"Beautiful decor items that transformed my living room. The quality exceeded my expectations. Will definitely shop again!\""
+          - generic [ref=f5e440]:
+            - generic [ref=f5e441]: K
+            - generic [ref=f5e442]:
+              - paragraph [ref=f5e443]: Kavitha R.
+              - paragraph [ref=f5e444]: Mumbai • Verified Purchase ✓
+    - generic [ref=f5e447]:
+      - heading "Stay in the loop" [level=2] [ref=f5e448]
+      - paragraph [ref=f5e449]: New arrivals, exclusive offers, and design inspiration delivered to your inbox.
+      - generic [ref=f5e450]:
+        - textbox "Email address" [ref=f5e451]:
+          - /placeholder: Enter your email
+        - button "Subscribe" [ref=f5e452] [cursor=pointer]
+      - paragraph [ref=f5e453]: Join 5,000+ subscribers. No spam, unsubscribe anytime.
+  - generic [ref=f5e454] [cursor=pointer]: Back to top
+  - contentinfo [ref=f5e455]:
+    - generic [ref=f5e456]:
+      - generic [ref=f5e457]:
+        - heading "Shop" [level=3] [ref=f5e458]
+        - list [ref=f5e459]:
+          - listitem [ref=f5e460]:
+            - link "Living Room" [ref=f5e461] [cursor=pointer]:
+              - /url: category.html?cat=living
+          - listitem [ref=f5e462]:
+            - link "Bedroom" [ref=f5e463] [cursor=pointer]:
+              - /url: category.html?cat=bedroom
+          - listitem [ref=f5e464]:
+            - link "Kitchen" [ref=f5e465] [cursor=pointer]:
+              - /url: category.html?cat=kitchen
+          - listitem [ref=f5e466]:
+            - link "Decor" [ref=f5e467] [cursor=pointer]:
+              - /url: category.html?cat=decor
+          - listitem [ref=f5e468]:
+            - link "Lighting" [ref=f5e469] [cursor=pointer]:
+              - /url: category.html?cat=lighting
+      - generic [ref=f5e470]:
+        - heading "Company" [level=3] [ref=f5e471]
+        - list [ref=f5e472]:
+          - listitem [ref=f5e473]:
+            - link "About Us" [ref=f5e474] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e475]:
+            - link "Stores" [ref=f5e476] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e477]:
+            - link "Careers" [ref=f5e478] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e479]:
+            - link "Press" [ref=f5e480] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f5e481]:
+        - heading "Help" [level=3] [ref=f5e482]
+        - list [ref=f5e483]:
+          - listitem [ref=f5e484]:
+            - link "Contact Us" [ref=f5e485] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e486]:
+            - link "FAQs" [ref=f5e487] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e488]:
+            - link "Shipping" [ref=f5e489] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e490]:
+            - link "Returns" [ref=f5e491] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f5e492]:
+        - heading "Connect" [level=3] [ref=f5e493]
+        - list [ref=f5e494]:
+          - listitem [ref=f5e495]:
+            - link "Instagram" [ref=f5e496] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e497]:
+            - link "Pinterest" [ref=f5e498] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f5e499]:
+            - link "WhatsApp" [ref=f5e500] [cursor=pointer]:
+              - /url: "#"
+    - generic [ref=f5e501]: © 2026 Chennai Retail. All rights reserved. Serving Chennai with pride.

@@ -378,28 +378,27 @@ Hallmark editorial design system (OKLCH colors, Fraunces + Newsreader serifs), P
 
 ```
 Ecommerce/
-├── public/                    # Static HTML files served to users
-│   ├── index.html
-│   ├── category.html
-│   ├── product.html
-│   ├── cart.html
-│   ├── checkout.html
-│   ├── order-success.html
-│   ├── wishlist.html
-│   ├── account.html
-│   ├── offer.html
-│   ├── 404.html
-│   ├── offline.html           # PWA offline fallback page
-│   ├── manifest.json          # PWA Web App Manifest
-│   ├── sitemap.xml            # SEO sitemap
-│   ├── robots.txt             # Crawler directives
-│   ├── .htaccess              # Security headers + GZIP + caching
-│   └── images/                # All images organized by category
-│       ├── branding/          # Logo, favicon, brand assets
-│       ├── products/          # Product photography
-│       ├── categories/        # Category imagery
-│       ├── heroes/            # Hero section banners
-│       └── lifestyle/         # Lifestyle/editorial imagery
+├── index.html                 # Home page
+├── category.html              # Category listing page
+├── product.html               # Product detail page
+├── cart.html                  # Shopping cart page
+├── checkout.html              # Checkout page
+├── order-success.html         # Order confirmation page
+├── wishlist.html              # Wishlist page
+├── account.html               # User account page
+├── offer.html                 # Deals/offers page
+├── 404.html                   # Not found page
+├── offline.html               # PWA offline fallback page
+├── manifest.json              # PWA Web App Manifest
+├── sitemap.xml                # SEO sitemap
+├── robots.txt                 # Crawler directives
+├── .htaccess                  # Security headers + GZIP + caching
+├── images/                    # All images organized by category
+│   ├── branding/              # Logo, favicon, brand assets
+│   ├── products/              # Product photography
+│   ├── categories/            # Category imagery
+│   ├── heroes/                # Hero section banners
+│   └── lifestyle/             # Lifestyle/editorial imagery
 ├── styles/                    # CSS design system
 │   ├── tokens.css             # Hallmark OKLCH design tokens (colors, type, motion)
 │   ├── base.css               # Reset, typography, global styles
@@ -420,14 +419,13 @@ Ecommerce/
 │   │   └── ProductService.js
 │   ├── store/
 │   │   ├── cartStore.js
-│   │   ├── EventBus.js
-│   │   └── wishlistStore.js
+│   │   ├── wishlistStore.js
+│   │   └── EventBus.js
 │   ├── utils/
 │   │   ├── constants.js
 │   │   └── format.js
 │   └── data/
 │       └── products.json
-├── images/                    # Root-level images (if any)
 └── README.md
 ```
 

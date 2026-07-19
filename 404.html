@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="images/branding/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -15,15 +15,16 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: { DEFAULT: '#DC2626', light: '#FEE2E2', dark: '#991B1B' },
-                        surface: { DEFAULT: '#FFFFFF', alt: '#F9FAFB' },
-                        'on-primary': '#ffffff',
-                        text: { DEFAULT: '#111111', secondary: '#4B5563', tertiary: '#9CA3AF' },
-                        border: { DEFAULT: '#E5E7EB', light: '#F3F4F6' },
+                        primary: '#DC2626',
+                        surface: '#FFFFFF',
+                        text: '#292524',
                     },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                }
-            }
+                    fontFamily: {
+                        sans: ['Newsreader', 'serif'],
+                        display: ['Fraunces', 'serif'],
+                    },
+                },
+            },
         }
     </script>
     <link rel="stylesheet" href="styles/tokens.css">
@@ -191,7 +192,7 @@
         .slide-up-6 { animation: slideUp 0.6s ease-out 0.85s both; }
     </style>
 </head>
-<body class="bg-[#F3F4F6] text-[#111111]">
+<body>
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- Promo Banner -->

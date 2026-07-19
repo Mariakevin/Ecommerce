@@ -1,4 +1,4 @@
-
+@layer components {
 
 /* --------------------------------------------------
    2. Base Reset
@@ -148,14 +148,14 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     padding: 8px 12px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--text-inverse);
+    color: var(--text-primary);
     border-radius: var(--radius-md);
     transition: all 0.2s ease;
     white-space: nowrap;
 }
 .nav-link:hover, .nav-link.active {
     background: rgba(255,255,255,0.1);
-    color: var(--text-inverse);
+    color: var(--text-primary);
 }
 .nav-arrow {
     font-size: 18px;
@@ -347,7 +347,7 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 .header-action-btn:hover {
     background: rgba(255,255,255,0.1);
-    color: var(--text-inverse);
+    color: var(--text-primary);
 }
 .header-action-btn .material-symbols-outlined { font-size: 22px; }
 .header-action-label { font-weight: 500; }
@@ -1256,33 +1256,6 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 
 /* --------------------------------------------------
-   39. Live Viewers Badge
-   -------------------------------------------------- */
-.live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    color: var(--text-inverse);
-    padding: 6px 12px;
-    border-radius: var(--radius-pill);
-    font-size: 11px;
-    font-weight: 500;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-}
-.live-badge::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #EF4444;
-    animation: pulse-dot 1.5s ease infinite;
-}
-
-/* --------------------------------------------------
    40. Urgency Elements
    -------------------------------------------------- */
 .urgency-banner {
@@ -1448,45 +1421,6 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 .delivery-progress-text strong {
     color: var(--primary);
-}
-
-/* --------------------------------------------------
-   45. Countdown Timer
-   -------------------------------------------------- */
-.countdown-timer {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-}
-.countdown-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.countdown-value {
-    background: var(--text-primary);
-    color: var(--text-inverse);
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-}
-.countdown-label {
-    font-size: 9px;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    margin-top: 2px;
-}
-.countdown-sep {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-tertiary);
-    margin-bottom: 12px;
 }
 
 /* --------------------------------------------------
@@ -4805,312 +4739,6 @@ border-left: 1px solid var(--border-default);
     }
 }
 
-/* =====================================================
-   PRODUCT DESIGN PSYCHOLOGY IMPROVEMENTS
-   Based on Wouter de Bres - Product Design Psychology
-   ===================================================== */
-
-/* Ch.13 - Stop Hiding What's Clickable (Signifiers) */
-.btn-primary {
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
-    position: relative;
-    overflow: hidden;
-}
-.btn-primary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
-    pointer-events: none;
-}
-.btn-primary:hover {
-    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.35);
-    transform: translateY(-1px);
-}
-.btn-primary:active {
-    transform: translateY(0) scale(0.98);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
-}
-
-.btn-outline {
-    position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
-.btn-outline:hover {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transform: translateY(-1px);
-}
-
-/* Enhanced link signifiers */
-a:not(.btn-primary):not(.btn-outline):not(.nav-link):not(.mega-link):not(.suggestion-item):not([class*="header"]):not(.bottom-nav a):not(.footer-back-top):not(.breadcrumb a) {
-    position: relative;
-}
-a:not(.btn-primary):not(.btn-outline):not(.nav-link):not(.mega-link):not(.suggestion-item):not([class*="header"]):not(.bottom-nav a):not(.footer-back-top):not(.breadcrumb a)::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: width 0.2s ease;
-}
-a:not(.btn-primary):not(.btn-outline):not(.nav-link):not(.mega-link):not(.suggestion-item):not([class*="header"]):not(.bottom-nav a):not(.footer-back-top):not(.breadcrumb a):hover::after {
-    width: 100%;
-}
-
-/* Focus states for accessibility (signifiers for keyboard navigation) */
-.btn-primary:focus-visible,
-.btn-outline:focus-visible,
-button:focus-visible,
-a:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-}
-
-/* Ch.15 - Your UI Is Exhausting (Cognitive Load) */
-.product-card {
-    border: 1px solid var(--border-default);
-    background: var(--bg-primary);
-}
-.product-card:hover {
-    border-color: var(--border-default);
-}
-
-/* Reduce cognitive load on product page - visual hierarchy */
-.product-detail-title {
-    line-height: 1.3;
-}
-.product-detail-price {
-    color: var(--text-primary);
-    font-weight: 700;
-}
-
-/* Simplify variant selector */
-.variant-section {
-    border: 1px solid var(--border-default);
-    background: var(--bg-secondary);
-}
-
-/* Ch.18 - Design the Last Moment First (Peak-End Rule) */
-/* Enhanced order success page */
-.success-icon {
-    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.2);
-}
-
-/* Order success confetti enhancement */
-@keyframes confetti-fall {
-    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-    50% { transform: translateY(50vh) rotate(360deg) scale(1.1); opacity: 0.8; }
-    100% { transform: translateY(100vh) rotate(720deg) scale(0.8); opacity: 0; }
-}
-
-/* Ch.19 - Fake Progress Is Real Motivation (Goal-Gradient) */
-/* Enhanced checkout progress */
-.checkout-progress-premium .step-item.active .step-circle {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
-    animation: pulse-glow 2s infinite;
-}
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2); }
-    50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0.1); }
-}
-.checkout-progress-premium .step-item.completed .step-circle {
-    background: #059669;
-    color: white;
-}
-
-/* Progress percentage indicator */
-.checkout-progress-premium {
-    position: relative;
-}
-.checkout-progress-premium::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary) 0%, #059669 100%);
-    border-radius: 2px;
-    transition: width 0.5s ease;
-}
-
-/* Ch.20 - Layout Speaks Before You Do (Gestalt/Proximity) */
-/* Better grouping in product cards */
-.product-card .product-card-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* Enhanced spacing in cart items */
-.cart-item {
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-}
-.cart-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-/* Ch.22 - Users Want Now, Not Later (Present Bias) */
-/* Immediate value delivery */
-.urgency-banner {
-    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
-    border: 1px solid #F59E0B;
-}
-.urgency-banner .urgency-icon {
-    font-size: 20px;
-}
-
-/* Delivery speed prominence */
-.delivery-option.express {
-    border-color: #059669;
-    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
-}
-
-/* Stock urgency */
-.stock-low {
-    color: #DC2626;
-    font-weight: 600;
-    animation: pulse-text 1.5s infinite;
-}
-@keyframes pulse-text {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-}
-
-/* Ch.24 - Users React Then Rationalize (Affective Primacy) */
-/* Emotional first impressions */
-.hero-section {
-    background: linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 50%, #F9FAFB 100%);
-}
-
-/* Hero title emotional impact */
-.hero-title {
-    background: linear-gradient(135deg, var(--text-primary) 0%, #374151 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* hero-badge and trust-item hover consolidated into Section 67 */
-
-/* Ch.28 - More Options Make Users Quit (Hick's Law) */
-/* Reduce option overload in filters */
-.filter-chip {
-    transition: all 0.2s ease;
-    border: 2px solid transparent;
-    background: var(--bg-primary);
-    font-weight: 500;
-}
-.filter-chip:hover {
-    background: var(--primary-light);
-    border-color: var(--primary);
-    transform: translateY(-1px);
-}
-.filter-chip.active {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
-}
-
-/* Sidebar filter sections - Better visual grouping */
-.sidebar-filter-section {
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-}
-.sidebar-filter-section:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-/* Simplify checkout options */
-.delivery-option {
-    transition: all 0.2s ease;
-    border: 2px solid transparent;
-}
-.delivery-option:hover {
-    border-color: var(--border-default);
-    background: var(--bg-secondary);
-}
-.delivery-option.selected {
-    border-color: var(--primary);
-    background: var(--primary-light);
-}
-
-/* Variant selector simplification */
-.color-swatch {
-    transition: all 0.2s ease;
-    border: 2px solid transparent;
-}
-.color-swatch:hover {
-    transform: scale(1.1);
-    border-color: var(--border-default);
-}
-.color-swatch.active {
-    box-shadow: 0 0 0 3px var(--primary);
-    border-color: var(--primary);
-}
-
-.size-option {
-    transition: all 0.2s ease;
-    border: 2px solid var(--border-default);
-    background: var(--bg-primary);
-    font-weight: 500;
-}
-.size-option:hover {
-    border-color: var(--primary);
-    background: var(--primary-light);
-}
-.size-option.active {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
-}
-
-/* Micro-interactions for feedback */
-.product-card .wishlist-btn {
-    transition: all 0.2s ease;
-}
-.product-card .wishlist-btn:hover {
-    transform: scale(1.1);
-}
-.product-card .wishlist-btn.active {
-    color: var(--primary);
-}
-
-/* Cart badge animation */
-.cart-badge {
-    transition: all 0.3s ease;
-}
-.cart-badge:not(.hidden) {
-    animation: badge-pop 0.3s ease;
-}
-@keyframes badge-pop {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-/* Smooth page transitions */
-.page-transition {
-    animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 /* ============================================================
    Phase 2: Container Queries, @property, Fluid Grids
    ============================================================ */
@@ -5883,3 +5511,5 @@ html, body { overflow-x: clip; }
     transition: none;
   }
 }
+
+} /* end @layer components */

@@ -2272,9 +2272,17 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 
 /* Countdown Section */
 .countdown-section {
-    background: linear-gradient(135deg, var(--text-primary) 0%, #1F2937 100%);
-    color: var(--text-inverse);
+    background: var(--surface-2, #1a1714);
+    color: var(--text-on-surface, #FFFBF5);
     overflow: hidden;
+    position: relative;
+}
+.countdown-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, transparent 50%, rgba(220, 38, 38, 0.04) 100%);
+    pointer-events: none;
 }
 .countdown-inner {
     max-width: var(--container-max);
@@ -2285,6 +2293,7 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     justify-content: space-between;
     gap: 40px;
     flex-wrap: wrap;
+    position: relative;
 }
 .countdown-content {
     flex: 1;
@@ -2292,25 +2301,33 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 .countdown-badge {
     display: inline-block;
-    background: var(--primary);
-    color: var(--text-inverse);
+    background: rgba(220, 38, 38, 0.15);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    color: #fca5a5;
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
     font-size: 11px;
-    font-weight: 700;
-    padding: 6px 12px;
+    font-weight: 500;
+    padding: 6px 14px;
     border-radius: 4px;
-    letter-spacing: 1px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     margin-bottom: 16px;
 }
 .countdown-title {
+    font-family: var(--font-display, 'Fraunces', Georgia, serif);
     font-size: clamp(24px, 4vw, 36px);
-    font-weight: 700;
-    color: var(--text-inverse);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--text-on-surface, #FFFBF5);
     margin-bottom: 8px;
     text-wrap: balance;
 }
 .countdown-subtitle {
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
     font-size: 16px;
-    color: var(--text-tertiary);
+    color: rgba(255, 251, 245, 0.6);
+    line-height: 1.5;
 }
 .countdown-timer {
     display: flex;
@@ -2318,7 +2335,8 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     gap: 12px;
 }
 .countdown-box {
-    background: var(--glass-bg);
+    background: rgba(255, 251, 245, 0.06);
+    border: 1px solid rgba(255, 251, 245, 0.08);
     border-radius: var(--radius-lg);
     padding: 20px 24px;
     text-align: center;
@@ -2326,26 +2344,35 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 .countdown-value {
     display: block;
+    font-family: var(--font-display, 'Fraunces', Georgia, serif);
     font-size: 36px;
-    font-weight: 700;
-    color: var(--text-inverse);
+    font-weight: 600;
+    color: var(--text-on-surface, #FFFBF5);
     line-height: 1;
 }
 .countdown-label {
     display: block;
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
     font-size: 11px;
-    color: var(--text-tertiary);
+    color: rgba(255, 251, 245, 0.45);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 8px;
 }
 .countdown-separator {
     font-size: 32px;
-    font-weight: 700;
-    color: var(--primary);
+    font-weight: 600;
+    color: rgba(220, 38, 38, 0.7);
 }
 .countdown-cta {
     white-space: nowrap;
+    background: var(--primary);
+    color: var(--text-inverse);
+    transition: all 220ms ease-out;
+}
+.countdown-cta:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
 }
 
 /* Section Container */
@@ -5312,8 +5339,7 @@ html, body { overflow-x: clip; }
   color: var(--text-2, #7A6B5D);
 }
 
-/* ── Countdown Section — Editorial ── */
-.countdown-badge,
+/* ── Editorial Badge (shared) ── */
 .why-badge,
 .artisan-badge,
 .quiz-badge,
@@ -5325,7 +5351,7 @@ html, body { overflow-x: clip; }
   color: var(--text-2, #7A6B5D);
 }
 
-.countdown-title,
+/* ── Editorial Title (shared) ── */
 .why-title,
 .artisan-title,
 .quiz-title,

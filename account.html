@@ -22,9 +22,10 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#DC2626',
-                        surface: '#FFFFFF',
-                        text: '#292524',
+                        primary: { DEFAULT: '#DC2626', light: '#FEE2E2' },
+                        surface: { DEFAULT: '#FFFFFF', alt: '#F5F0EB' },
+                        text: { DEFAULT: '#292524', secondary: '#57534E', tertiary: '#A8A29E' },
+                        accent: { black: '#292524', dark: '#991B1B' },
                     },
                     fontFamily: {
                         sans: ['Newsreader', 'serif'],
@@ -267,8 +268,8 @@
                         </div>
                         <p id="userEmail" class="text-text-secondary mb-4">...</p>
                         <div class="flex flex-wrap justify-center md:justify-start gap-3">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-medium status-badge">
-                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary-light text-primary rounded-full text-xs font-medium status-badge">
+                                <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                                 Active Member
                             </span>
                             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary-light text-primary rounded-full text-xs font-medium">
@@ -296,8 +297,8 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="dashboard-card bg-white rounded-2xl p-5 shadow-card cursor-pointer" onclick="document.querySelector('[data-tab=orders]').click()">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-blue-600" style="font-size:24px">package_2</span>
+                        <div class="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary" style="font-size:24px">package_2</span>
                         </div>
                         <span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Orders</span>
                     </div>
@@ -307,8 +308,8 @@
 
                 <div class="dashboard-card bg-white rounded-2xl p-5 shadow-card cursor-pointer" onclick="document.querySelector('[data-tab=wishlist]').click()">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-pink-50 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-pink-600" style="font-size:24px">favorite</span>
+                        <div class="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary" style="font-size:24px">favorite</span>
                         </div>
                         <span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Wishlist</span>
                     </div>
@@ -318,8 +319,8 @@
 
                 <div class="dashboard-card bg-white rounded-2xl p-5 shadow-card cursor-pointer" onclick="document.querySelector('[data-tab=addresses]').click()">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-amber-600" style="font-size:24px">location_on</span>
+                        <div class="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary" style="font-size:24px">location_on</span>
                         </div>
                         <span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Addresses</span>
                     </div>
@@ -329,8 +330,8 @@
 
                 <div class="dashboard-card bg-white rounded-2xl p-5 shadow-card cursor-pointer" onclick="document.querySelector('[data-tab=settings]').click()">
                     <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-purple-600" style="font-size:24px">settings</span>
+                        <div class="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary" style="font-size:24px">settings</span>
                         </div>
                         <span class="text-xs font-medium text-text-secondary uppercase tracking-wider">Settings</span>
                     </div>

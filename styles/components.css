@@ -2651,6 +2651,7 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     border-radius: var(--radius-xl);
     padding: 28px;
     position: relative;
+    text-align: center;
     transition: all var(--duration-normal) var(--ease-default);
 }
 .review-card:hover {
@@ -2676,6 +2677,7 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 }
 .review-stars {
     display: flex;
+    justify-content: center;
     gap: 2px;
     margin-bottom: 16px;
 }
@@ -2696,6 +2698,7 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 .review-author {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
 }
 .review-avatar {

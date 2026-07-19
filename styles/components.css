@@ -2394,7 +2394,6 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     position: relative;
     overflow: hidden;
     border-radius: var(--radius-xl);
-    aspect-ratio: 3/4;
     display: block;
 }
 .category-card-img {
@@ -2409,34 +2408,39 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 .category-card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(41, 37, 36, 0.85) 0%, rgba(41, 37, 36, 0.3) 40%, transparent 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 24px;
-    transition: background var(--duration-normal) var(--ease-default);
+    transition: background var(--dur-short, 220ms) var(--ease-out);
 }
 .category-card:hover .category-card-overlay {
-    background: linear-gradient(to top, rgba(220,38,38,0.9) 0%, rgba(220,38,38,0.4) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(220, 38, 38, 0.9) 0%, rgba(220, 38, 38, 0.35) 40%, transparent 100%);
 }
 .category-card-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-inverse);
+    font-family: var(--font-display, 'Fraunces', Georgia, serif);
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 600;
+    color: #FFFBF5;
     margin-bottom: 4px;
+    letter-spacing: -0.01em;
 }
 .category-card-count {
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
     font-size: 13px;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 251, 245, 0.7);
     margin-bottom: 8px;
 }
 .category-card-cta {
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
     font-size: 13px;
     font-weight: 600;
-    color: var(--text-inverse);
+    color: #FFFBF5;
     opacity: 0;
-    transform: translateY(10px);
-    transition: all var(--duration-normal) var(--ease-default);
+    transform: translateY(8px);
+    transition: all var(--dur-short, 220ms) var(--ease-out);
+    letter-spacing: 0.02em;
 }
 .category-card:hover .category-card-cta {
     opacity: 1;
@@ -4811,32 +4815,6 @@ border-left: 1px solid var(--border-default);
     box-shadow: var(--glass-shadow);
 }
 
-/* --- Bento grid layout --- */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 16px;
-}
-.bento-grid .bento-wide {
-    grid-column: span 2;
-}
-.bento-grid .bento-tall {
-    grid-row: span 2;
-}
-.bento-grid .bento-large {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-@media (max-width: 768px) {
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .bento-grid .bento-large {
-        grid-column: span 2;
-        grid-row: span 1;
-    }
-}
 
 /* ============================================================
    Phase 5: Logical Properties & Form Accent

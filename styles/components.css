@@ -2751,65 +2751,96 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 .newsletter-section {
     background: linear-gradient(135deg, var(--primary) 0%, #B91C1C 100%);
     color: var(--text-inverse);
+    position: relative;
+    overflow: hidden;
+}
+.newsletter-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -25%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 251, 245, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
 }
 .newsletter-inner {
     max-width: 600px;
     margin: 0 auto;
-    padding: 60px 24px;
+    padding: 80px 24px;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 .newsletter-title {
-    font-size: clamp(24px, 4vw, 32px);
-    font-weight: 700;
+    font-family: var(--font-display, 'Fraunces', Georgia, serif);
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
     color: var(--text-inverse);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     text-wrap: balance;
 }
 .newsletter-subtitle {
-    font-size: 16px;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 28px;
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(255, 251, 245, 0.85);
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-inline: auto;
 }
 .newsletter-form {
     display: flex;
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    max-width: 480px;
+    margin-inline: auto;
 }
 .newsletter-input {
     flex: 1;
-    padding: 14px 18px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: var(--radius-md);
-    background: var(--glass-bg);
+    padding: 16px 22px;
+    border: 1.5px solid rgba(255, 251, 245, 0.25);
+    border-radius: 100px;
+    background: rgba(255, 251, 245, 0.1);
     color: var(--text-inverse);
-    font-size: 14px;
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
+    font-size: 15px;
     outline: none;
-    transition: border-color var(--duration-fast) var(--ease-default);
+    transition: all var(--dur-short, 220ms) var(--ease-out);
 }
 .newsletter-input::placeholder {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 251, 245, 0.5);
 }
 .newsletter-input:focus {
-    border-color: var(--text-inverse);
+    border-color: rgba(255, 251, 245, 0.5);
+    background: rgba(255, 251, 245, 0.15);
+    box-shadow: 0 0 0 4px rgba(255, 251, 245, 0.08);
 }
 .newsletter-btn {
-    padding: 14px 28px;
+    padding: 16px 32px;
     background: var(--text-inverse);
     color: var(--primary);
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: var(--radius-md);
+    font-family: var(--font-display, 'Fraunces', Georgia, serif);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 100px;
     border: none;
     cursor: pointer;
-    transition: all var(--duration-fast) var(--ease-default);
+    white-space: nowrap;
+    transition: all var(--dur-short, 220ms) var(--ease-out);
 }
 .newsletter-btn:hover {
-    background: var(--text-primary);
-    color: var(--text-inverse);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 .newsletter-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(255, 251, 245, 0.6);
 }
 
 /* Recently Viewed */
@@ -2930,6 +2961,12 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     }
     .newsletter-form {
         flex-direction: column;
+    }
+    .newsletter-btn {
+        width: 100%;
+    }
+    .newsletter-inner {
+        padding: 60px 20px;
     }
     .section-title {
         font-size: 22px;
@@ -5530,21 +5567,7 @@ html, body { overflow-x: clip; }
   font-weight: 500;
 }
 
-/* ── Newsletter — Editorial ── */
-.newsletter-title {
-  font-family: var(--font-display, 'Fraunces', Georgia, serif);
-  font-weight: 500;
-  letter-spacing: var(--tracking-tight, -0.02em);
-}
 
-.newsletter-subtitle {
-  font-family: var(--font-body, 'Newsreader', Georgia, serif);
-  color: rgba(255, 251, 245, 0.8);
-}
-
-.newsletter-input {
-  font-family: var(--font-body, 'Newsreader', Georgia, serif);
-}
 
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {

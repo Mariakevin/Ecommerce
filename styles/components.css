@@ -1162,7 +1162,7 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     color: var(--text-inverse, #FFFBF5);
     overflow: hidden;
     white-space: nowrap;
-    padding: 10px 0;
+    padding: 10px 24px;
     font-size: 12.5px;
     font-family: var(--font-body, 'Newsreader', Georgia, serif);
     letter-spacing: 0.02em;
@@ -2061,7 +2061,8 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    padding: 40px 24px;
+    padding-block: 60px;
+    padding-inline: 24px;
     align-items: center;
 }
 .hero-content {
@@ -2497,7 +2498,8 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 .why-inner {
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 80px 24px;
+    padding-block: 60px;
+    padding-inline: 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -4457,9 +4459,10 @@ border-left: 1px solid var(--border-default);
     border-bottom: 1px solid var(--border-default);
 }
 .artisan-inner {
-    max-width: 1600px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 80px 24px;
+    padding-block: 60px;
+    padding-inline: 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -4571,9 +4574,10 @@ border-left: 1px solid var(--border-default);
     overflow: hidden;
 }
 .quiz-inner {
-    max-width: 1600px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 80px 24px;
+    padding-block: 60px;
+    padding-inline: 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -4698,9 +4702,10 @@ border-left: 1px solid var(--border-default);
     color: var(--text-inverse);
 }
 .eco-inner {
-    max-width: 1600px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 60px 24px;
+    padding-block: 60px;
+    padding-inline: 24px;
     text-align: center;
 }
 .eco-badge {
@@ -4868,13 +4873,9 @@ border-left: 1px solid var(--border-default);
     padding-block: 20px;
     padding-inline: 0;
 }
-.section-container {
-    padding-block: 60px;
-    padding-inline: 24px;
-}
 .footer-grid {
     padding-block: 40px;
-    padding-inline: 16px;
+    padding-inline: 24px;
 }
 .footer-bottom {
     padding-block: 20px;
@@ -5378,9 +5379,7 @@ html, body { overflow-x: clip; }
 /* ── Why Section — Asymmetric Layout ── */
 .why-inner {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
   gap: var(--space-2xl, 64px);
-  align-items: start;
 }
 
 @media (max-width: 768px) {
@@ -5403,9 +5402,7 @@ html, body { overflow-x: clip; }
 /* ── Artisan Section — Asymmetric ── */
 .artisan-inner {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
   gap: var(--space-2xl, 64px);
-  align-items: start;
 }
 
 @media (max-width: 768px) {
@@ -5436,9 +5433,7 @@ html, body { overflow-x: clip; }
 /* ── Quiz Section — Editorial ── */
 .quiz-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: var(--space-2xl, 64px);
-  align-items: start;
 }
 
 @media (max-width: 768px) {

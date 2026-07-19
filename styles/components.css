@@ -1158,12 +1158,14 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
    37. Social Proof Ticker
    -------------------------------------------------- */
 .social-proof-bar {
-    background: var(--text-primary);
-    color: var(--text-inverse);
+    background: var(--gray-900, #1C1917);
+    color: var(--text-inverse, #FFFBF5);
     overflow: hidden;
     white-space: nowrap;
-    padding: 8px 0;
-    font-size: 12px;
+    padding: 10px 0;
+    font-size: 12.5px;
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
+    letter-spacing: 0.02em;
 }
 .social-proof-inner {
     display: flex;
@@ -2069,14 +2071,17 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
-    border: 1px solid #F87171;
-    color: var(--primary);
-    font-size: 12px;
-    font-weight: 600;
+    background: var(--accent-light, oklch(93% 0.06 25));
+    border: 1px solid oklch(82% 0.12 25);
+    color: var(--accent, #DC2626);
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: 4px;
     margin-bottom: 20px;
+    text-transform: uppercase;
     animation: badgePulse 3s ease infinite;
 }
 .hero-title {
@@ -2597,32 +2602,39 @@ h6 { font-size: clamp(0.9rem, 0.05rem + 0.8vw, 1.1rem); }
 .lifestyle-banner-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+    background: linear-gradient(90deg, rgba(28, 25, 23, 0.75) 0%, rgba(28, 25, 23, 0.3) 60%, transparent 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 48px;
 }
 .lifestyle-banner-badge {
-    font-size: 12px;
-    font-weight: 700;
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
+    font-size: 11px;
+    font-weight: 500;
     color: var(--primary);
-    letter-spacing: 2px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     margin-bottom: 12px;
 }
 .lifestyle-banner-title {
+    font-family: var(--font-display, 'Fraunces', Georgia, serif);
     font-size: clamp(24px, 4vw, 36px);
-    font-weight: 700;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
     color: var(--text-inverse);
     margin-bottom: 12px;
     text-wrap: balance;
 }
 .lifestyle-banner-text {
+    font-family: var(--font-body, 'Newsreader', Georgia, serif);
     font-size: 16px;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 251, 245, 0.8);
     max-width: 400px;
     margin-bottom: 24px;
     text-wrap: pretty;
+    line-height: 1.5;
 }
 
 /* Reviews */
@@ -5450,13 +5462,40 @@ html, body { overflow-x: clip; }
 
 .quiz-option {
   font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-sm, 0.875rem);
+  letter-spacing: 0.02em;
+}
+
+.quiz-q-text {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+}
+
+.artisan-stat-value {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 600;
+}
+
+.artisan-stat-label {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+}
+
+.artisan-name {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
+}
+
+.artisan-role {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  letter-spacing: 0.02em;
+}
+
+.artisan-initials {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-weight: 500;
 }
 
 /* ── Eco Section — Stats ── */
-.eco-inner {
-  text-align: left;
-}
-
 .eco-title {
   font-family: var(--font-display, 'Fraunces', Georgia, serif);
   font-weight: 500;
@@ -5471,6 +5510,14 @@ html, body { overflow-x: clip; }
 
 .eco-stat-label {
   font-family: var(--font-body, 'Newsreader', Georgia, serif);
+}
+
+.eco-badge {
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: var(--tracking-wider, 0.1em);
+  text-transform: uppercase;
+  color: rgba(255, 251, 245, 0.8);
 }
 
 /* ── Reviews — Editorial Typography ── */
@@ -5494,7 +5541,7 @@ html, body { overflow-x: clip; }
 
 .newsletter-subtitle {
   font-family: var(--font-body, 'Newsreader', Georgia, serif);
-  color: var(--text-1, #5C4F44);
+  color: rgba(255, 251, 245, 0.8);
 }
 
 .newsletter-input {
